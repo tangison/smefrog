@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { Navbar } from "@/components/navbar";
+import { Footer } from "@/components/footer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
@@ -20,26 +22,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "SMEfrog — Jump Into Business",
   description:
-    "Simple. Fast. Affordable startup support for Namibian entrepreneurs. We help startups register, launch, structure, and grow — without the expensive consultant fees.",
-  keywords: [
-    "SMEfrog",
-    "Namibia",
-    "business registration",
-    "startup",
-    "BIPA",
-    "CC registration",
-    "Pty Ltd",
-    "entrepreneur",
-  ],
-  authors: [{ name: "SMEfrog" }],
+    "Simple. Fast. Affordable startup support for Namibian entrepreneurs. Business registration, startup documentation, and digital services.",
   icons: {
     icon: "/icon.png",
-  },
-  openGraph: {
-    title: "SMEfrog — Jump Into Business",
-    description:
-      "Simple. Fast. Affordable startup support for Namibian entrepreneurs.",
-    type: "website",
   },
 };
 
@@ -53,7 +38,11 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${plusJakarta.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen flex flex-col bg-frog-black text-frog-light">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
         <Toaster />
       </body>
     </html>
