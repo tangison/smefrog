@@ -21,6 +21,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://smefrog.tangison.com"),
   title: {
     default: "SMEfrog — Jump Into Business",
     template: "%s | SMEfrog",

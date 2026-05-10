@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { MessageCircle, ArrowRight, ChevronDown, Bot } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { Eyebrow } from '@/components/eyebrow'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /* ─── Data ─────────────────────────────────────────── */
@@ -58,15 +59,6 @@ const faqs = [
       'Yes, we offer Private Company (Pty Ltd) registration starting from N$1,500 for the basic package, with our full-featured Scale Up package at N$3,500. The Pty Ltd structure is better suited for businesses that plan to scale, seek investment, or have multiple shareholders. It includes MOI documents, Form CM5, CM1 & CM29, BO Declaration, BIPA filing, digital certificate, full remote handling, and priority support.',
   },
 ]
-
-/* ─── Reusable ─────────────────────────────────────── */
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-      {children}
-    </span>
-  )
-}
 
 /* ─── FAQ Item with state toggle ──────────────────── */
 function FAQItem({

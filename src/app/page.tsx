@@ -5,6 +5,9 @@ import { motion } from 'framer-motion'
 import { ArrowRight, MessageCircle, Check, Zap, Globe, Shield, Phone } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ScrollReveal } from '@/components/scroll-reveal'
+import { Eyebrow } from '@/components/eyebrow'
+import { DoubleBezel } from '@/components/double-bezel'
 
 /* ─── Data ─────────────────────────────────────────── */
 const trustItems = ['100% Remote', '7–10 Day Turnaround', 'Bank-Ready Documents', 'BIPA Filing Included', '2X Cheaper Than Market']
@@ -62,13 +65,6 @@ const steps = [
   { n: '04', title: 'Receive Your Documents', desc: 'Delivered digitally and ready for business.', icon: Check },
 ]
 
-const values = [
-  { title: '2X Cheaper', body: 'Lean digital systems deliver the same professional services at a fraction of the cost.' },
-  { title: 'Fully Remote', body: 'Everything handled online through WhatsApp and email. No office visits required.' },
-  { title: 'Built for Startups', body: 'We serve young entrepreneurs, side hustlers, small businesses, and freelancers.' },
-  { title: '7–10 Day Turnaround', body: 'Most registrations completed within 7–10 working days depending on BIPA processing.' },
-]
-
 const testimonials = [
   { name: 'Maria K.', business: 'MK Cleaners CC', quote: 'Registered my CC in under 2 weeks. No office visits. No drama. Just results.' },
   { name: 'James T.', business: 'Tjiriange Logistics', quote: 'SMEfrog handled everything over WhatsApp. I was skeptical, but the service was solid.' },
@@ -87,43 +83,6 @@ const faqItems = [
   { q: 'Can foreigners register a business?', a: 'Yes, with a valid work permit or proof of residency in Namibia.' },
   { q: 'What documents do I need?', a: 'ID copy, proof of address, and your proposed business name(s). We handle the rest.' },
 ]
-
-/* ─── Reusable Components ──────────────────────────── */
-function ScrollReveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
-      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.8, delay, ease: [0.32, 0.72, 0, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-function Eyebrow({ children, light }: { children: React.ReactNode; light?: boolean }) {
-  return (
-    <span className={`inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.25em] font-black mb-4 ${
-      light
-        ? 'bg-black/5 text-black/50 border border-black/10'
-        : 'bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20'
-    }`}>
-      {children}
-    </span>
-  )
-}
-
-function DoubleBezel({ children, className = '', highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
-  return (
-    <div className={`bg-frog-shell ring-1 ${highlight ? 'ring-[#7AC943]/25' : 'ring-frog-hairline'} p-1.5 rounded-[2rem] ${className}`}>
-      <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8 h-full">
-        {children}
-      </div>
-    </div>
-  )
-}
 
 /* ─── Home Page ────────────────────────────────────── */
 export default function HomePage() {

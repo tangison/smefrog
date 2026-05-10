@@ -14,6 +14,7 @@ import {
   Phone,
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { DoubleBezel } from '@/components/double-bezel'
 
 /* ─── Data ─────────────────────────────────────────── */
 const services = [
@@ -113,29 +114,6 @@ const agents = [
     waLink: 'https://wa.me/264853057020',
   },
 ]
-
-/* ─── DoubleBezel ────────────────────────────────────── */
-function DoubleBezel({
-  children,
-  className = '',
-  highlight = false,
-}: {
-  children: React.ReactNode
-  className?: string
-  highlight?: boolean
-}) {
-  return (
-    <div
-      className={`bg-frog-shell ring-1 ${
-        highlight ? 'ring-[#7AC943]/25' : 'ring-frog-hairline'
-      } p-1.5 rounded-[2rem] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${className}`}
-    >
-      <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8 h-full">
-        {children}
-      </div>
-    </div>
-  )
-}
 
 /* ─── Page ──────────────────────────────────────────── */
 export default function ServicesPage() {

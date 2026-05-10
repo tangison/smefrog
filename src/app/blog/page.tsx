@@ -2,6 +2,7 @@
 
 import { ArrowRight, MessageCircle, Clock, BookOpen } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { Eyebrow } from '@/components/eyebrow'
 
 /* ─── Data ─────────────────────────────────────────── */
 const blogPosts = [
@@ -54,15 +55,6 @@ const blogPosts = [
     category: 'Insights',
   },
 ]
-
-/* ─── Reusable ─────────────────────────────────────── */
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-      {children}
-    </span>
-  )
-}
 
 /* ─── Blog Card ────────────────────────────────────── */
 function BlogCard({
