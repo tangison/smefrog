@@ -202,7 +202,7 @@ export default function BusinessRegistrationPage() {
               <ScrollReveal delay={0.08}>
                 <h1
                   className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   Register
                   <br />
@@ -285,7 +285,7 @@ export default function BusinessRegistrationPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-tight max-w-2xl"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Choose your structure.{' '}
                 <span className="italic text-[#7AC943]">We handle the rest.</span>
@@ -314,7 +314,7 @@ export default function BusinessRegistrationPage() {
 
                 <h3
                   className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-3"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {ccRegistration.title}
                 </h3>
@@ -328,7 +328,7 @@ export default function BusinessRegistrationPage() {
                     {ccRegistration.turnaround}
                   </div>
                   <span className="text-black/10">·</span>
-                  <span className="text-2xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  <span className="text-2xl font-bold text-[#1A1A1A]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {ccRegistration.price}
                   </span>
                 </div>
@@ -366,7 +366,7 @@ export default function BusinessRegistrationPage() {
 
                 <h3
                   className="text-2xl md:text-3xl font-bold text-white mb-3"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {ptyLtdRegistration.title}
                 </h3>
@@ -375,7 +375,7 @@ export default function BusinessRegistrationPage() {
                 </p>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="text-2xl font-bold text-[#7AC943]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  <span className="text-2xl font-bold text-[#7AC943]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {ptyLtdRegistration.price}
                   </span>
                 </div>
@@ -410,7 +410,7 @@ export default function BusinessRegistrationPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Transparent{' '}
                 <span className="italic text-[#7AC943]">Structure.</span>
@@ -433,7 +433,7 @@ export default function BusinessRegistrationPage() {
                     </span>
                     <p
                       className="text-4xl font-bold text-frog-light mt-3"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       {pkg.price}
                     </p>
@@ -484,7 +484,7 @@ export default function BusinessRegistrationPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Four Simple Steps
             </h2>
@@ -499,7 +499,7 @@ export default function BusinessRegistrationPage() {
                   </div>
                   <h3
                     className="text-base font-bold text-[#1A1A1A] mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {step.title}
                   </h3>
@@ -525,7 +525,7 @@ export default function BusinessRegistrationPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Stay compliant.{' '}
                 <span className="italic text-[#7AC943]">Stay operational.</span>
@@ -541,7 +541,7 @@ export default function BusinessRegistrationPage() {
                 </div>
                 <h3
                   className="text-xl md:text-2xl font-bold text-frog-light mb-2"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {bipaSection.title}
                 </h3>
@@ -566,7 +566,7 @@ export default function BusinessRegistrationPage() {
                 </div>
                 <h3
                   className="text-xl md:text-2xl font-bold text-frog-light mb-2"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   {boFiling.title}
                 </h3>
@@ -590,7 +590,7 @@ export default function BusinessRegistrationPage() {
       {/* ═══════════════════════════════════════════════════
           TESTIMONIALS — Light warm
       ═══════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-[1400px] mx-auto">
           <ScrollReveal>
             <Eyebrow light>What Founders Say</Eyebrow>
@@ -598,7 +598,7 @@ export default function BusinessRegistrationPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Real results.{' '}
               <span className="italic text-[#7AC943]">Real founders.</span>
@@ -645,7 +645,7 @@ export default function BusinessRegistrationPage() {
               <ScrollReveal delay={0.06}>
                 <h2
                   className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   Ready to register
                   <br />

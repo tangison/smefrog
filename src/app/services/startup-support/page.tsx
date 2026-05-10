@@ -179,7 +179,7 @@ export default function StartupSupportPage() {
               <ScrollReveal delay={0.08}>
                 <h1
                   className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   Launch With
                   <br />
@@ -294,7 +294,7 @@ export default function StartupSupportPage() {
                         className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight ${
                           isLight ? 'text-[#1A1A1A]' : 'text-white'
                         }`}
-                        style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         {service.title}
                       </h3>
@@ -351,7 +351,7 @@ export default function StartupSupportPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Built for every stage{' '}
               <span className="italic text-[#7AC943]">of the journey.</span>
@@ -372,7 +372,7 @@ export default function StartupSupportPage() {
 
                   <h3
                     className="text-xl font-bold text-[#1A1A1A] mb-3"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {uc.title}
                   </h3>
@@ -411,7 +411,7 @@ export default function StartupSupportPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 From idea to{' '}
                 <span className="italic text-[#7AC943]">investor-ready.</span>
@@ -426,14 +426,14 @@ export default function StartupSupportPage() {
                   <div className="mb-4">
                     <span
                       className="text-4xl font-bold text-[#7AC943] leading-none"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       {step.n}
                     </span>
                   </div>
                   <h3
                     className="text-base font-bold text-frog-light mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {step.title}
                   </h3>
@@ -448,7 +448,7 @@ export default function StartupSupportPage() {
       {/* ═══════════════════════════════════════════════════
           TESTIMONIALS — Light warm
       ═══════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-[1400px] mx-auto">
           <ScrollReveal>
             <Eyebrow light>What Founders Say</Eyebrow>
@@ -456,7 +456,7 @@ export default function StartupSupportPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               They launched.{' '}
               <span className="italic text-[#7AC943]">So can you.</span>
@@ -497,7 +497,7 @@ export default function StartupSupportPage() {
           <ScrollReveal>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Custom pricing.{' '}
               <span className="italic text-[#7AC943]">Tailored scope.</span>
@@ -540,7 +540,7 @@ export default function StartupSupportPage() {
               </span>
               <h3
                 className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Pick your agent.{' '}
                 <span className="italic text-[#7AC943]">Start now.</span>

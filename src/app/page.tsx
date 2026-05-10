@@ -122,7 +122,7 @@ export default function HomePage() {
                   <span className="text-[#7AC943] text-[10px] font-black uppercase tracking-[0.35em]">Ready for 2024 Compliance</span>
                 </div>
 
-                <h1 className="text-6xl md:text-[110px] lg:text-[140px] font-black text-white leading-[0.85] tracking-tighter mb-10" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                <h1 className="text-6xl md:text-[110px] lg:text-[140px] font-black text-white leading-[0.85] tracking-tighter mb-10" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   The Digital<br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#7AC943] to-white">Jumpstart.</span>
                 </h1>
@@ -156,7 +156,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 2. TRUST STRIP — Light premium surface ═══ */}
-      <section className="bg-[#FBFBFB] py-10 px-4 md:px-6">
+      <section className="bg-[#F8F9F4] py-10 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-5">
@@ -185,13 +185,13 @@ export default function HomePage() {
             <ScrollReveal><Eyebrow light>What We Do</Eyebrow></ScrollReveal>
             <div className="flex flex-col md:flex-row justify-between items-end gap-8">
               <ScrollReveal delay={0.06}>
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter italic" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   Register Smarter.
                 </h2>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <div className="text-right">
-                  <div className="text-5xl md:text-6xl font-black text-[#7AC943]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>2X</div>
+                  <div className="text-5xl md:text-6xl font-black text-[#7AC943]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>2X</div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-black/30 font-bold">Cheaper than market average</div>
                 </div>
               </ScrollReveal>
@@ -209,7 +209,7 @@ export default function HomePage() {
                 <Image src={editorialServices[0].img} alt="CC Registration" fill className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" />
                 <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
                   <span className="text-[#7AC943] text-xs font-black uppercase tracking-widest mb-4">{editorialServices[0].tag}</span>
-                  <h3 className="text-white text-4xl md:text-5xl font-black mb-4 leading-none" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>CC<br />Registration</h3>
+                  <h3 className="text-white text-4xl md:text-5xl font-black mb-4 leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>CC<br />Registration</h3>
                   <p className="text-white/40 max-w-xs mb-6 text-sm">{editorialServices[0].desc}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-[#7AC943] font-black">{editorialServices[0].price}</span>
@@ -232,7 +232,7 @@ export default function HomePage() {
                   >
                     <div>
                       <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${s.theme === 'dark' ? 'text-white/20' : 'text-black/20'}`}>{s.tag}</span>
-                      <h3 className="text-2xl md:text-3xl font-black mt-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{s.title}</h3>
+                      <h3 className="text-2xl md:text-3xl font-black mt-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{s.title}</h3>
                       <p className={`text-sm mt-2 ${s.theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>{s.desc}</p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
@@ -266,7 +266,7 @@ export default function HomePage() {
                         {editorialServices[3].badge?.label} ↗
                       </a>
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Digital Services</h3>
+                    <h3 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Digital Services</h3>
                     <p className="text-black/40 text-sm mt-2 max-w-md">{editorialServices[3].desc}</p>
                   </div>
                   <Link href="/services/digital-services" className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white font-bold shrink-0 hover:scale-110 transition-transform duration-500">→</Link>
@@ -290,7 +290,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal><Eyebrow light>How It Works</Eyebrow></ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Four Simple Steps
             </h2>
           </ScrollReveal>
@@ -302,7 +302,7 @@ export default function HomePage() {
                   <div className="w-12 h-12 rounded-2xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 text-[#7AC943] font-black flex items-center justify-center text-sm mb-5 group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-700">
                     {step.n}
                   </div>
-                  <h3 className="text-base font-black text-black mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{step.title}</h3>
+                  <h3 className="text-base font-black text-black mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{step.title}</h3>
                   <p className="text-black/40 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </ScrollReveal>
@@ -320,7 +320,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <Eyebrow>Pricing</Eyebrow>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-frog-light" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-frog-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Transparent <span className="italic text-[#7AC943]">Structure.</span>
               </h2>
               <p className="text-frog-muted mt-4">No hidden fees. No consultant markups. Just results.</p>
@@ -333,7 +333,7 @@ export default function HomePage() {
                 <DoubleBezel highlight={pkg.featured} className="text-center">
                   <div className="flex flex-col h-full">
                     <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[#7AC943]">{pkg.tier}</span>
-                    <p className="text-4xl font-black text-frog-light mt-3" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{pkg.price}</p>
+                    <p className="text-4xl font-black text-frog-light mt-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{pkg.price}</p>
                     <p className="text-frog-muted text-sm mt-1">{pkg.sub}</p>
                     <div className="mt-6 space-y-2.5 flex-1">
                       {pkg.features.map((f) => (
@@ -374,11 +374,11 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 6. TESTIMONIALS — Warm light ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal><Eyebrow light>What Founders Say</Eyebrow></ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Real results. Real founders.
             </h2>
           </ScrollReveal>
@@ -410,7 +410,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="text-center mb-12">
               <Eyebrow light>FAQ</Eyebrow>
-              <h2 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <h2 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Common Questions
               </h2>
             </div>
@@ -420,7 +420,7 @@ export default function HomePage() {
             {faqItems.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.04}>
                 <div className="bg-[#F8F8F8] rounded-2xl p-6 md:p-8 group hover:bg-[#7AC943]/5 transition-colors duration-500">
-                  <h4 className="text-black font-black text-base mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{item.q}</h4>
+                  <h4 className="text-black font-black text-base mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{item.q}</h4>
                   <p className="text-black/40 text-sm leading-relaxed">{item.a}</p>
                 </div>
               </ScrollReveal>
@@ -441,7 +441,7 @@ export default function HomePage() {
       <section className="bg-white py-20 px-4 md:px-6 border-t border-black/5">
         <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
           <div className="text-center lg:text-left">
-            <h2 className="text-black text-4xl md:text-5xl font-black tracking-tight mb-4" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Questions? Chat with us.</h2>
+            <h2 className="text-black text-4xl md:text-5xl font-black tracking-tight mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>Questions? Chat with us.</h2>
             <p className="text-black/40 font-bold">Average response time: Under 5 minutes.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
@@ -470,7 +470,7 @@ export default function HomePage() {
               <Eyebrow>Jumpstart Form</Eyebrow>
             </ScrollReveal>
             <ScrollReveal delay={0.06}>
-              <h2 className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-none mb-12 italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <h2 className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-none mb-12 italic" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Let&apos;s<br />move.
               </h2>
             </ScrollReveal>
@@ -489,7 +489,7 @@ export default function HomePage() {
                 >
                   <div>
                     <span className={`text-[10px] font-black uppercase tracking-widest ${selectedAgent === agent.id ? 'text-black/50' : 'text-white/20'}`}>Active Consultant</span>
-                    <h4 className="text-2xl md:text-3xl font-black mt-1" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{agent.name}</h4>
+                    <h4 className="text-2xl md:text-3xl font-black mt-1" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{agent.name}</h4>
                   </div>
                   {selectedAgent === agent.id ? (
                     <div className="text-xl font-black">✓</div>
@@ -565,12 +565,12 @@ export default function HomePage() {
       </section>
 
       {/* ═══ FINAL CTA — Deep dark cinematic ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden bg-[#FBFBFB]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden bg-[#F8F9F4]">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#7AC943]/5 blur-[120px] rounded-full translate-x-1/2 pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter mb-8 italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter mb-8 italic" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Stop waiting.<br />Start.
             </h2>
           </ScrollReveal>

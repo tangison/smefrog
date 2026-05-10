@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, Search } from 'lucide-react'
-import Image from 'next/image'
+import { LogoMark } from '@/components/logo-mark'
 
 const navLinks = [
   { label: 'Services', href: '/services' },
@@ -52,14 +52,7 @@ export function Navbar() {
             {/* Logo — BIG, icon only, no wordmark */}
             <Link href="/" className="flex items-center shrink-0 group">
               <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-700 group-hover:rotate-[360deg]">
-                <Image
-                  src="/frog-icon.png"
-                  alt="SMEfrog"
-                  width={56}
-                  height={56}
-                  className="w-full h-full object-contain"
-                  priority
-                />
+                <LogoMark className="w-12 h-12 md:w-14 md:h-14" />
               </div>
             </Link>
 
@@ -142,7 +135,7 @@ export function Navbar() {
             {/* Big logo at top */}
             <div className="absolute top-8 left-1/2 -translate-x-1/2">
               <div className="w-16 h-16 relative">
-                <Image src="/frog-icon.png" alt="SMEfrog" width={64} height={64} className="w-full h-full object-contain" />
+                <LogoMark className="w-16 h-16" />
               </div>
             </div>
 
@@ -162,7 +155,7 @@ export function Navbar() {
                     className={`block text-3xl md:text-4xl font-black tracking-tight py-2 transition-colors duration-500 ${
                       pathname === link.href ? 'text-[#7AC943]' : 'text-white/60 hover:text-white'
                     }`}
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {link.label}
                   </Link>

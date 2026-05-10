@@ -15,7 +15,7 @@ export default function SearchPage() {
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
             className="text-4xl md:text-5xl lg:text-6xl font-black text-frog-light leading-tight"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Search
           </motion.h1>
@@ -42,7 +42,7 @@ export default function SearchPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
             className="text-2xl md:text-3xl font-black text-frog-light mb-4"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             Quick Search
           </motion.h2>

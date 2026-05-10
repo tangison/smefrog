@@ -123,7 +123,7 @@ function LightResourceCard({
   return (
     <ScrollReveal delay={index * 0.06}>
       <div className="bg-white ring-1 ring-[#E5E7EB] p-1.5 rounded-[2rem] h-full hover:ring-frog-green/30 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group">
-        <div className="bg-[#FAFAFA] rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
+        <div className="bg-[#F8F9F4] rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
           {/* Icon */}
           <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center mb-4">
             <IconComp className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
@@ -132,7 +132,7 @@ function LightResourceCard({
           {/* Title */}
           <h3
             className="text-lg font-bold text-[#1A1A1A] mb-2"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             {item.title}
           </h3>
@@ -179,7 +179,7 @@ function DarkResourceCard({
           {/* Title */}
           <h3
             className="text-lg font-bold text-frog-light mb-2"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             {item.title}
           </h3>
@@ -218,7 +218,7 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.08}>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-frog-light leading-tight max-w-3xl"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Resources for{' '}
               <span className="text-frog-green">Founders</span>
@@ -233,7 +233,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ═══ REGISTRATION GUIDES — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <Eyebrow>Guides</Eyebrow>
@@ -241,7 +241,7 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-2"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Registration Guides
             </h2>
@@ -269,7 +269,7 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-2xl md:text-3xl font-bold text-frog-light mb-2"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Downloadable Templates
             </h2>
@@ -289,7 +289,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* ═══ TOOLS & CALCULATORS — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <Eyebrow>Tools</Eyebrow>
@@ -297,7 +297,7 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-2"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Tools & Calculators
             </h2>
@@ -330,7 +330,7 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl font-bold text-frog-light mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Ready to register your business?
             </h2>

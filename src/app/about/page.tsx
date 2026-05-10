@@ -100,7 +100,7 @@ export default function AboutPage() {
             <Eyebrow>About SMEfrog</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
-            <h1 className="text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-8" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h1 className="text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Why<br />
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white via-[#7AC943] to-white">SMEfrog</span>
             </h1>
@@ -116,7 +116,7 @@ export default function AboutPage() {
             <div className="mt-12 flex flex-wrap gap-8 md:gap-14">
               {stats.slice(0, 2).map((stat, i) => (
                 <div key={stat.label} className="flex items-center gap-3">
-                  <span className="text-3xl md:text-4xl font-black text-[#7AC943]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  <span className="text-3xl md:text-4xl font-black text-[#7AC943]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {stat.value}
                   </span>
                   <span className="text-frog-muted text-xs uppercase tracking-wider font-bold leading-tight">
@@ -130,7 +130,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ MISSION — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <Eyebrow light>Our Mission</Eyebrow>
@@ -141,7 +141,7 @@ export default function AboutPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-3xl md:text-5xl lg:text-6xl font-black text-[#1A1A1A] leading-[1.1] tracking-tight mb-8" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <p className="text-3xl md:text-5xl lg:text-6xl font-black text-[#1A1A1A] leading-[1.1] tracking-tight mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Starting a business shouldn&apos;t cost more than the business itself.
             </p>
           </ScrollReveal>
@@ -183,7 +183,7 @@ export default function AboutPage() {
             <Eyebrow light>Why SMEfrog</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black tracking-tighter mb-4" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black tracking-tighter mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Built Different.
             </h2>
           </ScrollReveal>
@@ -204,7 +204,7 @@ export default function AboutPage() {
                       : 'bg-black ring-1 ring-white/[0.06]'
                   }`}>
                     <div className={`rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full ${
-                      isEven ? 'bg-[#FAFAFA]' : 'bg-[#0A0A0A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]'
+                      isEven ? 'bg-[#F8F9F4]' : 'bg-[#0A0A0A] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]'
                     }`}>
                       {/* Icon */}
                       <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-5 ${
@@ -218,7 +218,7 @@ export default function AboutPage() {
                       {/* Stat highlight */}
                       {value.stat && (
                         <div className="mb-4">
-                          <span className={`text-4xl md:text-5xl font-black tracking-tight ${isEven ? 'text-[#7AC943]' : 'text-[#7AC943]'}`} style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                          <span className={`text-4xl md:text-5xl font-black tracking-tight ${isEven ? 'text-[#7AC943]' : 'text-[#7AC943]'}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                             {value.stat}
                           </span>
                           <span className={`ml-2 text-xs uppercase tracking-wider font-bold ${isEven ? 'text-[#6B7280]' : 'text-frog-muted'}`}>
@@ -228,7 +228,7 @@ export default function AboutPage() {
                       )}
 
                       {/* Title */}
-                      <h3 className={`text-xl md:text-2xl font-black mb-1 ${isEven ? 'text-[#1A1A1A]' : 'text-frog-light'}`} style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                      <h3 className={`text-xl md:text-2xl font-black mb-1 ${isEven ? 'text-[#1A1A1A]' : 'text-frog-light'}`} style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {value.title}
                       </h3>
                       <p className={`text-xs uppercase tracking-wider font-bold mb-3 ${isEven ? 'text-[#7AC943]' : 'text-[#7AC943]'}`}>
@@ -270,7 +270,7 @@ export default function AboutPage() {
             <Eyebrow>The Team</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-frog-light tracking-tighter mb-4" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-frog-light tracking-tighter mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Meet Your <span className="italic text-[#7AC943]">Experts.</span>
             </h2>
           </ScrollReveal>
@@ -293,7 +293,7 @@ export default function AboutPage() {
                       <founder.icon className="w-6 h-6 text-[#7AC943]" strokeWidth={1.5} />
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-black text-frog-light" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                      <h3 className="text-2xl md:text-3xl font-black text-frog-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                         {founder.name}
                       </h3>
                       <p className="text-[#7AC943] text-xs font-bold uppercase tracking-wider mt-1">
@@ -342,12 +342,12 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ STATS COUNTER — LIGHT ═══ */}
-      <section className="py-20 md:py-28 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-20 md:py-28 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-16">
               <Eyebrow light>By The Numbers</Eyebrow>
-              <h2 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <h2 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Results That Speak
               </h2>
             </div>
@@ -357,7 +357,7 @@ export default function AboutPage() {
             {stats.map((stat, i) => (
               <ScrollReveal key={stat.label} delay={i * 0.06}>
                 <div className="bg-white rounded-[2rem] p-6 md:p-8 text-center ring-1 ring-black/[0.04] shadow-sm hover:shadow-md hover:ring-[#7AC943]/20 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group">
-                  <p className="text-4xl md:text-5xl lg:text-6xl font-black text-[#7AC943] tracking-tight mb-2 group-hover:scale-105 transition-transform duration-700" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  <p className="text-4xl md:text-5xl lg:text-6xl font-black text-[#7AC943] tracking-tight mb-2 group-hover:scale-105 transition-transform duration-700" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {stat.value}
                   </p>
                   <p className="text-[#6B7280] text-xs uppercase tracking-wider font-bold">
@@ -379,7 +379,7 @@ export default function AboutPage() {
             <Eyebrow>How It Works</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-5xl font-black text-frog-light tracking-tighter mb-12 md:mb-16" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-3xl md:text-5xl font-black text-frog-light tracking-tighter mb-12 md:mb-16" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Four Simple Steps
             </h2>
           </ScrollReveal>
@@ -396,7 +396,7 @@ export default function AboutPage() {
                   <div className="w-12 h-12 rounded-2xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 text-[#7AC943] font-black flex items-center justify-center text-sm mb-5">
                     {step.n}
                   </div>
-                  <h3 className="text-base font-black text-frog-light mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  <h3 className="text-base font-black text-frog-light mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     {step.title}
                   </h3>
                   <p className="text-frog-muted text-sm leading-relaxed">
@@ -418,7 +418,7 @@ export default function AboutPage() {
             <Eyebrow light>Get Started</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter mb-6 italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter mb-6 italic" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Stop waiting.<br />Start.
             </h2>
           </ScrollReveal>

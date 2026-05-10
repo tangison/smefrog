@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -193,7 +192,7 @@ export default function PricingPage() {
           <ScrollReveal delay={0.08}>
             <h1
               className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Transparent
               <br />
@@ -244,7 +243,7 @@ export default function PricingPage() {
           <ScrollReveal delay={0.08}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Choose your package.
             </h2>
@@ -277,13 +276,13 @@ export default function PricingPage() {
                     <div className="flex items-baseline gap-1 mb-2">
                       <span
                         className="text-base text-frog-muted font-bold"
-                        style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         N$
                       </span>
                       <span
                         className="text-5xl md:text-6xl font-bold text-white leading-none"
-                        style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         {pkg.price}
                       </span>
@@ -358,7 +357,7 @@ export default function PricingPage() {
           <ScrollReveal delay={0.08}>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Feature Comparison
             </h2>
@@ -384,7 +383,7 @@ export default function PricingPage() {
                   </span>
                   <div
                     className="text-[#1A1A1A] font-bold mt-0.5"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     N$800
                   </div>
@@ -398,7 +397,7 @@ export default function PricingPage() {
                   </div>
                   <div
                     className="text-[#1A1A1A] font-bold mt-0.5"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     N$1,200
                   </div>
@@ -409,7 +408,7 @@ export default function PricingPage() {
                   </span>
                   <div
                     className="text-[#1A1A1A] font-bold mt-0.5"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     N$1,750
                   </div>
@@ -422,7 +421,7 @@ export default function PricingPage() {
                   key={row.feature}
                   className={`grid grid-cols-4 ${
                     i < comparisonFeatures.length - 1 ? 'border-b border-[#F3F4F6]' : ''
-                  } hover:bg-[#FAFAFA] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]`}
+                  } hover:bg-[#F8F9F4] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]`}
                 >
                   <div className="p-4 md:p-5">
                     <span className="text-sm text-[#374151] font-medium">{row.feature}</span>
@@ -515,7 +514,7 @@ export default function PricingPage() {
           <ScrollReveal delay={0.08}>
             <h2
               className="text-3xl md:text-4xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Common questions{' '}
               <span className="italic text-[#7AC943]">answered.</span>
@@ -550,7 +549,7 @@ export default function PricingPage() {
           <ScrollReveal delay={0.08}>
             <h2
               className="text-3xl md:text-4xl font-bold text-[#1A1A1A] mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Ready to{' '}
               <span className="italic text-[#7AC943]">begin?</span>
@@ -622,7 +621,7 @@ export default function PricingPage() {
                           className={`block text-sm font-bold mt-0.5 ${
                             formPackage === pkg.name.toLowerCase() ? 'text-black/70' : 'text-[#9CA3AF]'
                           }`}
-                          style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                          style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                         >
                           N${pkg.price}
                         </span>
@@ -723,7 +722,7 @@ export default function PricingPage() {
             className="pointer-events-auto flex items-center justify-between bg-black/80 backdrop-blur-2xl rounded-2xl px-5 md:px-8 py-4 ring-1 ring-white/[0.06] shadow-[0_0_40px_rgba(0,0,0,0.5)]"
           >
             <div className="hidden sm:block">
-              <p className="text-white text-sm font-bold" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <p className="text-white text-sm font-bold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Ready? Start Registration
               </p>
               <p className="text-white/30 text-xs font-medium">From N$800 · 7–10 day turnaround</p>

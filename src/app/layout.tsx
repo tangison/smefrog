@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -13,11 +13,12 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+// Brand spec: Space Grotesk is the sole font for both heading and body
+const spaceGroteskBody = Space_Grotesk({
   variable: "--font-body",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -46,19 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+
       <body
-        className={`${spaceGrotesk.variable} ${plusJakarta.variable} antialiased noise-layer`}
-        style={{ fontFamily: "'Satoshi', 'Plus Jakarta Sans', system-ui, sans-serif" }}
+        className={`${spaceGrotesk.variable} ${spaceGroteskBody.variable} antialiased noise-layer`}
+        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
         <div className="min-h-screen flex flex-col bg-frog-black text-frog-light">
           <Navbar />

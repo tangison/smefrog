@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
 import Link from 'next/link'
 import { MessageCircle, ArrowRight, Shield, Zap, Check, MapPin, Globe, Phone, ExternalLink } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
@@ -67,7 +66,7 @@ export default function ContactPage() {
             <Eyebrow>Contact</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
-            <h1 className="text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h1 className="text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Let&apos;s <span className="italic text-[#7AC943]">Talk.</span>
             </h1>
           </ScrollReveal>
@@ -101,12 +100,12 @@ export default function ContactPage() {
       </section>
 
       {/* ═══ AGENT CARDS — LIGHT ═══ */}
-      <section className="py-24 md:py-32 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-16">
               <Eyebrow light>Choose Your Specialist</Eyebrow>
-              <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <h2 className="text-3xl md:text-5xl font-black text-black tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Talk to the Right <span className="italic text-[#7AC943]">Expert.</span>
               </h2>
               <p className="text-[#6B7280] text-base md:text-lg max-w-xl mx-auto mt-4 leading-relaxed">
@@ -133,7 +132,7 @@ export default function ContactPage() {
                       <div className={`rounded-[calc(2rem-0.375rem)] p-6 md:p-8 relative overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                         isActive
                           ? 'bg-white shadow-[0_0_40px_rgba(122,201,67,0.08)]'
-                          : 'bg-[#FAFAFA]'
+                          : 'bg-[#F8F9F4]'
                       }`}>
                         {/* Active indicator */}
                         {isActive && (
@@ -153,7 +152,7 @@ export default function ContactPage() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <h3 className="text-2xl font-black text-[#1A1A1A]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                              <h3 className="text-2xl font-black text-[#1A1A1A]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                                 {agent.name}
                               </h3>
                               {isActive && (
@@ -225,7 +224,7 @@ export default function ContactPage() {
           <ScrollReveal>
             <div className="text-center mb-12 md:mb-16">
               <Eyebrow>Registration Form</Eyebrow>
-              <h2 className="text-3xl md:text-5xl font-black text-frog-light tracking-tighter" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <h2 className="text-3xl md:text-5xl font-black text-frog-light tracking-tighter" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Start Your <span className="italic text-[#7AC943]">Registration.</span>
               </h2>
               <p className="text-frog-muted text-base max-w-xl mx-auto mt-4 leading-relaxed">
@@ -243,7 +242,7 @@ export default function ContactPage() {
                     <MessageCircle className="w-5 h-5 text-[#7AC943]" strokeWidth={1.5} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-black text-frog-light" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                    <h3 className="text-xl font-black text-frog-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                       Register Your Business
                     </h3>
                     <p className="text-frog-muted text-xs">
@@ -402,11 +401,11 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Location */}
             <ScrollReveal>
-              <div className="bg-[#FAFAFA] rounded-[2rem] p-8 md:p-10 ring-1 ring-black/[0.04] h-full">
+              <div className="bg-[#F8F9F4] rounded-[2rem] p-8 md:p-10 ring-1 ring-black/[0.04] h-full">
                 <div className="w-12 h-12 rounded-2xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 flex items-center justify-center mb-6">
                   <MapPin className="w-5 h-5 text-[#7AC943]" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-black text-[#1A1A1A] mb-3" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                <h3 className="text-2xl font-black text-[#1A1A1A] mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   Windhoek, Namibia
                 </h3>
                 <p className="text-[#6B7280] text-sm leading-relaxed mb-6">
@@ -450,7 +449,7 @@ export default function ContactPage() {
                   <div className="w-12 h-12 rounded-2xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 flex items-center justify-center mb-6">
                     <Globe className="w-5 h-5 text-[#7AC943]" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-2xl font-black text-frog-light mb-3" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  <h3 className="text-2xl font-black text-frog-light mb-3" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     Digital Partner
                   </h3>
                   <p className="text-frog-muted text-sm leading-relaxed mb-6">
@@ -498,7 +497,7 @@ export default function ContactPage() {
             <Eyebrow>Ready?</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-frog-light tracking-tighter mb-6 italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-frog-light tracking-tighter mb-6 italic" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Jump Into<br />Business.
             </h2>
           </ScrollReveal>

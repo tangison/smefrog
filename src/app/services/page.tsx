@@ -141,7 +141,7 @@ export default function ServicesPage() {
           <ScrollReveal delay={0.08}>
             <h1
               className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Everything You Need
               <br />
@@ -199,7 +199,7 @@ export default function ServicesPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-tight max-w-2xl"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Four pillars.{' '}
                 <span className="italic text-[#7AC943]">One mission.</span>
@@ -247,7 +247,7 @@ export default function ServicesPage() {
 
                   <h3
                     className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {services[0].title}
                   </h3>
@@ -315,7 +315,7 @@ export default function ServicesPage() {
 
                   <h3
                     className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {services[1].title}
                   </h3>
@@ -381,7 +381,7 @@ export default function ServicesPage() {
 
                   <h3
                     className="text-xl md:text-2xl font-bold text-white mb-2 leading-tight"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {services[2].title}
                   </h3>
@@ -447,7 +447,7 @@ export default function ServicesPage() {
 
                   <h3
                     className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {services[3].title}
                   </h3>
@@ -508,7 +508,7 @@ export default function ServicesPage() {
           <ScrollReveal delay={0.08}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Built different.{' '}
               <span className="italic text-[#7AC943]">Priced fair.</span>
@@ -544,14 +544,14 @@ export default function ServicesPage() {
                   <div className="mb-4">
                     <span
                       className="text-5xl md:text-6xl font-bold text-[#7AC943] leading-none"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       {stat.number}
                     </span>
                   </div>
                   <h3
                     className="text-lg font-bold text-white mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {stat.label}
                   </h3>
@@ -574,7 +574,7 @@ export default function ServicesPage() {
           <ScrollReveal>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Need something{' '}
               <span className="italic text-[#7AC943]">custom?</span>
@@ -616,7 +616,7 @@ export default function ServicesPage() {
               </span>
               <h3
                 className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Pick your agent.{' '}
                 <span className="italic text-[#7AC943]">Start now.</span>

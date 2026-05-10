@@ -136,7 +136,7 @@ export default function FAQPage() {
           <ScrollReveal delay={0.08}>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-frog-light leading-tight max-w-3xl"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Common{' '}
               <span className="text-frog-green">Questions</span>
@@ -152,11 +152,11 @@ export default function FAQPage() {
       </section>
 
       {/* ═══ FAQ ACCORDION — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <div className="bg-white ring-1 ring-[#E5E7EB] p-1.5 rounded-[2rem] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-              <div className="bg-[#FAFAFA] rounded-[calc(2rem-0.375rem)] p-6 md:p-8">
+              <div className="bg-[#F8F9F4] rounded-[calc(2rem-0.375rem)] p-6 md:p-8">
                 {faqs.map((faq, i) => (
                   <ScrollReveal key={i} delay={i * 0.04}>
                     <FAQItem
@@ -187,7 +187,7 @@ export default function FAQPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl font-bold text-frog-light mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Still have questions?
             </h2>

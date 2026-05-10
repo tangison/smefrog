@@ -167,7 +167,7 @@ export default function DigitalServicesPage() {
               <ScrollReveal delay={0.08}>
                 <h1
                   className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   Build Your
                   <br />
@@ -284,7 +284,7 @@ export default function DigitalServicesPage() {
                         className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight ${
                           isLight ? 'text-[#1A1A1A]' : 'text-white'
                         }`}
-                        style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         {service.title}
                       </h3>
@@ -353,7 +353,7 @@ export default function DigitalServicesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Your business deserves{' '}
               <span className="italic text-[#7AC943]">a digital home.</span>
@@ -374,14 +374,14 @@ export default function DigitalServicesPage() {
 
                   <span
                     className="text-5xl font-bold text-[#7AC943] leading-none block mb-3"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {item.stat}
                   </span>
 
                   <h3
                     className="text-lg font-bold text-[#1A1A1A] mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {item.title}
                   </h3>
@@ -407,7 +407,7 @@ export default function DigitalServicesPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 From concept to{' '}
                 <span className="italic text-[#7AC943]">live website.</span>
@@ -422,14 +422,14 @@ export default function DigitalServicesPage() {
                   <div className="mb-4">
                     <span
                       className="text-4xl font-bold text-[#7AC943] leading-none"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       {step.n}
                     </span>
                   </div>
                   <h3
                     className="text-base font-bold text-frog-light mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {step.title}
                   </h3>
@@ -469,7 +469,7 @@ export default function DigitalServicesPage() {
 
                 <h3
                   className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   Powered by{' '}
                   <span className="italic text-[#7AC943]">Gemsweb Digital</span>
@@ -510,7 +510,7 @@ export default function DigitalServicesPage() {
             <ScrollReveal>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Start your digital{' '}
                 <span className="italic text-[#7AC943]">journey today.</span>

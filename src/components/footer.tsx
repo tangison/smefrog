@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import { LogoMark } from '@/components/logo-mark'
 
 const serviceLinks = [
   { label: 'CC Registration', href: '/services/business-registration' },
@@ -44,9 +44,9 @@ export function Footer() {
           <div className="md:col-span-5">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-14 h-14 relative">
-                <Image src="/frog-icon.png" alt="SMEfrog" width={56} height={56} className="w-full h-full object-contain" />
+                <LogoMark className="w-14 h-14" />
               </div>
-              <span className="text-3xl font-black tracking-tighter leading-none" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              <span className="text-3xl font-black tracking-tighter leading-none" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 <span className="text-white">SME</span>
                 <span className="text-[#7AC943]">frog</span>
               </span>
@@ -140,7 +140,7 @@ export function Footer() {
         {/* ─── CTA Banner ─── */}
         <div className="mb-16 p-8 md:p-12 rounded-[2rem] bg-gradient-to-r from-[#7AC943]/10 via-[#7AC943]/5 to-transparent border border-[#7AC943]/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h3 className="text-white text-2xl md:text-3xl font-black tracking-tight" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+            <h3 className="text-white text-2xl md:text-3xl font-black tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
               Ready to register your business?
             </h3>
             <p className="text-white/30 text-sm font-bold mt-1">100% remote · 7–10 day turnaround · From N$800</p>

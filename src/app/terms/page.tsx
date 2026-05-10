@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { LogoMark } from '@/components/logo-mark'
 
 const sections = [
   {
@@ -137,7 +138,7 @@ export default function TermsAndConditionsPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#0B1121] py-24 sm:py-32">
+      <section className="relative overflow-hidden bg-frog-black py-24 sm:py-32">
         {/* Subtle background accent */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-[#7AC943]/5 blur-[120px]" />
@@ -151,17 +152,17 @@ export default function TermsAndConditionsPage() {
             transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
           >
             <Link href="/" className="inline-flex items-center gap-2 mb-8 group">
-              <img src="/frog-icon.png" alt="SMEfrog" className="h-10 w-10" />
-              <span className="font-[Cabinet_Grotesk] text-lg font-bold text-white group-hover:text-[#7AC943] transition-colors">SMEfrog</span>
+              <LogoMark className="h-10 w-10" />
+              <span className="font-[Space_Grotesk] text-lg font-bold text-white group-hover:text-[#7AC943] transition-colors">SMEfrog</span>
             </Link>
-            <h1 className="font-[Cabinet_Grotesk] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            <h1 className="font-[Space_Grotesk] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
               Terms &amp;{' '}
               <span className="text-[#7AC943]">Conditions</span>
             </h1>
-            <p className="mt-6 text-lg text-white/60 font-[Satoshi] max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-white/60 font-[Space_Grotesk] max-w-2xl mx-auto">
               Please read these terms carefully before using SMEfrog&apos;s services. By engaging us, you agree to these conditions.
             </p>
-            <p className="mt-4 text-sm text-white/40 font-[Satoshi]">
+            <p className="mt-4 text-sm text-white/40 font-[Space_Grotesk]">
               Last updated: 4 March 2026
             </p>
           </motion.div>
@@ -173,21 +174,21 @@ export default function TermsAndConditionsPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           {sections.map((section, i) => (
             <ScrollReveal key={i} delay={i * 0.04} className="mb-12 last:mb-0">
-              <h2 className="font-[Cabinet_Grotesk] text-xl sm:text-2xl font-bold text-[#0B1121] mb-4">
+              <h2 className="font-[Space_Grotesk] text-xl sm:text-2xl font-bold text-[#0F1412] mb-4">
                 {section.title}
               </h2>
               <div className="space-y-2">
                 {section.content.map((paragraph, j) => (
                   <p
                     key={j}
-                    className={`font-[Satoshi] text-[15px] leading-relaxed ${
+                    className={`font-[Space_Grotesk] text-[15px] leading-relaxed ${
                       paragraph.startsWith('•')
-                        ? 'text-[#0B1121]/80 pl-4'
+                        ? 'text-[#0F1412]/80 pl-4'
                         : paragraph.startsWith('   –')
-                        ? 'text-[#0B1121]/70 pl-8'
+                        ? 'text-[#0F1412]/70 pl-8'
                         : paragraph === ''
                         ? 'h-2'
-                        : 'text-[#0B1121]/70'
+                        : 'text-[#0F1412]/70'
                     }`}
                   >
                     {paragraph}
@@ -195,17 +196,17 @@ export default function TermsAndConditionsPage() {
                 ))}
               </div>
               {i < sections.length - 1 && (
-                <div className="mt-12 border-b border-[#0B1121]/5" />
+                <div className="mt-12 border-b border-[#0F1412]/5" />
               )}
             </ScrollReveal>
           ))}
 
           {/* Bottom navigation */}
           <ScrollReveal delay={0.3}>
-            <div className="mt-16 pt-8 border-t border-[#0B1121]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-16 pt-8 border-t border-[#0F1412]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-[#7AC943] font-[Satoshi] font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-[#7AC943] font-[Space_Grotesk] font-medium hover:gap-3 transition-all"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -214,7 +215,7 @@ export default function TermsAndConditionsPage() {
               </Link>
               <Link
                 href="/privacy"
-                className="inline-flex items-center gap-2 text-[#0B1121]/50 font-[Satoshi] text-sm hover:text-[#7AC943] transition-colors"
+                className="inline-flex items-center gap-2 text-[#0F1412]/50 font-[Space_Grotesk] text-sm hover:text-[#7AC943] transition-colors"
               >
                 View Privacy Policy
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

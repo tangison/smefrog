@@ -70,7 +70,7 @@ function BlogCard({
         href="#"
         className="group block h-full bg-white ring-1 ring-[#E5E7EB] p-1.5 rounded-[2rem] hover:ring-frog-green/30 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
       >
-        <div className="bg-[#FAFAFA] rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
+        <div className="bg-[#F8F9F4] rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
           {/* Category pill */}
           <div className="flex items-center justify-between mb-4">
             <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.12em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20">
@@ -85,7 +85,7 @@ function BlogCard({
           {/* Title */}
           <h3
             className="text-lg md:text-xl font-bold text-[#1A1A1A] mb-3 leading-snug group-hover:text-frog-green transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-            style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             {post.title}
           </h3>
@@ -126,7 +126,7 @@ export default function BlogPage() {
           <ScrollReveal delay={0.08}>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-frog-light leading-tight max-w-3xl"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Insights &{' '}
               <span className="text-frog-green">Resources</span>
@@ -141,7 +141,7 @@ export default function BlogPage() {
       </section>
 
       {/* ═══ BLOG GRID — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {blogPosts.map((post, i) => (
@@ -165,7 +165,7 @@ export default function BlogPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl font-bold text-frog-light mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Ready to start your business?
             </h2>

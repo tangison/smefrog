@@ -153,7 +153,7 @@ export default function BusinessDocumentsPage() {
               <ScrollReveal delay={0.08}>
                 <h1
                   className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-                  style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                 >
                   Professional
                   <br />
@@ -231,7 +231,7 @@ export default function BusinessDocumentsPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-tight max-w-2xl"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Every document your business{' '}
                 <span className="italic text-[#7AC943]">needs to operate.</span>
@@ -265,7 +265,7 @@ export default function BusinessDocumentsPage() {
                     className={`text-xl font-bold mb-3 ${
                       i === 0 ? 'text-white' : 'text-[#1A1A1A]'
                     }`}
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {doc.title}
                   </h3>
@@ -317,7 +317,7 @@ export default function BusinessDocumentsPage() {
             <ScrollReveal delay={0.06}>
               <h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 From brief to{' '}
                 <span className="italic text-[#7AC943]">bank-ready document.</span>
@@ -332,14 +332,14 @@ export default function BusinessDocumentsPage() {
                   <div className="mb-4">
                     <span
                       className="text-4xl font-bold text-[#7AC943] leading-none"
-                      style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                     >
                       {step.n}
                     </span>
                   </div>
                   <h3
                     className="text-base font-bold text-frog-light mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {step.title}
                   </h3>
@@ -362,7 +362,7 @@ export default function BusinessDocumentsPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               More than just contracts.{' '}
               <span className="italic text-[#7AC943]">Complete coverage.</span>
@@ -382,7 +382,7 @@ export default function BusinessDocumentsPage() {
                   </div>
                   <h3
                     className="text-base font-bold text-[#1A1A1A] mb-2"
-                    style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {svc.title}
                   </h3>
@@ -405,7 +405,7 @@ export default function BusinessDocumentsPage() {
           <ScrollReveal>
             <h2
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               Custom pricing.{' '}
               <span className="italic text-[#7AC943]">Per document.</span>
@@ -448,7 +448,7 @@ export default function BusinessDocumentsPage() {
               </span>
               <h3
                 className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}
+                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
                 Pick your agent.{' '}
                 <span className="italic text-[#7AC943]">Start now.</span>

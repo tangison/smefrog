@@ -1,72 +1,64 @@
 ---
-Task ID: 6
-Agent: Main Orchestrator
-Task: Full codebase audit, dead code removal, image text check, brand identity enforcement
+Task ID: 1
+Agent: Brand Identity Enforcer + Dead Code Remover
+Task: Enforce brand identity specs and remove dead code/unused dependencies
 
 Work Log:
-- Ran comprehensive code audit using Explore subagent
-- Identified 54 dead files across the codebase
-- Used VLM to scan all 6 project images for text content
-- Found service-digital.png contained text ("Digital Services & Development", "Learn more")
-- Generated replacement service-digital.png with z-ai image generation (no text)
-- Deleted 3 dead custom components: magnetic-button.tsx, glass-card.tsx, brand-logo.tsx
-- Deleted 47 dead shadcn UI components (entire src/components/ui/ directory)
-- Deleted dead lib files: db.ts, utils.ts
-- Deleted dead hooks: use-mobile.ts, use-toast.ts
-- Deleted dead public images: cta-bg.png, logo-dark.png, brand-id.png
-- Deleted dead API route: src/app/api/route.ts
-- Created shared components: eyebrow.tsx, double-bezel.tsx
-- Updated all 14 page files to import from shared components instead of inline definitions
-- Removed inline Eyebrow definitions from 11 pages
-- Removed inline DoubleBezel definitions from 9 pages
-- Removed inline ScrollReveal definitions from 3 pages
-- Removed unused `values` data array from home page
-- Added metadataBase to layout.tsx to fix OG image warnings
+- TASK A.1: Fixed all color values per brand spec
+  - globals.css: #050505 → #0F1412 (Carbon Black) in 7 occurrences
+  - globals.css: #F6F9F4 → #F8F9F4 (offWhite) across all foreground tokens
+  - globals.css: Added --color-frog-lightGreen: #E8F5E4 (Soft Accent)
+  - loading.tsx, not-found.tsx, error.tsx, privacy/page.tsx, terms/page.tsx: all #050505/#0B1121 → #0F1412
+  - All #FAFAFA and #FBFBFB across 9 page files → #F8F9F4 (offWhite)
+- TASK A.2: Fixed typography to use Space Grotesk only
+  - layout.tsx: Removed Plus Jakarta Sans import, removed Satoshi and Cabinet Grotesk fontshare links
+  - layout.tsx: Set Space_Grotesk as both --font-heading and --font-body
+  - Replaced fontFamily: "'Cabinet Grotesk'" → "'Space Grotesk'" across 17 files
+  - Replaced font-[Cabinet_Grotesk] and font-[Satoshi] Tailwind classes in 4 files
+- TASK A.3: Created LogoMark SVG component and replaced frog-icon.png in 6 files
+- TASK A.4: Replaced scrollbar hiding with brand-spec 6px green thumb scrollbar
+- TASK B.1: Removed 53 unused npm packages from package.json
+- TASK B.2: Cleaned up unused Image imports from 8 files
+- TASK B.3: Deleted agent-ctx/ and examples/ directories
 - Final lint: zero errors
-- All 16 routes verified returning HTTP 200
 
 Stage Summary:
-- 54 dead files removed from codebase
-- 1 image with text replaced (service-digital.png)
-- 3 shared components extracted (eyebrow, double-bezel, scroll-reveal)
-- All pages using shared imports, no inline component duplication
-- Brand identity tokens enforced (#7AC943 green, Cabinet Grotesk headings, Satoshi body)
-- Lint passes cleanly, all routes compile successfully
+- Brand colors fully corrected (#0F1412 Carbon Black, #F8F9F4 offWhite, #E8F5E4 lightGreen)
+- Typography consolidated to Space Grotesk only (3 fonts removed)
+- LogoMark SVG component created and integrated across 6 files
+- Brand-spec scrollbar implemented (visible, branded)
+- 53 unused npm packages removed
+- agent-ctx/ and examples/ directories deleted
 
-# AUDIT REPORT
+---
+Task ID: 2
+Agent: Image Text Checker
+Task: Check all project images for text content and replace any with words
 
-## Audit Health Score
+Work Log:
+- Checked 8 images using VLM
+- brand-id-full.png: TEXT FOUND — 9-panel brand identity guidelines with extensive text
+- Replaced brand-id-full.png with text-free abstract brand mood board
+- 7 images were clean (no text)
 
-| # | Dimension | Score | Key Finding |
-|---|-----------|-------|-------------|
-| 1 | Accessibility | 2 | Partial — missing ARIA labels on some interactive elements, focus indicators present |
-| 2 | Performance | 3 | Good — transform/opacity only animations, lazy loading images, proper Next.js Image usage |
-| 3 | Theming | 3 | Good — design tokens via CSS vars, minor hard-coded #7AC943 values |
-| 4 | Responsive Design | 3 | Good — mobile-first with proper breakpoints, some touch targets could be larger |
-| 5 | Anti-Patterns | 2 | Some tells — gradient text hero, glassmorphism navbar, but intentional and brand-consistent |
-| **Total** | | **13/20** | **Acceptable** |
+Stage Summary:
+- 1 image replaced (brand-id-full.png), 7 images clean
 
-## What Was Cleaned Up
+---
+Task ID: 3
+Agent: Main Orchestrator
+Task: Full impeccable audit across 5 dimensions + execute all fixes
 
-### Deleted Files (54 total)
-- 47 unused shadcn/ui components
-- 3 dead custom components (magnetic-button, glass-card, brand-logo)
-- 2 dead lib files (db.ts, utils.ts)
-- 2 dead hooks (use-mobile.ts, use-toast.ts)
-- 3 dead images (cta-bg.png, logo-dark.png, brand-id.png)
-- 1 dead API route (default hello world)
+Work Log:
+- Read all 20+ source files for comprehensive audit
+- Scored 5 dimensions: A11y 2/4, Performance 3/4, Theming 1/4, Responsive 3/4, Anti-Patterns 2/4 = 11/20
+- Launched parallel subagents for brand identity enforcement and image checking
+- Brand identity agent: Fixed colors, fonts, LogoMark SVG, scrollbar, removed 53 unused packages
+- Image agent: Found and replaced 1 image with text (brand-id-full.png)
+- Verified lint passes cleanly, dev server returns 200 on all routes
 
-### Images Fixed
-- service-digital.png: Had text "Digital Services & Development" and "Learn more" — replaced with text-free abstract digital illustration
-
-### Code Deduplication
-- Extracted Eyebrow → shared component (was duplicated in 11 files)
-- Extracted DoubleBezel → shared component (was duplicated in 9 files)
-- Replaced inline ScrollReveal with shared import in 3 files
-- Removed unused `values` array from home page
-
-### Remaining Issues (for future passes)
-- Some hard-coded color values (#7AC943) could use CSS variables
-- ARIA labels could be improved on interactive elements
-- Some touch targets on mobile could be larger than 44px
-- Brand identity from reference code (SVG LogoMark) not fully implemented — currently using frog-icon.png
+Stage Summary:
+- Audit Health Score improved from 11/20 (pre-fix) to estimated 15/20 (post-fix)
+- Key improvement: Theming 1→4 (brand identity now fully enforced)
+- Key improvement: Performance 3→4 (2 unused font requests removed, 53 packages removed)
+- Remaining: A11y 2/4 (contrast/touch target issues), Anti-Patterns 2/4 (gradient text hero, glassmorphism nav)
