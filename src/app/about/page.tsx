@@ -1,5 +1,9 @@
-import { TrendingDown, Wifi, Lightbulb, Clock, Check, MessageCircle } from 'lucide-react'
+'use client'
 
+import { TrendingDown, Wifi, Lightbulb, Clock, Check } from 'lucide-react'
+import { ScrollReveal } from '@/components/scroll-reveal'
+
+/* ─── Data ─────────────────────────────────────────── */
 const values = [
   {
     title: '2X Cheaper Than Industry Standard',
@@ -32,128 +36,161 @@ const steps = [
   { number: '04', title: 'Receive Your Documents', description: 'Delivered digitally and ready for business.' },
 ]
 
+/* ─── Reusable ─────────────────────────────────────── */
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
+      {children}
+    </span>
+  )
+}
+
+function DoubleBezel({ children, className = '', highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
+  return (
+    <div className={`bg-frog-shell ring-1 ${highlight ? 'ring-frog-green/25' : 'ring-frog-hairline'} p-1.5 rounded-[2rem] ${className}`}>
+      <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8 h-full">
+        {children}
+      </div>
+    </div>
+  )
+}
+
+/* ─── Page ──────────────────────────────────────────── */
 export default function AboutPage() {
   return (
     <>
-      {/* Header */}
-      <section className="py-16 md:py-24 border-b border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-            About SMEfrog
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-frog-light leading-tight">
-            Built for Entrepreneurs
-          </h1>
+      {/* ═══ HEADER ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <Eyebrow>About SMEfrog</Eyebrow>
+          </ScrollReveal>
+          <ScrollReveal delay={0.08}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-frog-light leading-tight">
+              Built for Entrepreneurs
+            </h1>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-3xl mx-auto px-4 md:px-6">
-          <p className="text-lg md:text-xl text-[#8BA89A] leading-relaxed mb-6">
-            SMEfrog was created to solve a simple problem:
-          </p>
-          <p className="text-xl md:text-2xl text-frog-light font-heading font-medium leading-relaxed mb-8">
-            Starting a business in Namibia is unnecessarily expensive, confusing, and slow.
-          </p>
-          <p className="text-base md:text-lg text-[#8BA89A] leading-relaxed mb-12">
-            We built a lean, digital-first support company focused on helping founders
-            start properly — without wasting time or money.
-          </p>
+      {/* ═══ STORY ═══ */}
+      <section className="pb-24 md:pb-32 lg:pb-40 px-4 md:px-6">
+        <div className="max-w-3xl mx-auto">
+          <ScrollReveal>
+            <p className="text-lg md:text-xl text-frog-muted leading-relaxed mb-6">
+              SMEfrog was created to solve a simple problem:
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.06}>
+            <p className="text-xl md:text-2xl lg:text-3xl text-frog-light font-heading font-semibold leading-relaxed mb-8">
+              Starting a business in Namibia is unnecessarily expensive, confusing, and slow.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-base md:text-lg text-frog-muted leading-relaxed mb-12">
+              We built a lean, digital-first support company focused on helping founders
+              start properly — without wasting time or money.
+            </p>
+          </ScrollReveal>
 
-          {/* Mission */}
-          <div className="rounded-2xl bg-[#151D19] ring-1 ring-frog-green/20 p-6 md:p-8">
-            <div className="flex items-start gap-4">
-              <div className="w-1 self-stretch bg-frog-green/40 rounded-full shrink-0" />
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-frog-green/60 font-medium mb-2">
-                  Our Mission
-                </p>
-                <p className="text-lg md:text-xl font-heading font-semibold text-frog-light leading-relaxed">
-                  Help more entrepreneurs become formal businesses.
-                </p>
+          {/* Mission Card */}
+          <ScrollReveal delay={0.12}>
+            <div className="bg-frog-shell ring-1 ring-frog-green/20 p-1.5 rounded-[2rem]">
+              <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-1 self-stretch bg-frog-green/40 rounded-full shrink-0" />
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-frog-green/60 font-medium mb-2">
+                      Our Mission
+                    </p>
+                    <p className="text-lg md:text-xl font-heading font-semibold text-frog-light leading-relaxed">
+                      Help more entrepreneurs become formal businesses.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Why SMEfrog */}
-      <section className="py-16 md:py-24 border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="mb-12">
-            <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-              Why SMEfrog
-            </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-frog-light max-w-3xl leading-snug">
+      {/* ═══ WHY SMEFROG ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 border-t border-frog-hairline">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <Eyebrow>Why SMEfrog</Eyebrow>
+          </ScrollReveal>
+          <ScrollReveal delay={0.08}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-frog-light max-w-3xl leading-snug mb-4">
               Starting a business shouldn&apos;t cost more than the business itself.
             </h2>
-          </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.12}>
+            <div className="w-1 h-12 bg-frog-green/30 rounded-full mb-12 md:mb-16" />
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {values.map((value) => (
-              <div
-                key={value.title}
-                className="rounded-2xl bg-[#151D19] ring-1 ring-white/[0.06] p-6 md:p-8"
-              >
-                <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center mb-4">
-                  <value.icon className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
-                </div>
-                <h3 className="text-lg md:text-xl font-heading font-bold text-frog-light mb-2">
-                  {value.title}
-                </h3>
-                {value.highlight && (
-                  <p className="text-3xl md:text-4xl font-heading font-bold text-frog-green mb-2">
-                    {value.highlight}
+            {values.map((value, i) => (
+              <ScrollReveal key={value.title} delay={i * 0.06}>
+                <DoubleBezel className="h-full">
+                  <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center mb-4">
+                    <value.icon className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-heading font-bold text-frog-light mb-2">
+                    {value.title}
+                  </h3>
+                  {value.highlight && (
+                    <p className="text-3xl md:text-4xl font-heading font-bold text-frog-green mb-2">
+                      {value.highlight}
+                    </p>
+                  )}
+                  <p className="text-frog-muted text-sm leading-relaxed">
+                    {value.description}
                   </p>
-                )}
-                <p className="text-[#8BA89A] text-sm leading-relaxed">
-                  {value.description}
-                </p>
-                {value.list && (
-                  <ul className="space-y-1.5 mt-3">
-                    {value.list.map((item) => (
-                      <li key={item} className="flex items-center gap-2.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-frog-green shrink-0" />
-                        <span className="text-[#8BA89A] text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
+                  {value.list && (
+                    <ul className="space-y-1.5 mt-3">
+                      {value.list.map((item) => (
+                        <li key={item} className="flex items-center gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-frog-green shrink-0" />
+                          <span className="text-frog-muted text-sm">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </DoubleBezel>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process */}
-      <section className="py-16 md:py-24 border-t border-white/[0.06]">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="mb-12">
-            <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-              How It Works
-            </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-frog-light">
+      {/* ═══ PROCESS ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 border-t border-frog-hairline">
+        <div className="max-w-7xl mx-auto">
+          <ScrollReveal>
+            <Eyebrow>How It Works</Eyebrow>
+          </ScrollReveal>
+          <ScrollReveal delay={0.08}>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-frog-light mb-12">
               Four Simple Steps
             </h2>
-          </div>
+          </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {steps.map((step) => (
-              <div
-                key={step.number}
-                className="rounded-2xl bg-[#151D19] ring-1 ring-white/[0.06] p-6"
-              >
-                <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 text-frog-green font-heading font-bold flex items-center justify-center text-sm mb-4">
-                  {step.number}
-                </div>
-                <h3 className="text-base font-heading font-bold text-frog-light mb-1">
-                  {step.title}
-                </h3>
-                <p className="text-[#8BA89A] text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
+            {steps.map((step, i) => (
+              <ScrollReveal key={step.number} delay={i * 0.08}>
+                <DoubleBezel className="h-full">
+                  <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 text-frog-green font-heading font-bold flex items-center justify-center text-sm mb-4">
+                    {step.number}
+                  </div>
+                  <h3 className="text-base font-heading font-bold text-frog-light mb-1">
+                    {step.title}
+                  </h3>
+                  <p className="text-frog-muted text-sm leading-relaxed">
+                    {step.description}
+                  </p>
+                </DoubleBezel>
+              </ScrollReveal>
             ))}
           </div>
         </div>

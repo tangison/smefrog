@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { SearchDialog } from "@/components/search-dialog";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
@@ -20,11 +21,18 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SMEfrog — Jump Into Business",
+  title: {
+    default: "SMEfrog — Jump Into Business",
+    template: "%s | SMEfrog",
+  },
   description:
     "Simple. Fast. Affordable startup support for Namibian entrepreneurs. Business registration, startup documentation, and digital services.",
-  icons: {
-    icon: "/icon.png",
+  icons: { icon: "/icon.png" },
+  openGraph: {
+    title: "SMEfrog — Jump Into Business",
+    description: "Simple. Fast. Affordable startup support for Namibian entrepreneurs.",
+    type: "website",
+    siteName: "SMEfrog",
   },
 };
 
@@ -36,13 +44,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${spaceGrotesk.variable} ${plusJakarta.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${plusJakarta.variable} antialiased noise-layer`}
       >
         <div className="min-h-screen flex flex-col bg-frog-black text-frog-light">
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <SearchDialog />
         <Toaster />
       </body>
     </html>
