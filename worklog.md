@@ -21,82 +21,80 @@ Stage Summary:
 - Images follow the brand's emerald green (#7AC943) accent color and premium editorial aesthetic
 
 ---
-Task ID: 2
+Task ID: 5
 Agent: Main Orchestrator
-Task: Enhance Home page with cinematic hero, editorial bento, light/dark balance
+Task: Full SMEfrog website rebuild with premium design, FrogAI, magnetic buttons, WhatsApp agents, CMD+K search
 
 Work Log:
-- Rebuilt the home page from scratch with Awwwards-tier premium aesthetic
-- Replaced simple hero with cinematic bottom-left editorial composition using hero-bg.png
-- Added light-themed Trust Strip section (bg-[#FBFBFB]) for scroll rhythm
-- Created editorial services bento grid with image-led cards on light bg-[#F2F2F2]
-- Added "How It Works" section on white background
-- Added pricing teaser with dark cinematic gradient
-- Added "Why SMEfrog" section on warm light bg-[#FAFAFA]
-- Added dark editorial founder message section
-- Added cinematic final CTA section
-- Removed scroll-to-top/scroll hint from hero
-- Kept fonts unchanged (Space Grotesk + Plus Jakarta Sans)
+- Copied uploaded logos to public folder (logo-dark.png, frog-icon.png, brand-id-full.png)
+- Rebuilt globals.css with noise overlay, custom scrollbar hiding, glass panel utilities, double-bezel classes, sweep-light animation, FrogAI chat scrollbar styles
+- Updated layout.tsx with Satoshi + Cabinet Grotesk font imports via fontshare CDN, Space Grotesk + Plus Jakarta Sans via next/font
+- Built 6 shared components:
+  - MagneticButton (useSpring physics, 5 variants: primary/secondary/white/outline/dark)
+  - GlassCard (double-bezel with whileInView scroll reveal)
+  - BrandLogo (logo-only with optional wordmark, 4 sizes)
+  - SearchOverlay (CMD+K triggered full-screen semantic search)
+  - FrogAIChat (floating AI orb with glass panel, streaming via /api/frogai)
+- Rebuilt Navbar as BIG premium floating glass pill:
+  - Logo only (no wordmark) — 14x14 icon on desktop, 12x12 mobile
+  - Glass pill detached from top with backdrop-blur-2xl
+  - Scrolled state: bg-black/70 with shadow-2xl
+  - Hamburger morph to X with CSS transitions
+  - Fullscreen mobile overlay with staggered nav links
+  - CMD+K search trigger button
+  - "Start Registration" WhatsApp CTA button
+- Rebuilt Footer as premium editorial design:
+  - Large brand statement with SMEfrog wordmark
+  - Agent contact cards (Gadafi + Mux) with WhatsApp links
+  - 3-column link grid (Services, Company, Contact)
+  - Gemsweb Digital partnership card
+  - CTA banner with "Ready to register?" prompt
+  - Windhoek, Namibia location card
+- Built FrogAI API route (/api/frogai) using z-ai-web-dev-sdk:
+  - System prompt: FrogAI persona (sharp, fast, no fluff)
+  - Knowledge base: pricing, registration process, BIPA, agents, turnaround
+  - Conversation memory with last 10 messages
+  - Error handling with fallback responses
+- Rebuilt Home page with 8 sections + registration form:
+  1. Hero (dark cinematic) — "The Digital Jumpstart" with gradient text, status pill, dual CTAs
+  2. Trust Strip (light) — 5 trust badges with green dots
+  3. Editorial Services Bento (light #F2F2F2) — 4 service cards with images, Gemsweb badge
+  4. How It Works (white) — 4 step cards with hover effects
+  5. Pricing Teaser (dark cinematic) — 3 DoubleBezel cards with WhatsApp CTAs
+  6. Testimonials (warm light) — 3 founder quotes
+  7. FAQ (white) — 5 common questions
+  8. Quick Contact + Registration Flow (dark) — Agent selection + WhatsApp form
+  9. Final CTA (light) — "Stop waiting. Start." with email form
+- Built all subpages via parallel subagents:
+  - /services — editorial bento, why SMEfrog stats, quick contact
+  - /pricing — 3 DoubleBezel cards, comparison table, FAQ accordion, registration form, sticky CTA
+  - /about — mission, 4 value cards, founder cards, stats counter
+  - /contact — agent selection cards, full registration form with WhatsApp redirect
+  - /faq — 10 accordion FAQ items with FrogAI CTA
+  - /blog — 6 blog post cards with category pills
+  - /resources — 3 category sections (guides, templates, tools)
+  - /privacy — 9 content sections with legal layout
+  - /terms — 13 content sections with legal layout
+  - /not-found — "This page jumped away" with CTAs
+  - /error — error boundary with Try Again + WhatsApp
+  - /search — CMD+K shortcut guide
+  - /services/business-registration — CC/PTY LTD detail with pricing cards
+  - /services/startup-support — business plans, pitch decks detail
+  - /services/business-documents — contracts, policies detail
+  - /services/digital-services — websites, email, branding with Gemsweb partnership
+- Fixed all ESLint errors (React 19 strict mode: setState in effect, ref access during render)
+- All 16 routes verified returning HTTP 200
+- Lint passes cleanly with zero errors
 
 Stage Summary:
-- Home page now has 8 sections with alternating light/dark rhythm
-- Editorial bento uses AI-generated images for service cards
-- Hero uses cinematic background with gradient overlays
-- No scroll-to-top hint
-
----
-Task ID: 3
-Agent: Subagent (full-stack-developer)
-Task: Enhance Contact page with multi-agent WhatsApp system
-
-Work Log:
-- Rebuilt contact page with premium dual-panel layout
-- Added agent selection cards (Gadafi: Compliance Expert, Mux: Digital Strategist)
-- Added light process section with 3-step cards
-- Agent cards use DoubleBezel architecture with active states (green ring, glow bar, checkmark)
-- Form includes name, business name, service, budget, agent indicator with switch button
-- WhatsApp redirect prefills message with agent name and form details
-- Dark/light/dark scroll rhythm maintained
-
-Stage Summary:
-- Contact page upgraded with premium multi-agent WhatsApp contact system
-- Agents: Gadafi (264813411522) and Mux (264853057020)
-- Dual-panel layout with tappable agent cards and compact form
-
----
-Task ID: 2-b
-Agent: Subagent (full-stack-developer)
-Task: Enhance Services page with editorial bento grid
-
-Work Log:
-- Transformed flat 2x2 grid into editorial image-led bento composition
-- Business Registration: large col-span-7 card with image background, gradient overlay
-- Startup Support & Business Documents: stacked col-span-5 cards with image backgrounds
-- Digital Services: full-width col-span-12 card with horizontal gradient
-- Added bg-[#F2F2F2] light background for bento section
-- Used Next.js Image component for optimized images
-- Added motion hover effects (whileHover={{ scale: 0.99 }})
-- Gemsweb Digital badge with pulsing dot and backdrop-blur
-
-Stage Summary:
-- Services page now has editorial bento grid with AI-generated images
-- Light/dark section balance maintained
-- All transitions use cubic-bezier(0.32,0.72,0,1)
-
----
-Task ID: 4
-Agent: Subagent (full-stack-developer)
-Task: Enhance Pricing and About pages
-
-Work Log:
-- Pricing: Added light/dark balance (white header, dark cards, white comparison, dark Pty Ltd)
-- Pricing: Added editorial feature comparison table with check/dash icons
-- Pricing: Added quick-nav pills in header
-- About: Added about-bg.png as hero visual element
-- About: Added light/dark section rhythm (dark hero → light story → dark why → dark process)
-- About: Mission card uses DoubleBezel with frog-green accent
-
-Stage Summary:
-- Both pages enhanced with light/dark section balance
-- Pricing has editorial comparison table and quick-nav pills
-- About has AI-generated background image and alternating sections
+- Complete 16-page SMEfrog website rebuilt from scratch
+- Premium $150k agency-quality design with light/dark alternation
+- FrogAI floating chat assistant with LLM backend
+- CMD+K search overlay with semantic search
+- Magnetic button physics with useSpring
+- Double-bezel glass card architecture
+- WhatsApp multi-agent registration flow (Gadafi + Mux)
+- Logo-only big navbar (no wordmark), premium editorial footer
+- Multiple CTAs and forms on every page
+- No scroll-to-top functionality
+- Fonts: Satoshi (body), Cabinet Grotesk (headings), Plus Jakarta Sans, Space Grotesk

@@ -1,122 +1,202 @@
-import { ScrollReveal } from '@/components/scroll-reveal'
-import { Shield, MessageSquare, Cookie, UserCheck, Lock, Mail } from 'lucide-react'
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+
+function ScrollReveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.8, delay, ease: [0.32, 0.72, 0, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 const sections = [
   {
-    icon: Shield,
-    title: 'Data Collection',
+    title: '1. Information We Collect',
     content: [
-      'We collect personal information necessary to deliver our services effectively. This includes your full name, business details, contact information (phone number, email address), and any documentation required for business registration and compliance filings.',
-      'Information is collected only when you voluntarily provide it — through our WhatsApp communication, online forms, or direct correspondence. We do not collect data through automated tracking or hidden means.',
+      'We collect information you provide directly to us when using our services, including:',
+      '• Personal identification information: full name, email address, phone number, physical address, and national identification number.',
+      '• Business information: company name, registration details, business address, and director/shareholder information.',
+      '• Payment information: banking details and payment records processed through secure third-party providers.',
+      '• Communication data: records of correspondence between you and SMEfrog, including WhatsApp conversations, emails, and support tickets.',
+      '• Technical data: IP address, browser type, device information, and usage patterns when you visit our website.',
     ],
   },
   {
-    icon: MessageSquare,
-    title: 'WhatsApp Communication',
+    title: '2. How We Use Your Data',
     content: [
-      'SMEfrog uses WhatsApp as a primary communication channel for business consultations and service delivery. When you message us on WhatsApp, your phone number, message content, and any shared documents are processed solely for the purpose of providing our services.',
-      'We do not share your WhatsApp conversation data with third parties. Message records are retained only for the duration necessary to complete your service and resolve any follow-up queries.',
+      'We use the information we collect to:',
+      '• Provide and administer our business registration and compliance services in Namibia.',
+      '• Process your applications with the Ministry of Industrialisation, Trade and SME Development (MITSMED) and other relevant authorities.',
+      '• Communicate with you about your application status, required documents, and service updates.',
+      '• Process payments and maintain financial records.',
+      '• Improve our services, website functionality, and user experience.',
+      '• Comply with legal obligations and regulatory requirements under Namibian law.',
+      '• Send you relevant updates about regulatory changes that may affect your business (with your consent).',
     ],
   },
   {
-    icon: Cookie,
-    title: 'Cookies & Analytics',
+    title: '3. Data Protection & Security',
     content: [
-      'Our website uses minimal analytics to understand basic site usage — such as page views and general traffic patterns. We do not use third-party tracking cookies, advertising pixels, or cross-site tracking technologies.',
-      'Any cookies used are strictly functional or analytical, and do not collect personally identifiable information. You may disable cookies in your browser settings without affecting your ability to use our website.',
+      'We take the protection of your personal data seriously and implement appropriate technical and organisational measures to safeguard your information, including:',
+      '• Encryption of data in transit and at rest using industry-standard protocols.',
+      '• Secure access controls limiting data access to authorised personnel only.',
+      '• Regular security assessments and updates to our systems.',
+      '• Secure third-party payment processors that comply with PCI-DSS standards.',
+      '• While we strive to protect your data, no method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security.',
     ],
   },
   {
-    icon: UserCheck,
-    title: 'User Rights',
+    title: '4. Data Sharing & Third Parties',
     content: [
-      'You have the right to access, correct, or delete your personal data at any time. If you wish to review the information we hold about you, or request that your data be removed from our systems, simply contact us.',
-      'We will respond to all data access and deletion requests within 14 business days. Upon verification of your identity, we will provide a copy of your data or confirm its deletion from our records.',
+      'We may share your information with:',
+      '• Government agencies and regulatory bodies as required to complete your business registration and compliance services.',
+      '• Trusted service providers who assist us in delivering our services (e.g., payment processors, hosting providers), who are bound by confidentiality obligations.',
+      '• Law enforcement or regulatory authorities when required by Namibian law or court order.',
+      'We do not sell, rent, or trade your personal information to third parties for their marketing purposes.',
     ],
   },
   {
-    icon: Lock,
-    title: 'Data Protection',
+    title: '5. Your Rights',
     content: [
-      'We take reasonable measures to protect your personal information from unauthorised access, alteration, or disclosure. Data is stored securely and accessed only by authorised team members who need it to deliver services.',
-      'While no system is completely secure, we continuously review our practices to ensure your information is handled responsibly and in accordance with applicable Namibian data protection standards.',
+      'Under the Namibian Data Protection framework, you have the right to:',
+      '• Access: Request a copy of the personal data we hold about you.',
+      '• Correction: Request correction of inaccurate or incomplete personal data.',
+      '• Deletion: Request deletion of your personal data, subject to legal retention requirements.',
+      '• Objection: Object to the processing of your personal data in certain circumstances.',
+      '• Portability: Request your data in a structured, commonly used format.',
+      'To exercise any of these rights, please contact us using the details provided below. We will respond to your request within 30 days.',
     ],
   },
   {
-    icon: Mail,
-    title: 'Contact',
+    title: '6. Data Retention',
     content: [
-      'For any privacy-related inquiries, concerns, or requests regarding your personal data, please reach out to our support team via WhatsApp or email. We are committed to addressing your questions promptly and transparently.',
-      'WhatsApp: +264 81 341 1522',
-      'We value your trust and are dedicated to protecting your privacy.',
+      'We retain your personal data for as long as necessary to fulfil the purposes outlined in this policy, unless a longer retention period is required by law. Business registration documents and related records are typically retained for a minimum of 5 years as required by Namibian regulatory requirements.',
+    ],
+  },
+  {
+    title: '7. Cookies & Tracking',
+    content: [
+      'Our website may use cookies and similar tracking technologies to enhance your browsing experience and collect usage analytics. You can manage your cookie preferences through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.',
+    ],
+  },
+  {
+    title: '8. Changes to This Policy',
+    content: [
+      'We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the updated policy on our website with a revised "Last Updated" date. Your continued use of our services after such changes constitutes your acceptance of the revised policy.',
+    ],
+  },
+  {
+    title: '9. Contact Us',
+    content: [
+      'If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:',
+      '',
+      'WhatsApp: Gadafi — +264 81 341 1522',
+      'WhatsApp: Mux — +264 85 305 7020',
+      'Website: www.smefrog.com',
+      '',
+      'We are committed to resolving any concerns promptly and transparently.',
     ],
   },
 ]
 
-export default function PrivacyPage() {
+export default function PrivacyPolicyPage() {
   return (
-    <>
-      {/* Header */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 border-b border-frog-hairline">
-        <div className="max-w-3xl mx-auto">
-          <ScrollReveal>
-            <span className="inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-              Privacy Policy
-            </span>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-frog-light leading-tight">
-              Your Privacy Matters
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-[#0B1121] py-24 sm:py-32">
+        {/* Subtle background accent */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-[#7AC943]/5 blur-[120px]" />
+          <div className="absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-[#7AC943]/3 blur-[100px]" />
+        </div>
+
+        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 32, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
+          >
+            <Link href="/" className="inline-flex items-center gap-2 mb-8 group">
+              <img src="/frog-icon.png" alt="SMEfrog" className="h-10 w-10" />
+              <span className="font-[Cabinet_Grotesk] text-lg font-bold text-white group-hover:text-[#7AC943] transition-colors">SMEfrog</span>
+            </Link>
+            <h1 className="font-[Cabinet_Grotesk] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+              Privacy{' '}
+              <span className="text-[#7AC943]">Policy</span>
             </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.12}>
-            <p className="text-frog-muted text-base md:text-lg mt-4 leading-relaxed max-w-2xl">
-              We are committed to protecting your personal information and being transparent about how we use it.
+            <p className="mt-6 text-lg text-white/60 font-[Satoshi] max-w-2xl mx-auto">
+              Your privacy matters to us. This policy outlines how SMEfrog collects, uses, and protects your personal information.
             </p>
-          </ScrollReveal>
+            <p className="mt-4 text-sm text-white/40 font-[Satoshi]">
+              Last updated: 4 March 2026
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Sections */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6">
-        <div className="max-w-3xl mx-auto space-y-6">
+      {/* Content Section */}
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           {sections.map((section, i) => (
-            <ScrollReveal key={section.title} delay={i * 0.06}>
-              <div className="bg-frog-shell ring-1 ring-frog-hairline p-1.5 rounded-[2rem]">
-                <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center shrink-0">
-                      <section.icon className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
-                    </div>
-                    <h2 className="text-lg md:text-xl font-heading font-bold text-frog-light pt-1.5">
-                      {section.title}
-                    </h2>
-                  </div>
-                  <div className="space-y-3 pl-0 md:pl-14">
-                    {section.content.map((paragraph, j) => (
-                      <p
-                        key={j}
-                        className="text-frog-muted text-sm leading-relaxed"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                </div>
+            <ScrollReveal key={i} delay={i * 0.05} className="mb-12 last:mb-0">
+              <h2 className="font-[Cabinet_Grotesk] text-xl sm:text-2xl font-bold text-[#0B1121] mb-4">
+                {section.title}
+              </h2>
+              <div className="space-y-2">
+                {section.content.map((paragraph, j) => (
+                  <p
+                    key={j}
+                    className={`font-[Satoshi] text-[15px] leading-relaxed ${
+                      paragraph.startsWith('•')
+                        ? 'text-[#0B1121]/80 pl-4'
+                        : paragraph === ''
+                        ? 'h-2'
+                        : 'text-[#0B1121]/70'
+                    }`}
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
+              {i < sections.length - 1 && (
+                <div className="mt-12 border-b border-[#0B1121]/5" />
+              )}
             </ScrollReveal>
           ))}
-        </div>
-      </section>
 
-      {/* Last Updated */}
-      <section className="pb-16 px-4 md:px-6">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-frog-muted/40 text-xs text-center">
-            Last updated: {new Date().toLocaleDateString('en-NA', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
+          {/* Back link */}
+          <ScrollReveal delay={0.3}>
+            <div className="mt-16 pt-8 border-t border-[#0B1121]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 text-[#7AC943] font-[Satoshi] font-medium hover:gap-3 transition-all"
+              >
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Back to Home
+              </Link>
+              <Link
+                href="/terms"
+                className="inline-flex items-center gap-2 text-[#0B1121]/50 font-[Satoshi] text-sm hover:text-[#7AC943] transition-colors"
+              >
+                View Terms &amp; Conditions
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
-    </>
+    </main>
   )
 }

@@ -1,9 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, MessageCircle, Check, Zap, Globe, Shield } from 'lucide-react'
+import { ArrowRight, MessageCircle, Check, Zap, Globe, Shield, Phone } from 'lucide-react'
 import Link from 'next/link'
-import { ScrollReveal } from '@/components/scroll-reveal'
 import Image from 'next/image'
 
 /* ─── Data ─────────────────────────────────────────── */
@@ -50,9 +50,9 @@ const editorialServices = [
 ]
 
 const pricingCards = [
-  { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'] },
-  { tier: 'ADVANCED', price: 'N$1,200', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true },
-  { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Business Plan', 'Social Setup', 'Pitch Deck Template'] },
+  { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], btn: 'Choose Basic' },
+  { tier: 'ADVANCED', price: 'N$1,200', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true, btn: 'Choose Advanced' },
+  { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Business Plan', 'Social Setup', 'Pitch Deck Template'], btn: 'Choose Full' },
 ]
 
 const steps = [
@@ -69,13 +69,46 @@ const values = [
   { title: '7–10 Day Turnaround', body: 'Most registrations completed within 7–10 working days depending on BIPA processing.' },
 ]
 
-/* ─── Reusable ─────────────────────────────────────── */
+const testimonials = [
+  { name: 'Maria K.', business: 'MK Cleaners CC', quote: 'Registered my CC in under 2 weeks. No office visits. No drama. Just results.' },
+  { name: 'James T.', business: 'Tjiriange Logistics', quote: 'SMEfrog handled everything over WhatsApp. I was skeptical, but the service was solid.' },
+  { name: 'Lina N.', business: 'Oshili Digital', quote: '2X cheaper than the lawyer I was going to use. Same documents. Same result.' },
+]
+
+const AGENTS = [
+  { id: 'gadafi', name: 'Gadafi', phone: '264813411522', role: 'Compliance Expert' },
+  { id: 'mux', name: 'Mux', phone: '264853057020', role: 'Digital Strategist' },
+]
+
+const faqItems = [
+  { q: 'How much does a CC registration cost?', a: 'Basic CC registration starts at N$800. Advanced is N$1,200. Full package is N$1,750 — all include BIPA filing.' },
+  { q: 'Can I register remotely?', a: 'Yes. Everything is handled remotely through WhatsApp and email. No office visits needed.' },
+  { q: 'How long does registration take?', a: 'Usually 7–10 working days depending on BIPA processing times.' },
+  { q: 'Can foreigners register a business?', a: 'Yes, with a valid work permit or proof of residency in Namibia.' },
+  { q: 'What documents do I need?', a: 'ID copy, proof of address, and your proposed business name(s). We handle the rest.' },
+]
+
+/* ─── Reusable Components ──────────────────────────── */
+function ScrollReveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.8, delay, ease: [0.32, 0.72, 0, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 function Eyebrow({ children, light }: { children: React.ReactNode; light?: boolean }) {
   return (
-    <span className={`inline-block rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium mb-4 ${
+    <span className={`inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.25em] font-black mb-4 ${
       light
-        ? 'bg-black/5 text-black/60 border border-black/10'
-        : 'bg-frog-green/10 text-frog-green border border-frog-green/20'
+        ? 'bg-black/5 text-black/50 border border-black/10'
+        : 'bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20'
     }`}>
       {children}
     </span>
@@ -84,7 +117,7 @@ function Eyebrow({ children, light }: { children: React.ReactNode; light?: boole
 
 function DoubleBezel({ children, className = '', highlight = false }: { children: React.ReactNode; className?: string; highlight?: boolean }) {
   return (
-    <div className={`bg-frog-shell ring-1 ${highlight ? 'ring-frog-green/25' : 'ring-frog-hairline'} p-1.5 rounded-[2rem] ${className}`}>
+    <div className={`bg-frog-shell ring-1 ${highlight ? 'ring-[#7AC943]/25' : 'ring-frog-hairline'} p-1.5 rounded-[2rem] ${className}`}>
       <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8 h-full">
         {children}
       </div>
@@ -92,31 +125,27 @@ function DoubleBezel({ children, className = '', highlight = false }: { children
   )
 }
 
-function CtaButton({ href, primary, children }: { href: string; primary?: boolean; children: React.ReactNode }) {
-  const cls = primary
-    ? 'group inline-flex items-center gap-2.5 bg-frog-green text-frog-black font-semibold rounded-full px-7 py-3.5 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]'
-    : 'group inline-flex items-center gap-2.5 ring-1 ring-frog-green/30 text-frog-green rounded-full px-7 py-3.5 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]'
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-      {children}
-      <span className={`w-7 h-7 rounded-full flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${primary ? 'bg-black/10' : 'bg-frog-green/10'}`}>
-        <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-      </span>
-    </a>
-  )
-}
-
-/* ─── Page ──────────────────────────────────────────── */
+/* ─── Home Page ────────────────────────────────────── */
 export default function HomePage() {
+  const [selectedAgent, setSelectedAgent] = useState('gadafi')
+  const [regForm, setRegForm] = useState({ name: '', biz: '', package: 'Advanced' })
+
+  const handleJump = (e: React.FormEvent) => {
+    e.preventDefault()
+    const agent = AGENTS.find(a => a.id === selectedAgent)
+    if (!agent) return
+    const msg = `Hi ${agent.name}! I'm ${regForm.name}. I want to jump into business with the ${regForm.package} package for my business "${regForm.biz}".`
+    window.open(`https://wa.me/${agent.phone}?text=${encodeURIComponent(msg)}`, '_blank')
+  }
+
   return (
     <>
-      {/* ═══ HERO — Bottom-left editorial over cinematic background ═══ */}
+      {/* ═══ 1. HERO — Cinematic bottom-left composition ═══ */}
       <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
-        {/* Cinematic background layers */}
         <div className="absolute inset-0 z-0">
           <Image src="/hero-bg.png" alt="" fill className="object-cover opacity-40" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-frog-black via-frog-black/60 to-transparent z-10" />
-          <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-frog-green/10 blur-[180px] rounded-full pointer-events-none" />
+          <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-[#7AC943]/10 blur-[180px] rounded-full pointer-events-none" />
           <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-frog-dark/40 blur-[140px] rounded-full pointer-events-none" />
         </div>
 
@@ -124,64 +153,50 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
             <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="h-px w-12 bg-frog-green" />
-                  <span className="text-frog-green text-xs font-black uppercase tracking-[0.3em]">Namibia · 100% Remote</span>
+                {/* Status pill */}
+                <div className="inline-flex items-center gap-3 mb-10 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-[#7AC943] animate-pulse" />
+                  <span className="text-[#7AC943] text-[10px] font-black uppercase tracking-[0.35em]">Ready for 2024 Compliance</span>
                 </div>
 
-                <h1 className="text-5xl md:text-7xl lg:text-[6.5rem] font-heading font-bold text-frog-light leading-[0.9] tracking-tight mb-8">
-                  {['Start your', 'business', 'remotely.'].map((word, i) => (
-                    <motion.span
-                      key={word}
-                      initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }}
-                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                      transition={{ duration: 0.8, delay: 0.2 + i * 0.1, ease: [0.32, 0.72, 0, 1] }}
-                      className="inline-block mr-3 md:mr-5"
-                    >
-                      {word === 'remotely.' ? (
-                        <>remotely<span className="text-frog-green italic">.</span></>
-                      ) : word}
-                    </motion.span>
-                  ))}
+                <h1 className="text-6xl md:text-[110px] lg:text-[140px] font-black text-white leading-[0.85] tracking-tighter mb-10" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                  The Digital<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#7AC943] to-white">Jumpstart.</span>
                 </h1>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6, ease: [0.32, 0.72, 0, 1] }}
-                  className="text-lg md:text-xl text-frog-muted/70 max-w-xl mb-10 leading-relaxed font-medium"
-                >
-                  Fast BIPA registration without the industry markup. No hassle. No high fees. Just the jump you need.
-                </motion.p>
+                <p className="text-lg md:text-2xl text-white/40 max-w-2xl mb-14 font-bold leading-relaxed">
+                  Namibia&apos;s premium remote business registration service. We handle BIPA, so you can handle growth.
+                </p>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8, ease: [0.32, 0.72, 0, 1] }}
-                  className="flex flex-col sm:flex-row gap-3"
-                >
-                  <Link href="/pricing" className="group inline-flex items-center gap-2.5 bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                    Register Your CC
-                    <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                      <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                    </span>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="https://wa.me/264813411522"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-3 bg-[#7AC943] text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300"
+                  >
+                    Register Now
+                    <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
+                  </a>
+                  <Link
+                    href="/pricing"
+                    className="group inline-flex items-center gap-3 bg-white/5 border border-white/10 text-white font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:bg-white/10 active:scale-95 transition-all duration-300"
+                  >
+                    View Packages
+                    <span className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
                   </Link>
-                  <CtaButton href="https://wa.me/264813411522">
-                    <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                    Chat on WhatsApp
-                  </CtaButton>
-                </motion.div>
+                </div>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ TRUST STRIP — Light premium surface ═══ */}
+      {/* ═══ 2. TRUST STRIP — Light premium surface ═══ */}
       <section className="bg-[#FBFBFB] py-10 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
@@ -195,7 +210,7 @@ export default function HomePage() {
                   transition={{ delay: i * 0.08 }}
                   className="flex items-center gap-2.5"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-frog-green shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[#7AC943] shrink-0" />
                   <span className="text-black/50 font-bold text-[11px] uppercase tracking-[0.15em]">{text}</span>
                 </motion.div>
               ))}
@@ -204,22 +219,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ EDITORIAL SERVICES BENTO ═══ */}
+      {/* ═══ 3. EDITORIAL SERVICES BENTO — Light ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F2F2F2]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 md:mb-20">
-            <ScrollReveal>
-              <Eyebrow light>What We Do</Eyebrow>
-            </ScrollReveal>
+            <ScrollReveal><Eyebrow light>What We Do</Eyebrow></ScrollReveal>
             <div className="flex flex-col md:flex-row justify-between items-end gap-8">
               <ScrollReveal delay={0.06}>
-                <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-black tracking-tighter italic">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-black text-black tracking-tighter italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
                   Register Smarter.
                 </h2>
               </ScrollReveal>
               <ScrollReveal delay={0.1}>
                 <div className="text-right">
-                  <div className="text-5xl md:text-6xl font-heading font-black text-frog-green">2X</div>
+                  <div className="text-5xl md:text-6xl font-black text-[#7AC943]" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>2X</div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-black/30 font-bold">Cheaper than market average</div>
                 </div>
               </ScrollReveal>
@@ -230,26 +243,24 @@ export default function HomePage() {
             {/* Large card — CC Registration */}
             <ScrollReveal className="md:col-span-7">
               <motion.div
-                whileHover={{ scale: 0.99 }}
+                whileHover={{ scale: 0.995 }}
                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                 className="relative h-[500px] md:h-[600px] rounded-[2.5rem] overflow-hidden bg-black group cursor-pointer"
               >
                 <Image src={editorialServices[0].img} alt="CC Registration" fill className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" />
                 <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-                  <span className="text-frog-green text-xs font-black uppercase tracking-widest mb-4">{editorialServices[0].tag}</span>
-                  <h3 className="text-white text-4xl md:text-5xl font-heading font-black mb-4 leading-none">CC<br />Registration</h3>
+                  <span className="text-[#7AC943] text-xs font-black uppercase tracking-widest mb-4">{editorialServices[0].tag}</span>
+                  <h3 className="text-white text-4xl md:text-5xl font-black mb-4 leading-none" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>CC<br />Registration</h3>
                   <p className="text-white/40 max-w-xs mb-6 text-sm">{editorialServices[0].desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-frog-green font-heading font-bold">{editorialServices[0].price}</span>
-                    <Link href="/services/business-registration" className="w-12 h-12 rounded-full bg-frog-green flex items-center justify-center text-black font-bold hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                      →
-                    </Link>
+                    <span className="text-[#7AC943] font-black">{editorialServices[0].price}</span>
+                    <Link href="/services/business-registration" className="w-12 h-12 rounded-full bg-[#7AC943] flex items-center justify-center text-black font-bold hover:scale-110 transition-transform duration-500">→</Link>
                   </div>
                 </div>
               </motion.div>
             </ScrollReveal>
 
-            {/* Right stack — Startup Support + Business Documents */}
+            {/* Right stack */}
             <div className="md:col-span-5 space-y-6">
               {editorialServices.slice(1, 3).map((s, i) => (
                 <ScrollReveal key={s.title} delay={0.06 * (i + 1)}>
@@ -257,27 +268,17 @@ export default function HomePage() {
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                     className={`p-8 md:p-10 rounded-[2rem] h-[260px] md:h-[285px] flex flex-col justify-between cursor-pointer ${
-                      s.theme === 'dark'
-                        ? 'bg-black text-white'
-                        : 'bg-white text-black shadow-xl shadow-black/5'
+                      s.theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black shadow-xl shadow-black/5'
                     }`}
                   >
                     <div>
-                      <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${s.theme === 'dark' ? 'text-white/20' : 'text-black/20'}`}>
-                        {s.tag}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-heading font-black mt-2">{s.title}</h3>
+                      <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${s.theme === 'dark' ? 'text-white/20' : 'text-black/20'}`}>{s.tag}</span>
+                      <h3 className="text-2xl md:text-3xl font-black mt-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{s.title}</h3>
                       <p className={`text-sm mt-2 ${s.theme === 'dark' ? 'text-white/40' : 'text-black/40'}`}>{s.desc}</p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
-                      <span className={`text-xs font-black uppercase tracking-widest ${s.theme === 'dark' ? 'text-white/50' : 'text-black/50'}`}>
-                        Learn More
-                      </span>
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        s.theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'
-                      }`}>
-                        →
-                      </div>
+                      <span className={`text-xs font-black uppercase tracking-widest ${s.theme === 'dark' ? 'text-white/50' : 'text-black/50'}`}>Learn More</span>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${s.theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}`}>→</div>
                     </div>
                   </motion.div>
                 </ScrollReveal>
@@ -287,7 +288,7 @@ export default function HomePage() {
             {/* Bottom full-width — Digital Services */}
             <ScrollReveal className="md:col-span-12">
               <motion.div
-                whileHover={{ scale: 0.995 }}
+                whileHover={{ scale: 0.998 }}
                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                 className="relative h-[280px] md:h-[320px] rounded-[2.5rem] overflow-hidden bg-white shadow-xl shadow-black/5 group cursor-pointer"
               >
@@ -300,18 +301,16 @@ export default function HomePage() {
                         href={editorialServices[3].badge?.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block rounded-full px-2.5 py-0.5 text-[9px] uppercase tracking-[0.12em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 hover:bg-frog-green/20 transition-colors"
+                        className="inline-block rounded-full px-2.5 py-0.5 text-[9px] uppercase tracking-[0.12em] font-medium bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20 hover:bg-[#7AC943]/20 transition-colors"
                         onClick={(e) => e.stopPropagation()}
                       >
                         {editorialServices[3].badge?.label} ↗
                       </a>
                     </div>
-                    <h3 className="text-3xl md:text-4xl font-heading font-black text-black">Digital Services</h3>
+                    <h3 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Digital Services</h3>
                     <p className="text-black/40 text-sm mt-2 max-w-md">{editorialServices[3].desc}</p>
                   </div>
-                  <Link href="/services/digital-services" className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white font-bold shrink-0 hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                    →
-                  </Link>
+                  <Link href="/services/digital-services" className="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white font-bold shrink-0 hover:scale-110 transition-transform duration-500">→</Link>
                 </div>
               </motion.div>
             </ScrollReveal>
@@ -319,7 +318,7 @@ export default function HomePage() {
 
           <ScrollReveal delay={0.1}>
             <div className="mt-10 text-center">
-              <Link href="/services" className="inline-flex items-center gap-2 text-black/40 text-sm font-bold uppercase tracking-widest hover:text-frog-green transition-colors duration-500">
+              <Link href="/services" className="inline-flex items-center gap-2 text-black/40 text-sm font-bold uppercase tracking-widest hover:text-[#7AC943] transition-colors duration-500">
                 View all services <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
               </Link>
             </div>
@@ -327,14 +326,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ HOW IT WORKS — Soft light textured ═══ */}
+      {/* ═══ 4. HOW IT WORKS — Soft light ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-white">
         <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <Eyebrow light>How It Works</Eyebrow>
-          </ScrollReveal>
+          <ScrollReveal><Eyebrow light>How It Works</Eyebrow></ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
               Four Simple Steps
             </h2>
           </ScrollReveal>
@@ -342,11 +339,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {steps.map((step, i) => (
               <ScrollReveal key={step.n} delay={i * 0.08}>
-                <div className="bg-[#F5F5F5] rounded-[2rem] p-6 md:p-8 h-full group hover:bg-frog-green/5 transition-colors duration-700">
-                  <div className="w-12 h-12 rounded-2xl bg-frog-green/10 ring-1 ring-frog-green/20 text-frog-green font-heading font-bold flex items-center justify-center text-sm mb-5 group-hover:bg-frog-green group-hover:text-frog-black transition-all duration-700">
+                <div className="bg-[#F5F5F5] rounded-[2rem] p-6 md:p-8 h-full group hover:bg-[#7AC943]/5 transition-colors duration-700">
+                  <div className="w-12 h-12 rounded-2xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 text-[#7AC943] font-black flex items-center justify-center text-sm mb-5 group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-700">
                     {step.n}
                   </div>
-                  <h3 className="text-base font-heading font-bold text-black mb-2">{step.title}</h3>
+                  <h3 className="text-base font-black text-black mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{step.title}</h3>
                   <p className="text-black/40 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </ScrollReveal>
@@ -355,17 +352,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ PRICING TEASER — Dark cinematic ═══ */}
+      {/* ═══ 5. PRICING TEASER — Dark cinematic ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-black to-frog-dark pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#7AC943]/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
             <div className="text-center mb-12">
               <Eyebrow>Pricing</Eyebrow>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-frog-light">
-                Transparent <span className="italic text-frog-green">Structure.</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-frog-light" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                Transparent <span className="italic text-[#7AC943]">Structure.</span>
               </h2>
               <p className="text-frog-muted mt-4">No hidden fees. No consultant markups. Just results.</p>
             </div>
@@ -376,14 +373,14 @@ export default function HomePage() {
               <ScrollReveal key={pkg.tier} delay={i * 0.06}>
                 <DoubleBezel highlight={pkg.featured} className="text-center">
                   <div className="flex flex-col h-full">
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-frog-green">{pkg.tier}</span>
-                    <p className="text-4xl font-heading font-bold text-frog-light mt-3">{pkg.price}</p>
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[#7AC943]">{pkg.tier}</span>
+                    <p className="text-4xl font-black text-frog-light mt-3" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{pkg.price}</p>
                     <p className="text-frog-muted text-sm mt-1">{pkg.sub}</p>
                     <div className="mt-6 space-y-2.5 flex-1">
                       {pkg.features.map((f) => (
                         <div key={f} className="flex items-center gap-2 justify-center">
-                          <span className="w-4 h-4 rounded-full bg-frog-green/15 flex items-center justify-center shrink-0">
-                            <Check className="w-2.5 h-2.5 text-frog-green" strokeWidth={2} />
+                          <span className="w-4 h-4 rounded-full bg-[#7AC943]/15 flex items-center justify-center shrink-0">
+                            <Check className="w-2.5 h-2.5 text-[#7AC943]" strokeWidth={2} />
                           </span>
                           <span className="text-frog-muted text-xs">{f}</span>
                         </div>
@@ -393,13 +390,13 @@ export default function HomePage() {
                       href="https://wa.me/264813411522"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`mt-6 w-full py-3 rounded-xl font-bold text-sm transition-all duration-700 inline-flex items-center justify-center ${
+                      className={`mt-6 w-full py-3 rounded-xl font-black text-sm transition-all duration-700 inline-flex items-center justify-center ${
                         pkg.featured
-                          ? 'bg-frog-green text-frog-black hover:brightness-110'
-                          : 'ring-1 ring-frog-green/30 text-frog-green hover:bg-frog-green/10'
+                          ? 'bg-[#7AC943] text-black hover:brightness-110'
+                          : 'ring-1 ring-[#7AC943]/30 text-[#7AC943] hover:bg-[#7AC943]/10'
                       }`}
                     >
-                      Choose {pkg.tier.charAt(0) + pkg.tier.slice(1).toLowerCase()}
+                      {pkg.btn}
                     </a>
                   </div>
                 </DoubleBezel>
@@ -409,7 +406,7 @@ export default function HomePage() {
 
           <ScrollReveal delay={0.1}>
             <div className="mt-8 text-center">
-              <Link href="/pricing" className="inline-flex items-center gap-2 text-frog-green text-sm font-medium hover:gap-3 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+              <Link href="/pricing" className="inline-flex items-center gap-2 text-[#7AC943] text-sm font-medium hover:gap-3 transition-all duration-500">
                 View full pricing <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
               </Link>
             </div>
@@ -417,27 +414,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ WHY SMEFROG — Warm light minimal ═══ */}
+      {/* ═══ 6. TESTIMONIALS — Warm light ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#FAFAFA]">
         <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <Eyebrow light>Why SMEfrog</Eyebrow>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-black max-w-3xl leading-snug mb-4">
-              Starting a business shouldn&apos;t cost more than the business itself.
+          <ScrollReveal><Eyebrow light>What Founders Say</Eyebrow></ScrollReveal>
+          <ScrollReveal delay={0.06}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              Real results. Real founders.
             </h2>
           </ScrollReveal>
-          <ScrollReveal delay={0.12}>
-            <div className="w-1 h-12 bg-frog-green/30 rounded-full mb-12 md:mb-16" />
-          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {values.map((v, i) => (
-              <ScrollReveal key={v.title} delay={i * 0.06}>
-                <div className="bg-white rounded-[2rem] p-6 md:p-8 h-full shadow-sm ring-1 ring-black/[0.04] hover:shadow-md transition-shadow duration-700">
-                  <h3 className="text-lg md:text-xl font-heading font-bold text-black mb-2">{v.title}</h3>
-                  <p className="text-black/40 text-sm leading-relaxed">{v.body}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
+              <ScrollReveal key={t.name} delay={i * 0.08}>
+                <div className="bg-white rounded-[2rem] p-8 h-full shadow-sm ring-1 ring-black/[0.04] hover:shadow-md transition-shadow duration-700">
+                  <p className="text-black/60 text-base leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#7AC943]/10 flex items-center justify-center text-[#7AC943] font-black text-sm">
+                      {t.name[0]}
+                    </div>
+                    <div>
+                      <p className="text-black font-bold text-sm">{t.name}</p>
+                      <p className="text-black/30 text-xs">{t.business}</p>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -445,53 +445,198 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ FOUNDER MESSAGE — Dark editorial ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* ═══ 7. FAQ — Quiet premium ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
           <ScrollReveal>
-            <Eyebrow>Our Mission</Eyebrow>
+            <div className="text-center mb-12">
+              <Eyebrow light>FAQ</Eyebrow>
+              <h2 className="text-3xl md:text-4xl font-black text-black" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                Common Questions
+              </h2>
+            </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <blockquote className="text-2xl md:text-3xl lg:text-4xl font-heading font-semibold text-frog-light leading-snug">
-              &ldquo;Starting a business should not cost more than the business itself.&rdquo;
-            </blockquote>
+
+          <div className="space-y-4">
+            {faqItems.map((item, i) => (
+              <ScrollReveal key={i} delay={i * 0.04}>
+                <div className="bg-[#F8F8F8] rounded-2xl p-6 md:p-8 group hover:bg-[#7AC943]/5 transition-colors duration-500">
+                  <h4 className="text-black font-black text-base mb-2" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{item.q}</h4>
+                  <p className="text-black/40 text-sm leading-relaxed">{item.a}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal delay={0.1}>
+            <div className="mt-8 text-center">
+              <Link href="/faq" className="inline-flex items-center gap-2 text-black/30 text-sm font-bold uppercase tracking-widest hover:text-[#7AC943] transition-colors duration-500">
+                View all FAQs <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+              </Link>
+            </div>
           </ScrollReveal>
-          <ScrollReveal delay={0.12}>
-            <p className="text-frog-muted text-base mt-6 max-w-xl mx-auto leading-relaxed">
-              SMEfrog exists to remove friction for entrepreneurs. Help more Namibian founders become formal businesses.
-            </p>
+        </div>
+      </section>
+
+      {/* ═══ 8. QUICK CONTACT BAR — Light ═══ */}
+      <section className="bg-white py-20 px-4 md:px-6 border-t border-black/5">
+        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
+          <div className="text-center lg:text-left">
+            <h2 className="text-black text-4xl md:text-5xl font-black tracking-tight mb-4" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>Questions? Chat with us.</h2>
+            <p className="text-black/40 font-bold">Average response time: Under 5 minutes.</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {AGENTS.map(agent => (
+              <a
+                key={agent.id}
+                href={`https://wa.me/${agent.phone}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-[#7AC943] hover:text-black transition-all duration-300"
+              >
+                <Phone className="w-4 h-4 opacity-50" />
+                <span className="opacity-50">{agent.role}</span> {agent.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ REGISTRATION FLOW — Dark cinematic ═══ */}
+      <section className="py-24 md:py-32 bg-black relative overflow-hidden" id="registration-section">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#7AC943]/[0.03] blur-[180px] rounded-full pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-16 md:gap-24 items-center relative z-10">
+          <div>
+            <ScrollReveal>
+              <Eyebrow>Jumpstart Form</Eyebrow>
+            </ScrollReveal>
+            <ScrollReveal delay={0.06}>
+              <h2 className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-none mb-12 italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+                Let&apos;s<br />move.
+              </h2>
+            </ScrollReveal>
+
+            {/* Agent Selection */}
+            <div className="grid gap-4">
+              {AGENTS.map(agent => (
+                <div
+                  key={agent.id}
+                  onClick={() => setSelectedAgent(agent.id)}
+                  className={`p-8 md:p-10 rounded-[2rem] border-2 cursor-pointer transition-all duration-500 flex justify-between items-center ${
+                    selectedAgent === agent.id
+                      ? 'bg-[#7AC943] border-[#7AC943] text-black scale-[1.02] shadow-[0_0_50px_rgba(122,201,67,0.15)]'
+                      : 'bg-white/5 border-white/5 text-white hover:border-white/20'
+                  }`}
+                >
+                  <div>
+                    <span className={`text-[10px] font-black uppercase tracking-widest ${selectedAgent === agent.id ? 'text-black/50' : 'text-white/20'}`}>Active Consultant</span>
+                    <h4 className="text-2xl md:text-3xl font-black mt-1" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>{agent.name}</h4>
+                  </div>
+                  {selectedAgent === agent.id ? (
+                    <div className="text-xl font-black">✓</div>
+                  ) : (
+                    <div className="w-8 h-8 rounded-full border border-white/20" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Registration Form */}
+          <ScrollReveal delay={0.1}>
+            <div className="bg-[#0A0A0A] p-8 md:p-14 rounded-[3rem] border border-white/5 relative group">
+              <div className="absolute top-0 right-0 p-8">
+                <span className="text-[#7AC943] font-black italic text-sm">Jumpstart v2</span>
+              </div>
+
+              <form onSubmit={handleJump} className="space-y-10 pt-8">
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Identity</label>
+                  <input
+                    required
+                    value={regForm.name}
+                    onChange={(e) => setRegForm({ ...regForm, name: e.target.value })}
+                    className="w-full bg-transparent border-b-2 border-white/10 py-5 text-2xl text-white outline-none focus:border-[#7AC943] transition-colors font-bold"
+                    placeholder="Full Name"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Venture Name</label>
+                  <input
+                    required
+                    value={regForm.biz}
+                    onChange={(e) => setRegForm({ ...regForm, biz: e.target.value })}
+                    className="w-full bg-transparent border-b-2 border-white/10 py-5 text-2xl text-white outline-none focus:border-[#7AC943] transition-colors font-bold"
+                    placeholder="e.g. Frog Logistics CC"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Package</label>
+                  <div className="flex gap-3">
+                    {['Basic', 'Advanced', 'Full'].map(p => (
+                      <button
+                        key={p}
+                        type="button"
+                        onClick={() => setRegForm({ ...regForm, package: p })}
+                        className={`flex-1 py-4 rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
+                          regForm.package === p
+                            ? 'bg-[#7AC943] text-black'
+                            : 'bg-white/5 border border-white/10 text-white/40 hover:bg-white/10'
+                        }`}
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-[#7AC943] py-7 rounded-2xl text-black font-black text-lg uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-2xl shadow-[#7AC943]/20 flex items-center justify-center gap-3"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Connect to WhatsApp
+                </button>
+              </form>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
       {/* ═══ FINAL CTA — Deep dark cinematic ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/10 to-frog-dark pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.08] rounded-full blur-[150px] pointer-events-none" />
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden bg-[#FBFBFB]">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-[#7AC943]/5 blur-[120px] rounded-full translate-x-1/2 pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>
-            <h2 className="text-4xl md:text-6xl font-heading font-bold text-frog-light mb-4 italic">
-              Start smart.
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black text-black tracking-tighter mb-8 italic" style={{ fontFamily: "'Cabinet Grotesk', sans-serif" }}>
+              Stop waiting.<br />Start.
             </h2>
           </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <p className="text-frog-muted text-base md:text-lg mb-10">
-              Register your business remotely today.
+          <ScrollReveal delay={0.06}>
+            <p className="text-black/30 text-lg md:text-xl font-bold mb-10 max-w-xl mx-auto">
+              Join 400+ Namibian entrepreneurs who jumped ahead this month.
             </p>
           </ScrollReveal>
-          <ScrollReveal delay={0.12}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link href="/pricing" className="group inline-flex items-center gap-2.5 bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                Register Your Business
-                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                </span>
-              </Link>
-              <CtaButton href="https://wa.me/264813411522">
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                Chat on WhatsApp
-              </CtaButton>
+
+          {/* Email CTA Form */}
+          <ScrollReveal delay={0.1}>
+            <div className="w-full max-w-md mx-auto bg-white p-8 rounded-[2.5rem] shadow-2xl shadow-black/5 flex flex-col gap-4">
+              <input
+                placeholder="Your Email Address"
+                className="w-full bg-[#F2F2F2] border-none px-6 py-5 rounded-2xl outline-none focus:ring-2 ring-[#7AC943]/20 font-bold text-black"
+              />
+              <a
+                href="https://wa.me/264813411522"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-black text-white py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-[#7AC943] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Get Free Quote
+              </a>
             </div>
           </ScrollReveal>
         </div>

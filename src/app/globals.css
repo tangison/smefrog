@@ -44,7 +44,7 @@
   --color-frog-black: #050505;
   --color-frog-light: #F6F9F4;
   --color-frog-muted: #8BA89A;
-  --color-frog-card: #0A0F0D;
+  --color-frog-card: #0A0A0A;
   --color-frog-shell: rgba(255,255,255,0.03);
   --color-frog-hairline: rgba(255,255,255,0.06);
   --color-frog-glass: rgba(255,255,255,0.06);
@@ -58,9 +58,9 @@
   --radius: 0.625rem;
   --background: #050505;
   --foreground: #F6F9F4;
-  --card: #0A0F0D;
+  --card: #0A0A0A;
   --card-foreground: #F6F9F4;
-  --popover: #0A0F0D;
+  --popover: #0A0A0A;
   --popover-foreground: #F6F9F4;
   --primary: #7AC943;
   --primary-foreground: #050505;
@@ -102,16 +102,12 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 ::selection {
-  background: rgba(122, 201, 67, 0.3);
-  color: #F6F9F4;
+  background: #7AC943;
+  color: #050505;
 }
 
-/* Noise overlay — FIXED position, pointer-events-none, z-9999 */
+/* Noise overlay — FIXED position, pointer-events-none */
 .noise-layer::after {
   content: "";
   position: fixed;
@@ -122,4 +118,88 @@ html {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
+}
+
+/* Custom scrollbar hiding */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth scroll only for hash links, not jumping */
+html {
+  scroll-behavior: auto;
+}
+
+/* Input placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.15);
+  font-weight: 700;
+}
+
+/* Focus ring for accessibility */
+*:focus-visible {
+  outline: 2px solid #7AC943;
+  outline-offset: 2px;
+}
+
+/* Glass panel base */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Double bezel outer */
+.bezel-outer {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+  border-radius: 24px;
+  padding: 1px;
+}
+
+/* Double bezel inner */
+.bezel-inner {
+  background: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 23px;
+  overflow: hidden;
+}
+
+/* Animated orb */
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.08); }
+}
+.orb-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Sweep light beam */
+@keyframes sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.sweep-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(122, 201, 67, 0.1), transparent);
+  animation: sweep 3s ease-in-out infinite;
+}
+
+/* FrogAI chat scrollbar */
+.frog-chat-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.frog-chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.frog-chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(122, 201, 67, 0.2);
+  border-radius: 2px;
 }
