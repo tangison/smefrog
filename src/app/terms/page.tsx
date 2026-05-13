@@ -141,8 +141,8 @@ export default function TermsAndConditionsPage() {
       <section className="relative overflow-hidden bg-frog-black py-24 sm:py-32">
         {/* Subtle background accent */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-[#7AC943]/5 blur-[120px]" />
-          <div className="absolute -bottom-40 -right-40 h-[400px] w-[400px] rounded-full bg-[#7AC943]/3 blur-[100px]" />
+          <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-frog-green/5 blur-[120px]" />
+          <div className="absolute -bottom-40 -right-40 h-[400px] w-[400px] rounded-full bg-frog-green/3 blur-[100px]" />
         </div>
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
@@ -153,16 +153,16 @@ export default function TermsAndConditionsPage() {
           >
             <Link href="/" className="inline-flex items-center gap-2 mb-8 group">
               <LogoMark className="h-10 w-10" />
-              <span className="font-[Space_Grotesk] text-lg font-bold text-white group-hover:text-[#7AC943] transition-colors">SMEfrog</span>
+              <span className="text-lg font-bold text-white group-hover:text-frog-green transition-colors">SMEfrog</span>
             </Link>
-            <h1 className="font-[Space_Grotesk] text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight">
               Terms &amp;{' '}
-              <span className="text-[#7AC943]">Conditions</span>
+              <span className="text-frog-green">Conditions</span>
             </h1>
-            <p className="mt-6 text-lg text-white/60 font-[Space_Grotesk] max-w-2xl mx-auto">
+            <p className="mt-6 text-lg text-white/60 max-w-2xl mx-auto">
               Please read these terms carefully before using SMEfrog&apos;s services. By engaging us, you agree to these conditions.
             </p>
-            <p className="mt-4 text-sm text-white/40 font-[Space_Grotesk]">
+            <p className="mt-4 text-sm text-white/40">
               Last updated: 4 March 2026
             </p>
           </motion.div>
@@ -174,21 +174,21 @@ export default function TermsAndConditionsPage() {
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           {sections.map((section, i) => (
             <ScrollReveal key={i} delay={i * 0.04} className="mb-12 last:mb-0">
-              <h2 className="font-[Space_Grotesk] text-xl sm:text-2xl font-bold text-[#0F1412] mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-frog-black mb-4">
                 {section.title}
               </h2>
               <div className="space-y-2">
                 {section.content.map((paragraph, j) => (
                   <p
                     key={j}
-                    className={`font-[Space_Grotesk] text-[15px] leading-relaxed ${
+                    className={`text-[15px] leading-relaxed ${
                       paragraph.startsWith('•')
-                        ? 'text-[#0F1412]/80 pl-4'
+                        ? 'text-frog-black/80 pl-4'
                         : paragraph.startsWith('   –')
-                        ? 'text-[#0F1412]/70 pl-8'
+                        ? 'text-frog-black/70 pl-8'
                         : paragraph === ''
                         ? 'h-2'
-                        : 'text-[#0F1412]/70'
+                        : 'text-frog-black/70'
                     }`}
                   >
                     {paragraph}
@@ -196,17 +196,17 @@ export default function TermsAndConditionsPage() {
                 ))}
               </div>
               {i < sections.length - 1 && (
-                <div className="mt-12 border-b border-[#0F1412]/5" />
+                <div className="mt-12 border-b border-frog-black/5" />
               )}
             </ScrollReveal>
           ))}
 
           {/* Bottom navigation */}
           <ScrollReveal delay={0.3}>
-            <div className="mt-16 pt-8 border-t border-[#0F1412]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-16 pt-8 border-t border-frog-black/10 flex flex-col sm:flex-row items-center justify-between gap-4">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-[#7AC943] font-[Space_Grotesk] font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-frog-green font-medium hover:gap-3 transition-all"
               >
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -215,7 +215,7 @@ export default function TermsAndConditionsPage() {
               </Link>
               <Link
                 href="/privacy"
-                className="inline-flex items-center gap-2 text-[#0F1412]/50 font-[Space_Grotesk] text-sm hover:text-[#7AC943] transition-colors"
+                className="inline-flex items-center gap-2 text-frog-black/50 text-sm hover:text-frog-green transition-colors"
               >
                 View Privacy Policy
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

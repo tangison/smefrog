@@ -30,10 +30,10 @@ const serviceBreakdown = [
     title: 'Business Plans',
     tag: 'FOUNDATION',
     description:
-      'Professional business plans designed for funding applications, strategic planning, and investor presentations. We craft clear, structured documents that communicate your vision effectively.',
+      'Clear, structured plans for funding, strategy, and investor presentations.',
     items: [
-      'Executive Summary Development',
-      'Market Analysis & Research',
+      'Executive Summary',
+      'Market Analysis',
       'Financial Projections',
       'Operational Strategy',
       'Funding-Ready Formatting',
@@ -45,10 +45,10 @@ const serviceBreakdown = [
     title: 'Pitch Decks',
     tag: 'INVESTOR-READY',
     description:
-      'Investor-ready presentations that tell your startup story compellingly. Structured to capture attention and communicate value clearly.',
+      'Presentations that tell your story and communicate value clearly.',
     items: [
       'Problem & Solution Framing',
-      'Market Opportunity Slides',
+      'Market Opportunity',
       'Business Model Canvas',
       'Traction & Milestones',
       'Investment Ask Structure',
@@ -60,27 +60,27 @@ const serviceBreakdown = [
     title: 'Company Profiles',
     tag: 'CREDIBILITY',
     description:
-      'Polished company presentations that establish credibility and professionalism. Perfect for client meetings, partnership proposals, and business development.',
+      'Polished profiles for clients, partners, and business development.',
     items: [
-      'Company Overview & History',
-      'Service/Product Descriptions',
-      'Team & Leadership Profiles',
-      'Mission & Vision Statements',
-      'Branded Document Design',
+      'Company Overview',
+      'Service Descriptions',
+      'Team Profiles',
+      'Mission & Vision',
+      'Branded Design',
     ],
     theme: 'light' as const,
   },
   {
     icon: Wallet,
-    title: 'Investor-Ready Docs',
+    title: 'Funding Docs',
     tag: 'FUNDING',
     description:
-      'Documents and preparation for funding applications. We help you get your paperwork in order so you can focus on pitching your business.',
+      'Document prep for grants, loans, and investor capital.',
     items: [
-      'Funding Application Support',
+      'Application Support',
       'Document Preparation',
       'Compliance Verification',
-      'Financial Document Review',
+      'Financial Review',
       'Submission Assistance',
     ],
     theme: 'dark' as const,
@@ -92,28 +92,28 @@ const useCases = [
     icon: Rocket,
     title: 'First-Time Founders',
     description:
-      'You have an idea but need the structure and documents to make it real. We help you build the foundation.',
+      'You have an idea. We build the structure and documents.',
     features: ['Business Plan', 'Company Profile', 'Registration Guidance'],
   },
   {
     icon: Target,
     title: 'Funding Applicants',
     description:
-      'You need professional documents to apply for grants, loans, or investor capital. We prepare you for the ask.',
+      'Professional documents to apply for grants, loans, or investment.',
     features: ['Pitch Deck', 'Financial Projections', 'Funding Applications'],
   },
   {
     icon: TrendingUp,
     title: 'Growing Businesses',
     description:
-      'You\'re scaling and need polished materials for partnerships, proposals, and new markets.',
+      'Polished materials for partnerships, proposals, and new markets.',
     features: ['Company Profile', 'Strategic Plan', 'Partnership Proposals'],
   },
   {
     icon: Lightbulb,
-    title: 'Side Hustle Professionals',
+    title: 'Side Hustlers',
     description:
-      'You\'re transitioning from informal to formal. Get the documents that make your side business legitimate.',
+      'Go from informal to formal. Make your side business legitimate.',
     features: ['Business Plan', 'Registration', 'Basic Profile'],
   },
 ]
@@ -123,27 +123,27 @@ const testimonials = [
     name: 'David M.',
     business: 'Windhoek Tech Solutions',
     quote:
-      'The pitch deck SMEfrog created helped me secure seed funding. Professional quality at a fraction of agency prices.',
+      'The pitch deck helped me secure seed funding. Professional quality at a fraction of agency prices.',
   },
   {
     name: 'Sarah K.',
     business: 'Okambogo Farming CC',
     quote:
-      'My business plan was accepted by DBN on the first submission. That never happens — but it did.',
+      'My business plan was accepted by DBN on the first submission. That never happens.',
   },
   {
     name: 'Petrus N.',
     business: 'Oshikandi Trading',
     quote:
-      'They turned my rough notes into a company profile that actually impresses clients. Game changer.',
+      'They turned my rough notes into a company profile that actually impresses clients.',
   },
 ]
 
 const processSteps = [
-  { n: '01', title: 'Tell Us Your Vision', desc: 'Share your business idea, goals, and target audience with our team.' },
-  { n: '02', title: 'We Draft & Design', desc: 'Our team crafts professional documents tailored to your specific needs.' },
-  { n: '03', title: 'Review & Refine', desc: 'You review drafts and we iterate until everything is perfect.' },
-  { n: '04', title: 'Deliver & Support', desc: 'Receive your polished documents plus ongoing WhatsApp support.' },
+  { n: '01', title: 'Share Your Vision', desc: 'Tell us your idea, goals, and audience.' },
+  { n: '02', title: 'We Draft', desc: 'Professional documents tailored to your needs.' },
+  { n: '03', title: 'Review & Refine', desc: 'You review. We iterate until perfect.' },
+  { n: '04', title: 'Deliver', desc: 'Polished documents plus WhatsApp support.' },
 ]
 
 const AGENTS = [
@@ -163,41 +163,37 @@ export default function StartupSupportPage() {
       ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
         {/* Ambient orbs */}
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-[#7AC943]/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#1E3A2F]/[0.15] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-dark/[0.15] blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — Text */}
             <div>
               <ScrollReveal>
-                <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20 mb-6">
+                <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-6">
                   Startup Support
                 </span>
               </ScrollReveal>
 
               <ScrollReveal delay={0.08}>
-                <h1
-                  className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
+                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6">
                   Launch With
                   <br />
-                  <span className="italic text-[#7AC943]">Structure.</span>
+                  <span className="italic text-frog-green">Structure.</span>
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal delay={0.14}>
                 <p className="text-frog-muted text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-                  Business plans, pitch decks, company profiles, and investor-ready
-                  documents — crafted for Namibian entrepreneurs ready to make their move.
+                  Plans, decks, and docs for Namibian entrepreneurs ready to move.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-[#7AC943]/10 border border-[#7AC943]/20 mb-8">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7AC943] animate-pulse" />
-                  <span className="text-[#7AC943] text-sm font-bold">Custom Pricing — Tailored to Your Needs</span>
+                <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-frog-green/10 border border-frog-green/20 mb-8">
+                  <span className="w-1.5 h-1.5 rounded-full bg-frog-green animate-pulse" />
+                  <span className="text-frog-green text-sm font-bold">Custom Pricing</span>
                 </div>
               </ScrollReveal>
 
@@ -207,10 +203,11 @@ export default function StartupSupportPage() {
                     href="https://wa.me/264813411522"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group inline-flex items-center gap-2.5 bg-[#7AC943] text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-[#7AC943]/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
+                    aria-label="Get a quote on WhatsApp"
+                    className={`group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
                   >
                     <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                    Get a Quote
+                    Quote
                     <span
                       className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${easing}`}
                     >
@@ -219,7 +216,8 @@ export default function StartupSupportPage() {
                   </a>
                   <Link
                     href="/services/business-registration"
-                    className={`inline-flex items-center gap-2 ring-1 ring-white/10 text-white/70 rounded-full px-8 py-4 text-sm font-bold bg-white/[0.03] hover:bg-white/[0.06] hover:text-white active:scale-[0.98] ${easing}`}
+                    aria-label="Go to business registration"
+                    className={`inline-flex items-center gap-2 min-h-[44px] ring-1 ring-white/10 text-white/70 rounded-full px-8 py-4 text-sm font-bold bg-white/[0.03] hover:bg-white/[0.06] hover:text-white active:scale-[0.98] ${easing}`}
                   >
                     Register Instead
                     <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
@@ -254,8 +252,8 @@ export default function StartupSupportPage() {
           <section
             key={service.title}
             className={`py-20 md:py-28 px-4 md:px-6 ${
-              isLight ? 'bg-[#F2F2F2]' : 'bg-frog-black'
-            } ${i > 0 ? '' : ''}`}
+              isLight ? 'bg-frog-light' : 'bg-frog-black'
+            }`}
           >
             <div className="max-w-[1400px] mx-auto">
               <ScrollReveal>
@@ -265,7 +263,7 @@ export default function StartupSupportPage() {
                   className={`rounded-[2rem] p-8 md:p-12 h-full ${
                     isLight
                       ? 'bg-white shadow-sm ring-1 ring-black/[0.04]'
-                      : 'bg-[#0A0A0A] ring-1 ring-white/5'
+                      : 'bg-frog-card ring-1 ring-white/5'
                   }`}
                 >
                   <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-16">
@@ -275,15 +273,15 @@ export default function StartupSupportPage() {
                         <div
                           className={`w-11 h-11 rounded-xl flex items-center justify-center ${
                             isLight
-                              ? 'bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20'
-                              : 'bg-[#7AC943]/15 ring-1 ring-[#7AC943]/25'
+                              ? 'bg-frog-green/10 ring-1 ring-frog-green/20'
+                              : 'bg-frog-green/15 ring-1 ring-frog-green/25'
                           }`}
                         >
-                          <service.icon className="w-5 h-5 text-[#7AC943]" strokeWidth={1.5} />
+                          <service.icon className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
                         </div>
                         <span
                           className={`text-[10px] uppercase tracking-[0.2em] font-bold ${
-                            isLight ? 'text-[#7AC943]' : 'text-[#7AC943]/80'
+                            isLight ? 'text-frog-green' : 'text-frog-green/80'
                           }`}
                         >
                           {service.tag}
@@ -292,9 +290,8 @@ export default function StartupSupportPage() {
 
                       <h3
                         className={`text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight ${
-                          isLight ? 'text-[#1A1A1A]' : 'text-white'
+                          isLight ? 'text-black' : 'text-white'
                         }`}
-                        style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                       >
                         {service.title}
                       </h3>
@@ -315,11 +312,11 @@ export default function StartupSupportPage() {
                             <span
                               className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${
                                 isLight
-                                  ? 'bg-[#7AC943]/10'
-                                  : 'bg-[#7AC943]/15'
+                                  ? 'bg-frog-green/10'
+                                  : 'bg-frog-green/15'
                               }`}
                             >
-                              <ArrowRight className="w-2.5 h-2.5 text-[#7AC943]" strokeWidth={2} />
+                              <ArrowRight className="w-2.5 h-2.5 text-frog-green" strokeWidth={2} />
                             </span>
                             <span
                               className={`text-sm ${
@@ -346,15 +343,12 @@ export default function StartupSupportPage() {
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-white">
         <div className="max-w-[1400px] mx-auto">
           <ScrollReveal>
-            <Eyebrow light>Who Is This For</Eyebrow>
+            <Eyebrow light>Who It&rsquo;s For</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              Built for every stage{' '}
-              <span className="italic text-[#7AC943]">of the journey.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-12 md:mb-16">
+              Every stage{' '}
+              <span className="italic text-frog-green">of the journey.</span>
             </h2>
           </ScrollReveal>
 
@@ -364,16 +358,13 @@ export default function StartupSupportPage() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                  className="bg-[#F5F5F5] rounded-[2rem] p-8 md:p-10 h-full group hover:bg-[#7AC943]/5 transition-colors duration-700"
+                  className="bg-frog-light rounded-[2rem] p-8 md:p-10 h-full group hover:bg-frog-green/5 transition-colors duration-700"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 text-[#7AC943] flex items-center justify-center mb-5 group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-700">
+                  <div className="w-12 h-12 rounded-2xl bg-frog-green/10 ring-1 ring-frog-green/20 text-frog-green flex items-center justify-center mb-5 group-hover:bg-frog-green group-hover:text-black transition-all duration-700">
                     <uc.icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
 
-                  <h3
-                    className="text-xl font-bold text-[#1A1A1A] mb-3"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
+                  <h3 className="text-xl font-bold text-black mb-3">
                     {uc.title}
                   </h3>
                   <p className="text-black/40 text-sm leading-relaxed mb-5">
@@ -384,7 +375,7 @@ export default function StartupSupportPage() {
                     {uc.features.map((f) => (
                       <span
                         key={f}
-                        className="px-3 py-1.5 rounded-full bg-[#7AC943]/10 text-[#7AC943] text-xs font-bold"
+                        className="px-3 py-1.5 rounded-full bg-frog-green/10 text-frog-green text-xs font-bold"
                       >
                         {f}
                       </span>
@@ -401,20 +392,17 @@ export default function StartupSupportPage() {
           PROCESS — Dark with DoubleBezel
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
-        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#7AC943]/[0.04] blur-[180px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[180px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="mb-12 md:mb-16">
             <ScrollReveal>
-              <Eyebrow>Our Process</Eyebrow>
+              <Eyebrow>Process</Eyebrow>
             </ScrollReveal>
             <ScrollReveal delay={0.06}>
-              <h2
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                From idea to{' '}
-                <span className="italic text-[#7AC943]">investor-ready.</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug">
+                Idea to{' '}
+                <span className="italic text-frog-green">investor-ready.</span>
               </h2>
             </ScrollReveal>
           </div>
@@ -424,17 +412,11 @@ export default function StartupSupportPage() {
               <ScrollReveal key={step.n} delay={i * 0.06}>
                 <DoubleBezel highlight={i === 0}>
                   <div className="mb-4">
-                    <span
-                      className="text-4xl font-bold text-[#7AC943] leading-none"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
+                    <span className="text-4xl font-bold text-frog-green leading-none">
                       {step.n}
                     </span>
                   </div>
-                  <h3
-                    className="text-base font-bold text-frog-light mb-2"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
+                  <h3 className="text-base font-bold text-frog-light mb-2">
                     {step.title}
                   </h3>
                   <p className="text-frog-muted text-sm leading-relaxed">{step.desc}</p>
@@ -448,18 +430,15 @@ export default function StartupSupportPage() {
       {/* ═══════════════════════════════════════════════════
           TESTIMONIALS — Light warm
       ═══════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-[1400px] mx-auto">
           <ScrollReveal>
-            <Eyebrow light>What Founders Say</Eyebrow>
+            <Eyebrow light>Reviews</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-12 md:mb-16">
               They launched.{' '}
-              <span className="italic text-[#7AC943]">So can you.</span>
+              <span className="italic text-frog-green">So can you.</span>
             </h2>
           </ScrollReveal>
 
@@ -471,7 +450,7 @@ export default function StartupSupportPage() {
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[#7AC943]/10 flex items-center justify-center text-[#7AC943] font-bold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-frog-green/10 flex items-center justify-center text-frog-green font-bold text-sm">
                       {t.name[0]}
                     </div>
                     <div>
@@ -490,23 +469,19 @@ export default function StartupSupportPage() {
           CUSTOM PRICING NOTE — Dark editorial
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
-        <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-[#7AC943]/[0.06] to-frog-dark pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#7AC943]/[0.06] rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Custom pricing.{' '}
-              <span className="italic text-[#7AC943]">Tailored scope.</span>
+              <span className="italic text-frog-green">Tailored scope.</span>
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <p className="text-frog-muted text-base md:text-lg mb-10 leading-relaxed max-w-lg mx-auto">
-              Every startup is different. We scope your project and quote accordingly — no
-              cookie-cutter packages, just what you actually need.
+              Every startup is different. We scope and quote — no filler, just what you need.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
@@ -514,10 +489,11 @@ export default function StartupSupportPage() {
               href="https://wa.me/264813411522"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group inline-flex items-center gap-2.5 bg-[#7AC943] text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-[#7AC943]/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
+              aria-label="Get a custom quote on WhatsApp"
+              className={`group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
             >
               <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-              Get a Custom Quote
+              Get Quote
               <span
                 className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${easing}`}
               >
@@ -535,15 +511,12 @@ export default function StartupSupportPage() {
         <div className="max-w-[1400px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20 mb-4">
-                Talk to Us
+              <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
+                Contact
               </span>
-              <h3
-                className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 Pick your agent.{' '}
-                <span className="italic text-[#7AC943]">Start now.</span>
+                <span className="italic text-frog-green">Start.</span>
               </h3>
             </div>
           </ScrollReveal>
@@ -555,7 +528,8 @@ export default function StartupSupportPage() {
                   href={`https://wa.me/${agent.phone}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group flex items-center justify-between p-6 rounded-2xl bg-frog-shell ring-1 ring-frog-hairline hover:ring-[#7AC943]/20 hover:bg-white/[0.04] ${easing}`}
+                  aria-label={`Chat with ${agent.name} on WhatsApp`}
+                  className={`group flex items-center justify-between min-h-[44px] p-6 rounded-2xl bg-frog-shell ring-1 ring-frog-hairline hover:ring-frog-green/20 hover:bg-white/[0.04] ${easing}`}
                 >
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">
@@ -570,11 +544,11 @@ export default function StartupSupportPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] text-xs font-bold group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                    <div className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 bg-frog-green/10 text-frog-green text-xs font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
                       <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.5} />
                       WhatsApp
                     </div>
-                    <span className="w-10 h-10 rounded-full bg-[#7AC943]/10 text-[#7AC943] flex items-center justify-center text-sm font-bold group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                    <span className="w-10 h-10 rounded-full bg-frog-green/10 text-frog-green flex items-center justify-center text-sm font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
                       →
                     </span>
                   </div>

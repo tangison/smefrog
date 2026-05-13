@@ -64,7 +64,7 @@ export function Navbar() {
                   href={link.href}
                   className={`text-[11px] font-black uppercase tracking-[0.18em] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                     pathname === link.href
-                      ? 'text-[#7AC943]'
+                      ? 'text-frog-green'
                       : 'text-white/40 hover:text-white'
                   }`}
                 >
@@ -92,7 +92,7 @@ export function Navbar() {
                 href="https://wa.me/264813411522"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden md:flex items-center gap-2 bg-[#7AC943] text-black rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-wider hover:bg-[#7AC943]/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(122,201,67,0.15)]"
+                className="hidden md:flex items-center gap-2 bg-frog-green text-black rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-wider hover:bg-frog-green/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(122,201,67,0.15)]"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
                 Start Registration
@@ -153,7 +153,7 @@ export function Navbar() {
                     href={link.href}
                     onClick={close}
                     className={`block text-3xl md:text-4xl font-black tracking-tight py-2 transition-colors duration-500 ${
-                      pathname === link.href ? 'text-[#7AC943]' : 'text-white/60 hover:text-white'
+                      pathname === link.href ? 'text-frog-green' : 'text-white/60 hover:text-white'
                     }`}
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
@@ -172,7 +172,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: 0.4, ease: [0.32, 0.72, 0, 1] }}
-              className="mt-10 flex items-center gap-2.5 bg-[#7AC943] text-black rounded-full px-8 py-4 text-sm font-black uppercase tracking-wider shadow-[0_0_30px_rgba(122,201,67,0.25)]"
+              className="mt-10 flex items-center gap-2.5 bg-frog-green text-black rounded-full px-8 py-4 text-sm font-black uppercase tracking-wider shadow-[0_0_30px_rgba(122,201,67,0.25)]"
             >
               <MessageCircle className="w-5 h-5" />
               Start Registration

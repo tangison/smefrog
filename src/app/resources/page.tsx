@@ -27,30 +27,34 @@ const registrationGuides = [
   {
     icon: BookOpen,
     title: 'CC Registration Guide',
-    description: 'Complete step-by-step walkthrough for registering a Close Corporation in Namibia.',
+    description: 'Step-by-step CC registration walkthrough.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
+    href: '/resources/cc-registration-guide',
   },
   {
     icon: GitCompare,
-    title: 'CC vs Pty Ltd Comparison',
-    description: 'Understand the key differences between business structures and choose the right one.',
+    title: 'CC vs Pty Ltd',
+    description: 'Key differences and which to choose.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
+    href: '/resources/cc-vs-pty-ltd',
   },
   {
     icon: ClipboardCheck,
     title: 'BIPA Compliance Checklist',
-    description: 'Everything you need to know about BIPA requirements and filing deadlines.',
+    description: 'Requirements, deadlines, and filing info.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
+    href: '/resources/bipa-compliance-checklist',
   },
   {
     icon: FileText,
     title: 'Beneficial Ownership Guide',
-    description: 'How to file your BO declaration and stay compliant with Namibian regulations.',
+    description: 'How to file your BO declaration.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
+    href: '/resources/beneficial-ownership-guide',
   },
 ]
 
@@ -58,30 +62,34 @@ const templates = [
   {
     icon: FileSpreadsheet,
     title: 'Business Plan Template',
-    description: 'Professional business plan template designed for Namibian startups and SME funding applications.',
+    description: 'Professional template for Namibian startups.',
     action: 'Download',
     actionIcon: Download,
+    href: '#',
   },
   {
     icon: Briefcase,
     title: 'Founders\' Agreement',
-    description: 'Template agreement for co-founders covering equity, roles, responsibilities, and dispute resolution.',
+    description: 'Equity, roles, and dispute resolution.',
     action: 'Download',
     actionIcon: Download,
+    href: '#',
   },
   {
     icon: PenTool,
-    title: 'Service Contract Template',
-    description: 'Standard service agreement template for freelancers and small businesses in Namibia.',
+    title: 'Service Contract',
+    description: 'Standard agreement for freelancers.',
     action: 'Download',
     actionIcon: Download,
+    href: '#',
   },
   {
     icon: Scale,
     title: 'Shareholders\' Agreement',
-    description: 'Comprehensive shareholders\' agreement template for Pty Ltd companies with multiple owners.',
+    description: 'For Pty Ltd companies with multiple owners.',
     action: 'Download',
     actionIcon: Download,
+    href: '#',
   },
 ]
 
@@ -89,23 +97,26 @@ const tools = [
   {
     icon: Calculator,
     title: 'Pricing Calculator',
-    description: 'Calculate the total cost of your business registration based on the package and add-ons you need.',
+    description: 'Calculate your total registration cost.',
     action: 'Use Tool',
     actionIcon: Zap,
+    href: '#',
   },
   {
     icon: Search,
     title: 'Business Name Checker',
-    description: 'Check if your proposed business name is available before starting the registration process.',
+    description: 'Check if your name is available.',
     action: 'Use Tool',
     actionIcon: Zap,
+    href: '#',
   },
   {
     icon: BarChart3,
     title: 'Startup Cost Estimator',
-    description: 'Estimate your total startup costs including registration, compliance, and first-year operating expenses.',
+    description: 'Estimate total startup costs including first year.',
     action: 'Use Tool',
     actionIcon: Zap,
+    href: '#',
   },
 ]
 
@@ -122,8 +133,8 @@ function LightResourceCard({
 
   return (
     <ScrollReveal delay={index * 0.06}>
-      <div className="bg-white ring-1 ring-[#E5E7EB] p-1.5 rounded-[2rem] h-full hover:ring-frog-green/30 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group">
-        <div className="bg-[#F8F9F4] rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
+      <div className="bg-white ring-1 ring-black/[0.06] p-1.5 rounded-[2rem] h-full hover:ring-frog-green/30 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group">
+        <div className="bg-frog-light rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
           {/* Icon */}
           <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center mb-4">
             <IconComp className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
@@ -131,21 +142,21 @@ function LightResourceCard({
 
           {/* Title */}
           <h3
-            className="text-lg font-bold text-[#1A1A1A] mb-2"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+            className="text-lg font-bold text-black mb-2"
           >
             {item.title}
           </h3>
 
           {/* Description */}
-          <p className="text-[#6B7280] text-sm leading-relaxed mb-6 flex-1">
+          <p className="text-black/60 text-sm leading-relaxed mb-6 flex-1">
             {item.description}
           </p>
 
           {/* Action */}
           <a
-            href="#"
-            className="inline-flex items-center gap-2 text-frog-green text-sm font-semibold group-hover:gap-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            href={item.href}
+            className="inline-flex items-center gap-2 min-h-[44px] text-frog-green text-sm font-semibold group-hover:gap-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            aria-label={`${item.action}: ${item.title}`}
           >
             {item.action}
             <ActionIcon className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -179,7 +190,6 @@ function DarkResourceCard({
           {/* Title */}
           <h3
             className="text-lg font-bold text-frog-light mb-2"
-            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             {item.title}
           </h3>
@@ -191,8 +201,9 @@ function DarkResourceCard({
 
           {/* Action */}
           <a
-            href="#"
-            className="inline-flex items-center gap-2 text-frog-green text-sm font-semibold hover:gap-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            href={item.href}
+            className="inline-flex items-center gap-2 min-h-[44px] text-frog-green text-sm font-semibold hover:gap-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            aria-label={`${item.action}: ${item.title}`}
           >
             {item.action}
             <ActionIcon className="w-3.5 h-3.5" strokeWidth={1.5} />
@@ -218,37 +229,35 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.08}>
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-frog-light leading-tight max-w-3xl"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Resources for{' '}
+              Tools for{' '}
               <span className="text-frog-green">Founders</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Practical guides, templates, and tools to help you navigate the startup landscape in Namibia.
+              Guides, templates, and tools to help you start smart.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
       {/* ═══ REGISTRATION GUIDES — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <Eyebrow>Guides</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
             <h2
-              className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-2"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              className="text-2xl md:text-3xl font-bold text-black mb-2"
             >
               Registration Guides
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-[#6B7280] text-base max-w-xl mb-12 leading-relaxed">
-              Everything you need to know about registering and maintaining your business in Namibia.
+            <p className="text-black/60 text-base max-w-xl mb-12 leading-relaxed">
+              Everything about registering and maintaining your business.
             </p>
           </ScrollReveal>
 
@@ -269,14 +278,13 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-2xl md:text-3xl font-bold text-frog-light mb-2"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Downloadable Templates
+              Free Templates
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base max-w-xl mb-12 leading-relaxed">
-              Professional document templates to get your business paperwork in order — free to download.
+              Professional document templates — free to download.
             </p>
           </ScrollReveal>
 
@@ -289,22 +297,21 @@ export default function ResourcesPage() {
       </section>
 
       {/* ═══ TOOLS & CALCULATORS — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F8F9F4]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <Eyebrow>Tools</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
             <h2
-              className="text-2xl md:text-3xl font-bold text-[#1A1A1A] mb-2"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+              className="text-2xl md:text-3xl font-bold text-black mb-2"
             >
-              Tools & Calculators
+              Calculators & Tools
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-[#6B7280] text-base max-w-xl mb-12 leading-relaxed">
-              Interactive tools to help you plan, calculate, and verify before you register.
+            <p className="text-black/60 text-base max-w-xl mb-12 leading-relaxed">
+              Plan, calculate, and verify before you register.
             </p>
           </ScrollReveal>
 
@@ -330,14 +337,13 @@ export default function ResourcesPage() {
           <ScrollReveal delay={0.06}>
             <h2
               className="text-3xl md:text-4xl font-bold text-frog-light mb-4"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              Ready to register your business?
+              Ready to register?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              Skip the research and let us handle everything. Register your business remotely with SMEfrog — fast, affordable, and 100% online.
+              Skip the research. We handle everything — fast, affordable, 100% online.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
@@ -346,7 +352,8 @@ export default function ResourcesPage() {
                 href="https://wa.me/264813411522"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                aria-label="Register via WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
                 Register via WhatsApp
@@ -358,10 +365,11 @@ export default function ResourcesPage() {
                 href="https://wa.me/264853057020"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                className="group inline-flex items-center gap-2.5 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                aria-label="Chat with Mux on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                Mux on WhatsApp
+                WhatsApp Mux
                 <span className="w-7 h-7 rounded-full bg-frog-green/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
                   <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
                 </span>

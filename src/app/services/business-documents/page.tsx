@@ -8,13 +8,11 @@ import {
   ScrollText,
   PenTool,
   Users,
-  ShieldCheck,
-  Presentation,
+  Handshake,
   ArrowRight,
   MessageCircle,
   Phone,
   ChevronRight,
-  Handshake,
   Lock,
   Briefcase,
   FileCheck2,
@@ -31,23 +29,23 @@ const documentTypes = [
     icon: Handshake,
     title: "Founders' Agreement",
     description:
-      "Define ownership, roles, and responsibilities between co-founders. Prevent disputes before they start with a clear, legally sound agreement.",
+      "Define ownership, roles, and responsibilities. Prevent disputes before they start.",
     items: [
-      'Equity Split & Ownership Terms',
+      'Equity Split & Ownership',
       'Roles & Responsibilities',
       'Decision-Making Processes',
       'Exit Clauses & Vesting',
-      'Intellectual Property Assignment',
+      'IP Assignment',
     ],
   },
   {
     icon: Briefcase,
     title: 'Service Contracts',
     description:
-      'Professional service agreements that protect your business and clearly define deliverables, timelines, and payment terms.',
+      'Agreements that protect your business and define deliverables, timelines, and payment.',
     items: [
-      'Scope of Work Definition',
-      'Payment Terms & Schedules',
+      'Scope of Work',
+      'Payment Terms',
       'Delivery Timelines',
       'Liability Limitations',
       'Termination Clauses',
@@ -57,7 +55,7 @@ const documentTypes = [
     icon: Users,
     title: 'Employment Contracts',
     description:
-      'Compliant employment agreements tailored to Namibian labour law. Protect your business while treating your team fairly.',
+      'Namibian-compliant employment agreements. Protect your business, treat your team fairly.',
     items: [
       'Job Description & Duties',
       'Remuneration & Benefits',
@@ -68,13 +66,13 @@ const documentTypes = [
   },
   {
     icon: Lock,
-    title: 'Non-Disclosure Agreements',
+    title: 'NDAs',
     description:
-      'Protect sensitive business information, trade secrets, and strategic plans with professionally drafted NDAs.',
+      'Protect sensitive information and trade secrets with professionally drafted NDAs.',
     items: [
       'Mutual & Unilateral NDAs',
       'Confidentiality Obligations',
-      'Duration & Territory Scope',
+      'Duration & Territory',
       'Exclusions & Permitted Disclosures',
       'Remedies for Breach',
     ],
@@ -83,20 +81,20 @@ const documentTypes = [
     icon: Scale,
     title: "Shareholders' Agreement",
     description:
-      "Govern the relationship between shareholders and protect minority interests. Essential for companies with multiple owners.",
+      "Govern shareholder relationships. Essential for companies with multiple owners.",
     items: [
       'Share Transfer Restrictions',
       'Drag-Along & Tag-Along Rights',
       'Dividend Policies',
       'Board Composition Rules',
-      'Dispute Resolution Mechanisms',
+      'Dispute Resolution',
     ],
   },
   {
     icon: ClipboardList,
     title: 'Company Policies',
     description:
-      'Formal policies that define workplace standards, expectations, and procedures. Essential for compliance and professional operations.',
+      'Formal policies for workplace standards and compliance.',
     items: [
       'Code of Conduct',
       'Health & Safety Policy',
@@ -108,17 +106,17 @@ const documentTypes = [
 ]
 
 const additionalServices = [
-  { icon: FileCheck2, title: 'Compliance Documents', desc: 'BIPA annual returns, tax compliance, BO declarations.' },
-  { icon: Presentation, title: 'Proposal Drafting', desc: 'Business proposals, tender responses, grant applications.' },
+  { icon: FileCheck2, title: 'Compliance Docs', desc: 'BIPA annual returns, tax compliance, BO declarations.' },
   { icon: ScrollText, title: 'Templates', desc: 'Invoice, quotation, and letterhead templates.' },
   { icon: PenTool, title: 'HR Documents', desc: 'Employee contracts, onboarding packs, review forms.' },
+  { icon: FileText, title: 'Proposals', desc: 'Business proposals, tender responses, grant applications.' },
 ]
 
 const processSteps = [
-  { n: '01', title: 'Describe Your Needs', desc: 'Tell us which documents you need and the context of your business.' },
-  { n: '02', title: 'We Draft & Review', desc: 'Our team prepares professional documents tailored to Namibian law.' },
-  { n: '03', title: 'You Review & Approve', desc: 'Review drafts and request revisions until everything is right.' },
-  { n: '04', title: 'Receive Final Documents', desc: 'Get your polished, legally sound documents delivered digitally.' },
+  { n: '01', title: 'Describe Needs', desc: 'Tell us which documents you need.' },
+  { n: '02', title: 'We Draft', desc: 'Professional documents tailored to Namibian law.' },
+  { n: '03', title: 'Review & Approve', desc: 'Review drafts. Request revisions until right.' },
+  { n: '04', title: 'Receive', desc: 'Polished, legally sound documents delivered digitally.' },
 ]
 
 const AGENTS = [
@@ -137,41 +135,37 @@ export default function BusinessDocumentsPage() {
       ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
         {/* Ambient orbs */}
-        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#7AC943]/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#1E3A2F]/[0.15] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-dark/[0.15] blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — Text */}
             <div>
               <ScrollReveal>
-                <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20 mb-6">
+                <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-6">
                   Business Documents
                 </span>
               </ScrollReveal>
 
               <ScrollReveal delay={0.08}>
-                <h1
-                  className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-                  style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                >
+                <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6">
                   Professional
                   <br />
-                  <span className="italic text-[#7AC943]">Documents.</span>
+                  <span className="italic text-frog-green">Documents.</span>
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal delay={0.14}>
                 <p className="text-frog-muted text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-                  Contracts, policies, and internal documents — crafted for the Namibian
-                  regulatory environment. Protect your business from day one.
+                  Contracts, policies, and compliance docs. Protect your business from day one.
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-[#7AC943]/10 border border-[#7AC943]/20 mb-8">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7AC943] animate-pulse" />
-                  <span className="text-[#7AC943] text-sm font-bold">Custom Pricing — Per Document Basis</span>
+                <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-frog-green/10 border border-frog-green/20 mb-8">
+                  <span className="w-1.5 h-1.5 rounded-full bg-frog-green animate-pulse" />
+                  <span className="text-frog-green text-sm font-bold">Custom Pricing — Per Document</span>
                 </div>
               </ScrollReveal>
 
@@ -181,10 +175,11 @@ export default function BusinessDocumentsPage() {
                     href="https://wa.me/264813411522"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group inline-flex items-center gap-2.5 bg-[#7AC943] text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-[#7AC943]/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
+                    aria-label="Request a document on WhatsApp"
+                    className={`group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
                   >
                     <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                    Request a Document
+                    Request
                     <span
                       className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${easing}`}
                     >
@@ -193,7 +188,8 @@ export default function BusinessDocumentsPage() {
                   </a>
                   <Link
                     href="/services/business-registration"
-                    className={`inline-flex items-center gap-2 ring-1 ring-white/10 text-white/70 rounded-full px-8 py-4 text-sm font-bold bg-white/[0.03] hover:bg-white/[0.06] hover:text-white active:scale-[0.98] ${easing}`}
+                    aria-label="Go to business registration"
+                    className={`inline-flex items-center gap-2 min-h-[44px] ring-1 ring-white/10 text-white/70 rounded-full px-8 py-4 text-sm font-bold bg-white/[0.03] hover:bg-white/[0.06] hover:text-white active:scale-[0.98] ${easing}`}
                   >
                     Register First
                     <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
@@ -222,19 +218,16 @@ export default function BusinessDocumentsPage() {
       {/* ═══════════════════════════════════════════════════
           DOCUMENT TYPES — Light editorial grid
       ═══════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#F2F2F2]">
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-12 md:mb-16">
             <ScrollReveal>
               <Eyebrow light>Document Types</Eyebrow>
             </ScrollReveal>
             <ScrollReveal delay={0.06}>
-              <h2
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] leading-tight max-w-2xl"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight max-w-2xl">
                 Every document your business{' '}
-                <span className="italic text-[#7AC943]">needs to operate.</span>
+                <span className="italic text-frog-green">needs.</span>
               </h2>
             </ScrollReveal>
           </div>
@@ -254,18 +247,17 @@ export default function BusinessDocumentsPage() {
                   <div
                     className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${
                       i === 0
-                        ? 'bg-[#7AC943]/15 ring-1 ring-[#7AC943]/25'
-                        : 'bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20'
+                        ? 'bg-frog-green/15 ring-1 ring-frog-green/25'
+                        : 'bg-frog-green/10 ring-1 ring-frog-green/20'
                     }`}
                   >
-                    <doc.icon className="w-5 h-5 text-[#7AC943]" strokeWidth={1.5} />
+                    <doc.icon className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
                   </div>
 
                   <h3
                     className={`text-xl font-bold mb-3 ${
-                      i === 0 ? 'text-white' : 'text-[#1A1A1A]'
+                      i === 0 ? 'text-white' : 'text-black'
                     }`}
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     {doc.title}
                   </h3>
@@ -283,7 +275,7 @@ export default function BusinessDocumentsPage() {
                       <li key={item} className="flex items-center gap-2.5">
                         <span
                           className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                            i === 0 ? 'bg-[#7AC943]' : 'bg-[#7AC943]/60'
+                            i === 0 ? 'bg-frog-green' : 'bg-frog-green/60'
                           }`}
                         />
                         <span
@@ -307,20 +299,17 @@ export default function BusinessDocumentsPage() {
           PROCESS — Dark with DoubleBezel
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
-        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#7AC943]/[0.04] blur-[180px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[180px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="mb-12 md:mb-16">
             <ScrollReveal>
-              <Eyebrow>Our Process</Eyebrow>
+              <Eyebrow>Process</Eyebrow>
             </ScrollReveal>
             <ScrollReveal delay={0.06}>
-              <h2
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
-                From brief to{' '}
-                <span className="italic text-[#7AC943]">bank-ready document.</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-3xl leading-snug">
+                Brief to{' '}
+                <span className="italic text-frog-green">bank-ready document.</span>
               </h2>
             </ScrollReveal>
           </div>
@@ -330,17 +319,11 @@ export default function BusinessDocumentsPage() {
               <ScrollReveal key={step.n} delay={i * 0.06}>
                 <DoubleBezel highlight={i === 0}>
                   <div className="mb-4">
-                    <span
-                      className="text-4xl font-bold text-[#7AC943] leading-none"
-                      style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                    >
+                    <span className="text-4xl font-bold text-frog-green leading-none">
                       {step.n}
                     </span>
                   </div>
-                  <h3
-                    className="text-base font-bold text-frog-light mb-2"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
+                  <h3 className="text-base font-bold text-frog-light mb-2">
                     {step.title}
                   </h3>
                   <p className="text-frog-muted text-sm leading-relaxed">{step.desc}</p>
@@ -360,12 +343,9 @@ export default function BusinessDocumentsPage() {
             <Eyebrow light>Also Available</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1A1A1A] mb-12 md:mb-16"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              More than just contracts.{' '}
-              <span className="italic text-[#7AC943]">Complete coverage.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-12 md:mb-16">
+              More than contracts.{' '}
+              <span className="italic text-frog-green">Full coverage.</span>
             </h2>
           </ScrollReveal>
 
@@ -375,15 +355,12 @@ export default function BusinessDocumentsPage() {
                 <motion.div
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                  className="bg-[#F5F5F5] rounded-[2rem] p-6 md:p-8 h-full group hover:bg-[#7AC943]/5 transition-colors duration-700"
+                  className="bg-frog-light rounded-[2rem] p-6 md:p-8 h-full group hover:bg-frog-green/5 transition-colors duration-700"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#7AC943]/10 ring-1 ring-[#7AC943]/20 text-[#7AC943] flex items-center justify-center mb-4 group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-700">
+                  <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 text-frog-green flex items-center justify-center mb-4 group-hover:bg-frog-green group-hover:text-black transition-all duration-700">
                     <svc.icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
-                  <h3
-                    className="text-base font-bold text-[#1A1A1A] mb-2"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-                  >
+                  <h3 className="text-base font-bold text-black mb-2">
                     {svc.title}
                   </h3>
                   <p className="text-black/40 text-sm leading-relaxed">{svc.desc}</p>
@@ -398,23 +375,19 @@ export default function BusinessDocumentsPage() {
           CUSTOM PRICING NOTE — Dark editorial
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
-        <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-[#7AC943]/[0.06] to-frog-dark pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#7AC943]/[0.06] rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>
-            <h2
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               Custom pricing.{' '}
-              <span className="italic text-[#7AC943]">Per document.</span>
+              <span className="italic text-frog-green">Per document.</span>
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <p className="text-frog-muted text-base md:text-lg mb-10 leading-relaxed max-w-lg mx-auto">
-              Document costs vary based on complexity and scope. Tell us what you need
-              and we&apos;ll provide a clear, upfront quote.
+              Costs vary by complexity. Tell us what you need — we quote upfront.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
@@ -422,10 +395,11 @@ export default function BusinessDocumentsPage() {
               href="https://wa.me/264813411522"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group inline-flex items-center gap-2.5 bg-[#7AC943] text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-[#7AC943]/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
+              aria-label="Request a document on WhatsApp"
+              className={`group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
             >
               <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-              Request a Document
+              Request
               <span
                 className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${easing}`}
               >
@@ -443,15 +417,12 @@ export default function BusinessDocumentsPage() {
         <div className="max-w-[1400px] mx-auto">
           <ScrollReveal>
             <div className="text-center mb-10">
-              <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-[#7AC943]/10 text-[#7AC943] border border-[#7AC943]/20 mb-4">
-                Talk to Us
+              <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
+                Contact
               </span>
-              <h3
-                className="text-2xl md:text-3xl font-bold text-white"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-              >
+              <h3 className="text-2xl md:text-3xl font-bold text-white">
                 Pick your agent.{' '}
-                <span className="italic text-[#7AC943]">Start now.</span>
+                <span className="italic text-frog-green">Start.</span>
               </h3>
             </div>
           </ScrollReveal>
@@ -465,7 +436,8 @@ export default function BusinessDocumentsPage() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group flex items-center justify-between p-6 rounded-2xl bg-frog-shell ring-1 ring-frog-hairline hover:ring-[#7AC943]/20 hover:bg-white/[0.04] ${easing}`}
+                  aria-label={`Chat with ${agent.name} on WhatsApp`}
+                  className={`group flex items-center justify-between min-h-[44px] p-6 rounded-2xl bg-frog-shell ring-1 ring-frog-hairline hover:ring-frog-green/20 hover:bg-white/[0.04] ${easing}`}
                 >
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">
@@ -480,11 +452,11 @@ export default function BusinessDocumentsPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 bg-[#7AC943]/10 text-[#7AC943] text-xs font-bold group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                    <div className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 bg-frog-green/10 text-frog-green text-xs font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
                       <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.5} />
                       WhatsApp
                     </div>
-                    <span className="w-10 h-10 rounded-full bg-[#7AC943]/10 text-[#7AC943] flex items-center justify-center text-sm font-bold group-hover:bg-[#7AC943] group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                    <span className="w-10 h-10 rounded-full bg-frog-green/10 text-frog-green flex items-center justify-center text-sm font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
                       →
                     </span>
                   </div>

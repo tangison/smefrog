@@ -88,7 +88,7 @@ export function SearchOverlay() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="How long does registration take?"
-                className="w-full bg-transparent border-b-2 border-white/10 py-8 pl-10 text-2xl md:text-4xl text-white outline-none focus:border-[#7AC943] transition-colors duration-500 font-bold"
+                className="w-full bg-transparent border-b-2 border-white/10 py-8 pl-10 text-2xl md:text-4xl text-white outline-none focus:border-frog-green transition-colors duration-500 font-bold"
               />
               <button
                 onClick={() => setOpen(false)}
@@ -129,10 +129,10 @@ export function SearchOverlay() {
                         className="flex items-center justify-between gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors duration-300 group"
                       >
                         <div>
-                          <p className="text-white font-bold text-sm group-hover:text-[#7AC943] transition-colors">{item.title}</p>
+                          <p className="text-white font-bold text-sm group-hover:text-frog-green transition-colors">{item.title}</p>
                           <p className="text-white/30 text-xs mt-0.5">{item.desc}</p>
                         </div>
-                        <ArrowRight className="w-4 h-4 text-white/10 group-hover:text-[#7AC943] transition-colors shrink-0" />
+                        <ArrowRight className="w-4 h-4 text-white/10 group-hover:text-frog-green transition-colors shrink-0" />
                       </Link>
                     ))}
                   </div>
