@@ -7,6 +7,7 @@ import { TrendingDown, Wifi, Lightbulb, Clock, Shield, Zap, MessageCircle, Arrow
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const values = [
@@ -52,7 +53,7 @@ const founders = [
     description: 'Business registration, legal compliance, and documentation.',
     icon: Shield,
     specialties: ['Business Registration', 'Legal Compliance', 'Company Documents'],
-    waLink: 'https://wa.me/264813411522',
+    waLink: WHATSAPP_GADAFI,
   },
   {
     name: 'Mux',
@@ -62,7 +63,7 @@ const founders = [
     description: 'Digital services, online presence, and strategic growth.',
     icon: Zap,
     specialties: ['Digital Services', 'Online Strategy', 'Brand Growth'],
-    waLink: 'https://wa.me/264853057020',
+    waLink: WHATSAPP_MUX,
   },
 ]
 
@@ -431,7 +432,7 @@ export default function AboutPage() {
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/264813411522"
+                href={WHATSAPP_GADAFI}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 min-h-[44px] bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300"

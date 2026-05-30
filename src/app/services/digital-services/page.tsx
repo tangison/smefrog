@@ -21,6 +21,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { GEMSWEB_URL, WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const services = [
@@ -115,13 +116,13 @@ const processSteps = [
 ]
 
 const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', phone: '264813411522', role: 'SMEfrog — Compliance Expert' },
-  { id: 'mux', name: 'Mux', phone: '264853057020', role: 'SMEfrog — Digital Strategist' },
+  { id: 'gadafi', name: 'Gadafi', phone: '264813411522', role: 'SMEfrog — Compliance Expert', waLink: WHATSAPP_GADAFI },
+  { id: 'mux', name: 'Mux', phone: '264853057020', role: 'SMEfrog — Digital Strategist', waLink: WHATSAPP_MUX },
 ]
 
 const GEMSWEB = {
   name: 'Gemsweb Digital',
-  url: 'https://gemsweb.xyz',
+  url: GEMSWEB_URL,
   description:
     'Digital services delivered through Gemsweb Digital — specialists in modern web solutions for African businesses.',
 }
@@ -187,7 +188,7 @@ export default function DigitalServicesPage() {
               <ScrollReveal delay={0.26}>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="https://wa.me/264853057020"
+                    href={WHATSAPP_MUX}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Get a quote on WhatsApp"
@@ -510,7 +511,7 @@ export default function DigitalServicesPage() {
             {AGENTS.map((agent, i) => (
               <ScrollReveal key={agent.name} delay={0.12 + i * 0.06}>
                 <a
-                  href={`https://wa.me/${agent.phone}?text=${encodeURIComponent(
+                  href={`${agent.waLink}?text=${encodeURIComponent(
                     `Hi ${agent.name}! I'm interested in digital services.`
                   )}`}
                   target="_blank"

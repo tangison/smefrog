@@ -22,6 +22,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const serviceBreakdown = [
@@ -147,8 +148,8 @@ const processSteps = [
 ]
 
 const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', phone: '264813411522', role: 'Compliance Expert' },
-  { id: 'mux', name: 'Mux', phone: '264853057020', role: 'Digital Strategist' },
+  { id: 'gadafi', name: 'Gadafi', fullPhone: '264813411522', role: 'Compliance Expert', waLink: WHATSAPP_GADAFI },
+  { id: 'mux', name: 'Mux', fullPhone: '264853057020', role: 'Digital Strategist', waLink: WHATSAPP_MUX },
 ]
 
 /* ─── Page ──────────────────────────────────────────── */
@@ -200,7 +201,7 @@ export default function StartupSupportPage() {
               <ScrollReveal delay={0.26}>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="https://wa.me/264813411522"
+                    href={WHATSAPP_GADAFI}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Get a quote on WhatsApp"
@@ -486,7 +487,7 @@ export default function StartupSupportPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <a
-              href="https://wa.me/264813411522"
+              href={WHATSAPP_GADAFI}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Get a custom quote on WhatsApp"
@@ -525,7 +526,7 @@ export default function StartupSupportPage() {
             {AGENTS.map((agent, i) => (
               <ScrollReveal key={agent.name} delay={i * 0.06}>
                 <a
-                  href={`https://wa.me/${agent.phone}`}
+                  href={agent.waLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Chat with ${agent.name} on WhatsApp`}
@@ -539,7 +540,7 @@ export default function StartupSupportPage() {
                     <div className="flex items-center gap-2 mt-1">
                       <Phone className="w-3 h-3 text-white/30" strokeWidth={1.5} />
                       <span className="text-white/30 text-sm font-medium">
-                        +264 {agent.phone.slice(3)}
+                        +264 {agent.fullPhone.slice(3)}
                       </span>
                     </div>
                   </div>

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX, GEMSWEB_URL } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const services = [
@@ -88,7 +89,7 @@ const services = [
     image: '/service-digital.png',
     price: 'Via Gemsweb',
     priceNote: 'Partner services',
-    badge: { label: 'Partnered With Gemsweb Digital', url: 'https://gemsweb.xyz' },
+    badge: { label: 'Partnered With Gemsweb Digital', url: GEMSWEB_URL },
     items: [
       'Website Development',
       'Landing Pages',
@@ -105,13 +106,13 @@ const agents = [
     name: 'Gadafi',
     role: 'Compliance Expert',
     phone: '081 341 1522',
-    waLink: 'https://wa.me/264813411522',
+    waLink: WHATSAPP_GADAFI,
   },
   {
     name: 'Mux',
     role: 'Digital Strategist',
     phone: '085 305 7020',
-    waLink: 'https://wa.me/264853057020',
+    waLink: WHATSAPP_MUX,
   },
 ]
 
@@ -155,7 +156,7 @@ export default function ServicesPage() {
           <ScrollReveal delay={0.2}>
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://wa.me/264813411522"
+                href={WHATSAPP_GADAFI}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Start registration on WhatsApp"
@@ -558,7 +559,7 @@ export default function ServicesPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <a
-              href="https://wa.me/264813411522"
+              href={WHATSAPP_GADAFI}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat with us on WhatsApp"

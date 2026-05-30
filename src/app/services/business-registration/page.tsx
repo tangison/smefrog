@@ -21,6 +21,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const ccRegistration = {
@@ -170,8 +171,8 @@ const testimonials = [
 ]
 
 const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', phone: '264813411522', role: 'Compliance Expert' },
-  { id: 'mux', name: 'Mux', phone: '264853057020', role: 'Digital Strategist' },
+  { id: 'gadafi', name: 'Gadafi', fullPhone: '264813411522', role: 'Compliance Expert', waLink: WHATSAPP_GADAFI },
+  { id: 'mux', name: 'Mux', fullPhone: '264853057020', role: 'Digital Strategist', waLink: WHATSAPP_MUX },
 ]
 
 /* ─── Page ──────────────────────────────────────────── */
@@ -228,7 +229,7 @@ export default function BusinessRegistrationPage() {
               <ScrollReveal delay={0.26}>
                 <div className="flex flex-wrap gap-3 mt-8">
                   <a
-                    href="https://wa.me/264813411522"
+                    href={WHATSAPP_GADAFI}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Start registration on WhatsApp"
@@ -434,7 +435,7 @@ export default function BusinessRegistrationPage() {
                     </div>
 
                     <a
-                      href={`https://wa.me/264813411522?text=${encodeURIComponent(
+                      href={`${WHATSAPP_GADAFI}?text=${encodeURIComponent(
                         `Hi! I'd like the ${pkg.tier} package (${pkg.price}).`
                       )}`}
                       target="_blank"
@@ -672,7 +673,7 @@ export default function BusinessRegistrationPage() {
                               selectedAgent === agent.id ? 'text-black/40' : 'text-white/30'
                             }`}
                           >
-                            +264 {agent.phone.slice(3)}
+                            +264 {agent.fullPhone.slice(3)}
                           </span>
                         </div>
                       </div>
@@ -703,7 +704,7 @@ export default function BusinessRegistrationPage() {
 
                 <ScrollReveal delay={0.12}>
                   <a
-                    href={`https://wa.me/${AGENTS.find((a) => a.id === selectedAgent)?.phone}`}
+                    href={`${AGENTS.find((a) => a.id === selectedAgent)?.waLink}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Chat with ${AGENTS.find((a) => a.id === selectedAgent)?.name} on WhatsApp`}

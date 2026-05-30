@@ -5,6 +5,7 @@ import { MessageCircle, ArrowRight, ChevronDown, Bot } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { motion, AnimatePresence } from 'framer-motion'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const faqs = [
@@ -198,7 +199,7 @@ export default function FAQPage() {
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="https://wa.me/264813411522"
+                href={WHATSAPP_GADAFI}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
@@ -211,7 +212,7 @@ export default function FAQPage() {
                 </span>
               </a>
               <a
-                href="https://wa.me/264853057020"
+                href={WHATSAPP_MUX}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"

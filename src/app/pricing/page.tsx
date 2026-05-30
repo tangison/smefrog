@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const ccPackages = [
@@ -101,13 +102,13 @@ const agents = [
     name: 'Gadafi',
     role: 'Compliance Expert',
     phone: '081 341 1522',
-    waLink: 'https://wa.me/264813411522',
+    waLink: WHATSAPP_GADAFI,
   },
   {
     name: 'Mux',
     role: 'Digital Strategist',
     phone: '085 305 7020',
-    waLink: 'https://wa.me/264853057020',
+    waLink: WHATSAPP_MUX,
   },
 ]
 
@@ -170,8 +171,8 @@ export default function PricingPage() {
 
   const agentWaLink =
     selectedAgent === 'gadafi'
-      ? 'https://wa.me/264813411522'
-      : 'https://wa.me/264853057020'
+      ? WHATSAPP_GADAFI
+      : WHATSAPP_MUX
 
   return (
     <>
@@ -307,7 +308,7 @@ export default function PricingPage() {
                     {/* CTA */}
                     {pkg.featured ? (
                       <a
-                        href={`https://wa.me/264813411522?text=${encodeURIComponent(pkg.waMessage)}`}
+                        href={`${WHATSAPP_GADAFI}?text=${encodeURIComponent(pkg.waMessage)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`group inline-flex items-center justify-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-7 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_30px_rgba(122,201,67,0.15)] ${easing}`}
@@ -322,7 +323,7 @@ export default function PricingPage() {
                       </a>
                     ) : (
                       <a
-                        href={`https://wa.me/264813411522?text=${encodeURIComponent(pkg.waMessage)}`}
+                        href={`${WHATSAPP_GADAFI}?text=${encodeURIComponent(pkg.waMessage)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`group inline-flex items-center justify-center gap-2 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-7 py-4 text-sm font-bold bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] ${easing}`}
@@ -457,7 +458,7 @@ export default function PricingPage() {
                 <div className="p-4 md:p-5" />
                 <div className="p-4 md:p-5 flex items-center justify-center border-l border-black/[0.06]">
                   <a
-                    href="https://wa.me/264813411522?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Basic%20package%20(N%24800)"
+                    href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Basic%20package%20(N%24800)`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm font-bold text-black/60 hover:text-frog-green min-h-[44px] inline-flex items-center ${easing}`}
@@ -468,7 +469,7 @@ export default function PricingPage() {
                 </div>
                 <div className="p-4 md:p-5 flex items-center justify-center border-l border-black/[0.06]">
                   <a
-                    href="https://wa.me/264813411522?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Advanced%20package%20(N%241%2C200)"
+                    href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Advanced%20package%20(N%241%2C200)`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`group inline-flex items-center gap-1.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-5 py-2.5 text-sm hover:bg-frog-green/90 active:scale-[0.98] ${easing}`}
@@ -483,7 +484,7 @@ export default function PricingPage() {
                 </div>
                 <div className="p-4 md:p-5 flex items-center justify-center border-l border-black/[0.06]">
                   <a
-                    href="https://wa.me/264813411522?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Full%20package%20(N%241%2C750)"
+                    href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Full%20package%20(N%241%2C750)`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm font-bold text-black/60 hover:text-frog-green min-h-[44px] inline-flex items-center ${easing}`}
@@ -730,7 +731,7 @@ export default function PricingPage() {
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <a
-                href="https://wa.me/264813411522?text=Hi%2C%20I%27m%20ready%20to%20start%20my%20business%20registration"
+                href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%27m%20ready%20to%20start%20my%20business%20registration`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group inline-flex items-center justify-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-6 py-3 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_20px_rgba(122,201,67,0.2)] w-full sm:w-auto ${easing}`}

@@ -2,17 +2,26 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, MessageCircle, Check, Zap, Globe, Shield, Phone } from 'lucide-react'
+import { ArrowRight, MessageCircle, Check, Phone } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
 import { HeroSlideshow } from '@/components/hero-slideshow'
+import {
+  AGENTS,
+  WHATSAPP_GADAFI,
+  TRUST_ITEMS,
+  pricingCards,
+  STEPS,
+  TESTIMONIALS,
+  FAQ_ITEMS,
+  PHONE_MAIN,
+  PHONE_MAIN_TEL,
+} from '@/lib/config'
 
-/* ─── Data ─────────────────────────────────────────── */
-const trustItems = ['100% Remote', '7–10 Days', 'Bank-Ready Docs', 'BIPA Included', '2X Cheaper']
-
+/* ─── Data (local only — not in config) ────────────── */
 const editorialServices = [
   {
     title: 'CC Registration',
@@ -53,38 +62,6 @@ const editorialServices = [
   },
 ]
 
-const pricingCards = [
-  { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], btn: 'Get Basic' },
-  { tier: 'ADVANCED', price: 'N$1,200', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true, btn: 'Get Advanced' },
-  { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Business Plan', 'Social Setup', 'Pitch Deck'], btn: 'Get Full' },
-]
-
-const steps = [
-  { n: '01', title: 'Pick a Package', desc: 'Choose what fits.', icon: Zap },
-  { n: '02', title: 'Send Your Details', desc: 'We collect everything remotely.', icon: Globe },
-  { n: '03', title: 'We File It All', desc: 'Compliance, forms, submissions.', icon: Shield },
-  { n: '04', title: 'Get Your Documents', desc: 'Delivered digitally. Ready for business.', icon: Check },
-]
-
-const testimonials = [
-  { name: 'Maria K.', business: 'MK Cleaners CC', quote: 'Registered my CC in under 2 weeks. No office visits. No drama.' },
-  { name: 'James T.', business: 'Tjiriange Logistics', quote: 'Everything happened over WhatsApp. I was skeptical, but it worked.' },
-  { name: 'Lina N.', business: 'Oshili Digital', quote: '2X cheaper than the lawyer I was going to use. Same documents.' },
-]
-
-const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', phone: '264813411522', role: 'Compliance Expert' },
-  { id: 'mux', name: 'Mux', phone: '264853057020', role: 'Digital Strategist' },
-]
-
-const faqItems = [
-  { q: 'How much does a CC cost?', a: 'N$800 Basic. N$1,200 Advanced. N$1,750 Full. All include BIPA filing.' },
-  { q: 'Can I register remotely?', a: 'Yes. WhatsApp and email. No office visits.' },
-  { q: 'How long does it take?', a: '7–10 working days, depending on BIPA.' },
-  { q: 'Can foreigners register?', a: 'Yes, with a valid work permit or residency.' },
-  { q: 'What do I need?', a: 'ID copy, proof of address, proposed business name(s). We handle the rest.' },
-]
-
 /* ─── Home Page ────────────────────────────────────── */
 export default function HomePage() {
   const [selectedAgent, setSelectedAgent] = useState('gadafi')
@@ -95,7 +72,7 @@ export default function HomePage() {
     const agent = AGENTS.find(a => a.id === selectedAgent)
     if (!agent) return
     const msg = `Hi ${agent.name}! I'm ${regForm.name}. I want the ${regForm.package} package for "${regForm.biz}".`
-    window.open(`https://wa.me/${agent.phone}?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/${agent.fullPhone}?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (
@@ -129,7 +106,7 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href="https://wa.me/264813411522"
+                    href={WHATSAPP_GADAFI}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Register now on WhatsApp"
@@ -157,7 +134,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="flex flex-wrap justify-center gap-x-12 gap-y-5">
-              {trustItems.map((text, i) => (
+              {TRUST_ITEMS.map((text, i) => (
                 <motion.div
                   key={text}
                   initial={{ opacity: 0 }}
@@ -293,7 +270,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {steps.map((step, i) => (
+            {STEPS.map((step, i) => (
               <ScrollReveal key={step.n} delay={i * 0.08}>
                 <div className="bg-frog-light rounded-[2rem] p-6 md:p-8 h-full group hover:bg-frog-green/5 transition-colors duration-700">
                   <div className="w-12 h-12 rounded-2xl bg-frog-green/10 ring-1 ring-frog-green/20 text-frog-green font-black flex items-center justify-center text-sm mb-5 group-hover:bg-frog-green group-hover:text-black transition-all duration-700">
@@ -343,7 +320,7 @@ export default function HomePage() {
                       ))}
                     </div>
                     <a
-                      href="https://wa.me/264813411522"
+                      href={WHATSAPP_GADAFI}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Choose ${pkg.tier} package`}
@@ -382,7 +359,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
+            {TESTIMONIALS.map((t, i) => (
               <ScrollReveal key={t.name} delay={i * 0.08}>
                 <div className="bg-white rounded-[2rem] p-8 h-full shadow-sm ring-1 ring-black/[0.04] hover:shadow-md transition-shadow duration-700">
                   <p className="text-black/60 text-base leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
@@ -415,7 +392,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           <div className="space-y-4">
-            {faqItems.map((item, i) => (
+            {FAQ_ITEMS.map((item, i) => (
               <ScrollReveal key={i} delay={i * 0.04}>
                 <div className="bg-frog-light rounded-2xl p-6 md:p-8 group hover:bg-frog-green/5 transition-colors duration-500">
                   <h4 className="text-black font-black text-base mb-2">{item.q}</h4>
@@ -444,17 +421,17 @@ export default function HomePage() {
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="tel:+2643411522"
+              href={PHONE_MAIN_TEL}
               className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-frog-green hover:text-black transition-all duration-300 min-h-[44px]"
               aria-label="Call main business line"
             >
               <Phone className="w-4 h-4 opacity-50" />
-              +264 341 1522
+              {PHONE_MAIN}
             </a>
             {AGENTS.map(agent => (
               <a
                 key={agent.id}
-                href={`https://wa.me/${agent.phone}`}
+                href={`https://wa.me/${agent.fullPhone}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-frog-green hover:text-black transition-all duration-300 min-h-[44px]"
@@ -595,7 +572,7 @@ export default function HomePage() {
           <ScrollReveal delay={0.1}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/264813411522"
+                href={WHATSAPP_GADAFI}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Register now on WhatsApp"

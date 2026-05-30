@@ -5,6 +5,7 @@ import { MessageCircle, ArrowRight, Check } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const filingSteps = [
@@ -236,7 +237,7 @@ export default function BeneficialOwnershipGuidePage() {
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="https://wa.me/264813411522"
+                href={WHATSAPP_GADAFI}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Get help with BO filing via WhatsApp"

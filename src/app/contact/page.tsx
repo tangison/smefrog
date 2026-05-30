@@ -7,6 +7,7 @@ import { MessageCircle, ArrowRight, Shield, Zap, Check, MapPin, Globe, Phone, Ex
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX, GEMSWEB_URL } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const agents = [
@@ -18,7 +19,7 @@ const agents = [
     description: 'Business registration, legal compliance, and documentation.',
     icon: Shield,
     specialties: ['Business Registration', 'Legal Compliance', 'Company Documents'],
-    waLink: 'https://wa.me/264813411522',
+    waLink: WHATSAPP_GADAFI,
   },
   {
     name: 'Mux',
@@ -28,7 +29,7 @@ const agents = [
     description: 'Digital services, online presence, and strategic growth.',
     icon: Zap,
     specialties: ['Digital Services', 'Online Strategy', 'Brand Growth'],
-    waLink: 'https://wa.me/264853057020',
+    waLink: WHATSAPP_MUX,
   },
 ]
 
@@ -45,7 +46,7 @@ export default function ContactPage() {
 
   const buildWhatsAppUrl = () => {
     const message = `Hi ${selectedAgent.name}! I'm ${fullName}. I want to register "${businessName}" with the ${selectedPackage} package.`
-    return `https://wa.me/${selectedAgent.phone}?text=${encodeURIComponent(message)}`
+    return `${selectedAgent.waLink}?text=${encodeURIComponent(message)}`
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -477,7 +478,7 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <a
-                      href="https://gemsweb.xyz"
+                      href={GEMSWEB_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group/gem inline-flex items-center gap-2 text-frog-green text-sm font-bold hover:text-frog-green/70 transition-colors duration-300 min-h-[44px]"

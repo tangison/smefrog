@@ -154,51 +154,6 @@ textarea::placeholder {
   outline-offset: 2px;
 }
 
-/* Glass panel base */
-.glass-panel {
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-/* Double bezel outer */
-.bezel-outer {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
-  border-radius: 24px;
-  padding: 1px;
-}
-
-/* Double bezel inner */
-.bezel-inner {
-  background: #0A0A0A;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 23px;
-  overflow: hidden;
-}
-
-/* Animated orb */
-@keyframes float {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.08); }
-}
-.orb-float {
-  animation: float 8s ease-in-out infinite;
-}
-
-/* Sweep light beam */
-@keyframes sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-.sweep-light::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(122, 201, 67, 0.1), transparent);
-  animation: sweep 3s ease-in-out infinite;
-}
-
 /* FrogAI chat scrollbar */
 .frog-chat-scroll::-webkit-scrollbar {
   width: 4px;

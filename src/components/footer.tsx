@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Facebook } from 'lucide-react'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, GEMSWEB_URL } from '@/lib/config'
 
 const serviceLinks = [
   { label: 'CC Registration', href: '/services/business-registration' },
@@ -24,8 +25,8 @@ const legalLinks = [
 ]
 
 const AGENTS = [
-  { name: 'Gadafi', phone: '081 341 1522', role: 'Compliance', waLink: 'https://wa.me/264813411522' },
-  { name: 'Mux', phone: '085 305 7020', role: 'Digital', waLink: 'https://wa.me/264853057020' },
+  { name: 'Gadafi', phone: '081 341 1522', role: 'Compliance', waLink: WHATSAPP_GADAFI },
+  { name: 'Mux', phone: '085 305 7020', role: 'Digital', waLink: WHATSAPP_MUX },
 ]
 
 export function Footer() {
@@ -113,14 +114,14 @@ export function Footer() {
               <h6 className="text-white/30 text-[10px] font-black uppercase tracking-[0.4em]">Contact</h6>
               <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
                 <p className="text-white font-black mb-1">Windhoek, Namibia</p>
-                <a href="tel:+2643411522" className="block text-frog-green font-black text-lg mb-2 hover:text-frog-green/80 transition-colors">+264 341 1522</a>
+                <a href={PHONE_MAIN_TEL} className="block text-frog-green font-black text-lg mb-2 hover:text-frog-green/80 transition-colors">{PHONE_MAIN}</a>
                 <p className="text-white/30 text-xs font-bold">Support 24/7</p>
               </div>
 
               {/* Social */}
               <div className="flex items-center gap-3">
                 <a
-                  href="https://www.facebook.com/SMEfrogNamibia"
+                  href={FACEBOOK_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow SMEfrog on Facebook (opens in new tab)"
@@ -134,7 +135,7 @@ export function Footer() {
               <div className="p-4 rounded-xl bg-frog-green/[0.05] border border-frog-green/10">
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-frog-green/40 mb-1">Digital Partner</p>
                 <a
-                  href="https://gemsweb.xyz"
+                  href={GEMSWEB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit Gemsweb Digital (opens in new tab)"
@@ -156,7 +157,7 @@ export function Footer() {
             <p className="text-white/40 text-sm font-bold mt-1">100% remote · 7–10 days · From N$800</p>
           </div>
           <a
-            href="https://wa.me/264813411522"
+            href={WHATSAPP_GADAFI}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Start registration on WhatsApp"
@@ -178,7 +179,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="https://www.facebook.com/SMEfrogNamibia"
+              href={FACEBOOK_URL}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Follow SMEfrog on Facebook"

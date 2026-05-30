@@ -2,6 +2,7 @@
 
 import { ArrowRight, MessageCircle, Clock, BookOpen } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
+import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
 import { Eyebrow } from '@/components/eyebrow'
 
 /* ─── Data ─────────────────────────────────────────── */
@@ -13,6 +14,7 @@ const blogPosts = [
     date: '15 Jan 2024',
     readTime: '8 min',
     category: 'Guides',
+    href: '/resources/cc-registration-guide',
   },
   {
     title: 'PTY LTD vs CC: Which to Pick?',
@@ -21,6 +23,7 @@ const blogPosts = [
     date: '22 Jan 2024',
     readTime: '6 min',
     category: 'Comparisons',
+    href: '/resources/cc-vs-pty-ltd',
   },
   {
     title: 'BIPA Compliance Requirements',
@@ -29,6 +32,7 @@ const blogPosts = [
     date: '5 Feb 2024',
     readTime: '7 min',
     category: 'Compliance',
+    href: '/resources/bipa-compliance-checklist',
   },
   {
     title: 'Beneficial Ownership Filing Guide',
@@ -37,6 +41,7 @@ const blogPosts = [
     date: '18 Feb 2024',
     readTime: '5 min',
     category: 'Compliance',
+    href: '/resources/beneficial-ownership-guide',
   },
   {
     title: 'Why Remote Registration Wins',
@@ -45,6 +50,7 @@ const blogPosts = [
     date: '3 Mar 2024',
     readTime: '4 min',
     category: 'Insights',
+    href: '/services/business-registration',
   },
   {
     title: 'Startup Costs in Namibia: Real Numbers',
@@ -53,6 +59,7 @@ const blogPosts = [
     date: '20 Mar 2024',
     readTime: '9 min',
     category: 'Insights',
+    href: '/pricing',
   },
 ]
 
@@ -67,7 +74,7 @@ function BlogCard({
   return (
     <ScrollReveal delay={index * 0.06}>
       <a
-        href="#"
+        href={post.href}
         className="group block h-full min-h-[44px] bg-white ring-1 ring-black/[0.06] p-1.5 rounded-[2rem] hover:ring-frog-green/30 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
         aria-label={`Read: ${post.title}`}
       >
@@ -176,7 +183,7 @@ export default function BlogPage() {
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="https://wa.me/264813411522"
+                href={WHATSAPP_GADAFI}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
@@ -189,7 +196,7 @@ export default function BlogPage() {
                 </span>
               </a>
               <a
-                href="https://wa.me/264853057020"
+                href={WHATSAPP_MUX}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"

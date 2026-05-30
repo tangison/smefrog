@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { WHATSAPP_GADAFI } from '@/lib/config'
 
 export default function Error({
   error,
@@ -122,7 +123,7 @@ export default function Error({
           </button>
 
           <a
-            href="https://wa.me/264813411522"
+            href={WHATSAPP_GADAFI}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 min-h-[44px] px-8 py-4 border border-frog-green/20 hover:border-frog-green/40 bg-frog-green/5 hover:bg-frog-green/10 text-white font-bold text-base rounded-xl transition-all duration-300"
