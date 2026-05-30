@@ -289,3 +289,30 @@ Stage Summary:
 - All brand colors use CSS variables (frog-green, frog-dark, frog-black, frog-light, etc.)
 - FrogAI chat has custom frog icon avatar
 - 19 routes all return HTTP 200
+
+---
+Task ID: 1
+Agent: Main
+Task: Process SMEfrog brand assets zip and implement hero slideshow
+
+Work Log:
+- Extracted 9 PNG images from "SMEfrog images.zip" (13MB archive)
+- Verified all images: 1408×768 PNG, 8-bit RGB
+- Cropped 10% white border (141px) from right side of each image → 1267×768 output
+- Generated WebP versions with quality=85 (89-95% size reduction)
+- Built HeroSlideshow component with:
+  - 5-second auto-transition with AnimatePresence cross-fade (1.8s)
+  - 15% dark-green overlay (rgba(30,58,47,0.15)) for text legibility
+  - Bottom gradient + top vignette for readability
+  - Responsive: object-center on mobile (smart-center crop), object-left on desktop (Z-pattern)
+  - Accessible: ARIA carousel role, pause-on-hover/focus, keyboard navigation
+  - Minimal slide indicator dots
+- Integrated slideshow into homepage hero section replacing static hero-bg.png
+- Added /upload/ to .gitignore for source assets
+- Committed and pushed to GitHub: tangison/smefrog
+
+Stage Summary:
+- 9 hero images cropped, optimized (WebP + PNG), deployed to public/hero/
+- HeroSlideshow component at src/components/hero-slideshow.tsx
+- Homepage hero now uses cross-fade carousel instead of static background
+- ESLint clean, all routes 200, pushed to GitHub
