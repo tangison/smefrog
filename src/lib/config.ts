@@ -20,9 +20,9 @@ export const SITE_URL = 'https://smefrog.tangison.com'
 
 // ─── Pricing ───────────────────────────────────────────────
 export const PRICING = {
-  basic: { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], btn: 'Get Basic' },
+  basic: { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], featured: false, btn: 'Get Basic' },
   advanced: { tier: 'ADVANCED', price: 'N$1,200', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true, btn: 'Get Advanced' },
-  full: { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Annual Return Filing', 'Compliance Check', 'Governance Template'], btn: 'Get Full' },
+  full: { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Annual Return Filing', 'Compliance Check', 'Governance Template'], featured: false, btn: 'Get Full' },
 } as const
 
 export const pricingCards = Object.values(PRICING)
