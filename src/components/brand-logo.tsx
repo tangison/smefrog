@@ -22,7 +22,7 @@ export function BrandLogo({ theme = 'dark', size = 'md', showWordmark = false }:
     <Link href="/" className="flex items-center gap-3 group select-none">
       <div className={`${s.img} relative transition-transform duration-700 group-hover:rotate-[360deg]`}>
         <Image
-          src="/frog-icon.png"
+          src="/upload/Icon.png"
           alt="SMEfrog"
           width={80}
           height={80}

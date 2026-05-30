@@ -33,7 +33,7 @@ export function ContactCta() {
               transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
               className="w-16 h-16 rounded-2xl bg-frog-green/20 ring-1 ring-frog-green/30 flex items-center justify-center mx-auto mb-8"
             >
-              <img src="/icon.png" alt="SMEfrog" className="w-10 h-10 rounded-xl object-contain" />
+              <img src="/upload/Icon.png" alt="SMEfrog" className="w-10 h-10 rounded-xl object-contain" />
             </motion.div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-frog-light mb-4">

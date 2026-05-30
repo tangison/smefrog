@@ -121,7 +121,7 @@ export function HeroSection() {
                     {/* Frog Icon */}
                     <div className="w-24 h-24 rounded-[1.5rem] bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center">
                       <img
-                        src="/icon.png"
+                        src="/upload/Icon.png"
                         alt="SMEfrog"
                         className="w-16 h-16 rounded-xl object-contain"
                       />

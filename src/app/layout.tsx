@@ -29,13 +29,13 @@ export const metadata: Metadata = {
   },
   description:
     "Namibia's premium remote business registration service. BIPA filing, startup support, and digital services — 100% remote, 2X cheaper.",
-  icons: { icon: "/frog-icon.png" },
+  icons: { icon: "/upload/Icon.png" },
   openGraph: {
     title: "SMEfrog — Jump Into Business",
     description: "Namibia's premium remote business registration service. Fast BIPA filing without the markup.",
     type: "website",
     siteName: "SMEfrog",
-    images: ["/brand-id-full.png"],
+    images: ["/upload/Brand ID SMEfrog.png"],
   },
   keywords: ["SMEfrog", "Namibia", "BIPA", "business registration", "CC registration", "PTY LTD", "startup", "remote"],
 };
