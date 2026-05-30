@@ -127,9 +127,8 @@ const sections = [
     content: [
       'For any questions or concerns regarding these Terms and Conditions, please contact us:',
       '',
-      'WhatsApp: Gadafi — +264 81 341 1522',
-      'WhatsApp: Mux — +264 85 305 7020',
-      'Website: www.smefrog.com',
+      'WhatsApp: +264 85 341 1522',
+      'Website: smefrog.tangison.com',
     ],
   },
 ]

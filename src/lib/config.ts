@@ -6,16 +6,8 @@
 
 // ─── Contact / WhatsApp ────────────────────────────────────
 export const WHATSAPP_MAIN = 'https://wa.me/264853411522'
-export const WHATSAPP_GADAFI = 'https://wa.me/264853411522'
-export const WHATSAPP_MUX = 'https://wa.me/264853411522'
-export const PHONE_MAIN = '+264 341 1522'
-export const PHONE_MAIN_TEL = 'tel:+2643411522'
-
-// ─── Agents ────────────────────────────────────────────────
-export const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', phone: '085 341 1522', fullPhone: '264853411522', role: 'Compliance Expert', waLink: WHATSAPP_MAIN },
-  { id: 'mux', name: 'Mux', phone: '085 341 1522', fullPhone: '264853411522', role: 'Compliance Officer', waLink: WHATSAPP_MAIN },
-] as const
+export const PHONE_MAIN = '+264 85 341 1522'
+export const PHONE_MAIN_TEL = 'tel:+264853411522'
 
 // ─── Social ────────────────────────────────────────────────
 export const FACEBOOK_URL = 'https://www.facebook.com/SMEfrogNamibia'

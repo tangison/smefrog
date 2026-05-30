@@ -22,7 +22,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_MAIN, waLink, COMPLIANCE_SERVICE, TESTIMONIALS, AGENTS, GEMSWEB_URL } from '@/lib/config'
+import { waLink, TESTIMONIALS } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const serviceCards = [

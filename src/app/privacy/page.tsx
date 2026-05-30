@@ -86,9 +86,8 @@ const sections = [
     content: [
       'If you have any questions or concerns about this Privacy Policy or our data practices, please contact us:',
       '',
-      'WhatsApp: Gadafi — +264 81 341 1522',
-      'WhatsApp: Mux — +264 85 305 7020',
-      'Website: www.smefrog.com',
+      'WhatsApp: +264 85 341 1522',
+      'Website: smefrog.tangison.com',
       '',
       'We are committed to resolving any concerns promptly and transparently.',
     ],

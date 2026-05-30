@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -15,13 +14,12 @@ import {
   FileCheck,
   Zap,
   Globe,
-  Phone,
   ChevronRight,
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { AGENTS, waLink } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const ccRegistration = {
@@ -172,7 +170,6 @@ const testimonials = [
 
 /* ─── Page ──────────────────────────────────────────── */
 export default function BusinessRegistrationPage() {
-  const [selectedAgent, setSelectedAgent] = useState('gadafi')
   const easing = 'transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]'
 
   return (
@@ -591,132 +588,44 @@ export default function BusinessRegistrationPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          CTA — Dark cinematic with agent selection
+          CTA — Dark cinematic
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.08] rounded-full blur-[150px] pointer-events-none" />
 
-        <div className="max-w-[1400px] mx-auto relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left */}
-            <div>
-              <ScrollReveal>
-                <Eyebrow>Get Started</Eyebrow>
-              </ScrollReveal>
-              <ScrollReveal delay={0.06}>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                  Ready to
-                  <br />
-                  <span className="italic text-frog-green">register?</span>
-                </h2>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <p className="text-frog-muted text-base md:text-lg max-w-md leading-relaxed">
-                  Affordable, remote registration. Pick your agent and connect on WhatsApp.
-                </p>
-              </ScrollReveal>
-            </div>
-
-            {/* Right — Agent cards */}
-            <div>
-              <ScrollReveal>
-                <div className="text-center mb-6">
-                  <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-                    Pick Your Agent
-                  </span>
-                </div>
-              </ScrollReveal>
-
-              <div className="space-y-4">
-                {AGENTS.map((agent, i) => (
-                  <ScrollReveal key={agent.id} delay={i * 0.06}>
-                    <button
-                      type="button"
-                      onClick={() => setSelectedAgent(agent.id)}
-                      aria-label={`Select ${agent.name}`}
-                      className={`w-full min-h-[44px] group flex items-center justify-between p-6 rounded-2xl transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                        selectedAgent === agent.id
-                          ? 'bg-frog-green ring-1 ring-frog-green text-black shadow-[0_0_50px_rgba(122,201,67,0.15)]'
-                          : 'bg-frog-shell ring-1 ring-frog-hairline text-white hover:ring-frog-green/20 hover:bg-white/[0.04]'
-                      }`}
-                    >
-                      <div className="text-left">
-                        <span
-                          className={`text-[10px] font-bold uppercase tracking-[0.3em] ${
-                            selectedAgent === agent.id ? 'text-black/50' : 'text-white/20'
-                          }`}
-                        >
-                          {agent.role}
-                        </span>
-                        <p
-                          className={`text-lg font-bold mt-0.5 ${
-                            selectedAgent === agent.id ? 'text-black' : 'text-white'
-                          }`}
-                        >
-                          {agent.name}
-                        </p>
-                        <div className="flex items-center gap-2 mt-1">
-                          <Phone
-                            className={`w-3 h-3 ${
-                              selectedAgent === agent.id ? 'text-black/30' : 'text-white/30'
-                            }`}
-                            strokeWidth={1.5}
-                          />
-                          <span
-                            className={`text-sm font-medium ${
-                              selectedAgent === agent.id ? 'text-black/40' : 'text-white/30'
-                            }`}
-                          >
-                            +264 {agent.fullPhone.slice(3)}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div
-                          className={`hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 text-xs font-bold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                            selectedAgent === agent.id
-                              ? 'bg-black/10 text-black'
-                              : 'bg-frog-green/10 text-frog-green group-hover:bg-frog-green group-hover:text-black'
-                          }`}
-                        >
-                          <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.5} />
-                          WhatsApp
-                        </div>
-                        <span
-                          className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                            selectedAgent === agent.id
-                              ? 'bg-black/10 text-black'
-                              : 'bg-frog-green/10 text-frog-green group-hover:bg-frog-green group-hover:text-black'
-                          }`}
-                        >
-                          →
-                        </span>
-                      </div>
-                    </button>
-                  </ScrollReveal>
-                ))}
-
-                <ScrollReveal delay={0.12}>
-                  <a
-                    href={AGENTS.find((a) => a.id === selectedAgent)?.waLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Chat with ${AGENTS.find((a) => a.id === selectedAgent)?.name} on WhatsApp`}
-                    className={`group w-full min-h-[44px] inline-flex items-center justify-center gap-3 bg-frog-green text-black font-bold rounded-2xl px-8 py-5 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
-                  >
-                    <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                    Chat with {AGENTS.find((a) => a.id === selectedAgent)?.name}
-                    <span
-                      className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${easing}`}
-                    >
-                      <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                    </span>
-                  </a>
-                </ScrollReveal>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-3xl mx-auto relative z-10 text-center">
+          <ScrollReveal>
+            <Eyebrow>Get Started</Eyebrow>
+          </ScrollReveal>
+          <ScrollReveal delay={0.06}>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              Ready to{' '}
+              <span className="italic text-frog-green">register?</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-frog-muted text-base md:text-lg max-w-md mx-auto leading-relaxed mb-10">
+              Affordable, remote registration. Connect with us on WhatsApp.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.14}>
+            <a
+              href={waLink('registration')}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Start registration on WhatsApp"
+              className={`group inline-flex items-center gap-3 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-10 py-5 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] ${easing}`}
+            >
+              <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+              Start on WhatsApp
+              <span
+                className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${easing}`}
+              >
+                <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+              </span>
+            </a>
+          </ScrollReveal>
         </div>
       </section>
     </>

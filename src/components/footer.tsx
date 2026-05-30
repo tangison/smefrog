@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Facebook, Instagram, Github } from 'lucide-react'
-import { AGENTS, waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL, GEMSWEB_URL } from '@/lib/config'
-
+import { waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL, GEMSWEB_URL } from '@/lib/config'
 const serviceLinks = [
   { label: 'CC Registration', href: '/services/business-registration' },
   { label: 'PTY LTD Filing', href: '/services/business-registration' },
@@ -49,30 +48,25 @@ export function Footer() {
               Remote business registration for Namibia. Fast. Affordable. 100% online.
             </p>
 
-            {/* Agent Cards */}
-            <div className="space-y-3">
-              {AGENTS.map(agent => (
-                <a
-                  key={agent.name}
-                  href={agent.waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Chat with ${agent.name} on WhatsApp`}
-                  className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-frog-green/20 transition-all duration-500 group min-h-[44px]"
-                >
-                  <div>
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">{agent.role}</span>
-                    <p className="text-white font-bold text-base mt-0.5">{agent.name}</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-white/40 text-sm font-bold">{agent.phone}</span>
-                    <span className="w-8 h-8 rounded-full bg-frog-green/10 text-frog-green flex items-center justify-center text-xs font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500">
-                      →
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
+            {/* WhatsApp Contact Card */}
+            <a
+              href={waLink('footer')}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with us on WhatsApp"
+              className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] hover:border-frog-green/20 transition-all duration-500 group min-h-[44px] mb-4"
+            >
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Get in touch</span>
+                <p className="text-white font-bold text-base mt-0.5">WhatsApp Us</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-white/40 text-sm font-bold">{PHONE_MAIN}</span>
+                <span className="w-8 h-8 rounded-full bg-frog-green/10 text-frog-green flex items-center justify-center text-xs font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500">
+                  →
+                </span>
+              </div>
+            </a>
           </div>
 
           {/* Link columns */}

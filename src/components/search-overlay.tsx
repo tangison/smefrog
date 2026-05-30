@@ -18,10 +18,9 @@ const searchData = [
   { title: 'Can I register remotely?', desc: 'Yes — everything handled via WhatsApp and email', href: '/faq', category: 'FAQ' },
   { title: 'What documents do I need?', desc: 'ID copy, proof of address, and business name', href: '/faq', category: 'FAQ' },
   { title: 'Can foreigners register?', desc: 'Yes, with valid work permit or residency', href: '/faq', category: 'FAQ' },
-  { title: 'Contact Gadafi', desc: '085 341 1522 — Compliance Expert', href: '/contact', category: 'Contact' },
-  { title: 'Contact Mux', desc: '085 341 1522 — Compliance Officer', href: '/contact', category: 'Contact' },
+  { title: 'Contact SMEfrog', desc: 'WhatsApp us at +264 85 341 1522', href: '/contact', category: 'Contact' },
   { title: 'About SMEfrog', desc: 'Our mission and story', href: '/about', category: 'Company' },
-  { title: 'Why SMEfrog', desc: '2X cheaper, fully remote, built for startups', href: '/about', category: 'Company' },
+  { title: 'Why SMEfrog', desc: '2X cheaper, fully remote, built for Namibian businesses', href: '/about', category: 'Company' },
 ]
 
 export function SearchOverlay() {

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { MessageCircle, ArrowRight, MapPin, Globe, Phone, ExternalLink } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
-import { AGENTS, waLink, GEMSWEB_URL } from '@/lib/config'
+import { waLink, PHONE_MAIN, GEMSWEB_URL } from '@/lib/config'
 
 /* ─── Page ──────────────────────────────────────────── */
 export default function ContactPage() {
@@ -34,17 +34,12 @@ export default function ContactPage() {
           {/* Quick contact pills */}
           <ScrollReveal delay={0.2}>
             <div className="flex flex-wrap gap-4 mt-10">
-              {AGENTS.map((agent) => (
-                <span
-                  key={agent.id}
-                  className="group inline-flex items-center gap-3 min-h-[44px] bg-white/[0.04] border border-white/[0.08] rounded-full px-5 py-3"
-                >
-                  <Phone className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
-                  <span className="text-white/60 text-sm font-bold">{agent.name}</span>
-                  <span className="text-white/20 text-xs">·</span>
-                  <span className="text-frog-green text-xs font-bold">{agent.role}</span>
-                </span>
-              ))}
+              <span
+                className="group inline-flex items-center gap-3 min-h-[44px] bg-white/[0.04] border border-white/[0.08] rounded-full px-5 py-3"
+              >
+                <Phone className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
+                <span className="text-white/60 text-sm font-bold">{PHONE_MAIN}</span>
+              </span>
             </div>
           </ScrollReveal>
         </div>
@@ -110,30 +105,24 @@ export default function ContactPage() {
                   100% remote. Serving all 14 regions. WhatsApp and email only.
                 </p>
 
-                {/* Quick contact list */}
+                {/* Quick contact */}
                 <div className="space-y-3">
-                  {AGENTS.map((agent) => (
-                    <a
-                      key={agent.id}
-                      href={waLink('contact')}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-4 rounded-xl bg-white ring-1 ring-black/[0.04] hover:ring-frog-green/20 transition-all duration-500 group min-h-[44px]"
-                      aria-label={`Chat with ${agent.name}`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Phone className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
-                        <div>
-                          <p className="text-black text-sm font-bold">{agent.name}</p>
-                          <p className="text-black/60 text-xs">{agent.role}</p>
-                        </div>
+                  <a
+                    href={waLink('contact')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-4 rounded-xl bg-white ring-1 ring-black/[0.04] hover:ring-frog-green/20 transition-all duration-500 group min-h-[44px]"
+                    aria-label="Chat with us on WhatsApp"
+                  >
+                    <div className="flex items-center gap-3">
+                      <MessageCircle className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
+                      <div>
+                        <p className="text-black text-sm font-bold">WhatsApp Us</p>
+                        <p className="text-black/60 text-xs">{PHONE_MAIN}</p>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-black/60 text-xs font-bold">{agent.phone}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-frog-green group-hover:translate-x-0.5 transition-transform duration-300" strokeWidth={1.5} />
-                      </div>
-                    </a>
-                  ))}
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 text-frog-green group-hover:translate-x-0.5 transition-transform duration-300" strokeWidth={1.5} />
+                  </a>
                 </div>
               </div>
             </ScrollReveal>

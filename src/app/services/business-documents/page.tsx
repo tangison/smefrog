@@ -11,7 +11,6 @@ import {
   Handshake,
   ArrowRight,
   MessageCircle,
-  Phone,
   ChevronRight,
   Lock,
   Briefcase,
@@ -22,7 +21,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { AGENTS, waLink } from '@/lib/config'
+import { waLink, PHONE_MAIN } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const documentTypes = [
@@ -407,57 +406,31 @@ export default function BusinessDocumentsPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          CTA — Agent selection
+          WHATSAPP CTA
       ═══════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24 px-4 md:px-6 bg-[#080808]">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-xl mx-auto text-center">
           <ScrollReveal>
-            <div className="text-center mb-10">
-              <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-                Contact
-              </span>
-              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                Pick your agent.{' '}
-                <span className="italic text-frog-green">Start.</span>
-              </h3>
-            </div>
+            <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
+              Contact
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Need documents?{' '}
+              <span className="italic text-frog-green">Chat with us.</span>
+            </h3>
+            <p className="text-white/40 text-sm mb-8">{PHONE_MAIN} · We typically respond within a few hours.</p>
+            <a
+              href={waLink('documents')}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat with us on WhatsApp"
+              className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_30px_rgba(122,201,67,0.2)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            >
+              <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+              Chat on WhatsApp
+              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform duration-700">→</span>
+            </a>
           </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-            {AGENTS.map((agent, i) => (
-              <ScrollReveal key={agent.name} delay={i * 0.06}>
-                <a
-                  href={agent.waLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Chat with ${agent.name} on WhatsApp`}
-                  className={`group flex items-center justify-between min-h-[44px] p-6 rounded-2xl bg-frog-shell ring-1 ring-frog-hairline hover:ring-frog-green/20 hover:bg-white/[0.04] ${easing}`}
-                >
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/20">
-                      {agent.role}
-                    </span>
-                    <p className="text-white font-bold text-lg mt-0.5">{agent.name}</p>
-                    <div className="flex items-center gap-2 mt-1">
-                      <Phone className="w-3 h-3 text-white/30" strokeWidth={1.5} />
-                      <span className="text-white/30 text-sm font-medium">
-                        +264 {agent.fullPhone.slice(3)}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="hidden sm:flex items-center gap-1.5 rounded-full px-4 py-2 bg-frog-green/10 text-frog-green text-xs font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                      <MessageCircle className="w-3.5 h-3.5" strokeWidth={1.5} />
-                      WhatsApp
-                    </div>
-                    <span className="w-10 h-10 rounded-full bg-frog-green/10 text-frog-green flex items-center justify-center text-sm font-bold group-hover:bg-frog-green group-hover:text-black transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                      →
-                    </span>
-                  </div>
-                </a>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
     </>

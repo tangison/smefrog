@@ -23,7 +23,7 @@ SMEfrog Knowledge Base:
 - 100% Remote: Everything handled via WhatsApp and email
 - Bank-Ready Documents: Included in Advanced and Full packages
 - Full Package includes: Advanced + Annual Return Filing + Compliance Check
-- Agents: Gadafi (085 341 1522 - Compliance Expert), Mux (085 341 1522 - Compliance Officer)
+- Contact: WhatsApp at 085 341 1522 or wa.me/264853411522
 - WhatsApp: 264853411522
 - 2X Cheaper than market average
 - Built for Namibian startups, freelancers, and SMEs

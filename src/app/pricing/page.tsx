@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { DoubleBezel } from '@/components/double-bezel'
-import { waLink, pricingCards, AGENTS, PHONE_MAIN, PHONE_MAIN_TEL } from '@/lib/config'
+import { waLink, pricingCards, PHONE_MAIN, PHONE_MAIN_TEL } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const pkgDescriptions: Record<string, string> = {
@@ -698,19 +698,6 @@ export default function PricingPage() {
                     <Phone className="w-4 h-4" strokeWidth={1.5} />
                     {PHONE_MAIN}
                   </a>
-                  {AGENTS.map((agent) => (
-                    <a
-                      key={agent.id}
-                      href={waLink('pricing')}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-black/60 hover:text-frog-green font-bold min-h-[44px] transition-colors duration-300"
-                      aria-label={`WhatsApp ${agent.name}`}
-                    >
-                      <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                      {agent.name} · {agent.role}
-                    </a>
-                  ))}
                 </div>
               </div>
 

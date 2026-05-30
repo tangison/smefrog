@@ -5,7 +5,7 @@ import { MessageCircle, ArrowRight, Check } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_GADAFI } from '@/lib/config'
+import { WHATSAPP_MAIN } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const ccFeatures = [
@@ -257,7 +257,7 @@ export default function CCvsPTYLTDPage() {
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href={WHATSAPP_GADAFI}
+                href={WHATSAPP_MAIN}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat with us on WhatsApp about CC vs PTY LTD"

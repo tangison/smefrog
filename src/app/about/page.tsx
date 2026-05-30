@@ -28,7 +28,7 @@ const values = [
     statLabel: 'Remote',
   },
   {
-    title: 'Built for Startups',
+    title: 'Built for Namibians',
     subtitle: 'Founders, Hustlers, Freelancers',
     description: 'We serve the people who need affordable help most.',
     icon: Lightbulb,
@@ -41,29 +41,6 @@ const values = [
     icon: Clock,
     stat: '7–10',
     statLabel: 'Days',
-  },
-]
-
-const founders = [
-  {
-    name: 'Gadafi',
-    role: 'Compliance Expert',
-    phone: '264813411522',
-    display: '081 341 1522',
-    description: 'Business registration, legal compliance, and documentation.',
-    icon: Shield,
-    specialties: ['Business Registration', 'Legal Compliance', 'Company Documents'],
-    waLink: waLink('contact'),
-  },
-  {
-    name: 'Mux',
-    role: 'Compliance Officer',
-    phone: '264853411522',
-    display: '085 341 1522',
-    description: 'Regulatory compliance, governance documentation, and company secretarial services.',
-    icon: Zap,
-    specialties: ['Regulatory Compliance', 'Governance Docs', 'Company Secretarial'],
-    waLink: waLink('contact'),
   },
 ]
 
@@ -260,85 +237,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ═══ FOUNDERS / TEAM — DARK ═══ */}
+      {/* ═══ TEAM — DARK ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
         {/* Ambient glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.03] rounded-full blur-[180px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>
             <Eyebrow>Team</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-frog-light tracking-tighter mb-4">
-              Your <span className="italic text-frog-green">Experts.</span>
+              Our <span className="italic text-frog-green">Experts.</span>
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <p className="text-frog-muted text-base md:text-lg max-w-2xl mb-12 md:mb-16 leading-relaxed">
-              Two specialists. One mission. Direct access.
+            <p className="text-frog-muted text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+              Compliance specialists dedicated to keeping your business legal. Direct access via WhatsApp.
             </p>
           </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {founders.map((founder, i) => (
-              <ScrollReveal key={founder.name} delay={i * 0.08}>
-                <DoubleBezel highlight className="h-full relative group">
-                  {/* Top accent line */}
-                  <div className="absolute top-0 left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-frog-green/40 to-transparent" />
-
-                  <div className="flex items-start gap-5 mb-6">
-                    {/* Icon avatar */}
-                    <div className="w-14 h-14 rounded-2xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center shrink-0 group-hover:bg-frog-green/15 transition-colors duration-700">
-                      <founder.icon className="w-6 h-6 text-frog-green" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-black text-frog-light">
-                        {founder.name}
-                      </h3>
-                      <p className="text-frog-green text-xs font-bold uppercase tracking-wider mt-1">
-                        {founder.role}
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-frog-muted text-sm leading-relaxed mb-6">
-                    {founder.description}
-                  </p>
-
-                  {/* Specialties */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {founder.specialties.map((spec) => (
-                      <span
-                        key={spec}
-                        className="inline-block text-[10px] px-3 py-1 rounded-full bg-frog-shell text-frog-muted ring-1 ring-frog-hairline font-bold uppercase tracking-wider"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Contact row */}
-                  <div className="flex items-center justify-between pt-4 border-t border-frog-hairline">
-                    <div className="flex items-center gap-3">
-                      <MessageCircle className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
-                      <span className="text-frog-muted text-sm font-bold">{founder.display}</span>
-                    </div>
-                    <a
-                      href={founder.waLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group/btn inline-flex items-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-5 py-2.5 text-xs uppercase tracking-wider hover:bg-frog-green/90 active:scale-[0.97] transition-all duration-300"
-                      aria-label={`Chat with ${founder.name} on WhatsApp`}
-                    >
-                      Chat
-                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform duration-300" strokeWidth={1.5} />
-                    </a>
-                  </div>
-                </DoubleBezel>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal delay={0.14}>
+            <a
+              href={waLink('contact')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 min-h-[44px] bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+              Meet the Team
+              <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
+            </a>
+          </ScrollReveal>
         </div>
       </section>
 

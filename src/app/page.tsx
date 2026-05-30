@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageCircle, Check, Phone, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
@@ -11,7 +10,6 @@ import { DoubleBezel } from '@/components/double-bezel'
 import { HeroSlideshow } from '@/components/hero-slideshow'
 import { WhatsAppTestimonials } from '@/components/whatsapp-testimonials'
 import {
-  AGENTS,
   waLink,
   TRUST_ITEMS,
   pricingCards,
@@ -57,13 +55,7 @@ const services = [
 
 /* ─── Home Page ────────────────────────────────────── */
 export default function HomePage() {
-  const [selectedAgent, setSelectedAgent] = useState('gadafi')
-  const [regForm, setRegForm] = useState({ name: '', biz: '', package: 'Advanced' })
 
-  const handleJump = (e: React.FormEvent) => {
-    e.preventDefault()
-    window.open(waLink('registration'), '_blank')
-  }
 
   return (
     <>
@@ -397,128 +389,52 @@ export default function HomePage() {
               <Phone className="w-4 h-4 opacity-50" />
               {PHONE_MAIN}
             </a>
-            {AGENTS.map(agent => (
-              <a
-                key={agent.id}
-                href={waLink('contact')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-frog-green hover:text-black transition-all duration-300 min-h-[44px]"
-                aria-label={`Chat with ${agent.name} on WhatsApp`}
-              >
-                <MessageCircle className="w-4 h-4 opacity-50" />
-                <span className="opacity-50">{agent.role}</span> {agent.name}
-              </a>
-            ))}
+            <a
+              href={waLink('contact')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-frog-green text-black px-8 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-frog-green/90 transition-all duration-300 min-h-[44px]"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4 opacity-70" />
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ═══ REGISTRATION FLOW ═══ */}
+      {/* ═══ REGISTRATION CTA ═══ */}
       <section className="py-24 md:py-32 bg-frog-black relative overflow-hidden" id="registration-section">
         {/* Ambient green glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-frog-green/[0.10] blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/[0.03] blur-[180px] rounded-full pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-16 md:gap-24 items-center relative z-10">
-          <div>
-            <ScrollReveal>
-              <Eyebrow>Register</Eyebrow>
-            </ScrollReveal>
-            <ScrollReveal delay={0.06}>
-              <h2 className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-none mb-12 italic">
-                Let&apos;s<br />move.
-              </h2>
-            </ScrollReveal>
-
-            {/* Agent Selection */}
-            <div className="grid gap-4">
-              {AGENTS.map(agent => (
-                <button
-                  key={agent.id}
-                  type="button"
-                  onClick={() => setSelectedAgent(agent.id)}
-                  aria-label={`Select ${agent.name} as consultant`}
-                  className={`w-full text-left p-8 md:p-10 rounded-[2rem] border-2 cursor-pointer transition-all duration-500 flex justify-between items-center min-h-[44px] ${
-                    selectedAgent === agent.id
-                      ? 'bg-frog-green border-frog-green text-black scale-[1.02] shadow-[0_0_50px_rgba(122,201,67,0.15)]'
-                      : 'bg-white/5 border-white/5 text-white hover:border-white/20'
-                  }`}
-                >
-                  <div>
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${selectedAgent === agent.id ? 'text-black/50' : 'text-white/30'}`}>Consultant</span>
-                    <h4 className="text-2xl md:text-3xl font-black mt-1">{agent.name}</h4>
-                  </div>
-                  {selectedAgent === agent.id ? (
-                    <div className="text-xl font-black">✓</div>
-                  ) : (
-                    <div className="w-8 h-8 rounded-full border border-white/20" />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Registration Form */}
+        <div className="max-w-3xl mx-auto px-4 md:px-6 text-center relative z-10">
+          <ScrollReveal>
+            <Eyebrow>Register</Eyebrow>
+          </ScrollReveal>
+          <ScrollReveal delay={0.06}>
+            <h2 className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter leading-none mb-6 italic">
+              Let&apos;s<br />move.
+            </h2>
+          </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <div className="bg-frog-card p-8 md:p-14 rounded-[3rem] border border-white/5 relative group">
-              <div className="absolute top-0 right-0 p-8">
-                <span className="text-frog-green font-black italic text-sm">Jumpstart</span>
-              </div>
-
-              <form onSubmit={handleJump} className="space-y-10 pt-8">
-                <div className="space-y-3">
-                  <label htmlFor="reg-identity" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Your Name</label>
-                  <input
-                    id="reg-identity"
-                    value={regForm.name}
-                    onChange={(e) => setRegForm({ ...regForm, name: e.target.value })}
-                    className="w-full bg-transparent border-b-2 border-white/10 py-5 text-2xl text-white outline-none focus:border-frog-green transition-colors font-bold min-h-[44px]"
-                    placeholder="Full Name"
-                  />
-                </div>
-
-                <div className="space-y-3">
-                  <label htmlFor="reg-venture" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Business Name</label>
-                  <input
-                    id="reg-venture"
-                    value={regForm.biz}
-                    onChange={(e) => setRegForm({ ...regForm, biz: e.target.value })}
-                    className="w-full bg-transparent border-b-2 border-white/10 py-5 text-2xl text-white outline-none focus:border-frog-green transition-colors font-bold min-h-[44px]"
-                    placeholder="e.g. Frog Logistics CC"
-                  />
-                </div>
-
-                <div className="space-y-3">
-                  <label id="reg-package-label" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Package</label>
-                  <div className="flex gap-3" role="group" aria-labelledby="reg-package-label">
-                    {['Basic', 'Advanced', 'Full'].map(p => (
-                      <button
-                        key={p}
-                        type="button"
-                        aria-label={`Select ${p} package`}
-                        onClick={() => setRegForm({ ...regForm, package: p })}
-                        className={`flex-1 py-4 min-h-[44px] rounded-2xl text-xs font-black uppercase tracking-wider transition-all duration-300 ${
-                          regForm.package === p
-                            ? 'bg-frog-green text-black'
-                            : 'bg-white/5 border border-white/10 text-white/40 hover:bg-white/10'
-                        }`}
-                      >
-                        {p}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-frog-green py-7 rounded-2xl text-black font-black text-lg uppercase tracking-widest hover:scale-[1.01] active:scale-[0.98] transition-all shadow-2xl shadow-frog-green/20 flex items-center justify-center gap-3 min-h-[44px]"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Connect to WhatsApp
-                </button>
-              </form>
-            </div>
+            <p className="text-white/40 text-lg md:text-xl font-bold max-w-xl mx-auto mb-10">
+              Register your business in 4 simple steps. 100% remote. From N$800.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.14}>
+            <a
+              href={waLink('registration')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-12 py-6 text-lg tracking-widest uppercase hover:shadow-[0_0_50px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[44px]"
+              aria-label="Register now on WhatsApp"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Register via WhatsApp
+              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
+            </a>
           </ScrollReveal>
         </div>
       </section>
