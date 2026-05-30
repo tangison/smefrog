@@ -17,7 +17,6 @@ export const GEMSWEB_URL = 'https://gemsweb.xyz'
 
 // ─── Site ──────────────────────────────────────────────────
 export const SITE_URL = 'https://smefrog.tangison.com'
-export const SITE_NAME = 'SMEfrog'
 
 // ─── Pricing ───────────────────────────────────────────────
 export const PRICING = {
@@ -27,25 +26,6 @@ export const PRICING = {
 } as const
 
 export const pricingCards = Object.values(PRICING)
-
-// ─── Compliance Service ───────────────────────────────────
-export const COMPLIANCE_SERVICE = {
-  title: 'Compliance Services',
-  tag: 'RECURRING',
-  description: 'Annual returns, BO updates, regulatory filings, and governance documentation. Registration gets you in the door — compliance keeps you operational.',
-  items: [
-    'Annual Returns Filing',
-    'Beneficial Ownership Updates',
-    'Regulatory Filings & Compliance',
-    'Governance Documentation',
-    'Record Keeping & Secretarial',
-    'Company Secretarial Services',
-    'Compliance Status Checks',
-    'Amendment Filings',
-  ],
-  price: 'Custom',
-  priceNote: 'Recurring service',
-} as const
 
 // ─── Trust items ───────────────────────────────────────────
 export const TRUST_ITEMS = ['100% Remote', '7–10 Days', 'Bank-Ready Docs', 'BIPA Included', '2X Cheaper'] as const

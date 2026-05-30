@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { LogoMark } from '@/components/logo-mark'
+import { PHONE_MAIN, SITE_URL } from '@/lib/config'
 
 const sections = [
   {
@@ -127,8 +128,8 @@ const sections = [
     content: [
       'For any questions or concerns regarding these Terms and Conditions, please contact us:',
       '',
-      'WhatsApp: +264 85 341 1522',
-      'Website: smefrog.tangison.com',
+      `WhatsApp: ${PHONE_MAIN}`,
+      `Website: ${SITE_URL.replace('https://', '')}`,
     ],
   },
 ]
