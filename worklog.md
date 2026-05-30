@@ -316,3 +316,34 @@ Stage Summary:
 - HeroSlideshow component at src/components/hero-slideshow.tsx
 - Homepage hero now uses cross-fade carousel instead of static background
 - ESLint clean, all routes 200, pushed to GitHub
+
+---
+Task ID: 3
+Agent: Main
+Task: Full audit, fix, and Vercel deployment prep
+
+Work Log:
+- Ran comprehensive audit identifying 14 dead custom components, 37 dead UI components, 9 unused public assets, 5 unused CSS classes, 2-3 unused npm packages, 50+ hardcoded duplications, and 2 critical Vercel-blocking config issues
+- Deleted 14 dead custom components (about-section, brand-logo, contact-cta, faq-section, glass-card, hero-section, magnetic-button, onboarding-provider, pricing-section, process-section, search-dialog, services-section, trust-bar, why-section)
+- Deleted 37 dead shadcn/ui components (accordion, alert, alert-dialog, aspect-ratio, avatar, badge, breadcrumb, calendar, card, carousel, chart, checkbox, collapsible, command, context-menu, drawer, dropdown-menu, form, hover-card, input-otp, menubar, navigation-menu, pagination, popover, progress, radio-group, resizable, scroll-area, select, sidebar, slider, sonner, switch, table, tabs, textarea, toaster)
+- Deleted 3 dead source files (lib/db.ts, hooks/use-toast.ts, hooks/use-mobile.ts)
+- Deleted 9 unused public assets (hero-bg.png, brand-id-full.png, logo-on-dark.png, cta-bg.png, brand-id.png, logo.svg, icon.png, logo-dark.png, frog-icon.png)
+- Removed 5 unused CSS classes (glass-panel, bezel-outer, bezel-inner, orb-float, sweep-light)
+- Created src/lib/config.ts — centralized config for WhatsApp URLs, agent data, phone numbers, pricing, testimonials, FAQ, trust items, steps
+- Updated 19 files to import from config instead of hardcoded values
+- Fixed next.config.ts: removed output:"standalone" and ignoreBuildErrors:true
+- Removed Prisma + @prisma/client + sharp (all unused)
+- Removed .env with local SQLite path
+- Removed db/ directory and prisma/ schema
+- Removed placeholder API route (src/app/api/route.ts)
+- Fixed blog dead links (href="#" → actual resource page routes)
+- Updated package.json: name "smefrog", removed DB scripts, removed prisma/sharp deps
+- ESLint clean, all routes returning 200
+- Pushed to GitHub: tangison/smefrog (commit 5adceb2)
+- Net deletion: 6,999 lines removed
+
+Stage Summary:
+- Codebase fully audited and cleaned
+- Vercel-blocking issues fixed (standalone output, ignoreBuildErrors, SQLite)
+- All hardcoded values centralized in config.ts
+- Vercel deployment requires authentication token — user needs to connect GitHub repo to Vercel dashboard
