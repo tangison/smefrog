@@ -2,7 +2,7 @@
 
 import { ArrowRight, MessageCircle, Clock, BookOpen } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { waLink } from '@/lib/config'
 import { Eyebrow } from '@/components/eyebrow'
 
 /* ─── Data ─────────────────────────────────────────── */
@@ -44,22 +44,22 @@ const blogPosts = [
     href: '/resources/beneficial-ownership-guide',
   },
   {
-    title: 'Why Remote Registration Wins',
+    title: 'The Complete Guide to Annual Returns in Namibia',
     excerpt:
-      'How digital-first registration is changing how Namibians start businesses.',
-    date: '3 Mar 2024',
-    readTime: '4 min',
-    category: 'Insights',
-    href: '/services/business-registration',
+      'Everything you need to know about filing annual returns and staying compliant with BIPA.',
+    date: '10 Mar 2024',
+    readTime: '6 min',
+    category: 'Compliance',
+    href: '/resources/bipa-compliance-checklist',
   },
   {
-    title: 'Startup Costs in Namibia: Real Numbers',
+    title: 'Beneficial Ownership: What You Need to Know',
     excerpt:
-      'Registration fees, compliance costs, and hidden expenses most founders miss.',
-    date: '20 Mar 2024',
-    readTime: '9 min',
-    category: 'Insights',
-    href: '/pricing',
+      'Understanding BO declarations, update requirements, and how to avoid penalties.',
+    date: '25 Mar 2024',
+    readTime: '5 min',
+    category: 'Compliance',
+    href: '/resources/beneficial-ownership-guide',
   },
 ]
 
@@ -140,7 +140,7 @@ export default function BlogPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Practical guides and startup insights for Namibian founders.
+              Practical guides and compliance insights for Namibian businesses.
             </p>
           </ScrollReveal>
         </div>
@@ -172,7 +172,7 @@ export default function BlogPage() {
             <h2
               className="text-3xl md:text-4xl font-bold text-frog-light mb-4"
             >
-              Ready to register?
+              Ready to get compliant?
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -181,34 +181,19 @@ export default function BlogPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={WHATSAPP_GADAFI}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                aria-label="Chat on WhatsApp with Gadafi"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                WhatsApp Gadafi
-                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                </span>
-              </a>
-              <a
-                href={WHATSAPP_MUX}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                aria-label="Chat on WhatsApp with Mux"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                WhatsApp Mux
-                <span className="w-7 h-7 rounded-full bg-frog-green/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-                </span>
-              </a>
-            </div>
+            <a
+              href={waLink('contact')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+              Chat with Us on WhatsApp
+              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+              </span>
+            </a>
           </ScrollReveal>
         </div>
       </section>

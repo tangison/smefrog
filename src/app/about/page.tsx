@@ -7,7 +7,7 @@ import { TrendingDown, Wifi, Lightbulb, Clock, Shield, Zap, MessageCircle, Arrow
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const values = [
@@ -53,17 +53,17 @@ const founders = [
     description: 'Business registration, legal compliance, and documentation.',
     icon: Shield,
     specialties: ['Business Registration', 'Legal Compliance', 'Company Documents'],
-    waLink: WHATSAPP_GADAFI,
+    waLink: waLink('contact'),
   },
   {
     name: 'Mux',
-    role: 'Digital Strategist',
-    phone: '264853057020',
-    display: '085 305 7020',
-    description: 'Digital services, online presence, and strategic growth.',
+    role: 'Compliance Officer',
+    phone: '264853411522',
+    display: '085 341 1522',
+    description: 'Regulatory compliance, governance documentation, and company secretarial services.',
     icon: Zap,
-    specialties: ['Digital Services', 'Online Strategy', 'Brand Growth'],
-    waLink: WHATSAPP_MUX,
+    specialties: ['Regulatory Compliance', 'Governance Docs', 'Company Secretarial'],
+    waLink: waLink('contact'),
   },
 ]
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/about-bg.png"
+            src="/hero/hero-3.webp"
             alt="SMEfrog background"
             fill
             className="object-cover object-center opacity-20"
@@ -432,11 +432,11 @@ export default function AboutPage() {
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={WHATSAPP_GADAFI}
+                href={waLink('contact')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 min-h-[44px] bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300"
-                aria-label="Register on WhatsApp"
+                aria-label="Chat on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
                 Register Now

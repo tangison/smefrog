@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MessageCircle, Search } from 'lucide-react'
 import { LogoMark } from '@/components/logo-mark'
-import { WHATSAPP_GADAFI } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 const navLinks = [
   { label: 'Services', href: '/services' },
@@ -90,7 +90,7 @@ export function Navbar() {
 
               {/* CTA Button */}
               <a
-                href={WHATSAPP_GADAFI}
+                href={waLink('home')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center gap-2 bg-frog-green text-black rounded-full px-5 py-2.5 text-[11px] font-black uppercase tracking-wider hover:bg-frog-green/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-[0_0_20px_rgba(122,201,67,0.15)]"
@@ -166,7 +166,7 @@ export function Navbar() {
 
             {/* Mobile CTA */}
             <motion.a
-              href={WHATSAPP_GADAFI}
+              href={waLink('home')}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}

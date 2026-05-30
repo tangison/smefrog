@@ -28,16 +28,16 @@ export const metadata: Metadata = {
     template: "%s | SMEfrog",
   },
   description:
-    "Namibia's premium remote business registration service. BIPA filing, startup support, and digital services — 100% remote, 2X cheaper.",
+    "Namibia's compliance partner. Business registration, compliance services, and business documents — 100% remote, 2X cheaper.",
   icons: { icon: "/upload/Icon.png" },
   openGraph: {
     title: "SMEfrog — Jump Into Business",
-    description: "Namibia's premium remote business registration service. Fast BIPA filing without the markup.",
+    description: "Namibia's compliance partner. Business registration, compliance services, and business documents — 100% remote, 2X cheaper.",
     type: "website",
     siteName: "SMEfrog",
     images: ["/upload/Brand ID SMEfrog.png"],
   },
-  keywords: ["SMEfrog", "Namibia", "BIPA", "business registration", "CC registration", "PTY LTD", "startup", "remote"],
+  keywords: ["SMEfrog", "Namibia", "BIPA", "business registration", "CC registration", "PTY LTD", "compliance", "remote"],
 };
 
 export default function RootLayout({

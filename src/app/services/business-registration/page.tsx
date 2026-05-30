@@ -21,7 +21,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { AGENTS, waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const ccRegistration = {
@@ -88,9 +88,9 @@ const pricingCards = [
     sub: 'CC Registration',
     features: [
       'Everything in Advanced',
-      'Business Plan Summary',
-      'Social Media Setup',
-      'Pitch Deck Template',
+      'Annual Return Filing',
+      'Compliance Check',
+      'Governance Template',
     ],
     btn: 'Choose Full',
     featured: false,
@@ -170,11 +170,6 @@ const testimonials = [
   },
 ]
 
-const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', fullPhone: '264813411522', role: 'Compliance Expert', waLink: WHATSAPP_GADAFI },
-  { id: 'mux', name: 'Mux', fullPhone: '264853057020', role: 'Digital Strategist', waLink: WHATSAPP_MUX },
-]
-
 /* ─── Page ──────────────────────────────────────────── */
 export default function BusinessRegistrationPage() {
   const [selectedAgent, setSelectedAgent] = useState('gadafi')
@@ -229,7 +224,7 @@ export default function BusinessRegistrationPage() {
               <ScrollReveal delay={0.26}>
                 <div className="flex flex-wrap gap-3 mt-8">
                   <a
-                    href={WHATSAPP_GADAFI}
+                    href={waLink('registration')}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Start registration on WhatsApp"
@@ -259,7 +254,7 @@ export default function BusinessRegistrationPage() {
             <ScrollReveal delay={0.12} className="hidden lg:block">
               <div className="relative h-[500px] rounded-[2.5rem] overflow-hidden">
                 <Image
-                  src="/service-registration.png"
+                  src="/hero/hero-2.webp"
                   alt="Business Registration"
                   fill
                   className="object-cover"
@@ -435,7 +430,7 @@ export default function BusinessRegistrationPage() {
                     </div>
 
                     <a
-                      href={`${WHATSAPP_GADAFI}?text=${encodeURIComponent(
+                      href={`${waLink('registration')}&text=${encodeURIComponent(
                         `Hi! I'd like the ${pkg.tier} package (${pkg.price}).`
                       )}`}
                       target="_blank"
@@ -704,7 +699,7 @@ export default function BusinessRegistrationPage() {
 
                 <ScrollReveal delay={0.12}>
                   <a
-                    href={`${AGENTS.find((a) => a.id === selectedAgent)?.waLink}`}
+                    href={AGENTS.find((a) => a.id === selectedAgent)?.waLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`Chat with ${AGENTS.find((a) => a.id === selectedAgent)?.name} on WhatsApp`}

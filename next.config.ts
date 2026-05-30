@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: [
     ".space-z.ai",
   ],
+  images: {
+    qualities: [75, 85],
+  },
 };
 
 export default nextConfig;

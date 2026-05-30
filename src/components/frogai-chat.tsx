@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Send, User } from 'lucide-react'
+import { X, Send, User, MessageCircle } from 'lucide-react'
+import { waLink } from '@/lib/config'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -15,7 +16,6 @@ const SUGGESTIONS = [
   "Which package?",
   "How long does it take?",
 ]
-
 /* ─── Frog Icon SVG — Premium geometric frog mark ─── */
 function FrogIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
@@ -203,6 +203,15 @@ export function FrogAIChat() {
                   <Send className="w-4 h-4" />
                 </button>
               </form>
+              <a
+                href={waLink('frogai')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 mt-2 text-white/25 text-[10px] font-bold uppercase tracking-wider hover:text-frog-green transition-colors"
+              >
+                <MessageCircle className="w-3 h-3" />
+                Chat with a human →
+              </a>
             </div>
           </motion.div>
         )}

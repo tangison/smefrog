@@ -14,14 +14,13 @@ import {
   BarChart3,
   MessageCircle,
   ArrowRight,
-  Download,
   ExternalLink,
   Zap,
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const registrationGuides = [
@@ -63,34 +62,34 @@ const templates = [
   {
     icon: FileSpreadsheet,
     title: 'Business Plan Template',
-    description: 'Professional template for Namibian startups.',
-    action: 'Download',
-    actionIcon: Download,
-    href: '#',
+    description: 'Professional template for Namibian businesses.',
+    action: 'View Documents',
+    actionIcon: ArrowRight,
+    href: '/services/business-documents',
   },
   {
     icon: Briefcase,
     title: 'Founders\' Agreement',
     description: 'Equity, roles, and dispute resolution.',
-    action: 'Download',
-    actionIcon: Download,
-    href: '#',
+    action: 'View Documents',
+    actionIcon: ArrowRight,
+    href: '/services/business-documents',
   },
   {
     icon: PenTool,
     title: 'Service Contract',
     description: 'Standard agreement for freelancers.',
-    action: 'Download',
-    actionIcon: Download,
-    href: '#',
+    action: 'View Documents',
+    actionIcon: ArrowRight,
+    href: '/services/business-documents',
   },
   {
     icon: Scale,
     title: 'Shareholders\' Agreement',
     description: 'For Pty Ltd companies with multiple owners.',
-    action: 'Download',
-    actionIcon: Download,
-    href: '#',
+    action: 'View Documents',
+    actionIcon: ArrowRight,
+    href: '/services/business-documents',
   },
 ]
 
@@ -99,25 +98,25 @@ const tools = [
     icon: Calculator,
     title: 'Pricing Calculator',
     description: 'Calculate your total registration cost.',
-    action: 'Use Tool',
-    actionIcon: Zap,
-    href: '#',
+    action: 'View Pricing',
+    actionIcon: ArrowRight,
+    href: '/pricing',
   },
   {
     icon: Search,
     title: 'Business Name Checker',
     description: 'Check if your name is available.',
-    action: 'Use Tool',
-    actionIcon: Zap,
-    href: '#',
+    action: 'Contact Us',
+    actionIcon: ArrowRight,
+    href: '/contact',
   },
   {
     icon: BarChart3,
-    title: 'Startup Cost Estimator',
-    description: 'Estimate total startup costs including first year.',
-    action: 'Use Tool',
-    actionIcon: Zap,
-    href: '#',
+    title: 'Compliance Cost Estimator',
+    description: 'Estimate total compliance costs including annual returns.',
+    action: 'View Pricing',
+    actionIcon: ArrowRight,
+    href: '/pricing',
   },
 ]
 
@@ -232,12 +231,12 @@ export default function ResourcesPage() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-frog-light leading-tight max-w-3xl"
             >
               Tools for{' '}
-              <span className="text-frog-green">Founders</span>
+              <span className="text-frog-green">Businesses</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Guides, templates, and tools to help you start smart.
+              Guides, templates, and tools to help you stay compliant.
             </p>
           </ScrollReveal>
         </div>
@@ -348,34 +347,19 @@ export default function ResourcesPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={WHATSAPP_GADAFI}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                aria-label="Register via WhatsApp"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                Register via WhatsApp
-                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                </span>
-              </a>
-              <a
-                href={WHATSAPP_MUX}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                aria-label="Chat with Mux on WhatsApp"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                WhatsApp Mux
-                <span className="w-7 h-7 rounded-full bg-frog-green/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-                </span>
-              </a>
-            </div>
+            <a
+              href={waLink('contact')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+              Chat with Us on WhatsApp
+              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+              </span>
+            </a>
           </ScrollReveal>
         </div>
       </section>

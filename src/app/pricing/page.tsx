@@ -1,49 +1,52 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Check,
   ArrowRight,
   MessageCircle,
   Crown,
-  Sparkles,
   Minus,
   ChevronDown,
   Phone,
-  Building2,
-  User,
+  Shield,
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { waLink, pricingCards, AGENTS, PHONE_MAIN, PHONE_MAIN_TEL } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
-const ccPackages = [
+const pkgDescriptions: Record<string, string> = {
+  BASIC: 'Essential registration to get started legally.',
+  ADVANCED: 'Registration + professional presence for a proper launch.',
+  FULL: 'Everything you need to start and stay compliant.',
+}
+
+const complianceTiers = [
   {
-    name: 'BASIC',
-    price: '800',
-    description: 'Essential registration to get started legally.',
-    features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'],
+    name: 'ESSENTIAL',
+    price: '500',
+    period: '/year',
+    description: 'Keep your company active and penalty-free.',
+    features: ['Annual Return Filing', 'BO Update', 'Compliance Status Check'],
     featured: false,
-    waMessage: 'Hi, I want to register with the Basic package (N$800)',
   },
   {
-    name: 'ADVANCED',
+    name: 'PROFESSIONAL',
     price: '1,200',
-    description: 'Registration + professional presence for a proper launch.',
-    features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate', 'Company Profile', 'Domain Registration', 'BO Filing'],
+    period: '/year',
+    description: 'Comprehensive compliance with governance support.',
+    features: ['Essential + Governance Documentation', 'Regulatory Filing', 'Amendment Filings'],
     featured: true,
-    waMessage: 'Hi, I want to register with the Advanced package (N$1,200)',
   },
   {
-    name: 'FULL',
-    price: '1,750',
-    description: 'Everything you need to start and pitch investors.',
-    features: ['Everything in Advanced', 'Business Plan', 'Social Setup', 'Pitch Deck Template'],
+    name: 'ENTERPRISE',
+    price: 'Custom',
+    period: '',
+    description: 'Full-service compliance management for growing businesses.',
+    features: ['Professional + Company Secretarial Services', 'Dedicated Compliance Officer', 'Priority Support'],
     featured: false,
-    waMessage: 'Hi, I want to register with the Full package (N$1,750)',
   },
 ]
 
@@ -54,14 +57,14 @@ const comparisonFeatures = [
   { feature: 'Company Profile', basic: false, advanced: true, full: true },
   { feature: 'Domain Registration', basic: false, advanced: true, full: true },
   { feature: 'BO Filing', basic: false, advanced: true, full: true },
-  { feature: 'Business Plan', basic: false, advanced: false, full: true },
-  { feature: 'Social Media Setup', basic: false, advanced: false, full: true },
-  { feature: 'Pitch Deck Template', basic: false, advanced: false, full: true },
+  { feature: 'Annual Return Filing', basic: false, advanced: false, full: true },
+  { feature: 'Compliance Check', basic: false, advanced: false, full: true },
+  { feature: 'Governance Template', basic: false, advanced: false, full: true },
 ]
 
 const faqItems = [
   {
-    question: 'What\'s in the Basic package?',
+    question: "What's in the Basic package?",
     answer:
       'Name reservation, BIPA filing, and your tax certificate. The minimum to operate legally.',
   },
@@ -73,7 +76,7 @@ const faqItems = [
   {
     question: 'What does Full add?',
     answer:
-      'Business Plan, Social Media Setup, and Pitch Deck Template. Everything to approach investors and partners with confidence.',
+      'Annual Return Filing, Compliance Check, and Governance Template. Keeps your company compliant from day one.',
   },
   {
     question: 'Any hidden fees?',
@@ -95,20 +98,20 @@ const faqItems = [
     answer:
       'Yes. Pay the difference. Message us on WhatsApp.',
   },
-]
-
-const agents = [
   {
-    name: 'Gadafi',
-    role: 'Compliance Expert',
-    phone: '081 341 1522',
-    waLink: WHATSAPP_GADAFI,
+    question: 'What happens if I don\'t file annual returns?',
+    answer:
+      'BIPA may impose penalties or deregister your company. We prevent that.',
   },
   {
-    name: 'Mux',
-    role: 'Digital Strategist',
-    phone: '085 305 7020',
-    waLink: WHATSAPP_MUX,
+    question: 'How often do I need to update my BO declaration?',
+    answer:
+      'Whenever there\'s a change in ownership structure, or at minimum annually.',
+  },
+  {
+    question: 'Do you handle compliance for PTY LTD companies too?',
+    answer:
+      'Yes. We handle compliance for CCs, PTY LTDs, and other Namibian entities.',
   },
 ]
 
@@ -161,25 +164,23 @@ function FAQItem({
 
 /* ─── Page ──────────────────────────────────────────── */
 export default function PricingPage() {
-  const [selectedAgent, setSelectedAgent] = useState<string>('gadafi')
-  const [formName, setFormName] = useState('')
-  const [formBusiness, setFormBusiness] = useState('')
-  const [formPackage, setFormPackage] = useState('advanced')
-
   const easing = 'transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]'
   const arrowEasing = 'transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]'
-
-  const agentWaLink =
-    selectedAgent === 'gadafi'
-      ? WHATSAPP_GADAFI
-      : WHATSAPP_MUX
 
   return (
     <>
       {/* ═══════════════════════════════════════════════════
-          HERO — DARK, cinematic
+          HERO — DARK, cinematic with background image
       ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{ backgroundImage: "url('/images/desk-planning.jpeg')" }}
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-frog-black/60 via-frog-black/80 to-frog-black" />
+
         {/* Ambient orbs */}
         <div className="absolute top-1/3 right-0 w-[600px] h-[600px] bg-frog-green/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/[0.15] blur-[150px] rounded-full pointer-events-none" />
@@ -217,14 +218,14 @@ export default function PricingPage() {
                 CC Registration
                 <span className="text-frog-green font-bold">from N$800</span>
               </a>
-              <Link
-                href="/services"
+              <a
+                href="#compliance"
                 className={`inline-flex items-center gap-2 min-h-[44px] ring-1 ring-white/10 text-white/50 rounded-full px-5 py-2.5 text-sm font-bold bg-white/[0.02] hover:bg-white/[0.05] hover:text-white ${easing}`}
-                aria-label="View all services"
+                aria-label="View Compliance Services"
               >
-                All Services
+                Compliance
                 <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-              </Link>
+              </a>
             </div>
           </ScrollReveal>
         </div>
@@ -256,16 +257,130 @@ export default function PricingPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {ccPackages.map((pkg, i) => (
-              <ScrollReveal key={pkg.name} delay={i * 0.06}>
-                <DoubleBezel highlight={pkg.featured} className="h-full">
+            {pricingCards.map((card, i) => {
+              const priceNum = card.price.replace('N$', '')
+              const isFeatured = 'featured' in card && card.featured
+              return (
+                <ScrollReveal key={card.tier} delay={i * 0.06}>
+                  <DoubleBezel highlight={isFeatured} className="h-full">
+                    <div className="flex flex-col h-full">
+                      {/* Tier + Badge */}
+                      <div className="flex items-center gap-2 mb-5">
+                        <span className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20">
+                          {card.tier}
+                        </span>
+                        {isFeatured && (
+                          <span className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.1em] font-bold bg-frog-green text-black flex items-center gap-1">
+                            <Crown className="w-3 h-3" strokeWidth={1.5} />
+                            Popular
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Price */}
+                      <div className="flex items-baseline gap-1 mb-2">
+                        <span className="text-base text-frog-muted font-bold">
+                          N$
+                        </span>
+                        <span className="text-5xl md:text-6xl font-bold text-white leading-none">
+                          {priceNum}
+                        </span>
+                      </div>
+                      <p className="text-frog-muted text-sm leading-relaxed mb-6">
+                        {pkgDescriptions[card.tier] || card.sub}
+                      </p>
+
+                      {/* Divider */}
+                      <div className="w-full h-px bg-frog-hairline mb-6" />
+
+                      {/* Features */}
+                      <ul className="space-y-3 flex-1 mb-8">
+                        {card.features.map((feature) => (
+                          <li key={feature} className="flex items-center gap-3">
+                            <span className="w-5 h-5 rounded-full bg-frog-green/15 flex items-center justify-center shrink-0">
+                              <Check className="w-3 h-3 text-frog-green" strokeWidth={2} />
+                            </span>
+                            <span className="text-frog-muted text-sm font-medium">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* CTA */}
+                      {isFeatured ? (
+                        <a
+                          href={waLink('pricing')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`group inline-flex items-center justify-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-7 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_30px_rgba(122,201,67,0.15)] ${easing}`}
+                          aria-label={`Choose ${card.tier} package`}
+                        >
+                          {card.btn}
+                          <span
+                            className={`w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${arrowEasing}`}
+                          >
+                            <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+                          </span>
+                        </a>
+                      ) : (
+                        <a
+                          href={waLink('pricing')}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`group inline-flex items-center justify-center gap-2 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-7 py-4 text-sm font-bold bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] ${easing}`}
+                          aria-label={`Choose ${card.tier} package`}
+                        >
+                          {card.btn}
+                          <span
+                            className={`w-7 h-7 rounded-full bg-frog-green/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${arrowEasing}`}
+                          >
+                            <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+                          </span>
+                        </a>
+                      )}
+                    </div>
+                  </DoubleBezel>
+                </ScrollReveal>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          COMPLIANCE SERVICES — DARK with DoubleBezel
+      ═══════════════════════════════════════════════════ */}
+      <section id="compliance" className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-dark relative overflow-hidden">
+        <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-frog-green/[0.03] blur-[180px] rounded-full pointer-events-none" />
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <ScrollReveal>
+            <span className="inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
+              <Shield className="w-3 h-3" strokeWidth={2} />
+              Compliance
+            </span>
+          </ScrollReveal>
+          <ScrollReveal delay={0.08}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Compliance Services
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.12}>
+            <p className="text-frog-muted text-base md:text-lg max-w-xl mb-12 md:mb-16 leading-relaxed">
+              Ongoing compliance keeps your business operational and penalty-free.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+            {complianceTiers.map((tier, i) => (
+              <ScrollReveal key={tier.name} delay={i * 0.06}>
+                <DoubleBezel highlight={tier.featured} className="h-full">
                   <div className="flex flex-col h-full">
                     {/* Tier + Badge */}
                     <div className="flex items-center gap-2 mb-5">
                       <span className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20">
-                        {pkg.name}
+                        {tier.name}
                       </span>
-                      {pkg.featured && (
+                      {tier.featured && (
                         <span className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.1em] font-bold bg-frog-green text-black flex items-center gap-1">
                           <Crown className="w-3 h-3" strokeWidth={1.5} />
                           Popular
@@ -275,19 +390,26 @@ export default function PricingPage() {
 
                     {/* Price */}
                     <div className="flex items-baseline gap-1 mb-2">
-                      <span
-                        className="text-base text-frog-muted font-bold"
-                      >
-                        N$
-                      </span>
-                      <span
-                        className="text-5xl md:text-6xl font-bold text-white leading-none"
-                      >
-                        {pkg.price}
-                      </span>
+                      {tier.price === 'Custom' ? (
+                        <span className="text-4xl md:text-5xl font-bold text-white leading-none">
+                          Custom
+                        </span>
+                      ) : (
+                        <>
+                          <span className="text-base text-frog-muted font-bold">
+                            N$
+                          </span>
+                          <span className="text-5xl md:text-6xl font-bold text-white leading-none">
+                            {tier.price}
+                          </span>
+                          <span className="text-base text-frog-muted font-bold">
+                            {tier.period}
+                          </span>
+                        </>
+                      )}
                     </div>
                     <p className="text-frog-muted text-sm leading-relaxed mb-6">
-                      {pkg.description}
+                      {tier.description}
                     </p>
 
                     {/* Divider */}
@@ -295,7 +417,7 @@ export default function PricingPage() {
 
                     {/* Features */}
                     <ul className="space-y-3 flex-1 mb-8">
-                      {pkg.features.map((feature) => (
+                      {tier.features.map((feature) => (
                         <li key={feature} className="flex items-center gap-3">
                           <span className="w-5 h-5 rounded-full bg-frog-green/15 flex items-center justify-center shrink-0">
                             <Check className="w-3 h-3 text-frog-green" strokeWidth={2} />
@@ -306,15 +428,15 @@ export default function PricingPage() {
                     </ul>
 
                     {/* CTA */}
-                    {pkg.featured ? (
+                    {tier.featured ? (
                       <a
-                        href={`${WHATSAPP_GADAFI}?text=${encodeURIComponent(pkg.waMessage)}`}
+                        href={waLink('pricing')}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`group inline-flex items-center justify-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-7 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_30px_rgba(122,201,67,0.15)] ${easing}`}
-                        aria-label={`Choose ${pkg.name} package`}
+                        aria-label={`Choose ${tier.name} compliance plan`}
                       >
-                        Get {pkg.name}
+                        Get {tier.name}
                         <span
                           className={`w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${arrowEasing}`}
                         >
@@ -323,13 +445,13 @@ export default function PricingPage() {
                       </a>
                     ) : (
                       <a
-                        href={`${WHATSAPP_GADAFI}?text=${encodeURIComponent(pkg.waMessage)}`}
+                        href={waLink('pricing')}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={`group inline-flex items-center justify-center gap-2 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-7 py-4 text-sm font-bold bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] ${easing}`}
-                        aria-label={`Choose ${pkg.name} package`}
+                        aria-label={`Choose ${tier.name} compliance plan`}
                       >
-                        Get {pkg.name}
+                        Get {tier.name}
                         <span
                           className={`w-7 h-7 rounded-full bg-frog-green/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${arrowEasing}`}
                         >
@@ -381,9 +503,7 @@ export default function PricingPage() {
                   <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-black/60">
                     Basic
                   </span>
-                  <div
-                    className="text-black font-bold mt-0.5"
-                  >
+                  <div className="text-black font-bold mt-0.5">
                     N$800
                   </div>
                 </div>
@@ -394,9 +514,7 @@ export default function PricingPage() {
                     </span>
                     <Crown className="w-3 h-3 text-frog-green" strokeWidth={1.5} />
                   </div>
-                  <div
-                    className="text-black font-bold mt-0.5"
-                  >
+                  <div className="text-black font-bold mt-0.5">
                     N$1,200
                   </div>
                 </div>
@@ -404,9 +522,7 @@ export default function PricingPage() {
                   <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-black/60">
                     Full
                   </span>
-                  <div
-                    className="text-black font-bold mt-0.5"
-                  >
+                  <div className="text-black font-bold mt-0.5">
                     N$1,750
                   </div>
                 </div>
@@ -458,7 +574,7 @@ export default function PricingPage() {
                 <div className="p-4 md:p-5" />
                 <div className="p-4 md:p-5 flex items-center justify-center border-l border-black/[0.06]">
                   <a
-                    href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Basic%20package%20(N%24800)`}
+                    href={waLink('pricing')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm font-bold text-black/60 hover:text-frog-green min-h-[44px] inline-flex items-center ${easing}`}
@@ -469,7 +585,7 @@ export default function PricingPage() {
                 </div>
                 <div className="p-4 md:p-5 flex items-center justify-center border-l border-black/[0.06]">
                   <a
-                    href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Advanced%20package%20(N%241%2C200)`}
+                    href={waLink('pricing')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`group inline-flex items-center gap-1.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-5 py-2.5 text-sm hover:bg-frog-green/90 active:scale-[0.98] ${easing}`}
@@ -484,7 +600,7 @@ export default function PricingPage() {
                 </div>
                 <div className="p-4 md:p-5 flex items-center justify-center border-l border-black/[0.06]">
                   <a
-                    href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%20want%20to%20register%20with%20the%20Full%20package%20(N%241%2C750)`}
+                    href={waLink('pricing')}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm font-bold text-black/60 hover:text-frog-green min-h-[44px] inline-flex items-center ${easing}`}
@@ -521,7 +637,7 @@ export default function PricingPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base mb-10 leading-relaxed">
-              Pricing and package FAQs.
+              Pricing, packages, and compliance FAQs.
             </p>
           </ScrollReveal>
 
@@ -536,177 +652,71 @@ export default function PricingPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          REGISTRATION FORM — LIGHT
+          WHATSAPP CTA CARD — LIGHT
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
-            <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-              Register
-            </span>
-          </ScrollReveal>
-          <ScrollReveal delay={0.08}>
-            <h2
-              className="text-3xl md:text-4xl font-bold text-black mb-4"
-            >
-              Ready to{' '}
-              <span className="italic text-frog-green">start?</span>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.12}>
-            <p className="text-black/60 text-base mb-10 leading-relaxed">
-              Fill in your details. We&apos;ll reply on WhatsApp within the hour.
-            </p>
-          </ScrollReveal>
+            <div className="bg-white ring-1 ring-black/[0.06] rounded-2xl p-8 md:p-12 text-center">
+              <div className="w-14 h-14 rounded-full bg-frog-green/10 flex items-center justify-center mx-auto mb-6">
+                <MessageCircle className="w-6 h-6 text-frog-green" strokeWidth={1.5} />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                Ready to{' '}
+                <span className="italic text-frog-green">start?</span>
+              </h2>
+              <p className="text-black/60 text-base mb-8 max-w-md mx-auto leading-relaxed">
+                Message us on WhatsApp. We&apos;ll reply within the hour and get your registration or compliance sorted.
+              </p>
 
-          <ScrollReveal delay={0.15}>
-            <div className="bg-white ring-1 ring-black/[0.06] rounded-2xl p-6 md:p-10">
-              <div className="space-y-5">
-                {/* Name */}
-                <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-2">
-                    Full Name
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40" strokeWidth={1.5} />
-                    <input
-                      type="text"
-                      value={formName}
-                      onChange={(e) => setFormName(e.target.value)}
-                      placeholder="e.g. John Kamati"
-                      className="w-full min-h-[44px] pl-11 pr-4 py-3.5 rounded-xl bg-frog-light border border-black/[0.06] text-black text-sm font-medium placeholder:text-black/30 placeholder:font-bold focus:outline-none focus:ring-2 focus:ring-frog-green/30 focus:border-frog-green/30 transition-all duration-300"
-                      aria-label="Your full name"
-                    />
-                  </div>
-                </div>
+              <a
+                href={waLink('pricing')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group inline-flex items-center justify-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_30px_rgba(122,201,67,0.15)] ${easing}`}
+                aria-label="Start via WhatsApp"
+              >
+                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+                Chat on WhatsApp
+                <span
+                  className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${arrowEasing}`}
+                >
+                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+                </span>
+              </a>
 
-                {/* Business Name */}
-                <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-2">
-                    Business Name
-                  </label>
-                  <div className="relative">
-                    <Building2 className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-black/40" strokeWidth={1.5} />
-                    <input
-                      type="text"
-                      value={formBusiness}
-                      onChange={(e) => setFormBusiness(e.target.value)}
-                      placeholder="e.g. Kamati Enterprises CC"
-                      className="w-full min-h-[44px] pl-11 pr-4 py-3.5 rounded-xl bg-frog-light border border-black/[0.06] text-black text-sm font-medium placeholder:text-black/30 placeholder:font-bold focus:outline-none focus:ring-2 focus:ring-frog-green/30 focus:border-frog-green/30 transition-all duration-300"
-                      aria-label="Your business name"
-                    />
-                  </div>
-                </div>
-
-                {/* Package Selection */}
-                <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-2">
-                    Package
-                  </label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {ccPackages.map((pkg) => (
-                      <button
-                        key={pkg.name}
-                        onClick={() => setFormPackage(pkg.name.toLowerCase())}
-                        className={`relative min-h-[44px] rounded-xl py-3 px-3 text-center transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                          formPackage === pkg.name.toLowerCase()
-                            ? 'bg-frog-green text-black ring-2 ring-frog-green/30 shadow-[0_0_20px_rgba(122,201,67,0.15)]'
-                            : 'bg-frog-light text-black/60 border border-black/[0.06] hover:border-frog-green/20 hover:text-black'
-                        }`}
-                        aria-label={`Select ${pkg.name} package`}
-                      >
-                        <span className="block text-xs font-bold uppercase tracking-wider">
-                          {pkg.name}
-                        </span>
-                        <span
-                          className={`block text-sm font-bold mt-0.5 ${
-                            formPackage === pkg.name.toLowerCase() ? 'text-black/70' : 'text-black/40'
-                          }`}
-                        >
-                          N${pkg.price}
-                        </span>
-                        {pkg.featured && (
-                          <span className={`absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-frog-green flex items-center justify-center ${
-                            formPackage === pkg.name.toLowerCase() ? 'bg-black' : ''
-                          }`}>
-                            <Crown className="w-2.5 h-2.5 text-white" strokeWidth={2} />
-                          </span>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Agent Selection */}
-                <div>
-                  <label className="block text-[10px] uppercase tracking-[0.2em] font-bold text-black/40 mb-2">
-                    Preferred Agent
-                  </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {agents.map((agent) => (
-                      <button
-                        key={agent.name}
-                        onClick={() => setSelectedAgent(agent.name.toLowerCase())}
-                        className={`min-h-[44px] flex items-center gap-3 rounded-xl py-3.5 px-4 text-left transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
-                          selectedAgent === agent.name.toLowerCase()
-                            ? 'bg-frog-green text-black ring-2 ring-frog-green/30 shadow-[0_0_20px_rgba(122,201,67,0.15)]'
-                            : 'bg-frog-light text-black/60 border border-black/[0.06] hover:border-frog-green/20'
-                        }`}
-                        aria-label={`Select ${agent.name} as preferred agent`}
-                      >
-                        <div
-                          className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${
-                            selectedAgent === agent.name.toLowerCase()
-                              ? 'bg-black/10'
-                              : 'bg-frog-green/10'
-                          }`}
-                        >
-                          <MessageCircle
-                            className={`w-4 h-4 ${
-                              selectedAgent === agent.name.toLowerCase() ? 'text-black' : 'text-frog-green'
-                            }`}
-                            strokeWidth={1.5}
-                          />
-                        </div>
-                        <div>
-                          <span className="block text-xs font-bold">{agent.name}</span>
-                          <span
-                            className={`block text-[10px] ${
-                              selectedAgent === agent.name.toLowerCase() ? 'text-black/50' : 'text-black/40'
-                            }`}
-                          >
-                            {agent.role}
-                          </span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Submit */}
-                <div className="pt-4">
+              <div className="mt-8 pt-6 border-t border-black/[0.06]">
+                <p className="text-black/40 text-xs font-medium mb-3">
+                  Or reach us directly
+                </p>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <a
-                    href={`${agentWaLink}?text=${encodeURIComponent(
-                      `Hi, I'm ${formName || '[Your Name]'} and I'd like to register "${formBusiness || '[Business Name]'}" with the ${formPackage.charAt(0).toUpperCase() + formPackage.slice(1)} package.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`group inline-flex items-center justify-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm w-full hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_30px_rgba(122,201,67,0.15)] ${easing}`}
-                    aria-label="Start registration via WhatsApp"
+                    href={PHONE_MAIN_TEL}
+                    className="inline-flex items-center gap-2 text-sm text-black/60 hover:text-frog-green font-bold min-h-[44px] transition-colors duration-300"
+                    aria-label={`Call ${PHONE_MAIN}`}
                   >
-                    <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                    Start via WhatsApp
-                    <span
-                      className={`w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] ${arrowEasing}`}
-                    >
-                      <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                    </span>
+                    <Phone className="w-4 h-4" strokeWidth={1.5} />
+                    {PHONE_MAIN}
                   </a>
-                  <p className="text-black/40 text-xs text-center mt-3 font-medium">
-                    100% remote · 7–10 day turnaround · No hidden fees
-                  </p>
+                  {AGENTS.map((agent) => (
+                    <a
+                      key={agent.id}
+                      href={waLink('pricing')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-black/60 hover:text-frog-green font-bold min-h-[44px] transition-colors duration-300"
+                      aria-label={`WhatsApp ${agent.name}`}
+                    >
+                      <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+                      {agent.name} · {agent.role}
+                    </a>
+                  ))}
                 </div>
               </div>
+
+              <p className="text-black/40 text-xs text-center mt-6 font-medium">
+                100% remote · 7–10 day turnaround · No hidden fees
+              </p>
             </div>
           </ScrollReveal>
         </div>
@@ -725,20 +735,20 @@ export default function PricingPage() {
           >
             <div className="hidden sm:block">
               <p className="text-white text-sm font-bold">
-                Ready? Start Registration
+                Ready? Let&apos;s Talk
               </p>
               <p className="text-white/30 text-xs font-medium">From N$800 · 7–10 day turnaround</p>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <a
-                href={`${WHATSAPP_GADAFI}?text=Hi%2C%20I%27m%20ready%20to%20start%20my%20business%20registration`}
+                href={waLink('pricing')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`group inline-flex items-center justify-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-6 py-3 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_20px_rgba(122,201,67,0.2)] w-full sm:w-auto ${easing}`}
                 aria-label="Start business registration on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                Register Now
+                Get Started
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-500" strokeWidth={1.5} />
               </a>
             </div>

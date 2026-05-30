@@ -5,19 +5,22 @@
  */
 
 // ─── Contact / WhatsApp ────────────────────────────────────
-export const WHATSAPP_GADAFI = 'https://wa.me/264813411522'
-export const WHATSAPP_MUX = 'https://wa.me/264853057020'
+export const WHATSAPP_MAIN = 'https://wa.me/264853411522'
+export const WHATSAPP_GADAFI = 'https://wa.me/264853411522'
+export const WHATSAPP_MUX = 'https://wa.me/264853411522'
 export const PHONE_MAIN = '+264 341 1522'
 export const PHONE_MAIN_TEL = 'tel:+2643411522'
 
 // ─── Agents ────────────────────────────────────────────────
 export const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', phone: '081 341 1522', fullPhone: '264813411522', role: 'Compliance Expert', waLink: WHATSAPP_GADAFI },
-  { id: 'mux', name: 'Mux', phone: '085 305 7020', fullPhone: '264853057020', role: 'Digital Strategist', waLink: WHATSAPP_MUX },
+  { id: 'gadafi', name: 'Gadafi', phone: '085 341 1522', fullPhone: '264853411522', role: 'Compliance Expert', waLink: WHATSAPP_MAIN },
+  { id: 'mux', name: 'Mux', phone: '085 341 1522', fullPhone: '264853411522', role: 'Compliance Officer', waLink: WHATSAPP_MAIN },
 ] as const
 
 // ─── Social ────────────────────────────────────────────────
 export const FACEBOOK_URL = 'https://www.facebook.com/SMEfrogNamibia'
+export const INSTAGRAM_URL = 'https://www.instagram.com/smefrog?igsh=MWFhYnV1NTZvYXl6ag=='
+export const GITHUB_URL = 'https://github.com/tangison'
 export const GEMSWEB_URL = 'https://gemsweb.xyz'
 
 // ─── Site ──────────────────────────────────────────────────
@@ -28,10 +31,29 @@ export const SITE_NAME = 'SMEfrog'
 export const PRICING = {
   basic: { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], btn: 'Get Basic' },
   advanced: { tier: 'ADVANCED', price: 'N$1,200', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true, btn: 'Get Advanced' },
-  full: { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Business Plan', 'Social Setup', 'Pitch Deck'], btn: 'Get Full' },
+  full: { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Annual Return Filing', 'Compliance Check', 'Governance Template'], btn: 'Get Full' },
 } as const
 
 export const pricingCards = Object.values(PRICING)
+
+// ─── Compliance Service ───────────────────────────────────
+export const COMPLIANCE_SERVICE = {
+  title: 'Compliance Services',
+  tag: 'RECURRING',
+  description: 'Annual returns, BO updates, regulatory filings, and governance documentation. Registration gets you in the door — compliance keeps you operational.',
+  items: [
+    'Annual Returns Filing',
+    'Beneficial Ownership Updates',
+    'Regulatory Filings & Compliance',
+    'Governance Documentation',
+    'Record Keeping & Secretarial',
+    'Company Secretarial Services',
+    'Compliance Status Checks',
+    'Amendment Filings',
+  ],
+  price: 'Custom',
+  priceNote: 'Recurring service',
+} as const
 
 // ─── Trust items ───────────────────────────────────────────
 export const TRUST_ITEMS = ['100% Remote', '7–10 Days', 'Bank-Ready Docs', 'BIPA Included', '2X Cheaper'] as const
@@ -59,3 +81,20 @@ export const FAQ_ITEMS = [
   { q: 'Can foreigners register?', a: 'Yes, with a valid work permit or residency.' },
   { q: 'What do I need?', a: 'ID copy, proof of address, proposed business name(s). We handle the rest.' },
 ] as const
+
+// ─── Prefilled WhatsApp Messages ──────────────────────────
+export const WA_MESSAGES = {
+  home: "Hi SMEfrog, I'd like to get started with registering my business.",
+  registration: "Hi SMEfrog, I'm interested in registering a business. Can you help me?",
+  compliance: 'Hi SMEfrog, I need help with compliance for my business.',
+  documents: 'Hi SMEfrog, I need help with business documents. What do you offer?',
+  pricing: "Hi SMEfrog, I'd like to discuss pricing for your services.",
+  contact: "Hi SMEfrog, I'd like to get in touch about your services.",
+  footer: "Hi SMEfrog, I found you on your website and I'd like to know more.",
+  frogai: 'Hi SMEfrog, I was chatting with FrogAI and I\'d like to speak to a person.',
+} as const
+
+// ─── WhatsApp Link Helper ─────────────────────────────────
+export function waLink(message: keyof typeof WA_MESSAGES): string {
+  return `${WHATSAPP_MAIN}?text=${encodeURIComponent(WA_MESSAGES[message])}`
+}

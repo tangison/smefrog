@@ -2,63 +2,56 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, MessageCircle, Check, Phone } from 'lucide-react'
+import { ArrowRight, MessageCircle, Check, Phone, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
 import { HeroSlideshow } from '@/components/hero-slideshow'
+import { WhatsAppTestimonials } from '@/components/whatsapp-testimonials'
 import {
   AGENTS,
-  WHATSAPP_GADAFI,
+  waLink,
   TRUST_ITEMS,
   pricingCards,
   STEPS,
-  TESTIMONIALS,
   FAQ_ITEMS,
   PHONE_MAIN,
   PHONE_MAIN_TEL,
 } from '@/lib/config'
 
-/* ─── Data (local only — not in config) ────────────── */
-const editorialServices = [
+/* ─── Services Data (3 core services only) ─────────── */
+const services = [
   {
-    title: 'CC Registration',
+    title: 'Business Registration',
     tag: 'POPULAR',
     desc: 'Remote BIPA filing. Bank-ready documents. From N$800.',
     price: 'From N$800',
-    img: '/service-registration.png',
+    img: '/hero/hero-2.webp',
     theme: 'dark' as const,
     span: 'md:col-span-7',
+    href: '/services/business-registration',
   },
   {
-    title: 'Startup Support',
-    tag: 'GROWTH',
-    desc: 'Business plans, pitch decks, and company profiles.',
+    title: 'Compliance Services',
+    tag: 'RECURRING',
+    desc: 'Annual returns, BO updates, regulatory filings. Registration gets you in — compliance keeps you operational.',
     price: 'Custom',
-    img: '/service-startup.png',
+    img: '/images/compliance-checklist.jpeg',
     theme: 'light' as const,
     span: 'md:col-span-5',
+    href: '/services/compliance-services',
   },
   {
     title: 'Business Documents',
     tag: 'LEGAL',
     desc: 'Contracts, policies, and internal docs — ready to use.',
     price: 'Custom',
-    img: '/service-documents.png',
+    img: '/images/documents-laptop.jpeg',
     theme: 'dark' as const,
     span: 'md:col-span-5',
-  },
-  {
-    title: 'Digital Services',
-    tag: 'DIGITAL',
-    desc: 'Websites, email, and branding via Gemsweb Digital.',
-    price: 'Via Gemsweb',
-    img: '/service-digital.png',
-    theme: 'light' as const,
-    span: 'md:col-span-7',
-    badge: { label: 'Powered by Gemsweb Digital', url: 'https://gemsweb.xyz' },
+    href: '/services/business-documents',
   },
 ]
 
@@ -69,10 +62,7 @@ export default function HomePage() {
 
   const handleJump = (e: React.FormEvent) => {
     e.preventDefault()
-    const agent = AGENTS.find(a => a.id === selectedAgent)
-    if (!agent) return
-    const msg = `Hi ${agent.name}! I'm ${regForm.name}. I want the ${regForm.package} package for "${regForm.biz}".`
-    window.open(`https://wa.me/${agent.fullPhone}?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(waLink('registration'), '_blank')
   }
 
   return (
@@ -80,6 +70,9 @@ export default function HomePage() {
       {/* ═══ 1. HERO ═══ */}
       <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
         <HeroSlideshow />
+
+        {/* Ambient green glow behind headline */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.07] rounded-full blur-[150px] pointer-events-none z-[1]" />
 
         <div className="relative z-20 py-24 md:py-32 px-4 md:px-6 w-full">
           <div className="max-w-7xl mx-auto">
@@ -106,7 +99,7 @@ export default function HomePage() {
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
-                    href={WHATSAPP_GADAFI}
+                    href={waLink('home')}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Register now on WhatsApp"
@@ -152,7 +145,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ 3. SERVICES BENTO ═══ */}
+      {/* ═══ 3. SERVICES BENTO (3 core services) ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 md:mb-20">
@@ -173,34 +166,34 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            {/* Large card — CC Registration */}
+            {/* Large card — Business Registration */}
             <ScrollReveal className="md:col-span-7">
               <motion.div
                 whileHover={{ scale: 0.995 }}
                 transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
                 className="relative h-[500px] md:h-[600px] rounded-[2.5rem] overflow-hidden bg-black group cursor-pointer"
               >
-                <Image src={editorialServices[0].img} alt="CC Registration" fill className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" />
+                <Image src={services[0].img} alt="Business Registration" fill className="object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" />
                 <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-                  <span className="text-frog-green text-xs font-black uppercase tracking-widest mb-4">{editorialServices[0].tag}</span>
-                  <h3 className="text-white text-4xl md:text-5xl font-black mb-4 leading-none">CC<br />Registration</h3>
-                  <p className="text-white/50 max-w-xs mb-6 text-sm">{editorialServices[0].desc}</p>
+                  <span className="text-frog-green text-xs font-black uppercase tracking-widest mb-4">{services[0].tag}</span>
+                  <h3 className="text-white text-4xl md:text-5xl font-black mb-4 leading-none">Business<br />Registration</h3>
+                  <p className="text-white/50 max-w-xs mb-6 text-sm">{services[0].desc}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-frog-green font-black">{editorialServices[0].price}</span>
-                    <Link href="/services/business-registration" aria-label="View CC Registration" className="w-12 h-12 min-h-[44px] min-w-[44px] rounded-full bg-frog-green flex items-center justify-center text-black font-bold hover:scale-110 transition-transform duration-500">→</Link>
+                    <span className="text-frog-green font-black">{services[0].price}</span>
+                    <Link href={services[0].href} aria-label="View Business Registration" className="w-12 h-12 min-h-[44px] min-w-[44px] rounded-full bg-frog-green flex items-center justify-center text-black font-bold hover:scale-110 transition-transform duration-500">→</Link>
                   </div>
                 </div>
               </motion.div>
             </ScrollReveal>
 
-            {/* Right stack */}
+            {/* Right stack — Compliance + Documents */}
             <div className="md:col-span-5 space-y-6">
-              {editorialServices.slice(1, 3).map((s, i) => (
+              {services.slice(1).map((s, i) => (
                 <ScrollReveal key={s.title} delay={0.06 * (i + 1)}>
                   <motion.div
                     whileHover={{ y: -6 }}
                     transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                    className={`p-8 md:p-10 rounded-[2rem] h-[260px] md:h-[285px] flex flex-col justify-between cursor-pointer ${
+                    className={`glow-card-hover p-8 md:p-10 rounded-[2rem] h-[260px] md:h-[285px] flex flex-col justify-between cursor-pointer ${
                       s.theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black shadow-xl shadow-black/5'
                     }`}
                   >
@@ -211,43 +204,31 @@ export default function HomePage() {
                     </div>
                     <div className="flex items-center justify-between mt-4">
                       <span className={`text-xs font-black uppercase tracking-widest ${s.theme === 'dark' ? 'text-white/50' : 'text-black/50'}`}>Learn More</span>
-                      <div className={`w-11 h-11 min-h-[44px] min-w-[44px] rounded-full flex items-center justify-center ${s.theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}`}>→</div>
+                      <Link href={s.href} aria-label={`View ${s.title}`} className={`w-11 h-11 min-h-[44px] min-w-[44px] rounded-full flex items-center justify-center ${s.theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'}`}>→</Link>
                     </div>
                   </motion.div>
                 </ScrollReveal>
               ))}
             </div>
-
-            {/* Bottom full-width — Digital Services */}
-            <ScrollReveal className="md:col-span-12">
-              <motion.div
-                whileHover={{ scale: 0.998 }}
-                transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
-                className="relative h-[280px] md:h-[320px] rounded-[2.5rem] overflow-hidden bg-white shadow-xl shadow-black/5 group cursor-pointer"
-              >
-                <Image src={editorialServices[3].img} alt="Digital Services" fill className="object-cover opacity-20 group-hover:scale-105 transition-transform duration-1000" />
-                <div className="absolute inset-0 p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black/40">{editorialServices[3].tag}</span>
-                      <a
-                        href={editorialServices[3].badge?.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block rounded-full px-2.5 py-0.5 text-[9px] uppercase tracking-[0.12em] font-medium bg-frog-green/10 text-frog-green border border-frog-green/20 hover:bg-frog-green/20 transition-colors"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {editorialServices[3].badge?.label} ↗
-                      </a>
-                    </div>
-                    <h3 className="text-3xl md:text-4xl font-black text-black">Digital Services</h3>
-                    <p className="text-black/50 text-sm mt-2 max-w-md">{editorialServices[3].desc}</p>
-                  </div>
-                  <Link href="/services/digital-services" aria-label="View Digital Services" className="w-12 h-12 min-h-[44px] min-w-[44px] rounded-full bg-black flex items-center justify-center text-white font-bold shrink-0 hover:scale-110 transition-transform duration-500">→</Link>
-                </div>
-              </motion.div>
-            </ScrollReveal>
           </div>
+
+          {/* Gemsweb referral card */}
+          <ScrollReveal delay={0.1}>
+            <div className="mt-8">
+              <a
+                href="https://gemsweb.xyz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white ring-1 ring-black/5 rounded-2xl px-6 py-4 flex items-center justify-between gap-4 hover:ring-frog-green/20 transition-all duration-500 group"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-black/40 text-sm font-bold">Need a website?</span>
+                  <span className="text-black/60 text-sm font-bold">Digital services via <span className="text-frog-green font-black">Gemsweb Digital</span></span>
+                </div>
+                <ExternalLink className="w-4 h-4 text-black/30 group-hover:text-frog-green transition-colors duration-300 shrink-0" />
+              </a>
+            </div>
+          </ScrollReveal>
 
           <ScrollReveal delay={0.1}>
             <div className="mt-10 text-center">
@@ -320,7 +301,7 @@ export default function HomePage() {
                       ))}
                     </div>
                     <a
-                      href={WHATSAPP_GADAFI}
+                      href={waLink('pricing')}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Choose ${pkg.tier} package`}
@@ -348,34 +329,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ 6. TESTIMONIALS ═══ */}
+      {/* ═══ 6. WHATSAPP TESTIMONIALS ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
         <div className="max-w-7xl mx-auto">
-          <ScrollReveal><Eyebrow light>Testimonials</Eyebrow></ScrollReveal>
+          <ScrollReveal><Eyebrow light>Reviews</Eyebrow></ScrollReveal>
           <ScrollReveal delay={0.06}>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-12 md:mb-16">
-              Real Founders.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-black mb-4">
+              Real Conversations.
             </h2>
           </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-black/40 text-lg font-bold mb-12 md:mb-16 max-w-xl">
+              Verified WhatsApp reviews from our clients.
+            </p>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t, i) => (
-              <ScrollReveal key={t.name} delay={i * 0.08}>
-                <div className="bg-white rounded-[2rem] p-8 h-full shadow-sm ring-1 ring-black/[0.04] hover:shadow-md transition-shadow duration-700">
-                  <p className="text-black/60 text-base leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-frog-green/10 flex items-center justify-center text-frog-green font-black text-sm">
-                      {t.name[0]}
-                    </div>
-                    <div>
-                      <p className="text-black font-bold text-sm">{t.name}</p>
-                      <p className="text-black/40 text-xs">{t.business}</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <WhatsAppTestimonials />
         </div>
       </section>
 
@@ -431,7 +400,7 @@ export default function HomePage() {
             {AGENTS.map(agent => (
               <a
                 key={agent.id}
-                href={`https://wa.me/${agent.fullPhone}`}
+                href={waLink('contact')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 bg-black text-white px-8 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-frog-green hover:text-black transition-all duration-300 min-h-[44px]"
@@ -447,7 +416,10 @@ export default function HomePage() {
 
       {/* ═══ REGISTRATION FLOW ═══ */}
       <section className="py-24 md:py-32 bg-frog-black relative overflow-hidden" id="registration-section">
+        {/* Ambient green glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-frog-green/[0.10] blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/[0.03] blur-[180px] rounded-full pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-16 md:gap-24 items-center relative z-10">
           <div>
             <ScrollReveal>
@@ -499,7 +471,6 @@ export default function HomePage() {
                   <label htmlFor="reg-identity" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Your Name</label>
                   <input
                     id="reg-identity"
-                    required
                     value={regForm.name}
                     onChange={(e) => setRegForm({ ...regForm, name: e.target.value })}
                     className="w-full bg-transparent border-b-2 border-white/10 py-5 text-2xl text-white outline-none focus:border-frog-green transition-colors font-bold min-h-[44px]"
@@ -511,7 +482,6 @@ export default function HomePage() {
                   <label htmlFor="reg-venture" className="text-[10px] font-black uppercase tracking-[0.4em] text-white/30">Business Name</label>
                   <input
                     id="reg-venture"
-                    required
                     value={regForm.biz}
                     onChange={(e) => setRegForm({ ...regForm, biz: e.target.value })}
                     className="w-full bg-transparent border-b-2 border-white/10 py-5 text-2xl text-white outline-none focus:border-frog-green transition-colors font-bold min-h-[44px]"
@@ -555,6 +525,8 @@ export default function HomePage() {
 
       {/* ═══ FINAL CTA ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden bg-frog-light">
+        {/* Ambient green glow */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-frog-green/[0.10] blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/5 blur-[120px] rounded-full translate-x-1/2 pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -572,7 +544,7 @@ export default function HomePage() {
           <ScrollReveal delay={0.1}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href={WHATSAPP_GADAFI}
+                href={waLink('home')}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Register now on WhatsApp"

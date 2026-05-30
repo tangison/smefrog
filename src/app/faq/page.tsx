@@ -5,7 +5,7 @@ import { MessageCircle, ArrowRight, ChevronDown, Bot } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { motion, AnimatePresence } from 'framer-motion'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const faqs = [
@@ -35,11 +35,6 @@ const faqs = [
       'Three things: certified ID/passport copy, proof of address (under 3 months old), and 2–3 proposed business names.',
   },
   {
-    question: 'Basic vs Advanced vs Full?',
-    answer:
-      'Basic covers essentials: name reservation, filing, tax certificate. Advanced adds BO filing, digital certificate, compliance. Full adds business plan, social setup, pitch deck, and priority support.',
-  },
-  {
     question: 'Do you handle BIPA filing?',
     answer:
       'Yes. Included in every package. We handle the full submission with BIPA on your behalf.',
@@ -50,9 +45,19 @@ const faqs = [
       'A BIPA requirement identifying who ultimately owns your business. Mandatory for all registered entities. Included in Advanced and Full packages.',
   },
   {
-    question: 'Can I upgrade my package later?',
+    question: 'What happens if I don\'t file annual returns?',
     answer:
-      'Yes. Pay the difference. Message us on WhatsApp.',
+      'BIPA may impose penalties or deregister your company.',
+  },
+  {
+    question: 'How often do BO declarations need updating?',
+    answer:
+      'Whenever ownership changes, or at minimum annually.',
+  },
+  {
+    question: 'What compliance services do you offer?',
+    answer:
+      'Annual returns, BO updates, regulatory filings, governance documentation, and company secretarial services.',
   },
   {
     question: 'Do you offer PTY LTD registration?',
@@ -197,34 +202,19 @@ export default function FAQPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={WHATSAPP_GADAFI}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                aria-label="Chat on WhatsApp with Gadafi"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                WhatsApp Gadafi
-                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
-                </span>
-              </a>
-              <a
-                href={WHATSAPP_MUX}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 min-h-[44px] ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                aria-label="Chat on WhatsApp with Mux"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
-                WhatsApp Mux
-                <span className="w-7 h-7 rounded-full bg-frog-green/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-                </span>
-              </a>
-            </div>
+            <a
+              href={waLink('contact')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              aria-label="Chat with us on WhatsApp"
+            >
+              <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
+              Chat with Us on WhatsApp
+              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+              </span>
+            </a>
           </ScrollReveal>
         </div>
       </section>

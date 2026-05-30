@@ -22,7 +22,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX } from '@/lib/config'
+import { AGENTS, waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const documentTypes = [
@@ -120,11 +120,6 @@ const processSteps = [
   { n: '04', title: 'Receive', desc: 'Polished, legally sound documents delivered digitally.' },
 ]
 
-const AGENTS = [
-  { id: 'gadafi', name: 'Gadafi', fullPhone: '264813411522', role: 'Compliance Expert', waLink: WHATSAPP_GADAFI },
-  { id: 'mux', name: 'Mux', fullPhone: '264853057020', role: 'Digital Strategist', waLink: WHATSAPP_MUX },
-]
-
 /* ─── Page ──────────────────────────────────────────── */
 export default function BusinessDocumentsPage() {
   const easing = 'transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]'
@@ -173,7 +168,7 @@ export default function BusinessDocumentsPage() {
               <ScrollReveal delay={0.26}>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href={WHATSAPP_GADAFI}
+                    href={waLink('documents')}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Request a document on WhatsApp"
@@ -203,7 +198,7 @@ export default function BusinessDocumentsPage() {
             <ScrollReveal delay={0.12} className="hidden lg:block">
               <div className="relative h-[500px] rounded-[2.5rem] overflow-hidden">
                 <Image
-                  src="/service-documents.png"
+                  src="/hero/hero-7.webp"
                   alt="Business Documents"
                   fill
                   className="object-cover"
@@ -393,7 +388,7 @@ export default function BusinessDocumentsPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <a
-              href={WHATSAPP_GADAFI}
+              href={waLink('documents')}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Request a document on WhatsApp"
@@ -432,9 +427,7 @@ export default function BusinessDocumentsPage() {
             {AGENTS.map((agent, i) => (
               <ScrollReveal key={agent.name} delay={i * 0.06}>
                 <a
-                  href={`${agent.waLink}?text=${encodeURIComponent(
-                    `Hi ${agent.name}! I need help with business documents.`
-                  )}`}
+                  href={agent.waLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Chat with ${agent.name} on WhatsApp`}

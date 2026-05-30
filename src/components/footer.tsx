@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Facebook } from 'lucide-react'
-import { WHATSAPP_GADAFI, WHATSAPP_MUX, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, GEMSWEB_URL } from '@/lib/config'
+import { Facebook, Instagram, Github } from 'lucide-react'
+import { AGENTS, waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL, GEMSWEB_URL } from '@/lib/config'
 
 const serviceLinks = [
   { label: 'CC Registration', href: '/services/business-registration' },
   { label: 'PTY LTD Filing', href: '/services/business-registration' },
-  { label: 'Startup Support', href: '/services/startup-support' },
+  { label: 'Compliance Services', href: '/services/compliance-services' },
   { label: 'Business Documents', href: '/services/business-documents' },
-  { label: 'Digital Services', href: '/services/digital-services' },
 ]
 
 const companyLinks = [
@@ -24,10 +23,7 @@ const legalLinks = [
   { label: 'Terms & Conditions', href: '/terms' },
 ]
 
-const AGENTS = [
-  { name: 'Gadafi', phone: '081 341 1522', role: 'Compliance', waLink: WHATSAPP_GADAFI },
-  { name: 'Mux', phone: '085 305 7020', role: 'Digital', waLink: WHATSAPP_MUX },
-]
+
 
 export function Footer() {
   return (
@@ -119,16 +115,37 @@ export function Footer() {
               </div>
 
               {/* Social */}
-              <div className="flex items-center gap-3">
-                <a
-                  href={FACEBOOK_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow SMEfrog on Facebook (opens in new tab)"
-                  className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:text-frog-green hover:border-frog-green/30 transition-all duration-500"
-                >
-                  <Facebook className="w-4 h-4" strokeWidth={1.5} />
-                </a>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <a
+                    href={FACEBOOK_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow SMEfrog on Facebook (opens in new tab)"
+                    className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:text-frog-green hover:border-frog-green/30 transition-all duration-500"
+                  >
+                    <Facebook className="w-4 h-4" strokeWidth={1.5} />
+                  </a>
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow SMEfrog on Instagram (opens in new tab)"
+                    className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:text-frog-green hover:border-frog-green/30 transition-all duration-500"
+                  >
+                    <Instagram className="w-4 h-4" strokeWidth={1.5} />
+                  </a>
+                  <a
+                    href={GITHUB_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Follow SMEfrog on GitHub (opens in new tab)"
+                    className="w-10 h-10 min-h-[44px] min-w-[44px] rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-white/50 hover:text-frog-green hover:border-frog-green/30 transition-all duration-500"
+                  >
+                    <Github className="w-4 h-4" strokeWidth={1.5} />
+                  </a>
+                </div>
+                <p className="text-white/20 text-[10px] font-bold">LinkedIn · Google Business <span className="text-frog-green/40">Coming Soon</span></p>
               </div>
 
               {/* Gemsweb */}
@@ -157,7 +174,7 @@ export function Footer() {
             <p className="text-white/40 text-sm font-bold mt-1">100% remote · 7–10 days · From N$800</p>
           </div>
           <a
-            href={WHATSAPP_GADAFI}
+            href={waLink('footer')}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Start registration on WhatsApp"
@@ -186,6 +203,24 @@ export function Footer() {
               className="text-white/30 hover:text-frog-green transition-colors duration-500"
             >
               <Facebook className="w-4 h-4" strokeWidth={1.5} />
+            </a>
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow SMEfrog on Instagram"
+              className="text-white/30 hover:text-frog-green transition-colors duration-500"
+            >
+              <Instagram className="w-4 h-4" strokeWidth={1.5} />
+            </a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow SMEfrog on GitHub"
+              className="text-white/30 hover:text-frog-green transition-colors duration-500"
+            >
+              <Github className="w-4 h-4" strokeWidth={1.5} />
             </a>
             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.5em]">Namibia</span>
           </div>
