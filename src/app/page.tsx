@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
+import { HeroSlideshow } from '@/components/hero-slideshow'
 
 /* ─── Data ─────────────────────────────────────────── */
 const trustItems = ['100% Remote', '7–10 Days', 'Bank-Ready Docs', 'BIPA Included', '2X Cheaper']
@@ -101,12 +102,7 @@ export default function HomePage() {
     <>
       {/* ═══ 1. HERO ═══ */}
       <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src="/hero-bg.png" alt="" fill className="object-cover opacity-40" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-frog-black via-frog-black/60 to-transparent z-10" />
-          <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-frog-green/10 blur-[180px] rounded-full pointer-events-none" />
-          <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-frog-dark/40 blur-[140px] rounded-full pointer-events-none" />
-        </div>
+        <HeroSlideshow />
 
         <div className="relative z-20 py-24 md:py-32 px-4 md:px-6 w-full">
           <div className="max-w-7xl mx-auto">
