@@ -232,3 +232,25 @@ Stage Summary:
 - All contact flows now use WhatsApp with prefilled messages
 - New WhatsApp testimonials carousel with infinite scroll
 - Parallax + ambient glow + scroll animations added
+
+---
+Task ID: 1
+Agent: Main Agent
+Task: Fix Vercel build error, audit fixes, and cleanup
+
+Work Log:
+- Identified Vercel build failure caused by `skills/image-edit/scripts/image-edit.ts` TypeScript error
+- Added `skills/`, `download/`, `mini-services/` to tsconfig.json exclude list (cannot delete skills/ due to root-owned directory)
+- Fixed privacy and terms pages: replaced hardcoded phone numbers (+264 85 341 1522) and website (smefrog.tangison.com) with config constants (PHONE_MAIN, SITE_URL)
+- Removed unused config exports: COMPLIANCE_SERVICE, SITE_NAME (WHATSAPP_MUX already gone)
+- Ran ESLint: clean pass with zero errors
+- Verified dev server returns 200 on all pages
+- Deleted stray agent-ctx/ and download/ directories from git
+- Pushed to GitHub (commit a741571)
+
+Stage Summary:
+- Vercel build error fixed by excluding skills/ from TypeScript compilation
+- 427 files changed, 126,357 deletions (mostly skills/ directory removal from git)
+- Privacy and terms pages now use centralized config constants
+- Config.ts cleaned of unused exports
+- All 16 restructuring phases were already completed in previous session
