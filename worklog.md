@@ -200,3 +200,35 @@ Move duplicated data from individual pages into config.ts:
 9. **Phase 9**: Update pricing page
 10. **Phase 10**: Update about, contact, FAQ, blog, resources pages
 11. **Phase 11**: Final lint, Vercel readiness, push to GitHub + Vercel
+
+---
+Task ID: 1-16 (all phases)
+Agent: Main orchestrator
+Task: Complete SMEfrog restructuring - 16 phases
+
+Work Log:
+- Phase 1: Deleted 9 unused shadcn/ui components (button, dialog, input, label, separator, sheet, skeleton, toast, toggle, toggle-group)
+- Phase 2: Deleted /services/startup-support/ page entirely
+- Phase 3: Deleted /services/digital-services/ page entirely, added Gemsweb referral card
+- Phase 4: Created /services/compliance-services/ page (new core service) with hero, breakdown, recurring revenue section, process, testimonials, CTA
+- Phase 5: Deleted 5 AI-generated images (service-registration.png, service-startup.png, service-documents.png, service-digital.png, about-bg.png)
+- Phase 6: Updated hero slideshow to 3 Namibian landscapes only (hero-1, hero-6, hero-9) with JS parallax at 60% scroll speed. Assigned remaining 6 images to pages.
+- Phase 7: Rewrote homepage with 3 core services bento, WhatsApp testimonials section, ambient glow, Gemsweb referral card
+- Phase 8: Updated config.ts (new WhatsApp number +264853411522, waLink() helper, COMPLIANCE_SERVICE, WA_MESSAGES, INSTAGRAM_URL, GITHUB_URL), footer (3 social links + coming soon), navbar (waLink), search overlay (compliance entries), FrogAI chat (human handoff → WhatsApp), FrogAI API (compliance knowledge)
+- Phase 9: Updated pricing page with compliance tiers (Essential N$500/yr, Professional N$1,200/yr, Enterprise Custom)
+- Phase 10: Updated about, contact, FAQ, blog, resources, layout pages
+- Phase 12: Extracted ZIP, renamed 11 images, copied to /public/images/. 5 WhatsApp screenshots + 6 service photos assigned across site.
+- Phase 13: Created WhatsAppTestimonials carousel component with infinite CSS scroll on desktop, swipeable on mobile, pause on hover, phone mockup cards
+- Phase 14: Enhanced ScrollReveal with image scale (0.97→1.0) and stagger (80ms) variants. Added parallax to hero slideshow.
+- Phase 15: Added ambient glow CSS utilities (glow-hero-text, glow-card-hover, glow-cta-ambient). Applied to homepage hero, service cards, CTA sections.
+- Phase 16: All contact points → prefilled WhatsApp links using waLink() helper. Updated 8 page-specific messages. Replaced contact form with WhatsApp CTA card. Added Instagram + GitHub + coming soon to footer.
+- Lint passes clean, all routes return 200
+- Pushed to GitHub: github.com/tangison/smefrog (commit 40c07cd)
+
+Stage Summary:
+- 52 files changed, 1435 insertions, 2931 deletions
+- Business model pivoted from 4 services to 3 focused compliance services
+- All AI-generated images replaced with real photos
+- All contact flows now use WhatsApp with prefilled messages
+- New WhatsApp testimonials carousel with infinite scroll
+- Parallax + ambient glow + scroll animations added
