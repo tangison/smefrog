@@ -350,3 +350,35 @@ Stage Summary:
 - All pages fully interactive with useState for real-time updates
 - Consistent dark design language with green accents throughout
 - All CTAs link to WhatsApp with prefilled messages
+
+---
+Task ID: 5-7
+Agent: Main Agent
+Task: FAQ fix, Academy integration, design pass, quality fixes, build + push
+
+Work Log:
+- Fixed FAQ page: root cause was accordion section using `bg-frog-light` (light background) with `text-frog-light` (light text = invisible). Replaced with `bg-[#0a0a0a]` dark background, white question text (#ffffff), #a0a0a0 answers, #4CAF50 numbered labels and chevrons, #1e1e1e dividers, hover #111111, open state #0f1a0f
+- Added ACADEMY_URL constant to config.ts (document-library-one.vercel.app)
+- Added Academy to footer Company links section with external link support
+- Added Academy section to homepage (between testimonials and FAQ): "Free Business Education" heading, 64 modules / 3 learning tracks stats, "Go to Academy ↗" CTA, bg #0a1a0a with frog watermark at 4% opacity
+- Added Academy section to resources page bottom with "Open Academy ↗" button
+- Updated resources page tools to point to new tool pages (pricing-calculator, cost-estimator, name-checker)
+- Design pass: all buttons converted to rounded-full (border-radius: 9999px), min-h-[48px], touch-manipulation
+- Fixed pricing card CTA buttons: rounded-xl → rounded-full, 44px → 48px
+- Fixed not-found.tsx and error.tsx buttons: rounded-xl → rounded-full, 44px → 48px, added touch-manipulation
+- Fixed business-registration page pricing CTA: rounded-xl → rounded-full, 44px → 48px
+- Added maxDuration = 10 to api/frogai/route.ts (Vercel Hobby limit)
+- Updated footer copyright: © 2026 SMEfrog
+- Restored accidentally deleted logo files (Brand ID SMEfrog.png, Icon.png, logo On Dark.png) to public/upload/
+- WhatsApp number consistency verified: all links use 264853411522
+- Build passes clean, lint passes clean
+- Committed and pushed to GitHub (commit 406f29b)
+
+Stage Summary:
+- All 7 tasks (A through G) completed
+- FAQ page: fully visible dark theme with proper contrast
+- Academy: integrated across navbar, homepage, footer, resources
+- 3 interactive tools: pricing calculator, cost estimator, name checker
+- Nav dropdowns: Services + Resources on desktop and mobile
+- Design: all buttons rounded-full, 48px touch targets, ease-out-quart animations
+- Quality: maxDuration=10, copyright 2026, WhatsApp consistency, build + lint pass
