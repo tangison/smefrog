@@ -20,7 +20,7 @@ import {
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { waLink } from '@/lib/config'
+import { waLink, ACADEMY_URL } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const registrationGuides = [
@@ -97,26 +97,26 @@ const tools = [
   {
     icon: Calculator,
     title: 'Pricing Calculator',
-    description: 'Calculate your total registration cost.',
-    action: 'View Pricing',
+    description: 'Calculate your total registration cost in real time.',
+    action: 'Open Calculator',
     actionIcon: ArrowRight,
-    href: '/pricing',
+    href: '/resources/pricing-calculator',
   },
   {
     icon: Search,
     title: 'Business Name Checker',
-    description: 'Check if your name is available.',
-    action: 'Contact Us',
+    description: 'Check if your business name is available and compliant.',
+    action: 'Check Name',
     actionIcon: ArrowRight,
-    href: '/contact',
+    href: '/resources/name-checker',
   },
   {
     icon: BarChart3,
     title: 'Compliance Cost Estimator',
-    description: 'Estimate total compliance costs including annual returns.',
-    action: 'View Pricing',
+    description: 'Estimate total annual compliance costs including BIPA fees.',
+    action: 'Open Estimator',
     actionIcon: ArrowRight,
-    href: '/pricing',
+    href: '/resources/cost-estimator',
   },
 ]
 
@@ -320,6 +320,40 @@ export default function ResourcesPage() {
               <LightResourceCard key={tool.title} item={tool} index={i} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══ ACADEMY — DARK ═══ */}
+      <section className="py-20 md:py-28 px-4 md:px-6 bg-frog-black relative overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center">
+          <ScrollReveal>
+            <div className="inline-flex items-center gap-3 mb-6 px-5 py-2 rounded-full border border-frog-green/20 bg-frog-green/5">
+              <Zap className="w-3.5 h-3.5 text-frog-green" />
+              <span className="text-frog-green text-[10px] font-black uppercase tracking-[0.3em]">Free Education</span>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.06}>
+            <h2 className="text-3xl md:text-4xl font-black text-frog-light mb-4">
+              SMEfrog <span className="text-frog-green">Academy</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-frog-muted text-base max-w-xl mx-auto mb-8 leading-relaxed">
+              64 free modules covering business registration, compliance, and Namibian business fundamentals. No login required.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.12}>
+            <a
+              href={ACADEMY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[48px] touch-manipulation"
+              aria-label="Open SMEfrog Academy (opens in new tab)"
+            >
+              Open Academy
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </ScrollReveal>
         </div>
       </section>
 

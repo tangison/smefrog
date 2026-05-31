@@ -254,3 +254,99 @@ Stage Summary:
 - Privacy and terms pages now use centralized config constants
 - Config.ts cleaned of unused exports
 - All 16 restructuring phases were already completed in previous session
+
+---
+Task ID: 2
+Agent: Main Agent
+Task: Rewrite all 4 resource guide pages with Namibian-specific, factual legal content
+
+Work Log:
+- Read all 4 existing resource guide pages and understood current structure (alternating light/dark sections)
+- Rewrote CC Registration Guide (/resources/cc-registration-guide/page.tsx):
+  - Added Close Corporations Act 26 of 1988 reference throughout
+  - Added BIPA (Business and Intellectual Property Authority of Namibia) references
+  - Updated 6 steps with Namibian-specific details: restricted words, CC1 form, BIPA fees (N$150–300), name reservation (N$50–150), NamRA tax registration
+  - Expanded requirements to 5 items including BO Declaration under FIA
+  - Added Key Facts section (governing law, members, processing time, annual return)
+  - Added Timeline & Fees section with 3 stat cards and annual return Form CC4 note
+  - All sections converted to dark theme (#0a0a0a)
+- Rewrote CC vs Pty Ltd (/resources/cc-vs-pty-ltd/page.tsx):
+  - CC features: max 10 natural persons, members' interest, no directors, CC Act 26 of 1988, no audit, BIPA, from N$800
+  - Pty Ltd features: unlimited shareholders, shares, directors + secretary, Companies Act 28 of 2004, audit by public interest score, BIPA, from N$1,200
+  - Decision points: solo/small team, investment, budget — with Namibian-specific explanations
+  - Bottom note: both registered via BIPA, startups begin with CC, can convert later
+  - Comparison cards both use dark theme styling
+- Rewrote BIPA Compliance Checklist (/resources/bipa-compliance-checklist/page.tsx):
+  - 8 checklist items with Namibian-specific legal details: Form CC4 (N$50 CC, N$200/month penalty), FIA BO declaration (25% threshold, 21-day update), CK2 amendments, registered address (30-day update), member/director changes, financial statements (both Acts), NamRA tax clearance, POPIA (Act 4 of 2013)
+  - 4 penalty items with specific details: N$200/month late filing, deregistration risk, personal liability under Namibian law, business disruption (bank accounts, tenders, contracts)
+  - Penalty cards use red accent icons for visual distinction
+- Rewrote Beneficial Ownership Guide (/resources/beneficial-ownership-guide/page.tsx):
+  - FIA (Financial Intelligence Act) references throughout
+  - 4 BO criteria with detailed Namibian explanations (direct/indirect ownership, voting rights, effective control, senior officials fallback)
+  - 4 filing steps with Namibian-specific details
+  - New "Required Information" section: full name, nationality, Namibian ID, residential address, extent of interest
+  - Deadline & Non-Compliance section: annual + 21 days for changes, fines up to N$500,000 or imprisonment under FIA
+  - Non-compliance card uses red accent for severity
+- Design changes across all 4 pages:
+  - All sections now use bg-[#0a0a0a] dark backgrounds (no light sections)
+  - All buttons: rounded-full, min-h-[48px], touch-manipulation
+  - Animation easing: cubic-bezier(0.16,1,0.3,1) (ease-out-quart)
+  - Duration reduced from 700ms to 500ms for snappier feel
+  - WhatsApp links use waLink() helper with appropriate message keys (registration, compliance)
+  - No gradient text, no glassmorphism, no side-stripe borders
+  - Space Grotesk font-family for all headings
+  - DoubleBezel component used consistently for dark-themed cards
+- Build verification: passes clean, no TypeScript errors
+- ESLint: clean pass with zero errors
+
+Stage Summary:
+- 4 resource guide pages completely rewritten with factual Namibian legal content
+- All pages now reference actual legislation: Close Corporations Act 26 of 1988, Companies Act 28 of 2004, Financial Intelligence Act (FIA), POPIA Act 4 of 2013
+- BIPA (Business and Intellectual Property Authority of Namibia) referenced throughout
+- All pages converted from alternating light/dark to fully dark theme (#0a0a0a)
+- Design rules enforced: rounded-full buttons, 48px touch targets, ease-out-quart animations, no gradient text/glassmorphism
+
+---
+Task ID: 3
+Agent: Nav Dropdown Agent
+Task: Add dropdown menus to navbar for Services and Resources
+
+Work Log:
+- Updated navLinks data structure with typed NavLink/NavChild interfaces supporting `children` and `external` fields
+- Services dropdown: CC Registration, PTY LTD Filing, Compliance Services, Business Documents
+- Resources dropdown: Guides, Templates, Pricing Calculator, Cost Estimator, Name Checker
+- Desktop: hover-activated dropdowns with framer-motion AnimatePresence (opacity + translateY, no height animation)
+- Desktop: 150ms close delay on mouse leave to prevent accidental close, ChevronDown rotates 180deg when open
+- Desktop: dropdown panel styled bg-[#0f0f0f] border-[#1e1e1e] rounded-xl, items 14px #c0c0c0 → hover white with green left accent border
+- Mobile: tap-to-expand sub-lists in fullscreen overlay, AnimatePresence with opacity-only animation
+- Mobile: sub-items indented (pl-4), 13px font, 44px min touch target, chevron indicator
+- Added Academy external link (document-library-one.vercel.app) with ExternalLink icon, opens in new tab
+- All buttons: min-h-[48px], touch-action-manipulation, rounded-full where applicable
+- Animation: cubic-bezier(0.16, 1, 0.3, 1) ease-out-quart throughout
+- Existing nav behavior preserved: non-dropdown links work as before, mobile overlay layout unchanged
+- Build passes clean, ESLint passes clean
+
+Stage Summary:
+- 1 file changed (navbar.tsx)
+- Desktop and mobile dropdown menus fully functional for Services and Resources
+- Academy external link added with proper icon and new-tab behavior
+- No TypeScript or lint errors
+
+---
+Task ID: 4
+Agent: Tool Pages Agent
+Task: Build 3 fully interactive tool pages under /resources/ (Pricing Calculator, Compliance Cost Estimator, Business Name Checker)
+
+Work Log:
+- Created /resources/pricing-calculator/page.tsx: Real-time pricing calculator with pill selectors for business type (CC/Pty Ltd/Sole Trader), service tier (Registration Only / +BO / +Compliance / Full Package), and add-on checkboxes (Company Seal, Certified Copies, Express Processing). Full Package overrides total (CC: N$2,200, Pty Ltd: N$2,800, Sole Trader: N$1,700). Itemised breakdown with green total. WhatsApp CTA with prefilled message.
+- Created /resources/cost-estimator/page.tsx: Annual compliance cost estimator with business type (CC/Pty Ltd), members/directors (1/2-5/6-10 with 20% surcharge), and 5 service checkboxes with CC/Pty-specific pricing for Annual Return Filing. Itemised breakdown with surcharge line. Amber warning about BIPA penalties. WhatsApp CTA with prefilled message.
+- Created /resources/name-checker/page.tsx: Client-side business name validator running on every keystroke. Checks for restricted words (10 words → amber warning), length <3 chars (red error), legal suffix already included (blue/white info), or passes (green success). Color-coded result card with appropriate icons. Dynamic WhatsApp link with URL-encoded name.
+- All 3 pages: dark theme (#0a0a0a backgrounds), #4CAF50 green accents, pill buttons (rounded-full, min-h-[48px]), Space Grotesk headings, ScrollReveal/Eyebrow/DoubleBezel components imported, ease-[cubic-bezier(0.16,1,0.3,1)] animations, touch-action-manipulation
+- Build passes clean (0 TypeScript errors), ESLint passes clean
+- No existing files modified
+
+Stage Summary:
+- 3 new files created (pricing-calculator, cost-estimator, name-checker)
+- All pages fully interactive with useState for real-time updates
+- Consistent dark design language with green accents throughout
+- All CTAs link to WhatsApp with prefilled messages

@@ -79,39 +79,43 @@ function FAQItem({
   onToggle: () => void
 }) {
   return (
-    <div className="border-b border-frog-hairline last:border-b-0">
+    <div
+      className={`border-b border-[#1e1e1e] last:border-b-0 transition-colors duration-300 ${
+        isOpen ? 'bg-[#0f1a0f]' : 'hover:bg-[#111111]'
+      }`}
+    >
       <button
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 py-5 text-left group cursor-pointer min-h-[44px]"
+        className="w-full flex items-start justify-between gap-4 py-5 px-4 text-left cursor-pointer min-h-[48px] touch-manipulation"
         aria-label={isOpen ? `Close: ${faq.question}` : `Open: ${faq.question}`}
       >
         <div className="flex items-start gap-3">
-          <span className="text-frog-green/40 font-heading font-bold text-sm mt-0.5 shrink-0 tabular-nums">
+          <span className="text-[#4CAF50] font-bold text-sm mt-0.5 shrink-0 tabular-nums" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {String(index + 1).padStart(2, '0')}
           </span>
-          <span className="text-frog-light text-sm md:text-base font-heading font-semibold group-hover:text-frog-green transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+          <span className="text-white text-sm md:text-base font-semibold" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             {faq.question}
           </span>
         </div>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+          transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="shrink-0 mt-1"
         >
-          <ChevronDown className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
+          <ChevronDown className="w-4 h-4 text-[#4CAF50]" strokeWidth={1.5} />
         </motion.span>
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <div className="pb-5 pl-8">
-              <p className="text-frog-muted text-sm leading-relaxed">
+            <div className="pb-5 pl-8 pr-4">
+              <p className="text-[#a0a0a0] text-sm leading-relaxed">
                 {faq.answer}
               </p>
             </div>
@@ -156,23 +160,21 @@ export default function FAQPage() {
         </div>
       </section>
 
-      {/* ═══ FAQ ACCORDION — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
+      {/* ═══ FAQ ACCORDION — DARK ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#0a0a0a]">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
-            <div className="bg-white ring-1 ring-black/[0.06] p-1.5 rounded-[2rem] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
-              <div className="bg-frog-light rounded-[calc(2rem-0.375rem)] p-6 md:p-8">
-                {faqs.map((faq, i) => (
-                  <ScrollReveal key={i} delay={i * 0.04}>
-                    <FAQItem
-                      faq={faq}
-                      index={i}
-                      isOpen={openIndex === i}
-                      onToggle={() => handleToggle(i)}
-                    />
-                  </ScrollReveal>
-                ))}
-              </div>
+            <div className="bg-[#0a0a0a] ring-1 ring-[#1e1e1e] rounded-[2rem] overflow-hidden">
+              {faqs.map((faq, i) => (
+                <ScrollReveal key={i} delay={i * 0.04}>
+                  <FAQItem
+                    faq={faq}
+                    index={i}
+                    isOpen={openIndex === i}
+                    onToggle={() => handleToggle(i)}
+                  />
+                </ScrollReveal>
+              ))}
             </div>
           </ScrollReveal>
         </div>
@@ -206,12 +208,12 @@ export default function FAQPage() {
               href={waLink('contact')}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+              className="group inline-flex items-center gap-2.5 min-h-[48px] bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] touch-manipulation"
               aria-label="Chat with us on WhatsApp"
             >
               <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
               Chat with Us on WhatsApp
-              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+              <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
                 <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
               </span>
             </a>

@@ -433,7 +433,7 @@ export default function BusinessRegistrationPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Choose ${pkg.tier} package on WhatsApp`}
-                      className={`mt-6 min-h-[44px] w-full py-3 rounded-xl font-bold text-sm inline-flex items-center justify-center gap-2 ${easing} ${
+                      className={`mt-6 min-h-[48px] w-full py-3 rounded-full font-bold text-sm inline-flex items-center justify-center gap-2 touch-manipulation ${easing} ${
                         pkg.featured
                           ? 'bg-frog-green text-black hover:brightness-110'
                           : 'ring-1 ring-frog-green/30 text-frog-green hover:bg-frog-green/10'

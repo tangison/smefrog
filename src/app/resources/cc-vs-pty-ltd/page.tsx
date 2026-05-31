@@ -5,40 +5,44 @@ import { MessageCircle, ArrowRight, Check } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { WHATSAPP_MAIN } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const ccFeatures = [
-  { label: 'Members', value: '1–10 members' },
-  { label: 'Compliance', value: 'Simpler compliance' },
-  { label: 'Cost', value: 'Lower cost' },
-  { label: 'Audit', value: 'No audit required' },
-  { label: 'Best for', value: 'Small businesses' },
+  { label: 'Members', value: 'Max 10, all natural persons' },
+  { label: 'Ownership', value: 'Members\' interest (not shares)' },
+  { label: 'Management', value: 'Members manage directly — no directors required' },
+  { label: 'Governing Law', value: 'Close Corporations Act 26 of 1988' },
+  { label: 'Audit', value: 'No audit requirement for most CCs' },
+  { label: 'Registered Via', value: 'BIPA Namibia' },
+  { label: 'Cost', value: 'From N$800' },
 ]
 
 const ptyFeatures = [
-  { label: 'Shareholders', value: '1–50 shareholders' },
-  { label: 'Compliance', value: 'Stricter compliance' },
-  { label: 'Cost', value: 'Higher cost' },
-  { label: 'Audit', value: 'Audit may be required' },
-  { label: 'Best for', value: 'Growing companies' },
+  { label: 'Shareholders', value: 'Unlimited (natural persons or companies)' },
+  { label: 'Ownership', value: 'Shares issued to shareholders' },
+  { label: 'Management', value: 'Directors and company secretary required' },
+  { label: 'Governing Law', value: 'Companies Act 28 of 2004' },
+  { label: 'Audit', value: 'Required based on public interest score' },
+  { label: 'Registered Via', value: 'BIPA Namibia' },
+  { label: 'Cost', value: 'From N$1,200' },
 ]
 
 const decisionPoints = [
   {
     question: 'Starting solo or with a small team?',
-    cc: 'CC is ideal. Fewer formalities, lower cost.',
-    pty: 'PTY LTD works too, but adds admin overhead.',
+    cc: 'CC is ideal. Fewer formalities, lower cost. Members manage directly without appointing directors.',
+    pty: 'PTY LTD works but adds admin overhead. You must appoint at least one director and a company secretary.',
   },
   {
     question: 'Planning to raise investment?',
-    cc: 'CCs cannot easily issue shares to investors.',
-    pty: 'PTY LTD can issue shares and attract funding.',
+    cc: 'CCs cannot easily issue shares to investors. Members\' interest transfers are more restrictive.',
+    pty: 'PTY LTD can issue shares and attract funding. Share structures are flexible under the Companies Act 28 of 2004.',
   },
   {
     question: 'Budget-conscious?',
-    cc: 'Registration from N$800. Ongoing costs are minimal.',
-    pty: 'Registration from N$1,500. Audits add to annual cost.',
+    cc: 'CC registration from N$800. Annual compliance costs are minimal — no audit, no company secretary.',
+    pty: 'PTY LTD registration from N$1,200. Annual compliance costs are higher — potential audit fees, company secretary retainer.',
   },
 ]
 
@@ -46,8 +50,8 @@ const decisionPoints = [
 export default function CCvsPTYLTDPage() {
   return (
     <>
-      {/* ═══ HERO — DARK ═══ */}
-      <section className="relative py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black overflow-hidden">
+      {/* ═══ HERO ═══ */}
+      <section className="relative py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#0a0a0a] overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -65,21 +69,21 @@ export default function CCvsPTYLTDPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Pick the right structure for your business.
+              Pick the right legal structure for your Namibian business. Both are registered through BIPA — but they differ in governance, cost, and flexibility.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ═══ COMPARISON — LIGHT ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-light">
+      {/* ═══ COMPARISON ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
-            <Eyebrow light>Side by Side</Eyebrow>
+            <Eyebrow>Side by Side</Eyebrow>
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
             <h2
-              className="text-2xl md:text-3xl font-bold text-frog-black mb-12"
+              className="text-2xl md:text-3xl font-bold text-frog-light mb-12"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
               How They Compare
@@ -89,8 +93,8 @@ export default function CCvsPTYLTDPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* CC Card */}
             <ScrollReveal>
-              <div className="bg-white ring-1 ring-black/[0.04] p-1.5 rounded-[2rem] h-full hover:ring-frog-green/30 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                <div className="bg-frog-light rounded-[calc(2rem-0.375rem)] p-6 md:p-8 h-full flex flex-col">
+              <div className="bg-frog-shell ring-1 ring-frog-hairline p-1.5 rounded-[2rem] h-full hover:ring-frog-green/30 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8 h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-6">
                     <span className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center">
                       <Check className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
@@ -101,7 +105,7 @@ export default function CCvsPTYLTDPage() {
                   </div>
 
                   <h3
-                    className="text-2xl md:text-3xl font-bold text-frog-black mb-6"
+                    className="text-2xl md:text-3xl font-bold text-frog-light mb-6"
                     style={{ fontFamily: "'Space Grotesk', sans-serif" }}
                   >
                     CC
@@ -109,19 +113,19 @@ export default function CCvsPTYLTDPage() {
 
                   <ul className="space-y-4 flex-1">
                     {ccFeatures.map((f) => (
-                      <li key={f.label} className="flex items-center justify-between border-b border-black/[0.04] pb-3 last:border-0 last:pb-0">
+                      <li key={f.label} className="flex items-center justify-between border-b border-frog-hairline pb-3 last:border-0 last:pb-0">
                         <span className="text-frog-muted text-sm">{f.label}</span>
-                        <span className="text-frog-black text-sm font-semibold">{f.value}</span>
+                        <span className="text-frog-light text-sm font-semibold text-right max-w-[60%]">{f.value}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-8 pt-4 border-t border-black/[0.04]">
+                  <div className="mt-8 pt-4 border-t border-frog-hairline">
                     <p className="text-frog-green text-sm font-bold">
                       From N$800
                     </p>
                     <p className="text-frog-muted text-xs mt-1">
-                      7–10 working days
+                      5–10 working days via BIPA
                     </p>
                   </div>
                 </div>
@@ -130,7 +134,7 @@ export default function CCvsPTYLTDPage() {
 
             {/* PTY LTD Card */}
             <ScrollReveal delay={0.06}>
-              <div className="bg-frog-black p-1.5 rounded-[2rem] h-full ring-1 ring-frog-green/25">
+              <div className="bg-frog-shell ring-1 ring-frog-green/25 p-1.5 rounded-[2rem] h-full hover:ring-frog-green/40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                 <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-6 md:p-8 h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-6">
                     <span className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center">
@@ -152,17 +156,17 @@ export default function CCvsPTYLTDPage() {
                     {ptyFeatures.map((f) => (
                       <li key={f.label} className="flex items-center justify-between border-b border-frog-hairline pb-3 last:border-0 last:pb-0">
                         <span className="text-frog-muted text-sm">{f.label}</span>
-                        <span className="text-frog-light text-sm font-semibold">{f.value}</span>
+                        <span className="text-frog-light text-sm font-semibold text-right max-w-[60%]">{f.value}</span>
                       </li>
                     ))}
                   </ul>
 
                   <div className="mt-8 pt-4 border-t border-frog-hairline">
                     <p className="text-frog-green text-sm font-bold">
-                      From N$1,500
+                      From N$1,200
                     </p>
                     <p className="text-frog-muted text-xs mt-1">
-                      10–15 working days
+                      10–15 working days via BIPA
                     </p>
                   </div>
                 </div>
@@ -172,8 +176,8 @@ export default function CCvsPTYLTDPage() {
         </div>
       </section>
 
-      {/* ═══ WHICH IS RIGHT? — DARK ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
+      {/* ═══ WHICH IS RIGHT? ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#0a0a0a] relative overflow-hidden">
         <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-green/[0.04] blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -190,7 +194,7 @@ export default function CCvsPTYLTDPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base max-w-xl mb-12 leading-relaxed">
-              Answer these questions. They point you toward the right structure.
+              Answer these questions to find the right structure for your business.
             </p>
           </ScrollReveal>
 
@@ -222,17 +226,15 @@ export default function CCvsPTYLTDPage() {
           <ScrollReveal delay={0.2}>
             <div className="mt-8 p-6 rounded-[2rem] bg-frog-green/[0.06] ring-1 ring-frog-green/20">
               <p className="text-frog-light text-sm leading-relaxed">
-                <span className="text-frog-green font-bold">Still unsure?</span> Most Namibian startups begin with a CC.
-                It costs less, requires less admin, and you can always convert to a PTY LTD later.
+                <span className="text-frog-green font-bold">Both are registered via BIPA Namibia.</span> Most Namibian startups begin with a CC — it costs less, requires less admin, and you can convert to a PTY LTD later if your business outgrows the structure.
               </p>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ═══ CTA — DARK ═══ */}
-      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/10 to-frog-dark pointer-events-none" />
+      {/* ═══ CTA ═══ */}
+      <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-[#0a0a0a] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-frog-green/[0.08] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -251,28 +253,28 @@ export default function CCvsPTYLTDPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              Tell us about your business. We will recommend the right structure and handle the registration.
+              Tell us about your business. We will recommend the right structure and handle the registration with BIPA.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href={WHATSAPP_MAIN}
+                href={waLink('registration')}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat with us on WhatsApp about CC vs PTY LTD"
-                className="group inline-flex items-center gap-2.5 bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] min-h-[44px]"
+                className="group inline-flex items-center gap-2.5 bg-frog-green text-frog-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] min-h-[48px] touch-manipulation"
               >
                 <MessageCircle className="w-4 h-4" strokeWidth={1.5} />
                 Chat on WhatsApp
-                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]">
+                <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-[0.5px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                   <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
                 </span>
               </a>
               <Link
                 href="/resources"
                 aria-label="Back to resources"
-                className="group inline-flex items-center gap-2.5 ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] min-h-[44px]"
+                className="group inline-flex items-center gap-2.5 ring-1 ring-frog-green/30 text-frog-green rounded-full px-8 py-4 text-sm font-medium bg-frog-green/[0.05] hover:bg-frog-green/[0.1] active:scale-[0.98] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] min-h-[48px] touch-manipulation"
               >
                 Back to Resources
                 <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />

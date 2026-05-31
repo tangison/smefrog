@@ -17,6 +17,7 @@ import {
   FAQ_ITEMS,
   PHONE_MAIN,
   PHONE_MAIN_TEL,
+  ACADEMY_URL,
 } from '@/lib/config'
 
 /* ─── Services Data (3 core services only) ─────────── */
@@ -297,7 +298,7 @@ export default function HomePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Choose ${pkg.tier} package`}
-                      className={`mt-6 w-full py-3 rounded-xl font-black text-sm transition-all duration-700 inline-flex items-center justify-center min-h-[44px] ${
+                      className={`mt-6 w-full py-3 rounded-full font-black text-sm transition-all duration-700 inline-flex items-center justify-center min-h-[48px] touch-manipulation ${
                         pkg.featured
                           ? 'bg-frog-green text-black hover:brightness-110'
                           : 'ring-1 ring-frog-green/30 text-frog-green hover:bg-frog-green/10'
@@ -340,7 +341,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ 7. FAQ ═══ */}
+      {/* ═══ 7. ACADEMY ═══ */}
+      <section className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden" style={{ background: '#0a1a0a' }}>
+        {/* Subtle frog watermark */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'url(/upload/Icon.png)', backgroundSize: '300px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
+
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <ScrollReveal>
+            <Eyebrow>Education</Eyebrow>
+          </ScrollReveal>
+          <ScrollReveal delay={0.06}>
+            <h2 className="text-3xl md:text-5xl font-black text-frog-light mb-4">
+              Free Business <span className="text-frog-green">Education</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <p className="text-frog-muted text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+              SMEfrog Academy — 64 free modules covering registration, compliance, and Namibian business fundamentals. No login required.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.12}>
+            <div className="flex items-center justify-center gap-8 mb-10">
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-black text-frog-green">64</p>
+                <p className="text-frog-muted text-xs uppercase tracking-widest font-bold mt-1">Modules</p>
+              </div>
+              <div className="w-px h-12 bg-white/10" />
+              <div className="text-center">
+                <p className="text-3xl md:text-4xl font-black text-frog-green">3</p>
+                <p className="text-frog-muted text-xs uppercase tracking-widest font-bold mt-1">Learning Tracks</p>
+              </div>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.14}>
+            <a
+              href={ACADEMY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[48px] touch-manipulation"
+              aria-label="Go to SMEfrog Academy (opens in new tab)"
+            >
+              Go to Academy
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ═══ 8. FAQ ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>

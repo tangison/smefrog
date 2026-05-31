@@ -18,6 +18,9 @@ export const GEMSWEB_URL = 'https://gemsweb.xyz'
 // ─── Site ──────────────────────────────────────────────────
 export const SITE_URL = 'https://smefrog.tangison.com'
 
+// ─── Academy ──────────────────────────────────────────────
+export const ACADEMY_URL = 'https://document-library-one.vercel.app'
+
 // ─── Pricing ───────────────────────────────────────────────
 export const PRICING = {
   basic: { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], featured: false, btn: 'Get Basic' },

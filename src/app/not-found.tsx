@@ -97,7 +97,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="group inline-flex items-center gap-2 min-h-[44px] px-8 py-4 bg-frog-green hover:bg-frog-green/90 text-frog-black font-bold text-base rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(122,201,67,0.3)]"
+            className="group inline-flex items-center gap-2 min-h-[48px] px-8 py-4 bg-frog-green hover:bg-frog-green/90 text-frog-black font-bold text-base rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] touch-manipulation"
             aria-label="Go to homepage"
           >
             <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@ export default function NotFound() {
             href={WHATSAPP_MAIN}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 min-h-[44px] px-8 py-4 border border-frog-green/20 hover:border-frog-green/40 bg-frog-green/5 hover:bg-frog-green/10 text-white font-bold text-base rounded-xl transition-all duration-300"
+            className="group inline-flex items-center gap-2 min-h-[48px] px-8 py-4 border border-frog-green/20 hover:border-frog-green/40 bg-frog-green/5 hover:bg-frog-green/10 text-white font-bold text-base rounded-full transition-all duration-300 touch-manipulation"
             aria-label="Chat on WhatsApp"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

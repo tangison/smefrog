@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Facebook, Instagram, Github } from 'lucide-react'
-import { waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL, GEMSWEB_URL } from '@/lib/config'
+import { waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL, GEMSWEB_URL, ACADEMY_URL } from '@/lib/config'
 const serviceLinks = [
   { label: 'CC Registration', href: '/services/business-registration' },
   { label: 'PTY LTD Filing', href: '/services/business-registration' },
@@ -14,6 +14,7 @@ const companyLinks = [
   { label: 'Pricing', href: '/pricing' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Resources', href: '/resources' },
+  { label: 'Academy ↗', href: ACADEMY_URL, external: true },
   { label: 'Blog', href: '/blog' },
 ]
 
@@ -91,9 +92,15 @@ export function Footer() {
               <ul className="space-y-3">
                 {companyLinks.map(link => (
                   <li key={link.href + link.label}>
-                    <Link href={link.href} className="text-white/50 font-bold text-sm hover:text-white transition-colors duration-500">
-                      {link.label}
-                    </Link>
+                    {'external' in link && link.external ? (
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/50 font-bold text-sm hover:text-white transition-colors duration-500">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="text-white/50 font-bold text-sm hover:text-white transition-colors duration-500">
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -181,7 +188,7 @@ export function Footer() {
         {/* ─── BOTTOM ─── */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-white/[0.04] gap-4">
           <div className="flex flex-wrap gap-6 items-center text-[10px] font-black uppercase tracking-[0.2em] text-white/30">
-            <p>© {new Date().getFullYear()} SMEFROG</p>
+            <p>© 2026 SMEfrog</p>
             {legalLinks.map(link => (
               <Link key={link.href} href={link.href} className="hover:text-white/50 transition-colors">
                 {link.label}

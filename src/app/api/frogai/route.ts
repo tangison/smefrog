@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const maxDuration = 10
+
 const SYSTEM_PROMPT = `You are FrogAI, the SMEfrog Smart Registration Assistant. You are sharp, fast, helpful, and human. You speak like a smart operator helping a founder in Namibia.
 
 Rules:
