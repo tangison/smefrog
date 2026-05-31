@@ -105,19 +105,19 @@ const steps = [
   {
     n: '02',
     title: 'Submit Info',
-    desc: 'ID, proof of address, and business names — all remote.',
+    desc: 'ID, proof of address, and business names, all remote.',
     icon: Globe,
   },
   {
     n: '03',
     title: 'We File',
-    desc: 'Forms, BIPA filings, submissions — handled end-to-end.',
+    desc: 'Forms, BIPA filings, and submissions handled from start to finish.',
     icon: Shield,
   },
   {
     n: '04',
     title: 'Get Documents',
-    desc: 'Digital, bank-ready delivery in 7–10 working days.',
+    desc: 'Digital, bank-ready delivery in 7 to 10 working days.',
     icon: Check,
   },
 ]

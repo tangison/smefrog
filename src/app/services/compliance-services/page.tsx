@@ -59,7 +59,7 @@ const serviceCards = [
     tag: 'ONGOING',
     title: 'Regulatory Filings',
     description:
-      'Stay on top of every regulatory requirement. From tax compliance to sector-specific filings — we handle it all.',
+      'Stay on top of every regulatory requirement. From tax compliance to sector-specific filings, we handle it all.',
     items: [
       'Tax Compliance Filing Support',
       'Sector-Specific Requirements',
@@ -88,13 +88,13 @@ const stats = [
   {
     label: 'Annual',
     value: 'Frequency',
-    description: 'Returns and filings recur every year — a built-in business cycle.',
+    description: 'Returns and filings recur every year, a built-in business cycle.',
     icon: CalendarCheck,
   },
   {
     label: '100%',
     value: 'Compliance',
-    description: 'We promise full compliance or we fix it — no gaps, no penalties.',
+    description: 'We promise full compliance or we fix it: no gaps, no penalties.',
     icon: Shield,
   },
   {
@@ -121,7 +121,7 @@ const steps = [
   {
     n: '03',
     title: 'Ongoing Monitoring',
-    desc: 'We track deadlines and keep your records current — automatically.',
+    desc: 'We track deadlines and keep your records current automatically.',
     icon: Eye,
   },
   {
@@ -166,7 +166,7 @@ export default function ComplianceServicesPage() {
 
               <ScrollReveal delay={0.14}>
                 <p className="text-frog-muted text-lg md:text-xl max-w-xl leading-relaxed mb-8">
-                  Annual returns, BO updates, and regulatory filings. Registration gets you in — compliance keeps you running.
+                  Annual returns, BO updates, and regulatory filings. Registration gets you in; compliance keeps you running.
                 </p>
               </ScrollReveal>
 
@@ -174,7 +174,7 @@ export default function ComplianceServicesPage() {
                 <div className="flex flex-wrap gap-4 items-center">
                   <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-frog-green/10 border border-frog-green/20">
                     <Repeat className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
-                    <span className="text-frog-green text-sm font-bold">Custom Pricing — Recurring</span>
+                    <span className="text-frog-green text-sm font-bold">Custom Pricing: Recurring</span>
                   </div>
                 </div>
               </ScrollReveal>
@@ -297,7 +297,7 @@ export default function ComplianceServicesPage() {
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <p className="text-black/40 text-base md:text-lg mt-6 max-w-2xl leading-relaxed">
-                Registration is a single transaction. Compliance is a relationship. Every year, every filing, every deadline — that&apos;s recurring value for your business and ours. The strongest business model isn&apos;t the one-time sale; it&apos;s the ongoing partnership that keeps companies operational and penalty-free.
+                Registration is a single transaction. Compliance is a relationship. Every year, every filing, every deadline: that&apos;s recurring value for your business and ours. The strongest business model isn&apos;t the one-time sale; it&apos;s the ongoing partnership that keeps companies operational and penalty-free.
               </p>
             </ScrollReveal>
           </div>

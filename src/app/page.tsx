@@ -35,7 +35,7 @@ const services = [
   {
     title: 'Compliance Services',
     tag: 'RECURRING',
-    desc: 'Annual returns, BO updates, regulatory filings. Registration gets you in — compliance keeps you operational.',
+    desc: 'Annual returns, BO updates, and regulatory filings. Registration opens the door; compliance keeps it open.',
     price: 'Custom',
     img: '/images/compliance-checklist.jpeg',
     theme: 'light' as const,
@@ -45,7 +45,7 @@ const services = [
   {
     title: 'Business Documents',
     tag: 'LEGAL',
-    desc: 'Contracts, policies, and internal docs — ready to use.',
+    desc: 'Contracts, policies, and internal docs you can use right away.',
     price: 'Custom',
     img: '/images/documents-laptop.jpeg',
     theme: 'dark' as const,
@@ -82,12 +82,12 @@ export default function HomePage() {
                 </div>
 
                 <h1 className="text-6xl md:text-[110px] lg:text-[140px] font-black text-white leading-[0.85] tracking-tighter mb-10">
-                  Jump Into<br />
+                  Register Your<br />
                   Business<span className="text-frog-green">.</span>
                 </h1>
 
                 <p className="text-lg md:text-2xl text-white/50 max-w-2xl mb-14 font-bold leading-relaxed">
-                  Register your business remotely. BIPA filing included. From N$800.
+                  Get your CC or PTY LTD registered without leaving home. BIPA filing included. From N$800.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -98,7 +98,7 @@ export default function HomePage() {
                     aria-label="Register now on WhatsApp"
                     className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[44px]"
                   >
-                    Register Now
+                    Register My Business
                     <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
                   </a>
                   <Link
@@ -357,7 +357,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-              SMEfrog Academy — 64 free modules covering registration, compliance, and Namibian business fundamentals. No login required.
+              SMEfrog Academy: 64 free modules covering registration, compliance, and Namibian business fundamentals. No login required.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
@@ -468,7 +468,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-white/40 text-lg md:text-xl font-bold max-w-xl mx-auto mb-10">
-              Register your business in 4 simple steps. 100% remote. From N$800.
+              Register your business in 4 steps. 100% remote. From N$800.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
@@ -480,7 +480,7 @@ export default function HomePage() {
               aria-label="Register now on WhatsApp"
             >
               <MessageCircle className="w-5 h-5" />
-              Register via WhatsApp
+              Register My Business
               <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
             </a>
           </ScrollReveal>
@@ -501,7 +501,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
             <p className="text-black/40 text-lg md:text-xl font-bold mb-10 max-w-xl mx-auto">
-              400+ Namibian entrepreneurs registered this month.
+              Your business registration handled over WhatsApp. From N$800.
             </p>
           </ScrollReveal>
 
@@ -515,7 +515,7 @@ export default function HomePage() {
                 className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[44px]"
               >
                 <MessageCircle className="w-5 h-5" />
-                Register via WhatsApp
+                Chat With Us on WhatsApp
                 <span className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform">→</span>
               </a>
               <Link

@@ -12,7 +12,7 @@ const steps = [
   {
     n: '01',
     title: 'Choose a Unique Name',
-    desc: 'Your name must not match any existing CC on the BIPA register. Restricted words — Bank, Insurance, Trust, University, and similar — require special ministerial approval under the Close Corporations Act 26 of 1988.',
+    desc: 'Your name must not match any existing CC on the BIPA register. Restricted words such as Bank, Insurance, Trust, University, and similar require special ministerial approval under the Close Corporations Act 26 of 1988.',
   },
   {
     n: '02',
@@ -22,7 +22,7 @@ const steps = [
   {
     n: '03',
     title: 'Prepare Founding Statement (Form CC1)',
-    desc: 'The CC1 form defines your CC\'s members, their interest percentages, and the registered address in Namibia. All members must be natural persons — a minimum of 1 and a maximum of 10. No corporate members are permitted under the Act.',
+    desc: 'The CC1 form defines your CC\'s members, their interest percentages, and the registered address in Namibia. All members must be natural persons: a minimum of 1 and a maximum of 10. No corporate members are permitted under the Act.',
   },
   {
     n: '04',
@@ -32,7 +32,7 @@ const steps = [
   {
     n: '05',
     title: 'Register for Tax',
-    desc: 'Register with NamRA (Namibia Revenue Agency) for income tax and, if your turnover exceeds the threshold, VAT. Your CC must obtain its own tax number — this is separate from your personal tax registration.',
+    desc: 'Register with NamRA (Namibia Revenue Agency) for income tax and, if your turnover exceeds the threshold, VAT. Your CC must obtain its own tax number, which is separate from your personal tax registration.',
   },
   {
     n: '06',
@@ -43,7 +43,7 @@ const steps = [
 
 const requirements = [
   { label: 'Certified ID Copy of Each Member', detail: 'All members (1–10) must provide a certified copy of their Namibian ID or valid passport. Certified by a commissioner of oaths.' },
-  { label: 'Proof of Namibian Registered Address', detail: 'Utility bill or lease agreement not older than 3 months. The address must be a physical location in Namibia — not a PO Box.' },
+  { label: 'Proof of Namibian Registered Address', detail: 'Utility bill or lease agreement not older than 3 months. The address must be a physical location in Namibia, not a PO Box.' },
   { label: '2–3 Proposed Business Names', detail: 'Submit in order of preference. Names are checked against the BIPA register. Restricted words require special approval.' },
   { label: 'Founding Statement (Form CC1)', detail: 'Signed by all members. Defines member interest percentages, contributions, and the registered address. The core document of your CC.' },
   { label: 'BO Declaration (FIA)', detail: 'Beneficial Ownership declaration required under the Financial Intelligence Act. Every person with 25%+ ownership or voting rights must be declared. File with BIPA.' },
@@ -53,7 +53,7 @@ const keyFacts = [
   { icon: FileText, label: 'Governing Law', value: 'Close Corporations Act 26 of 1988' },
   { icon: Check, label: 'Members', value: '1–10 natural persons only' },
   { icon: Clock, label: 'Processing Time', value: '5–10 working days' },
-  { icon: AlertTriangle, label: 'Annual Return', value: 'Form CC4 — due yearly' },
+  { icon: AlertTriangle, label: 'Annual Return', value: 'Form CC4, due yearly' },
 ]
 
 /* ─── Page ──────────────────────────────────────────── */
@@ -79,7 +79,7 @@ export default function CCRegistrationGuidePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Everything you need to register a Close Corporation in Namibia — governed by the Close Corporations Act 26 of 1988, filed through BIPA.
+              Everything you need to register a Close Corporation in Namibia, governed by the Close Corporations Act 26 of 1988, filed through BIPA.
             </p>
           </ScrollReveal>
         </div>
@@ -127,7 +127,7 @@ export default function CCRegistrationGuidePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base max-w-xl mb-12 leading-relaxed">
-              Six steps from name reservation to certificate. All filings go through BIPA — the Business and Intellectual Property Authority of Namibia.
+              Six steps from name reservation to certificate. All filings go through BIPA, the Business and Intellectual Property Authority of Namibia.
             </p>
           </ScrollReveal>
 
@@ -282,7 +282,7 @@ export default function CCRegistrationGuidePage() {
           <ScrollReveal delay={0.18}>
             <div className="mt-8 p-6 rounded-[2rem] bg-frog-green/[0.06] ring-1 ring-frog-green/20">
               <p className="text-frog-light text-sm leading-relaxed">
-                <span className="text-frog-green font-bold">Annual Return (Form CC4)</span> — Due within 30 days of your registration anniversary each year. BIPA fee: N$50. Late penalty: N$200 per month. Persistent non-filing leads to deregistration.
+                <span className="text-frog-green font-bold">Annual Return (Form CC4)</span>, due within 30 days of your registration anniversary each year. BIPA fee: N$50. Late penalty: N$200 per month. Persistent non-filing leads to deregistration.
               </p>
             </div>
           </ScrollReveal>
@@ -309,7 +309,7 @@ export default function CCRegistrationGuidePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              We handle your CC registration from name reservation to certificate — filed through BIPA, governed by the Close Corporations Act 26 of 1988. All over WhatsApp.
+              We handle your CC registration from name reservation to certificate, filed through BIPA, governed by the Close Corporations Act 26 of 1988. All over WhatsApp.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>

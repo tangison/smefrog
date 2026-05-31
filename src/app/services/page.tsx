@@ -22,7 +22,7 @@ const services = [
     title: 'Business Registration',
     subtitle: 'CC & PTY LTD',
     description:
-      'Fast, affordable, fully remote company registration. Name to certificate — done.',
+      'Fast, affordable, fully remote company registration. From name reservation to certificate, done.',
     icon: Building2,
     href: '/services/business-registration',
     image: '/images/signing-contract.jpeg',
@@ -43,7 +43,7 @@ const services = [
     title: 'Compliance Services',
     subtitle: 'Annual Returns & Filings',
     description:
-      'Keep your business operational. Annual returns, BO updates, and regulatory compliance.',
+      'Keep your business operational. Annual returns, BO updates, and regulatory compliance filed on your behalf.',
     icon: Shield,
     href: '/services/compliance-services',
     image: '/images/compliance-checklist.jpeg',
@@ -62,7 +62,7 @@ const services = [
     title: 'Business Documents',
     subtitle: 'Contracts & Policies',
     description:
-      'Policies, contracts, and compliance docs for Namibian businesses.',
+      'Policies, contracts, and compliance docs for Namibian businesses, drafted to local legal standards.',
     icon: FileText,
     href: '/services/business-documents',
     image: '/images/documents-laptop.jpeg',
@@ -519,7 +519,7 @@ export default function ServicesPage() {
               Ready to start?{' '}
               <span className="italic text-frog-green">Chat with us.</span>
             </h3>
-            <p className="text-white/40 text-sm mb-8">We typically respond within a few hours during business hours.</p>
+            <p className="text-white/40 text-sm mb-8">We reply within a few hours during business hours. After hours, we respond first thing the next morning.</p>
             <a
               href={waLink('registration')}
               target="_blank"

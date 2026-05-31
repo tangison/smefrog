@@ -11,7 +11,7 @@ import { waLink } from '@/lib/config'
 const ccFeatures = [
   { label: 'Members', value: 'Max 10, all natural persons' },
   { label: 'Ownership', value: 'Members\' interest (not shares)' },
-  { label: 'Management', value: 'Members manage directly — no directors required' },
+  { label: 'Management', value: 'Members manage directly, no directors required' },
   { label: 'Governing Law', value: 'Close Corporations Act 26 of 1988' },
   { label: 'Audit', value: 'No audit requirement for most CCs' },
   { label: 'Registered Via', value: 'BIPA Namibia' },
@@ -41,8 +41,8 @@ const decisionPoints = [
   },
   {
     question: 'Budget-conscious?',
-    cc: 'CC registration from N$800. Annual compliance costs are minimal — no audit, no company secretary.',
-    pty: 'PTY LTD registration from N$1,200. Annual compliance costs are higher — potential audit fees, company secretary retainer.',
+    cc: 'CC registration from N$800. Annual compliance costs are minimal: no audit, no company secretary.',
+    pty: 'PTY LTD registration from N$1,200. Annual compliance costs are higher: potential audit fees, company secretary retainer.',
   },
 ]
 
@@ -69,7 +69,7 @@ export default function CCvsPTYLTDPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Pick the right legal structure for your Namibian business. Both are registered through BIPA — but they differ in governance, cost, and flexibility.
+              Pick the right legal structure for your Namibian business. Both are registered through BIPA, but they differ in governance, cost, and flexibility.
             </p>
           </ScrollReveal>
         </div>
@@ -226,7 +226,7 @@ export default function CCvsPTYLTDPage() {
           <ScrollReveal delay={0.2}>
             <div className="mt-8 p-6 rounded-[2rem] bg-frog-green/[0.06] ring-1 ring-frog-green/20">
               <p className="text-frog-light text-sm leading-relaxed">
-                <span className="text-frog-green font-bold">Both are registered via BIPA Namibia.</span> Most Namibian startups begin with a CC — it costs less, requires less admin, and you can convert to a PTY LTD later if your business outgrows the structure.
+                <span className="text-frog-green font-bold">Both are registered via BIPA Namibia.</span> Most Namibian startups begin with a CC: it costs less, requires less admin, and you can convert to a PTY LTD later if your business outgrows the structure.
               </p>
             </div>
           </ScrollReveal>

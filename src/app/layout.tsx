@@ -24,15 +24,15 @@ const spaceGroteskBody = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://smefrog.tangison.com"),
   title: {
-    default: "SMEfrog — Jump Into Business",
+    default: "SMEfrog: Jump Into Business",
     template: "%s | SMEfrog",
   },
   description:
-    "Namibia's compliance partner. Business registration, compliance services, and business documents — 100% remote, 2X cheaper.",
+    "Namibia's compliance partner. Business registration, compliance services, and business documents. 100% remote, 2X cheaper.",
   icons: { icon: "/upload/Icon.png" },
   openGraph: {
-    title: "SMEfrog — Jump Into Business",
-    description: "Namibia's compliance partner. Business registration, compliance services, and business documents — 100% remote, 2X cheaper.",
+    title: "SMEfrog: Jump Into Business",
+    description: "Namibia's compliance partner. Business registration, compliance services, and business documents. 100% remote, 2X cheaper.",
     type: "website",
     siteName: "SMEfrog",
     images: ["/upload/Brand ID SMEfrog.png"],

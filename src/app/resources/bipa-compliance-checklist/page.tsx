@@ -21,7 +21,7 @@ const checklistItems = [
   },
   {
     label: 'CK2 Amendments Filed',
-    detail: 'Any changes to members, name, or registered address must be filed via Form CK2 with BIPA. Amendments must be submitted promptly — delays attract penalties.',
+    detail: 'Any changes to members, name, or registered address must be filed via Form CK2 with BIPA. Amendments must be submitted promptly; delays attract penalties.',
     icon: Check,
   },
   {
@@ -59,7 +59,7 @@ const penalties = [
   },
   {
     title: 'Deregistration Risk',
-    desc: 'Persistent non-compliance leads to involuntary deregistration by BIPA. A deregistered entity ceases to exist legally — you lose your name, your bank accounts are frozen, and you cannot trade.',
+    desc: 'Persistent non-compliance leads to involuntary deregistration by BIPA. A deregistered entity ceases to exist legally: you lose your name, your bank accounts are frozen, and you cannot trade.',
     icon: AlertTriangle,
   },
   {
@@ -219,7 +219,7 @@ export default function BIPAComplianceChecklistPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              We handle annual returns, BO declarations, CK2 amendments, and more — all filed with BIPA on your behalf. Stay compliant without the stress.
+              We handle annual returns, BO declarations, CK2 amendments, and more, all filed with BIPA on your behalf. Stay compliant without the stress.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>

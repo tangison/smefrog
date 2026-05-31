@@ -22,7 +22,7 @@ const values = [
   {
     title: 'Fully Remote',
     subtitle: 'WhatsApp & Email Only',
-    description: 'No office visits. Everything online — from anywhere in Namibia.',
+    description: 'No office visits. Everything online from anywhere in Namibia.',
     icon: Wifi,
     stat: '100%',
     statLabel: 'Remote',
@@ -46,7 +46,7 @@ const values = [
 
 const stats = [
   { value: '400+', label: 'Businesses Registered' },
-  { value: '7–10', label: 'Day Turnaround' },
+  { value: '7 to 10', label: 'Day Turnaround' },
   { value: '2X', label: 'Cheaper Than Market' },
   { value: '100%', label: 'Remote Process' },
 ]
@@ -85,7 +85,7 @@ export default function AboutPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
             <p className="text-frog-muted text-lg md:text-xl max-w-xl leading-relaxed">
-              Business registration, simplified.
+              Business registration without the runaround.
             </p>
           </ScrollReveal>
 
@@ -125,7 +125,7 @@ export default function AboutPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
             <p className="text-base md:text-lg text-black/60 leading-relaxed mb-12">
-              We help founders start right — no office visits, no markups, no waste.
+              We help founders start right: no office visits, no markups, no waste.
             </p>
           </ScrollReveal>
 
@@ -143,7 +143,7 @@ export default function AboutPage() {
                       Every founder deserves affordable registration.
                     </p>
                     <p className="text-sm text-black/60 mt-3 leading-relaxed">
-                      100% remote. 2X cheaper. 7–10 day delivery.
+                      100% remote. 2X cheaper. 7 to 10 day delivery.
                     </p>
                   </div>
                 </div>

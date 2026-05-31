@@ -15,6 +15,7 @@ const companyLinks = [
   { label: 'FAQ', href: '/faq' },
   { label: 'Resources', href: '/resources' },
   { label: 'Academy ↗', href: ACADEMY_URL, external: true },
+  { label: 'Brand Guidelines', href: '/brand' },
   { label: 'Blog', href: '/blog' },
 ]
 
@@ -172,7 +173,7 @@ export function Footer() {
             <h3 className="text-white text-xl md:text-2xl font-black tracking-tight">
               Ready to register?
             </h3>
-            <p className="text-white/40 text-sm font-bold mt-1">100% remote · 7–10 days · From N$800</p>
+            <p className="text-white/40 text-sm font-bold mt-1">100% remote · 7 to 10 days · From N$800</p>
           </div>
           <a
             href={waLink('footer')}

@@ -1,5 +1,5 @@
 /**
- * SMEfrog — Centralised configuration
+ * SMEfrog: Centralised configuration
  * Single source of truth for all business data, URLs, and pricing.
  * Eliminates 50+ hardcoded duplications across the codebase.
  */
@@ -19,7 +19,8 @@ export const GEMSWEB_URL = 'https://gemsweb.xyz'
 export const SITE_URL = 'https://smefrog.tangison.com'
 
 // ─── Academy ──────────────────────────────────────────────
-export const ACADEMY_URL = 'https://document-library-one.vercel.app'
+// TODO: update to https://academy.smefrog.com when DNS is live
+export const ACADEMY_URL = 'https://academy.smefrog.com'
 
 // ─── Pricing ───────────────────────────────────────────────
 export const PRICING = {
@@ -31,30 +32,30 @@ export const PRICING = {
 export const pricingCards = Object.values(PRICING)
 
 // ─── Trust items ───────────────────────────────────────────
-export const TRUST_ITEMS = ['100% Remote', '7–10 Days', 'Bank-Ready Docs', 'BIPA Included', '2X Cheaper'] as const
+export const TRUST_ITEMS = ['100% Remote', '7 to 10 Days', 'Bank-Ready Docs', 'BIPA Included', '2X Cheaper'] as const
 
 // ─── How It Works steps ───────────────────────────────────
 export const STEPS = [
-  { n: '01', title: 'Pick a Package', desc: 'Choose what fits.' },
-  { n: '02', title: 'Send Your Details', desc: 'We collect everything remotely.' },
-  { n: '03', title: 'We File It All', desc: 'Compliance, forms, submissions.' },
-  { n: '04', title: 'Get Your Documents', desc: 'Delivered digitally. Ready for business.' },
+  { n: '01', title: 'Choose Your Package', desc: 'Pick Basic, Advanced, or Full.' },
+  { n: '02', title: 'Send Your Details', desc: 'WhatsApp us your ID, address, and business name.' },
+  { n: '03', title: 'We File Everything', desc: 'BIPA forms, BO declarations, all submissions.' },
+  { n: '04', title: 'Receive Your Documents', desc: 'Digital delivery in 7 to 10 working days.' },
 ] as const
 
 // ─── Testimonials ──────────────────────────────────────────
 export const TESTIMONIALS = [
-  { name: 'Maria K.', business: 'MK Cleaners CC', quote: 'Registered my CC in under 2 weeks. No office visits. No drama.' },
-  { name: 'James T.', business: 'Tjiriange Logistics', quote: 'Everything happened over WhatsApp. I was skeptical, but it worked.' },
-  { name: 'Lina N.', business: 'Oshili Digital', quote: '2X cheaper than the lawyer I was going to use. Same documents.' },
+  { name: 'Maria K.', business: 'MK Cleaners CC, Windhoek', quote: 'Registered my CC in under 2 weeks. No office visits. No drama.' },
+  { name: 'James T.', business: 'Tjiriange Logistics, Oshikoto', quote: 'Everything happened over WhatsApp. I was skeptical, but it worked.' },
+  { name: 'Lina N.', business: 'Oshili Digital, Swakopmund', quote: '2X cheaper than the lawyer I was going to use. Same documents.' },
 ] as const
 
 // ─── FAQ ───────────────────────────────────────────────────
 export const FAQ_ITEMS = [
-  { q: 'How much does a CC cost?', a: 'N$800 Basic. N$1,200 Advanced. N$1,750 Full. All include BIPA filing.' },
-  { q: 'Can I register remotely?', a: 'Yes. WhatsApp and email. No office visits.' },
-  { q: 'How long does it take?', a: '7–10 working days, depending on BIPA.' },
-  { q: 'Can foreigners register?', a: 'Yes, with a valid work permit or residency.' },
-  { q: 'What do I need?', a: 'ID copy, proof of address, proposed business name(s). We handle the rest.' },
+  { q: 'How much does it cost to register a CC?', a: 'N$800 for Basic. N$1,200 for Advanced. N$1,750 for Full. Every package includes BIPA filing.' },
+  { q: 'Do I need to visit an office to register?', a: 'No. Everything happens over WhatsApp and email. You never need to visit BIPA or our office.' },
+  { q: 'How long until I get my registration certificate?', a: '7 to 10 working days once BIPA receives a complete submission. Delays only happen when documents are missing.' },
+  { q: 'Can a foreigner register a business in Namibia?', a: 'Yes, if you have a valid work permit or proof of residency. The process is the same; you just add your permit to the documents.' },
+  { q: 'What documents do I need to get started?', a: 'A certified ID or passport copy, proof of address (not older than 3 months), and 2 to 3 proposed business names. We handle everything else.' },
 ] as const
 
 // ─── Prefilled WhatsApp Messages ──────────────────────────

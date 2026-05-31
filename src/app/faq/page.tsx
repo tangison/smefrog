@@ -10,49 +10,49 @@ import { waLink } from '@/lib/config'
 /* ─── Data ─────────────────────────────────────────── */
 const faqs = [
   {
-    question: 'How much does CC registration cost?',
+    question: 'How much does it cost to register a CC?',
     answer:
-      'Three tiers: Basic N$800, Advanced N$1,200, Full N$1,750. All transparent. No hidden fees.',
+      'Three tiers: Basic N$800, Advanced N$1,200, Full N$1,750. All include BIPA filing. No hidden fees.',
   },
   {
-    question: 'Can I register remotely?',
+    question: 'Do I have to visit an office to register?',
     answer:
-      'Yes. 100% online via WhatsApp and email. No office visits needed.',
+      'No. Everything happens over WhatsApp and email. You never need to visit BIPA or our office.',
   },
   {
     question: 'How long does registration take?',
     answer:
-      '7–10 working days for CC, depending on BIPA processing. We keep you updated on WhatsApp.',
+      '7 to 10 working days for CC, depending on BIPA processing. We keep you updated on WhatsApp.',
   },
   {
-    question: 'Can foreigners register a business in Namibia?',
+    question: 'Can a foreigner register a business in Namibia?',
     answer:
-      'Yes. You need a valid work permit or proof of residency. Same process, extra documentation.',
+      'Yes. You need a valid work permit or proof of residency. The process is the same; you just add your permit to the documents.',
   },
   {
-    question: 'What documents do I need?',
+    question: 'What documents do I need to get started?',
     answer:
-      'Three things: certified ID/passport copy, proof of address (under 3 months old), and 2–3 proposed business names.',
+      'Three things: a certified ID or passport copy, proof of address (not older than 3 months), and 2 to 3 proposed business names.',
   },
   {
-    question: 'Do you handle BIPA filing?',
+    question: 'Do you handle the BIPA filing for me?',
     answer:
-      'Yes. Included in every package. We handle the full submission with BIPA on your behalf.',
+      'Yes. BIPA filing is included in every package. We handle the full submission on your behalf.',
   },
   {
     question: 'What is Beneficial Ownership filing?',
     answer:
-      'A BIPA requirement identifying who ultimately owns your business. Mandatory for all registered entities. Included in Advanced and Full packages.',
+      'A BIPA requirement that identifies who ultimately owns your business. Mandatory for all registered entities. Included in Advanced and Full packages.',
   },
   {
-    question: 'What happens if I don\'t file annual returns?',
+    question: 'What happens if I don\'t file my annual returns?',
     answer:
-      'BIPA may impose penalties or deregister your company.',
+      'BIPA may impose penalties of N$200 per month or deregister your company. We file on time so this does not happen.',
   },
   {
     question: 'How often do BO declarations need updating?',
     answer:
-      'Whenever ownership changes, or at minimum annually.',
+      'Whenever ownership changes, or at minimum once a year. You have 21 days to update after any change.',
   },
   {
     question: 'What compliance services do you offer?',
@@ -60,9 +60,9 @@ const faqs = [
       'Annual returns, BO updates, regulatory filings, governance documentation, and company secretarial services.',
   },
   {
-    question: 'Do you offer PTY LTD registration?',
+    question: 'Do you register PTY LTD companies too?',
     answer:
-      'Yes. Starting from N$1,500 for basic, N$3,500 for the Scale Up package. Better for businesses planning to scale or seek investment.',
+      'Yes. Starting from N$1,500 for basic, N$3,500 for the Scale Up package. Better for businesses planning to seek investment or grow beyond a small team.',
   },
 ]
 

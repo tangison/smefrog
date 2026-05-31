@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { MessageCircle, ArrowRight, Search, AlertTriangle, XCircle, Info, CheckCircle2 } from 'lucide-react'
+import { MessageCircle, ArrowRight, Search, AlertTriangle, XCircle, Info, CheckCircle2, ExternalLink } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
@@ -47,7 +47,7 @@ function validateName(name: string): ValidationResult | null {
   if (/\bCC$/i.test(trimmed) || /\(Pty\)\s*Ltd$/i.test(trimmed) || /\bPty\s+Ltd$/i.test(trimmed)) {
     return {
       type: 'info',
-      message: 'BIPA adds the legal suffix — no need to include it.',
+      message: 'BIPA adds the legal suffix; no need to include it.',
     }
   }
 
@@ -212,6 +212,19 @@ export default function NameCheckerPage() {
                     return <IconComp className={`w-5 h-5 shrink-0 mt-0.5 ${Style.iconColor}`} strokeWidth={1.5} />
                   })()}
                   <p className="text-sm text-white/90 leading-relaxed">{result.message}</p>
+                </div>
+              )}
+
+              {/* BIPA Portal Link */}
+              {result && (
+                <div className="mt-6 p-4 rounded-2xl bg-white/5 ring-1 ring-white/10">
+                  <a href="https://www.bipa.na" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#4CAF50] text-sm font-semibold hover:text-[#4CAF50]/80 transition-colors min-h-[44px]">
+                    Check official availability on BIPA&apos;s name search portal
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <p className="text-[#a0a0a0] text-xs mt-2 leading-relaxed">
+                    BIPA&apos;s official portal confirms real-time availability. SMEfrog can then reserve and register the name for you.
+                  </p>
                 </div>
               )}
             </div>

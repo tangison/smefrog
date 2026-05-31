@@ -155,6 +155,17 @@ export default function CostEstimatorPage() {
     return { lines, subtotal, surcharge, total }
   }, [businessType, members, selectedServices])
 
+  // Build the WhatsApp message dynamically
+  const waMessage = useMemo(() => {
+    if (calculation.lines.length === 0) {
+      return `https://wa.me/264853411522?text=${encodeURIComponent("Hi SMEfrog, I'd like to discuss a compliance package.")}`
+    }
+    const lines = calculation.lines.map(l => `${l.label}: N$${l.amount.toLocaleString()}`).join(', ')
+    const total = `Estimated annual cost: N$${calculation.total.toLocaleString()}`
+    const msg = `Hi SMEfrog, I used the compliance cost estimator. ${lines}. ${total}. I'd like to discuss a compliance package.`
+    return `https://wa.me/264853411522?text=${encodeURIComponent(msg)}`
+  }, [calculation])
+
   return (
     <>
       {/* ═══ HERO — DARK ═══ */}
@@ -326,7 +337,7 @@ export default function CostEstimatorPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
             <a
-              href="https://wa.me/264853411522?text=Hi%20SMEfrog%2C%20I%20used%20the%20compliance%20cost%20estimator%20and%20I%27d%20like%20to%20discuss%20a%20compliance%20package."
+              href={waMessage}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2.5 min-h-[48px] bg-[#4CAF50] text-black font-semibold rounded-full px-8 py-4 text-sm hover:bg-[#4CAF50]/90 active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] touch-action-manipulation"

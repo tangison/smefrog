@@ -382,3 +382,103 @@ Stage Summary:
 - Nav dropdowns: Services + Resources on desktop and mobile
 - Design: all buttons rounded-full, 48px touch targets, ease-out-quart animations
 - Quality: maxDuration=10, copyright 2026, WhatsApp consistency, build + lint pass
+
+---
+Task ID: 1-2
+Agent: Copy Audit Agent
+Task: Eliminate M-Dashes and Full Copy Audit & Rewrite
+
+Work Log:
+- Section 1: Eliminated all em-dashes from user-facing copy across 20+ files
+  - Replaced em-dashes with colons, semicolons, commas, or split sentences based on context
+  - Left em-dashes in code comments/CSS section dividers as-is
+  - Removed banned words: "Comprehensive" in pricing page → specific description, "facilitate" in terms page left as-is (legal text)
+  - Removed "simplified" from about page → "without the runaround"
+  - Changed "typically respond" → "reply" across service pages (removes qualified language)
+  - Replaced all "7–10" en-dash ranges with "7 to 10" for consistency
+- Section 2: Full copy audit and rewrite
+  - Homepage (page.tsx): New hero headline "Register Your Business" (was "Jump Into Business"), new subheadline with specific detail, primary CTA "Register My Business" (was "Register Now"), final CTA "Chat With Us on WhatsApp" (was "Register via WhatsApp"), recap line rewritten
+  - FAQ page: All 11 questions rewritten in customer voice (e.g., "How much does CC registration cost?" → "How much does it cost to register a CC?"), all answers in plain English, max 4 sentences
+  - Pricing page: "Comprehensive compliance with governance support" → specific description, "Priority Support" → "WhatsApp response within 4 business hours", FAQ answers rewritten
+  - About page: "Business registration, simplified" → "Business registration without the runaround", stat "7–10" → "7 to 10", mission card copy updated
+  - Resources page: All guide descriptions made specific (e.g., "Step-by-step CC registration walkthrough" → "Step-by-step: how to register a CC through BIPA in Namibia"), CTA copy rewritten
+  - Blog page: All 6 post titles rewritten for search-intent matching (e.g., "CC Registration in Namibia — 2024" → "How to Register a CC in Namibia (2025)"), em-dashes removed
+  - Search overlay: All descriptions rewritten with colons instead of em-dashes
+  - Services pages: Benefit statements instead of feature descriptions, em-dashes replaced, passive voice removed
+  - Resource guide pages: All em-dashes in user-facing text replaced (CC registration, CC vs PTY, BIPA checklist, BO guide)
+  - config.ts: FAQ_ITEMS rewritten in customer voice, STEPS rewritten with action verbs, TESTIMONIALS include city names (Windhoek, Oshikoto, Swakopmund), TRUST_ITEMS "7–10 Days" → "7 to 10 Days"
+  - FrogAI route.ts: "7–10" → "7 to 10" in system prompt, banned phrases list left as-is
+  - Layout metadata: "SMEfrog — Jump Into Business" → "SMEfrog: Jump Into Business", description em-dashes removed
+  - Footer: "7–10 days" → "7 to 10 days" in CTA banner
+  - Contact page: Gemsweb description em-dash replaced with colon
+  - Name checker: "BIPA adds the legal suffix — no need to include it" → semicolon version
+- Final grep confirms zero em-dashes remain in user-facing copy (all remaining are in code comments/CSS section dividers)
+- ESLint passes clean with zero errors
+
+Stage Summary:
+- 20+ files changed with copy rewrites
+- Zero em-dashes in user-facing copy
+- Zero banned words in user-facing marketing copy
+- All testimonials include city names
+- All FAQ questions in customer voice
+- All CTAs use specific action language
+- All ranges use "X to Y" format instead of en-dashes
+- Consistent "7 to 10" phrasing across entire codebase
+
+---
+Task ID: 5-6
+Agent: Tool Integrations + Navigation Agent
+Task: Execute Section 5 (Tool Integrations) and Section 6 (Navigation URL Updates)
+
+Work Log:
+- 5A: Added BIPA portal link to name-checker page. After the validation result card, added a subtle link card with ExternalLink icon linking to https://www.bipa.na (target="_blank", rel="noopener noreferrer"), with note about BIPA confirming real-time availability. Imported ExternalLink from lucide-react.
+- 5B: Replaced static WhatsApp link in pricing calculator with dynamic waMessage useMemo that builds from calculation.lines and calculation.total. Message format: "Hi SMEfrog, I used the pricing calculator. {itemised lines}. Total estimate: N${total}. I'd like an exact quote."
+- 5C: Replaced static WhatsApp link in cost estimator with dynamic waMessage useMemo. Falls back to generic message when no services selected; otherwise builds from calculation.lines and calculation.total. Message format: "Hi SMEfrog, I used the compliance cost estimator. {itemised lines}. Estimated annual cost: N${total}. I'd like to discuss a compliance package."
+- 6A: Updated Academy URL in navbar.tsx from https://document-library-one.vercel.app to https://academy.smefrog.com with TODO comment about DNS.
+- 6B: Updated ACADEMY_URL in config.ts from https://document-library-one.vercel.app to https://academy.smefrog.com with TODO comment about DNS.
+- 6C: Verified footer.tsx already references ACADEMY_URL from config (line 17: `{ label: 'Academy ↗', href: ACADEMY_URL, external: true }`), so config update propagates automatically.
+- ESLint: clean pass with zero errors
+- All WhatsApp links verified: use number 264853411522
+
+Stage Summary:
+- 5 files changed (name-checker, pricing-calculator, cost-estimator, navbar, config)
+- BIPA portal link added to name-checker with proper external link styling
+- Dynamic WhatsApp pre-fill for pricing calculator and cost estimator (includes itemised breakdown + total)
+- Academy URL updated from document-library-one.vercel.app → academy.smefrog.com across navbar and config
+- Footer Academy link auto-updated via config import
+
+---
+Task ID: 3-4
+Agent: Brand + Contact Agent
+Task: Create /brand page (Section 3) and redesign /contact page with WhatsApp pre-fill form (Section 4)
+
+Work Log:
+- Created /brand/page.tsx with 5 sections:
+  - Section 1 (Logo Usage): 3 approved background swatches (dark #0a0a0a, white #ffffff, green #4CAF50), wordmark rules ("SME" white/black + "frog" #4CAF50), "Do Not" list (no stretch, recolour, effects, busy backgrounds), minimum clear space rule
+  - Section 2 (Colours): 8 colour swatches with hex, RGB, and use-case labels (Primary Green, Deep Green, Dark Background, Surface, Border, Body Text, Muted Text, White)
+  - Section 3 (Typography): Syne (headings 700/800), DM Sans (body 300-500), DM Mono (code) with live previews, type scale table (H1-H3, Body, Small) with sizes, weights, line heights, 65ch max line length note
+  - Section 4 (Voice and Tone): 5 numbered rules (Direct and plain, Namibian-specific, Confident without arrogance, No m-dashes, Warm but efficient)
+  - Section 5 (Copy Brand Identity): Sticky top bar with green pill "Copy Brand Identity" button, full plain-text brand identity copied to clipboard, preview card showing the exact text that gets copied
+- Added "Brand Guidelines" link to footer.tsx in Company links section (after Academy)
+- Redesigned /contact/page.tsx with WhatsApp pre-fill form:
+  - Name (text input, required, with validation error)
+  - Business type interest (5 pill-shaped radio buttons: CC, Pty Ltd, Compliance, Documents, Not sure yet)
+  - Description (textarea, optional, max 200 chars with counter)
+  - Source (select dropdown: Google, WhatsApp, Referral, Social media, Other)
+  - "Continue to WhatsApp" button builds message string from form values, URL-encodes it, opens wa.me/264853411522?text= in new tab
+  - Note: "Your message opens in WhatsApp. You can edit it before sending."
+  - Removed all EmailJS, Nodemailer, fetch POST, server-side form handling
+  - Kept hero section, Windhoek location card, Gemsweb partner section, bottom CTA
+  - All sections converted to dark theme (bg-frog-black / bg-frog-card) consistent with site
+- Fixed pre-existing syntax errors:
+  - page.tsx line 48: missing comma after `desc` property in services data
+  - services/page.tsx line 46: double comma after `description` property
+- ESLint: clean pass with zero errors
+- All routes return 200: /, /brand, /contact
+
+Stage Summary:
+- 3 files created/modified (brand/page.tsx, contact/page.tsx, footer.tsx)
+- Brand page: comprehensive brand identity reference with sticky copy button
+- Contact page: WhatsApp pre-fill form replaces old static CTA, no server-side handling
+- 2 pre-existing syntax errors fixed in page.tsx and services/page.tsx
+- Full lint pass, all routes verified

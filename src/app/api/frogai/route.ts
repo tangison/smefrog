@@ -21,7 +21,7 @@ SMEfrog Knowledge Base:
 - Tax Certificate: Included in all packages
 - Beneficial Ownership Filing: Included in Advanced+
 - Compliance Services: Annual returns, BO updates, regulatory filings, governance documentation, company secretarial services, compliance status checks, amendment filings
-- Process: 7–10 working days depending on BIPA processing
+- Process: 7 to 10 working days depending on BIPA processing
 - 100% Remote: Everything handled via WhatsApp and email
 - Bank-Ready Documents: Included in Advanced and Full packages
 - Full Package includes: Advanced + Annual Return Filing + Compliance Check
@@ -38,7 +38,7 @@ IMPORTANT - Service Boundaries:
 - If someone asks about business plans, pitch decks, or startup support packages, those are no longer offered by SMEfrog. Direct them to contact us on WhatsApp for alternatives.
 
 Bad example: "We are excited to revolutionize your registration journey."
-Good example: "You need a CC. We can file it remotely in 7–10 days."`
+Good example: "You need a CC. We can file it remotely in 7 to 10 days."`
 
 export async function POST(req: NextRequest) {
   try {

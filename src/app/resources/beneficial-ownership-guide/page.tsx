@@ -22,7 +22,7 @@ const filingSteps = [
   {
     n: '03',
     title: 'Submit to BIPA',
-    desc: 'File the completed declaration with BIPA (Business and Intellectual Property Authority of Namibia). We handle this remotely — no office visits required.',
+    desc: 'File the completed declaration with BIPA (Business and Intellectual Property Authority of Namibia). We handle this remotely; no office visits required.',
   },
   {
     n: '04',
@@ -42,7 +42,7 @@ const boCriteria = [
   },
   {
     label: 'Effective Control',
-    detail: 'Anyone who exercises significant influence over the management and direction of the entity — even if they do not meet the 25% threshold. This includes shadow directors and de facto controllers.',
+    detail: 'Anyone who exercises significant influence over the management and direction of the entity, even if they do not meet the 25% threshold. This includes shadow directors and de facto controllers.',
   },
   {
     label: 'Senior Officials',
@@ -236,7 +236,7 @@ export default function BeneficialOwnershipGuidePage() {
               className="text-2xl md:text-3xl font-bold text-frog-light mb-2"
               style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             >
-              When to File — and What Happens If You Don&apos;t
+              When to File and What Happens If You Don&apos;t
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
@@ -310,7 +310,7 @@ export default function BeneficialOwnershipGuidePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              Tell us your details over WhatsApp. We file your BO declaration with BIPA — compliant with the Financial Intelligence Act, filed on time, every time.
+              Tell us your details over WhatsApp. We file your BO declaration with BIPA, compliant with the Financial Intelligence Act, filed on time, every time.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>

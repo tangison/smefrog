@@ -27,7 +27,7 @@ const registrationGuides = [
   {
     icon: BookOpen,
     title: 'CC Registration Guide',
-    description: 'Step-by-step CC registration walkthrough.',
+    description: 'Step-by-step: how to register a CC through BIPA in Namibia.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
     href: '/resources/cc-registration-guide',
@@ -35,7 +35,7 @@ const registrationGuides = [
   {
     icon: GitCompare,
     title: 'CC vs Pty Ltd',
-    description: 'Key differences and which to choose.',
+    description: 'Key differences and which one to pick for your situation.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
     href: '/resources/cc-vs-pty-ltd',
@@ -43,7 +43,7 @@ const registrationGuides = [
   {
     icon: ClipboardCheck,
     title: 'BIPA Compliance Checklist',
-    description: 'Requirements, deadlines, and filing info.',
+    description: 'Deadlines, filing requirements, and what BIPA expects from you.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
     href: '/resources/bipa-compliance-checklist',
@@ -51,7 +51,7 @@ const registrationGuides = [
   {
     icon: FileText,
     title: 'Beneficial Ownership Guide',
-    description: 'How to file your BO declaration.',
+    description: 'Who must file, when to update, and how to stay compliant with FIA.',
     action: 'Read Guide',
     actionIcon: ExternalLink,
     href: '/resources/beneficial-ownership-guide',
@@ -236,7 +236,7 @@ export default function ResourcesPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
             <p className="text-frog-muted text-base md:text-lg max-w-2xl mt-4 leading-relaxed">
-              Guides, templates, and tools to help you stay compliant.
+              Step-by-step guides, templates, and tools to keep your business compliant.
             </p>
           </ScrollReveal>
         </div>
@@ -257,7 +257,7 @@ export default function ResourcesPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-black/60 text-base max-w-xl mb-12 leading-relaxed">
-              Everything about registering and maintaining your business.
+              Everything about registering and maintaining your business in Namibia.
             </p>
           </ScrollReveal>
 
@@ -284,7 +284,7 @@ export default function ResourcesPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base max-w-xl mb-12 leading-relaxed">
-              Professional document templates — free to download.
+              Professional document templates, free to download.
             </p>
           </ScrollReveal>
 
@@ -377,7 +377,7 @@ export default function ResourcesPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              Skip the research. We handle everything — fast, affordable, 100% online.
+              Skip the research. We handle everything: fast, affordable, 100% online.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>

@@ -36,7 +36,7 @@ const complianceTiers = [
     name: 'PROFESSIONAL',
     price: '1,200',
     period: '/year',
-    description: 'Comprehensive compliance with governance support.',
+    description: 'Annual returns, BO updates, governance docs, and regulatory filings.',
     features: ['Essential + Governance Documentation', 'Regulatory Filing', 'Amendment Filings'],
     featured: true,
   },
@@ -44,8 +44,8 @@ const complianceTiers = [
     name: 'ENTERPRISE',
     price: 'Custom',
     period: '',
-    description: 'Full-service compliance management for growing businesses.',
-    features: ['Professional + Company Secretarial Services', 'Dedicated Compliance Officer', 'Priority Support'],
+    description: 'Full compliance management for growing businesses.',
+    features: ['Professional + Company Secretarial Services', 'Dedicated Compliance Officer', 'WhatsApp response within 4 business hours'],
     featured: false,
   },
 ]
@@ -71,7 +71,7 @@ const faqItems = [
   {
     question: 'Why choose Advanced?',
     answer:
-      'Adds Company Profile (needed for bank accounts and tenders), domain registration, and BO filing — now a compliance requirement. The sweet spot for most founders.',
+      'Adds Company Profile (needed for bank accounts and tenders), domain registration, and BO filing, now a compliance requirement. The sweet spot for most founders.',
   },
   {
     question: 'What does Full add?',
@@ -91,7 +91,7 @@ const faqItems = [
   {
     question: 'How long does registration take?',
     answer:
-      '7–10 working days for CC. Pty Ltd takes slightly longer due to extra documentation.',
+      '7 to 10 working days for CC. Pty Ltd takes slightly longer due to extra documentation.',
   },
   {
     question: 'Can I upgrade later?',
@@ -702,7 +702,7 @@ export default function PricingPage() {
               </div>
 
               <p className="text-black/40 text-xs text-center mt-6 font-medium">
-                100% remote · 7–10 day turnaround · No hidden fees
+                100% remote · 7 to 10 day turnaround · No hidden fees
               </p>
             </div>
           </ScrollReveal>
@@ -724,7 +724,7 @@ export default function PricingPage() {
               <p className="text-white text-sm font-bold">
                 Ready? Let&apos;s Talk
               </p>
-              <p className="text-white/30 text-xs font-medium">From N$800 · 7–10 day turnaround</p>
+              <p className="text-white/30 text-xs font-medium">From N$800 · 7 to 10 day turnaround</p>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <a

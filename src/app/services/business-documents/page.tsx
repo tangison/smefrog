@@ -160,7 +160,7 @@ export default function BusinessDocumentsPage() {
               <ScrollReveal delay={0.2}>
                 <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-frog-green/10 border border-frog-green/20 mb-8">
                   <span className="w-1.5 h-1.5 rounded-full bg-frog-green animate-pulse" />
-                  <span className="text-frog-green text-sm font-bold">Custom Pricing — Per Document</span>
+                  <span className="text-frog-green text-sm font-bold">Custom Pricing: Per Document</span>
                 </div>
               </ScrollReveal>
 
@@ -382,7 +382,7 @@ export default function BusinessDocumentsPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.08}>
             <p className="text-frog-muted text-base md:text-lg mb-10 leading-relaxed max-w-lg mx-auto">
-              Costs vary by complexity. Tell us what you need — we quote upfront.
+              Costs vary by complexity. Tell us what you need and we quote upfront.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
@@ -418,7 +418,7 @@ export default function BusinessDocumentsPage() {
               Need documents?{' '}
               <span className="italic text-frog-green">Chat with us.</span>
             </h3>
-            <p className="text-white/40 text-sm mb-8">{PHONE_MAIN} · We typically respond within a few hours.</p>
+            <p className="text-white/40 text-sm mb-8">{PHONE_MAIN} · We reply within a few hours during business hours.</p>
             <a
               href={waLink('documents')}
               target="_blank"

@@ -45,7 +45,8 @@ const navLinks: NavLink[] = [
       { label: 'Name Checker', href: '/resources/name-checker' },
     ],
   },
-  { label: 'Academy', href: 'https://document-library-one.vercel.app', external: true },
+  // TODO: update to https://academy.smefrog.com when DNS is live
+  { label: 'Academy', href: 'https://academy.smefrog.com', external: true },
   { label: 'Contact', href: '/contact' },
 ]
 

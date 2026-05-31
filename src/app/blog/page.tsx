@@ -8,7 +8,7 @@ import { Eyebrow } from '@/components/eyebrow'
 /* ─── Data ─────────────────────────────────────────── */
 const blogPosts = [
   {
-    title: 'CC Registration in Namibia — 2024',
+    title: 'How to Register a CC in Namibia (2025)',
     excerpt:
       'Step-by-step walkthrough from name reservation to certificate.',
     date: '15 Jan 2024',
@@ -17,7 +17,7 @@ const blogPosts = [
     href: '/resources/cc-registration-guide',
   },
   {
-    title: 'PTY LTD vs CC: Which to Pick?',
+    title: 'CC vs Pty Ltd: Which Structure Fits Your Business?',
     excerpt:
       'Key differences, advantages, and which fits your business.',
     date: '22 Jan 2024',
@@ -26,7 +26,7 @@ const blogPosts = [
     href: '/resources/cc-vs-pty-ltd',
   },
   {
-    title: 'BIPA Compliance Requirements',
+    title: 'BIPA Compliance: What Namibian Businesses Must File and When',
     excerpt:
       'What\'s required, when filings are due, and how to stay compliant.',
     date: '5 Feb 2024',
@@ -35,7 +35,7 @@ const blogPosts = [
     href: '/resources/bipa-compliance-checklist',
   },
   {
-    title: 'Beneficial Ownership Filing Guide',
+    title: 'Beneficial Ownership Filing: Who Must Declare and When',
     excerpt:
       'Who needs to file, what\'s required, and consequences of non-compliance.',
     date: '18 Feb 2024',
@@ -44,7 +44,7 @@ const blogPosts = [
     href: '/resources/beneficial-ownership-guide',
   },
   {
-    title: 'The Complete Guide to Annual Returns in Namibia',
+    title: 'Annual Returns in Namibia: How to File and Avoid BIPA Penalties',
     excerpt:
       'Everything you need to know about filing annual returns and staying compliant with BIPA.',
     date: '10 Mar 2024',
@@ -53,7 +53,7 @@ const blogPosts = [
     href: '/resources/bipa-compliance-checklist',
   },
   {
-    title: 'Beneficial Ownership: What You Need to Know',
+    title: 'BO Declarations: Filing Deadlines, Updates, and Penalty Risks',
     excerpt:
       'Understanding BO declarations, update requirements, and how to avoid penalties.',
     date: '25 Mar 2024',
@@ -177,7 +177,7 @@ export default function BlogPage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-frog-muted text-base md:text-lg mb-10 max-w-lg mx-auto">
-              Skip the research. We handle everything — fast, affordable, 100% online.
+              Skip the research. We handle everything: fast, affordable, 100% online.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
