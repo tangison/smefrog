@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'SMEfrog Academy — Free Business Education for Namibia',
   description:
     '64 free modules across 3 tracks: Business Registration, Compliance & Governance, and Namibian Business Fundamentals. No login required. PWA-installable.',
-  manifest: '/academy/manifest.webmanifest',
+  manifest: '/manifest.webmanifest',
   applicationName: 'SMEfrog Academy',
   appleWebApp: {
     capable: true,
