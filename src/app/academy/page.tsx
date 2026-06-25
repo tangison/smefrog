@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import {
   Zap,
   Flame,
-  Target,
   ChevronRight,
   Award,
   RefreshCw,
@@ -13,11 +12,10 @@ import {
   CheckCircle2,
   Lock,
   Sparkles,
-  TrendingUp,
 } from 'lucide-react'
 import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
-import { MODULES, TRACKS, modulesByTrack, trackStats, getTrackById } from '@/lib/academy/modules'
-import type { Track, TrackId } from '@/lib/academy/types'
+import { MODULES, TRACKS, modulesByTrack, getTrackById } from '@/lib/academy/modules'
+import type { TrackId } from '@/lib/academy/types'
 
 /* ─── Track icon ─── */
 function TrackIcon({ trackId, className }: { trackId: TrackId; className?: string }) {

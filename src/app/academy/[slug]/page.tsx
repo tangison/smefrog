@@ -25,9 +25,9 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
   const progress = useAcademyProgressContext()
   const [stage, setStage] = useState<'intro' | 'lesson' | 'quiz'>('intro')
 
-  const module = MODULES.find(m => m.slug === slug)
+  const moduleData = MODULES.find(m => m.slug === slug)
 
-  if (!module) {
+  if (!moduleData) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-center">
         <h1 className="text-3xl font-black text-academy-ink mb-2">Module not found</h1>
@@ -40,9 +40,9 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
     )
   }
 
-  const track = getTrackById(module.trackId)!
-  const quiz = getQuizByModuleId(module.id)
-  const mp = progress.getModuleProgress(module.id)
+  const track = getTrackById(moduleData.trackId)!
+  const quiz = getQuizByModuleId(moduleData.id)
+  const mp = progress.getModuleProgress(moduleData.id)
   const isCompleted = mp.status === 'completed'
 
   // If out of hearts, show prompt to wait
@@ -76,8 +76,8 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
     return (
       <QuizRunner
         quiz={quiz}
-        moduleTitle={module.title}
-        moduleXp={module.xp}
+        moduleTitle={moduleData.title}
+        moduleXp={moduleData.xp}
         progress={progress}
         onComplete={() => {
           // Stay on page; user can navigate back manually or click continue
@@ -106,28 +106,28 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
         >
           <div className="prose prose-lg max-w-none">
             <h1 className="text-3xl md:text-4xl font-black text-academy-ink mb-4 leading-tight">
-              {module.title}
+              {moduleData.title}
             </h1>
             <div className="flex flex-wrap items-center gap-3 text-sm text-academy-muted mb-8 pb-6 border-b border-academy-border">
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                {module.duration} min read
+                {moduleData.duration} min read
               </span>
               <span>·</span>
               <span className="flex items-center gap-1">
                 <Zap className="w-4 h-4 text-academy-warning fill-current" />
-                {module.xp} XP
+                {moduleData.xp} XP
               </span>
               <span>·</span>
-              <span>{module.level}</span>
+              <span>{moduleData.level}</span>
             </div>
 
             <p className="text-lg text-academy-ink-2 leading-relaxed mb-6 font-medium">
-              {module.summary}
+              {moduleData.summary}
             </p>
 
             <div className="text-base text-academy-ink-2 leading-relaxed whitespace-pre-line mb-8">
-              {module.body}
+              {moduleData.body}
             </div>
 
             {/* Key facts callout */}
@@ -140,7 +140,7 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
                 <h3 className="font-black text-academy-ink">Key takeaways</h3>
               </div>
               <ul className="space-y-2">
-                {module.keyFacts.map((fact, i) => (
+                {moduleData.keyFacts.map((fact, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-academy-ink-2">
                     <CheckCircle2 className="w-4 h-4 text-academy-success shrink-0 mt-0.5" />
                     <span>{fact}</span>
@@ -184,7 +184,7 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`academy-card p-6 md:p-10 academy-track-${module.trackId}`}
+        className={`academy-card p-6 md:p-10 academy-track-${moduleData.trackId}`}
       >
         {/* Track badge */}
         <div
@@ -196,26 +196,26 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-academy-ink mb-3 leading-tight">
-          {module.title}
+          {moduleData.title}
         </h1>
-        <p className="text-lg text-academy-ink-2 mb-8 leading-relaxed">{module.summary}</p>
+        <p className="text-lg text-academy-ink-2 mb-8 leading-relaxed">{moduleData.summary}</p>
 
         {/* Stats row */}
         <div className="grid grid-cols-3 gap-3 mb-8">
           <div className="text-center p-4 rounded-2xl bg-academy-surface-2">
             <Clock className="w-5 h-5 text-academy-ink-2 mx-auto mb-1" />
             <div className="text-xs font-bold uppercase tracking-wider text-academy-muted">Duration</div>
-            <div className="font-black text-academy-ink">{module.duration} min</div>
+            <div className="font-black text-academy-ink">{moduleData.duration} min</div>
           </div>
           <div className="text-center p-4 rounded-2xl bg-academy-surface-2">
             <Zap className="w-5 h-5 text-academy-warning mx-auto mb-1" fill="currentColor" />
             <div className="text-xs font-bold uppercase tracking-wider text-academy-muted">XP Reward</div>
-            <div className="font-black text-academy-ink">+{module.xp}</div>
+            <div className="font-black text-academy-ink">+{moduleData.xp}</div>
           </div>
           <div className="text-center p-4 rounded-2xl bg-academy-surface-2">
             <Target className="w-5 h-5 text-academy-ink-2 mx-auto mb-1" />
             <div className="text-xs font-bold uppercase tracking-wider text-academy-muted">Level</div>
-            <div className="font-black text-academy-ink">{module.level}</div>
+            <div className="font-black text-academy-ink">{moduleData.level}</div>
           </div>
         </div>
 
@@ -225,7 +225,7 @@ export default function ModulePage({ params }: { params: Promise<{ slug: string 
             What you&rsquo;ll learn
           </h2>
           <ul className="space-y-2">
-            {module.outcomes.map((outcome, i) => (
+            {moduleData.outcomes.map((outcome, i) => (
               <li key={i} className="flex items-start gap-3">
                 <div
                   className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"

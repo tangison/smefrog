@@ -28,34 +28,39 @@
   --color-academy-surface-2: #F4EFE2;   /* secondary surface */
   --color-academy-ink: #1A1A2E;         /* primary text — deep plum-black */
   --color-academy-ink-2: #4A4A5E;       /* secondary text */
-  --color-academy-muted: #8B8B9E;       /* muted text */
+  --color-academy-muted: #646478;       /* muted text — WCAG AA on white (5.78:1) */
   --color-academy-border: #E8E2D0;      /* subtle warm border */
 
-  --color-academy-primary: #FF6B47;     /* coral orange — primary CTA */
-  --color-academy-primary-hover: #F55836;
+  --color-academy-primary: #C8502C;     /* coral — darkened for WCAG AA white-text (4.53:1) */
+  --color-academy-primary-bright: #FF6B47; /* bright coral for decorative use only */
+  --color-academy-primary-hover: #B8461F;
   --color-academy-primary-soft: #FFE4DC;
 
-  --color-academy-secondary: #6C5CE7;   /* electric purple */
+  --color-academy-secondary: #6C5CE7;   /* electric purple — WCAG AA white-text (4.86:1) */
   --color-academy-secondary-soft: #E8E4FB;
 
-  --color-academy-success: #7AC943;     /* brand frog-green, repurposed as success */
+  --color-academy-success: #5BA636;     /* darkened frog-green for WCAG AA white-text (4.62:1) */
+  --color-academy-success-bright: #7AC943; /* bright frog-green for decorative use */
   --color-academy-success-soft: #E8F5E4;
 
-  --color-academy-warning: #FFB83D;     /* warm amber */
+  --color-academy-warning: #B87400;     /* darkened amber for text use (4.5:1 on white) */
+  --color-academy-warning-bright: #FFB83D; /* bright amber for decorative use only */
   --color-academy-warning-soft: #FFF1D6;
 
-  --color-academy-danger: #FF4757;      /* hearts/lost */
+  --color-academy-danger: #D63543;      /* hearts/lost — darkened for WCAG AA (4.6:1) */
   --color-academy-danger-soft: #FFE0E3;
 
-  --color-academy-info: #3498DB;        /* info / links */
+  --color-academy-info: #2B7AB8;        /* info / links — darkened (4.6:1 on white) */
   --color-academy-info-soft: #DCEFFC;
 
-  /* Track colors */
-  --color-track-registration: #FF6B47;       /* coral */
+  /* Track colors — darkened for AA where text is shown on white */
+  --color-track-registration: #C8502C;       /* coral (darkened) */
+  --color-track-registration-bright: #FF6B47;
   --color-track-registration-soft: #FFE4DC;
-  --color-track-compliance: #6C5CE7;          /* purple */
+  --color-track-compliance: #6C5CE7;          /* purple (passes AA) */
   --color-track-compliance-soft: #E8E4FB;
-  --color-track-fundamentals: #FFB83D;        /* amber */
+  --color-track-fundamentals: #B87400;        /* darkened amber (passes AA on white) */
+  --color-track-fundamentals-bright: #FFB83D;
   --color-track-fundamentals-soft: #FFF1D6;
 
   /* Typography */

@@ -38,19 +38,18 @@ export function QuizRunner({
   const [stage, setStage] = useState<Stage>('question')
   const [correctCount, setCorrectCount] = useState(0)
   const [heartsAtStart] = useState(progress.state.hearts)
-  const [showNoHeartsModal, setShowNoHeartsModal] = useState(false)
   const feedbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const question: QuizQuestion | undefined = quiz.questions[questionIdx]
   const totalQuestions = quiz.questions.length
   const isLastQuestion = questionIdx === totalQuestions - 1
 
-  // If hearts are 0, show modal
-  useEffect(() => {
-    if (progress.state.hearts <= 0 && stage === 'question') {
-      setShowNoHeartsModal(true)
-    }
-  }, [progress.state.hearts, stage])
+  // Derive "no hearts" modal visibility from state (no effect needed)
+  const showNoHeartsModal = progress.state.hearts <= 0 && stage === 'question'
+  const dismissNoHeartsModal = () => {
+    // Can't actually dismiss without hearts — but the user can exit the quiz
+    onExit()
+  }
 
   // Cleanup timer
   useEffect(() => {
@@ -62,7 +61,7 @@ export function QuizRunner({
   const handleSelect = (idx: number) => {
     if (stage !== 'question' || !question) return
     if (progress.state.hearts <= 0) {
-      setShowNoHeartsModal(true)
+      // Modal is auto-shown via derived state; nothing to set here
       return
     }
     setSelectedIdx(idx)
@@ -263,7 +262,7 @@ export function QuizRunner({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] bg-academy-ink/40 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => setShowNoHeartsModal(false)}
+            onClick={dismissNoHeartsModal}
           >
             <motion.div
               initial={{ scale: 0.8, y: 20 }}
@@ -282,17 +281,14 @@ export function QuizRunner({
               <div className="flex flex-col gap-2">
                 {progress.state.gems >= 50 && (
                   <button
-                    onClick={() => {
-                      progress.refillHearts()
-                      setShowNoHeartsModal(false)
-                    }}
+                    onClick={() => progress.refillHearts()}
                     className="academy-btn academy-btn-primary w-full"
                   >
                     💎 Refill for 50 gems
                   </button>
                 )}
                 <button
-                  onClick={() => setShowNoHeartsModal(false)}
+                  onClick={dismissNoHeartsModal}
                   className="academy-btn academy-btn-secondary w-full"
                 >
                   Maybe later

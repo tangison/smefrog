@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Nunito } from 'next/font/google'
-import './academy.css'
 import '@/app/globals.css'
+import './academy.css'
 import { AcademyApp } from '@/components/academy/academy-app'
 
 const nunito = Nunito({

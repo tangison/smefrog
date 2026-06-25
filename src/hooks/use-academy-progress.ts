@@ -202,27 +202,29 @@ function checkNewAchievements(state: PlayerProgress): {
   }
 }
 
+/* ─── Lazy initializer — reads localStorage once on first render ─── */
+function loadInitialState(): PlayerProgress {
+  if (typeof window === 'undefined') return createDefaultProgress()
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (stored) {
+      const parsed = JSON.parse(stored) as PlayerProgress
+      return regenHearts(parsed)
+    }
+  } catch (e) {
+    console.warn('Failed to load academy progress:', e)
+  }
+  return createDefaultProgress()
+}
+
 /* ─── Hook ────────────────────────────────────────────────── */
 export function useAcademyProgress() {
-  const [state, setState] = useState<PlayerProgress>(createDefaultProgress)
-  const [loaded, setLoaded] = useState(false)
+  const [state, setState] = useState<PlayerProgress>(loadInitialState)
+  const [loaded, setLoaded] = useState(true) // always loaded now — lazy init
   const [newAchievements, setNewAchievements] = useState<Achievement[]>([])
 
-  // Load from localStorage on mount
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const parsed = JSON.parse(stored) as PlayerProgress
-        // Heart regen on load
-        const regened = regenHearts(parsed)
-        setState(regened)
-      }
-    } catch (e) {
-      console.warn('Failed to load academy progress:', e)
-    }
-    setLoaded(true)
-  }, [])
+  // SSR safety: on the server we used the default state; on the client the
+  // lazy initializer runs on hydration. No effect needed.
 
   // Persist to localStorage on state change
   useEffect(() => {

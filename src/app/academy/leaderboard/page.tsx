@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Trophy, Crown, Medal } from 'lucide-react'
+import { ArrowLeft, Crown } from 'lucide-react'
 import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
 
 // Mock leaderboard — these are AI-generated competitors with stable names.
