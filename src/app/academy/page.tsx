@@ -1,599 +1,481 @@
 'use client'
 
-import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
-  FileCheck,
-  ShieldCheck,
-  Map,
-  Clock,
   Zap,
-  Trophy,
-  TrendingUp,
-  BookOpen,
-  ChevronRight,
-  Sparkles,
-  Award,
+  Flame,
   Target,
+  ChevronRight,
+  Award,
+  RefreshCw,
+  BookOpen,
   CheckCircle2,
+  Lock,
+  Sparkles,
+  TrendingUp,
 } from 'lucide-react'
-import {
-  TRACKS,
-  MODULES,
-  TOTAL_XP,
-  TOTAL_MODULES,
-  TOTAL_TRACKS,
-  modulesByTrack,
-  trackStats,
-  type TrackId,
-  type Module,
-  type Track,
-} from '@/lib/academy-data'
+import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
+import { MODULES, TRACKS, modulesByTrack, trackStats, getTrackById } from '@/lib/academy/modules'
+import type { Track, TrackId } from '@/lib/academy/types'
 
-/* ─── Local XP Persistence ─────────────────────────────────── */
-const STORAGE_KEY = 'smefrog-academy-xp'
-
-function useXpState() {
-  const [completed, setCompleted] = useState<Set<string>>(new Set())
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      if (stored) {
-        const ids: string[] = JSON.parse(stored)
-        setCompleted(new Set(ids))
-      }
-    } catch {
-      /* ignore */
-    }
-  }, [])
-
-  const toggle = (moduleId: string) => {
-    setCompleted(prev => {
-      const next = new Set(prev)
-      if (next.has(moduleId)) {
-        next.delete(moduleId)
-      } else {
-        next.add(moduleId)
-      }
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([...next]))
-      } catch {
-        /* ignore */
-      }
-      return next
-    })
+/* ─── Track icon ─── */
+function TrackIcon({ trackId, className }: { trackId: TrackId; className?: string }) {
+  const icons = {
+    registration: '📝',
+    compliance: '🛡️',
+    fundamentals: '🗺️',
   }
-
-  const reset = () => {
-    setCompleted(new Set())
-    try {
-      localStorage.removeItem(STORAGE_KEY)
-    } catch {
-      /* ignore */
-    }
-  }
-
-  const earnedXp = useMemo(
-    () =>
-      MODULES.filter(m => completed.has(m.id)).reduce(
-        (sum, m) => sum + m.xp,
-        0,
-      ),
-    [completed],
-  )
-
-  return { completed, toggle, reset, earnedXp }
+  return <span className={className}>{icons[trackId]}</span>
 }
 
-/* ─── Icon Mapper ──────────────────────────────────────────── */
-function TrackIcon({ name, className }: { name: Track['icon']; className?: string }) {
-  const map = { FileCheck, ShieldCheck, Map }
-  const Cmp = map[name]
-  return <Cmp className={className} strokeWidth={1.5} />
-}
-
-/* ─── Hero ─────────────────────────────────────────────────── */
-function Hero() {
-  return (
-    <section className="relative pt-36 md:pt-44 pb-20 md:pb-28 px-4 md:px-6 bg-frog-black overflow-hidden">
-      {/* Ambient orbs */}
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-frog-green/[0.05] blur-[200px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/[0.18] blur-[150px] rounded-full pointer-events-none" />
-
-      <div className="max-w-[1400px] mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-        >
-          <span className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-6">
-            <Sparkles className="w-3 h-3" />
-            SMEfrog Academy
-          </span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.08, ease: [0.32, 0.72, 0, 1] }}
-          className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold leading-[0.95] tracking-tight text-white mb-6"
-        >
-          Free business
-          <br />
-          <span className="italic text-frog-green">education.</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.16, ease: [0.32, 0.72, 0, 1] }}
-          className="text-frog-muted text-lg md:text-xl max-w-2xl leading-relaxed mb-4"
-        >
-          {TOTAL_MODULES} modules across {TOTAL_TRACKS} tracks. Built for Namibian founders.
-          No login required.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.22, ease: [0.32, 0.72, 0, 1] }}
-          className="text-white/40 text-sm md:text-base max-w-2xl leading-relaxed mb-10"
-        >
-          From name reservation to beneficial ownership, from BIPA filing to bank account
-          opening &mdash; the practical knowledge SMEfrog uses every day, distilled into
-          short, structured modules. Earn XP as you progress. Installable as a PWA.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.32, 0.72, 0, 1] }}
-          className="flex flex-wrap gap-3"
-        >
-          <a
-            href="#tracks"
-            className="group inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-          >
-            <BookOpen className="w-4 h-4" strokeWidth={1.5} />
-            Browse Modules
-            <span className="w-8 h-8 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 transition-transform duration-700">
-              <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
-            </span>
-          </a>
-          <a
-            href="#xp-dashboard"
-            className="inline-flex items-center gap-2 min-h-[44px] ring-1 ring-white/10 text-white/70 rounded-full px-8 py-4 text-sm font-bold bg-white/[0.03] hover:bg-white/[0.06] hover:text-white active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-          >
-            <Trophy className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
-            XP Dashboard
-          </a>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── XP Dashboard ─────────────────────────────────────────── */
-function XpDashboard({
-  earnedXp,
-  completedCount,
+/* ─── Daily Goal Ring ─── */
+function DailyGoalRing({
+  earned,
+  goal,
 }: {
-  earnedXp: number
-  completedCount: number
+  earned: number
+  goal: number
 }) {
-  const pct = Math.round((earnedXp / TOTAL_XP) * 100)
-  const level = Math.floor(earnedXp / 200) + 1
-  const nextLevelXp = level * 200
-  const xpIntoLevel = earnedXp - (level - 1) * 200
-  const xpToNext = nextLevelXp - earnedXp
-  const levelPct = Math.round((xpIntoLevel / 200) * 100)
-
-  const stats = [
-    { label: 'Total XP', value: earnedXp.toLocaleString(), icon: Zap, sub: `${pct}% of all XP` },
-    { label: 'Level', value: `${level}`, icon: Award, sub: `${xpToNext} XP to level ${level + 1}` },
-    { label: 'Modules Done', value: `${completedCount}/${TOTAL_MODULES}`, icon: CheckCircle2, sub: `${Math.round((completedCount / TOTAL_MODULES) * 100)}% complete` },
-    { label: 'Tracks Started', value: `${Math.min(TOTAL_TRACKS, completedCount > 0 ? Math.min(TOTAL_TRACKS, completedCount) : 0)}/${TOTAL_TRACKS}`, icon: Target, sub: 'Pick a track to begin' },
-  ]
+  const pct = Math.min(100, (earned / goal) * 100)
+  const met = earned >= goal
+  const circumference = 2 * Math.PI * 36
+  const dashOffset = circumference - (pct / 100) * circumference
 
   return (
-    <section id="xp-dashboard" className="py-20 md:py-28 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.04] rounded-full blur-[150px] pointer-events-none" />
+    <div className="flex items-center gap-4">
+      <div className="relative w-24 h-24 shrink-0">
+        <svg className="w-full h-full -rotate-90" viewBox="0 0 80 80">
+          <circle
+            cx="40"
+            cy="40"
+            r="36"
+            fill="none"
+            stroke="var(--color-academy-surface-2)"
+            strokeWidth="6"
+          />
+          <motion.circle
+            cx="40"
+            cy="40"
+            r="36"
+            fill="none"
+            stroke={met ? 'var(--color-academy-success)' : 'var(--color-academy-primary)'}
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={{ strokeDashoffset: dashOffset }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+          />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <Flame
+            className={`w-5 h-5 ${met ? 'text-academy-success' : 'text-academy-warning'}`}
+            fill={met ? 'var(--color-academy-success)' : 'currentColor'}
+          />
+          <span className="text-xs font-black text-academy-ink mt-0.5">{Math.round(pct)}%</span>
+        </div>
+      </div>
+      <div>
+        <div className="text-xs font-bold uppercase tracking-widest text-academy-muted">
+          Daily Goal
+        </div>
+        <div className="text-2xl font-black text-academy-ink leading-tight">
+          {earned} <span className="text-academy-muted text-base font-bold">/ {goal} XP</span>
+        </div>
+        <div className={`text-sm font-bold ${met ? 'text-academy-success' : 'text-academy-ink-2'}`}>
+          {met ? 'Goal achieved! 🎉' : `${goal - earned} XP to go`}
+        </div>
+      </div>
+    </div>
+  )
+}
 
-      <div className="max-w-[1400px] mx-auto relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-          className="mb-12"
-        >
-          <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-            XP Dashboard
+/* ─── Module row ─── */
+function ModuleRow({
+  module,
+  index,
+  status,
+  onClick,
+}: {
+  module: (typeof MODULES)[number]
+  index: number
+  status: 'not-started' | 'in-progress' | 'completed' | 'locked'
+  onClick: () => void
+}) {
+  const track = getTrackById(module.trackId)!
+
+  const levelColor =
+    module.level === 'Beginner'
+      ? 'text-academy-success'
+      : module.level === 'Intermediate'
+      ? 'text-academy-warning'
+      : 'text-academy-danger'
+
+  return (
+    <motion.button
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: Math.min(index * 0.03, 0.3) }}
+      onClick={onClick}
+      disabled={status === 'locked'}
+      className={`academy-module-card ${status === 'locked' ? 'opacity-50 cursor-not-allowed' : ''}`}
+    >
+      <div
+        className="w-10 h-10 rounded-full flex items-center justify-center text-lg shrink-0"
+        style={{ background: 'var(--track-color-soft, var(--color-academy-surface-2))' }}
+      >
+        {status === 'completed' ? (
+          <CheckCircle2 className="w-6 h-6" style={{ color: 'var(--color-academy-success)' }} />
+        ) : status === 'locked' ? (
+          <Lock className="w-5 h-5 text-academy-muted" />
+        ) : (
+          <span className="font-black text-sm" style={{ color: 'var(--track-color, var(--color-academy-ink-2))' }}>
+            {module.id.slice(1)}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-2xl leading-tight">
-            Track your <span className="italic text-frog-green">progress.</span>
-          </h2>
-          <p className="text-frog-muted text-base md:text-lg mt-4 max-w-xl">
-            Every module awards XP. Complete modules to level up. Your progress is saved
-            locally in your browser &mdash; no account, no login.
-          </p>
-        </motion.div>
+        )}
+      </div>
+      <div className="flex-1 min-w-0 text-left">
+        <div className="flex items-center gap-2 mb-0.5">
+          <span className={`text-[10px] font-bold uppercase tracking-wider ${levelColor}`}>
+            {module.level}
+          </span>
+          <span className="text-[10px] text-academy-muted">·</span>
+          <span className="text-[10px] text-academy-muted">{module.duration} min</span>
+        </div>
+        <div className="font-bold text-academy-ink text-sm leading-tight truncate">{module.title}</div>
+        <div className="flex items-center gap-1 mt-0.5">
+          <Zap className="w-3 h-3 text-academy-warning fill-current" />
+          <span className="text-[11px] text-academy-muted font-bold">{module.xp} XP</span>
+        </div>
+      </div>
+      <ChevronRight className="w-5 h-5 text-academy-muted shrink-0" />
+    </motion.button>
+  )
+}
 
-        {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          {stats.map((stat, i) => {
-            const Icon = stat.icon
-            return (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.06, ease: [0.32, 0.72, 0, 1] }}
-                className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.06]"
-              >
-                <Icon className="w-5 h-5 text-frog-green mb-4" strokeWidth={1.5} />
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-white/40 text-xs font-bold uppercase tracking-wider">{stat.label}</div>
-                <div className="text-white/30 text-[11px] mt-1">{stat.sub}</div>
-              </motion.div>
-            )
-          })}
+/* ─── Main page ─── */
+export default function AcademyPage() {
+  const progress = useAcademyProgressContext()
+  const {
+    state,
+    completedModuleIds,
+    completedCount,
+    totalModules,
+    todayXp,
+    dailyGoalMet,
+    dueModules,
+    level,
+    xpIntoLevel,
+    xpToNextLevel,
+    levelProgressPct,
+  } = progress
+  const { currentStreak } = state
+
+  // Find next module to do (first not-completed module whose previous module is done)
+  const nextModule = MODULES.find((m, i) => {
+    if (completedModuleIds.includes(m.id)) return false
+    if (i === 0) return true
+    // Previous module in same track must be done OR any module in previous tracks done
+    const prevInTrack = MODULES[i - 1]
+    if (prevInTrack.trackId === m.trackId) {
+      return completedModuleIds.includes(prevInTrack.id)
+    }
+    return true // first module of a new track is always available
+  })
+
+  // Track progress
+  const trackProgress = TRACKS.map(track => {
+    const mods = modulesByTrack(track.id)
+    const done = mods.filter(m => completedModuleIds.includes(m.id)).length
+    return {
+      track,
+      done,
+      total: mods.length,
+      pct: mods.length > 0 ? Math.round((done / mods.length) * 100) : 0,
+    }
+  })
+
+  return (
+    <div className="max-w-5xl mx-auto px-4 py-6 md:py-10">
+      {/* ─── Hero ─── */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="academy-card p-6 md:p-8 mb-6 relative overflow-hidden"
+      >
+        {/* Decorative blobs */}
+        <div
+          className="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-30 academy-animate-float"
+          style={{ background: 'var(--color-academy-primary-soft)' }}
+        />
+
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="academy-chip" style={{ background: 'var(--color-academy-primary-soft)', color: 'var(--color-academy-primary)' }}>
+                <Sparkles className="w-3 h-3" />
+                Level {level}
+              </span>
+              <span className="academy-chip" style={{ background: 'var(--color-academy-warning-soft)', color: 'var(--color-academy-warning)' }}>
+                <Flame className="w-3 h-3" fill="currentColor" />
+                {currentStreak} day streak
+              </span>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-black text-academy-ink mb-2 leading-tight">
+              Welcome back, learner!
+            </h1>
+            <p className="text-academy-ink-2 text-sm md:text-base">
+              {completedCount === 0
+                ? "Let's start your journey through 64 modules of Namibian business mastery."
+                : completedCount < totalModules
+                ? `You've completed ${completedCount} of ${totalModules} modules. Keep going!`
+                : '🎉 You have completed all modules. Practice to keep your knowledge sharp.'}
+            </p>
+          </div>
+          <DailyGoalRing earned={todayXp} goal={state.dailyGoalXp} />
         </div>
 
         {/* Level progress bar */}
+        <div className="mt-6 relative z-10">
+          <div className="flex items-center justify-between text-xs font-bold text-academy-muted mb-1.5">
+            <span>Level {level}</span>
+            <span>{xpToNextLevel} XP to Level {level + 1}</span>
+          </div>
+          <div className="academy-progress-track">
+            <motion.div
+              className="academy-progress-fill"
+              style={{ background: 'var(--color-academy-secondary)' }}
+              initial={{ width: 0 }}
+              animate={{ width: `${levelProgressPct}%` }}
+              transition={{ duration: 1, ease: 'easeOut' }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ─── Continue learning ─── */}
+      {nextModule && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-          className="p-6 md:p-8 rounded-2xl bg-gradient-to-r from-frog-green/[0.06] via-frog-green/[0.03] to-transparent border border-frog-green/10"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="mb-6"
         >
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-frog-green/15 border border-frog-green/30 flex items-center justify-center">
-                <Award className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
+          <Link
+            href={`/academy/${nextModule.slug}`}
+            className="block academy-card p-6 md:p-8 relative overflow-hidden group"
+            style={{ background: 'var(--color-academy-primary)', color: '#FFFFFF' }}
+          >
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-20" style={{ background: '#FFFFFF' }} />
+            <div className="relative z-10 flex items-center gap-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
+                <BookOpen className="w-8 h-8 md:w-10 md:h-10" />
               </div>
-              <div>
-                <div className="text-white font-bold">Level {level}</div>
-                <div className="text-white/40 text-xs">{earnedXp.toLocaleString()} / {TOTAL_XP.toLocaleString()} total XP</div>
+              <div className="flex-1 min-w-0">
+                <div className="text-xs font-bold uppercase tracking-widest opacity-80 mb-1">
+                  Continue learning
+                </div>
+                <h2 className="text-xl md:text-2xl font-black mb-1 leading-tight">
+                  {nextModule.title}
+                </h2>
+                <p className="text-sm opacity-90 line-clamp-1">{nextModule.summary}</p>
+                <div className="flex items-center gap-3 mt-3 text-xs font-bold">
+                  <span className="flex items-center gap-1">
+                    <Zap className="w-3.5 h-3.5" fill="currentColor" />
+                    {nextModule.xp} XP
+                  </span>
+                  <span>·</span>
+                  <span>{nextModule.duration} min</span>
+                  <span>·</span>
+                  <span>{nextModule.level}</span>
+                </div>
               </div>
+              <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform shrink-0" />
             </div>
-            <div className="text-right">
-              <div className="text-frog-green font-bold text-sm">{xpToNext} XP</div>
-              <div className="text-white/30 text-[10px] uppercase tracking-wider">to Level {level + 1}</div>
-            </div>
-          </div>
-          <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${levelPct}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
-              className="h-full bg-gradient-to-r from-frog-green to-frog-green/70 rounded-full"
-            />
-          </div>
-          <div className="flex items-center justify-between mt-2 text-[10px] font-bold uppercase tracking-wider text-white/30">
-            <span>Level {level}</span>
-            <span>{levelPct}%</span>
-            <span>Level {level + 1}</span>
-          </div>
+          </Link>
         </motion.div>
-      </div>
-    </section>
-  )
-}
+      )}
 
-/* ─── Track Card ───────────────────────────────────────────── */
-function TrackCard({ track, index }: { track: Track; index: number }) {
-  const stats = trackStats(track.id)
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.32, 0.72, 0, 1] }}
-      className="relative rounded-3xl overflow-hidden border border-white/[0.06] bg-frog-card/60 backdrop-blur-sm group"
-    >
-      <div
-        className="absolute inset-x-0 top-0 h-1"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(122,201,67,0.6), transparent)' }}
-      />
-      <div className="p-6 md:p-8">
-        <div className="flex items-start justify-between mb-6">
-          <div className="w-12 h-12 rounded-xl bg-frog-green/15 border border-frog-green/25 flex items-center justify-center">
-            <TrackIcon name={track.icon} className="w-6 h-6 text-frog-green" />
-          </div>
-          <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/30">
-            Track {index + 1} / {TOTAL_TRACKS}
-          </span>
-        </div>
-
-        <h3 className="text-2xl font-bold text-white mb-1">{track.name}</h3>
-        <p className="text-frog-green text-sm font-bold italic mb-3">{track.tagline}</p>
-        <p className="text-white/50 text-sm leading-relaxed mb-6">{track.description}</p>
-
-        <div className="grid grid-cols-3 gap-3 mb-6">
-          <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-            <div className="text-white font-bold text-lg">{stats.moduleCount}</div>
-            <div className="text-white/30 text-[10px] uppercase tracking-wider">Modules</div>
-          </div>
-          <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-            <div className="text-frog-green font-bold text-lg">{stats.totalXp}</div>
-            <div className="text-white/30 text-[10px] uppercase tracking-wider">XP</div>
-          </div>
-          <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06]">
-            <div className="text-white font-bold text-lg">{stats.totalMinutes}m</div>
-            <div className="text-white/30 text-[10px] uppercase tracking-wider">Reading</div>
-          </div>
-        </div>
-
-        <a
-          href={`#track-${track.id}`}
-          className="inline-flex items-center gap-2 text-frog-green text-sm font-bold group-hover:gap-3 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
+      {/* ─── Practice reminder (due modules) ─── */}
+      {dueModules.length > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mb-6"
         >
-          Jump to modules
-          <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
-        </a>
-      </div>
-    </motion.div>
-  )
-}
-
-/* ─── Module Card ──────────────────────────────────────────── */
-function ModuleCard({
-  module,
-  index,
-  completed,
-  onToggle,
-}: {
-  module: Module
-  index: number
-  completed: boolean
-  onToggle: (id: string) => void
-}) {
-  const levelColor =
-    module.level === 'Beginner'
-      ? 'text-frog-green'
-      : module.level === 'Intermediate'
-      ? 'text-yellow-400'
-      : 'text-orange-400'
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.4, delay: Math.min(index * 0.02, 0.3), ease: [0.32, 0.72, 0, 1] }}
-      className={`relative rounded-2xl border p-5 md:p-6 transition-all duration-500 ${
-        completed
-          ? 'border-frog-green/40 bg-frog-green/[0.06]'
-          : 'border-white/[0.06] bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04]'
-      }`}
-    >
-      <div className="flex items-start gap-4">
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-white/30 text-[10px] font-bold uppercase tracking-wider">
-              {module.id}
-            </span>
-            <span className={`text-[10px] font-bold uppercase tracking-wider ${levelColor}`}>
-              {module.level}
-            </span>
-            <span className="text-white/20 text-[10px] flex items-center gap-1">
-              <Clock className="w-2.5 h-2.5" strokeWidth={2} />
-              {module.duration}m
-            </span>
-          </div>
-          <h4 className="text-white font-bold text-base md:text-lg mb-2 leading-tight">
-            {module.title}
-          </h4>
-          <p className="text-white/50 text-xs md:text-sm leading-relaxed mb-3 line-clamp-2">
-            {module.summary}
-          </p>
-          <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-wider">
-            <span className="text-frog-green flex items-center gap-1">
-              <Zap className="w-3 h-3" strokeWidth={2} />
-              {module.xp} XP
-            </span>
-            {completed && (
-              <span className="text-frog-green flex items-center gap-1">
-                <CheckCircle2 className="w-3 h-3" strokeWidth={2} />
-                Done
-              </span>
-            )}
-          </div>
-        </div>
-        <button
-          onClick={() => onToggle(module.id)}
-          aria-label={completed ? `Mark ${module.title} as not done` : `Mark ${module.title} as done`}
-          className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 min-h-[44px] min-w-[44px] ${
-            completed
-              ? 'bg-frog-green text-black hover:bg-frog-green/80'
-              : 'bg-white/5 text-white/30 hover:bg-white/10 hover:text-white/60 border border-white/10'
-          }`}
-        >
-          <CheckCircle2 className="w-5 h-5" strokeWidth={1.5} />
-        </button>
-      </div>
-    </motion.div>
-  )
-}
-
-/* ─── Track Section (full module list) ─────────────────────── */
-function TrackSection({
-  track,
-  completed,
-  onToggle,
-}: {
-  track: Track
-  completed: Set<string>
-  onToggle: (id: string) => void
-}) {
-  const mods = modulesByTrack(track.id)
-  const stats = trackStats(track.id)
-  const doneCount = mods.filter(m => completed.has(m.id)).length
-  const pct = Math.round((doneCount / stats.moduleCount) * 100)
-
-  return (
-    <section
-      id={`track-${track.id}`}
-      key={track.id}
-      className="py-20 md:py-24 px-4 md:px-6 bg-frog-black border-t border-frog-hairline relative overflow-hidden"
-    >
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-frog-green/[0.03] blur-[180px] rounded-full pointer-events-none" />
-
-      <div className="max-w-[1400px] mx-auto relative z-10">
-        {/* Track header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-11 h-11 rounded-xl bg-frog-green/15 border border-frog-green/30 flex items-center justify-center">
-                <TrackIcon name={track.icon} className="w-5 h-5 text-frog-green" />
+          <Link
+            href="/academy/practice"
+            className="block academy-card p-6 group"
+            style={{ background: 'var(--color-academy-warning-soft)', borderColor: 'var(--color-academy-warning)' }}
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'var(--color-academy-warning)' }}>
+                <RefreshCw className="w-6 h-6 text-white" />
               </div>
-              <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-frog-green">
-                {track.name}
-              </span>
+              <div className="flex-1">
+                <div className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: 'var(--color-academy-warning)' }}>
+                  Review due
+                </div>
+                <div className="font-black text-academy-ink">
+                  {dueModules.length} module{dueModules.length === 1 ? '' : 's'} ready for review
+                </div>
+                <div className="text-sm text-academy-ink-2">
+                  Spaced repetition keeps knowledge sticky. Practice now.
+                </div>
+              </div>
+              <ChevronRight className="w-5 h-5 text-academy-ink-2 group-hover:translate-x-1 transition-transform shrink-0" />
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3">
-              {track.tagline}
-            </h2>
-            <p className="text-frog-muted text-base leading-relaxed">{track.description}</p>
-          </div>
-          <div className="md:text-right">
-            <div className="text-3xl font-bold text-frog-green">{pct}%</div>
-            <div className="text-white/40 text-xs font-bold uppercase tracking-wider">
-              {doneCount} / {stats.moduleCount} modules done
-            </div>
-          </div>
-        </div>
+          </Link>
+        </motion.div>
+      )}
 
-        {/* Track progress bar */}
-        <div className="h-1.5 rounded-full bg-white/5 overflow-hidden mb-10">
-          <motion.div
-            initial={{ width: 0 }}
-            whileInView={{ width: `${pct}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
-            className="h-full bg-frog-green rounded-full"
-          />
-        </div>
-
-        {/* Module grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {mods.map((mod, i) => (
-            <ModuleCard
-              key={mod.id}
-              module={mod}
-              index={i}
-              completed={completed.has(mod.id)}
-              onToggle={onToggle}
-            />
+      {/* ─── Tracks ─── */}
+      <div id="tracks" className="mb-6">
+        <h2 className="text-2xl font-black text-academy-ink mb-4">Learning Tracks</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {trackProgress.map(({ track, done, total, pct }, i) => (
+            <motion.div
+              key={track.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + i * 0.05 }}
+            >
+              <Link
+                href={`/academy#track-${track.id}`}
+                onClick={e => {
+                  e.preventDefault()
+                  document.getElementById(`track-${track.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
+                className={`academy-card p-5 block academy-track-${track.id}`}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
+                    style={{ background: 'var(--track-color-soft)' }}
+                  >
+                    <TrackIcon trackId={track.id} />
+                  </div>
+                  <span
+                    className="academy-chip"
+                    style={{ background: 'var(--track-color-soft)', color: 'var(--track-color)' }}
+                  >
+                    {done}/{total}
+                  </span>
+                </div>
+                <h3 className="font-black text-academy-ink mb-1 leading-tight">{track.name}</h3>
+                <p className="text-xs text-academy-ink-2 mb-3 line-clamp-2">{track.tagline}</p>
+                <div className="academy-progress-track">
+                  <div
+                    className="academy-progress-fill"
+                    style={{ width: `${pct}%`, background: 'var(--track-color)' }}
+                  />
+                </div>
+                <div className="text-[10px] font-bold text-academy-muted mt-1.5 text-right">
+                  {pct}%
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
-  )
-}
 
-/* ─── Bottom CTA ───────────────────────────────────────────── */
-function BottomCta({ earnedXp }: { earnedXp: number }) {
-  return (
-    <section className="py-20 md:py-28 px-4 md:px-6 bg-frog-black border-t border-frog-hairline relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.08] rounded-full blur-[150px] pointer-events-none" />
+      {/* ─── Module lists per track ─── */}
+      {TRACKS.map(track => {
+        const mods = modulesByTrack(track.id)
+        return (
+          <section key={track.id} id={`track-${track.id}`} className="mb-10 scroll-mt-32">
+            <div className="flex items-center gap-3 mb-4">
+              <TrackIcon trackId={track.id} className="text-2xl" />
+              <div>
+                <h2 className="text-xl font-black text-academy-ink leading-tight">{track.name}</h2>
+                <p className="text-xs text-academy-muted">{track.tagline}</p>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {mods.map((mod, i) => {
+                const mp = progress.getModuleProgress(mod.id)
+                const prevInTrack = i > 0 ? mods[i - 1] : null
+                const prevDone = !prevInTrack || completedModuleIds.includes(prevInTrack.id)
+                // Lock module if previous not done AND previous exists
+                // (for now, allow all modules to be accessible — Duolingo-style locking is optional)
+                const status: 'not-started' | 'in-progress' | 'completed' | 'locked' =
+                  mp.status === 'completed'
+                    ? 'completed'
+                    : mp.status === 'in-progress'
+                    ? 'in-progress'
+                    : 'not-started'
+                return (
+                  <ModuleRow
+                    key={mod.id}
+                    module={mod}
+                    index={i}
+                    status={status}
+                    onClick={() => {
+                      window.location.href = `/academy/${mod.slug}`
+                    }}
+                  />
+                )
+              })}
+            </div>
+          </section>
+        )
+      })}
 
-      <div className="max-w-3xl mx-auto relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-        >
-          <TrendingUp className="w-10 h-10 text-frog-green mx-auto mb-6" strokeWidth={1.5} />
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Ready to <span className="italic text-frog-green">register?</span>
-          </h2>
-          <p className="text-frog-muted text-base md:text-lg mb-8 leading-relaxed">
-            You&rsquo;ve learned the theory. Let SMEfrog handle the practice. 100% remote,
-            BIPA filing included, from N$1,000.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <a
-              href="https://wa.me/264853411522?text=Hi%20SMEfrog%2C%20I%27ve%20been%20going%20through%20the%20Academy%20and%20I%27d%20like%20to%20register%20my%20business."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-8 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.2)] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-            >
-              Start Registration
-            </a>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 min-h-[44px] ring-1 ring-white/10 text-white/70 rounded-full px-8 py-4 text-sm font-bold bg-white/[0.03] hover:bg-white/[0.06] hover:text-white active:scale-[0.98] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
-            >
-              View Pricing
-              <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
-            </Link>
-          </div>
-          {earnedXp > 0 && (
-            <p className="text-white/30 text-xs mt-6">
-              You&rsquo;ve earned <span className="text-frog-green font-bold">{earnedXp} XP</span> so far. Keep going.
-            </p>
-          )}
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
-/* ─── Main Page ────────────────────────────────────────────── */
-export default function AcademyPage() {
-  const { completed, toggle, earnedXp } = useXpState()
-  const completedCount = completed.size
-
-  return (
-    <>
-      <Hero />
-      <XpDashboard earnedXp={earnedXp} completedCount={completedCount} />
-
-      {/* Tracks overview */}
-      <section id="tracks" className="py-20 md:py-28 px-4 md:px-6 bg-frog-light">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            className="mb-12"
+      {/* ─── Recent achievements ─── */}
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-2xl font-black text-academy-ink">Recent Awards</h2>
+          <Link
+            href="/academy/achievements"
+            className="text-sm font-bold text-academy-primary hover:underline"
           >
-            <span className="inline-block rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] font-bold bg-frog-green/10 text-frog-green border border-frog-green/20 mb-4">
-              3 Tracks
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight max-w-2xl">
-              Pick a <span className="italic text-frog-green">track.</span> Or do all three.
-            </h2>
-            <p className="text-black/50 text-base md:text-lg mt-4 max-w-xl">
-              Each track is a self-contained learning path. Start at module 1 of any track
-              and work through in order, or jump around &mdash; your XP follows either way.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {TRACKS.map((track, i) => (
-              <TrackCard key={track.id} track={track} index={i} />
-            ))}
-          </div>
+            View all →
+          </Link>
         </div>
-      </section>
+        <RecentAchievements progress={progress} />
+      </div>
+    </div>
+  )
+}
 
-      {/* Track sections (full module lists) */}
-      {TRACKS.map(track => (
-        <TrackSection key={track.id} track={track} completed={completed} onToggle={toggle} />
-      ))}
-
-      <BottomCta earnedXp={earnedXp} />
-    </>
+/* ─── Recent achievements widget ─── */
+function RecentAchievements({
+  progress,
+}: {
+  progress: ReturnType<typeof useAcademyProgressContext>
+}) {
+  const { state } = progress
+  const unlocked = state.unlockedAchievements
+  if (unlocked.length === 0) {
+    return (
+      <div className="academy-card p-8 text-center">
+        <Award className="w-12 h-12 text-academy-muted mx-auto mb-3" />
+        <p className="text-academy-ink-2 font-bold mb-1">No awards yet</p>
+        <p className="text-sm text-academy-muted">
+          Complete your first module to start earning awards.
+        </p>
+      </div>
+    )
+  }
+  // Show last 4
+  const recent = unlocked.slice(-4).reverse()
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      {recent.map(id => {
+        // Find achievement in the ACHIEVEMENTS array — but we don't import here to avoid circular deps
+        // Just show a generic badge with the id
+        return (
+          <div key={id} className="academy-badge academy-badge-unlocked">
+            <div className="text-3xl">🏅</div>
+            <div className="text-xs font-bold text-academy-ink capitalize">
+              {id.replace(/-/g, ' ')}
+            </div>
+          </div>
+        )
+      })}
+    </div>
   )
 }

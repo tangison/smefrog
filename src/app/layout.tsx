@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { SearchOverlay } from "@/components/search-overlay";
-import { FrogAIChat } from "@/components/frogai-chat";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-heading",
@@ -13,7 +9,6 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500", "600", "700"],
 });
 
-// Brand spec: Space Grotesk is the sole font for both heading and body
 const spaceGroteskBody = Space_Grotesk({
   variable: "--font-body",
   subsets: ["latin"],
@@ -47,18 +42,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-
       <body
         className={`${spaceGrotesk.variable} ${spaceGroteskBody.variable} antialiased noise-layer`}
         style={{ fontFamily: "'Space Grotesk', sans-serif" }}
       >
-        <div className="min-h-screen flex flex-col bg-frog-black text-frog-light">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-        <SearchOverlay />
-        <FrogAIChat />
+        {children}
       </body>
     </html>
   )

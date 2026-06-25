@@ -13,7 +13,6 @@ export const PHONE_MAIN_TEL = 'tel:+264853411522'
 export const FACEBOOK_URL = 'https://www.facebook.com/SMEfrogNamibia'
 export const INSTAGRAM_URL = 'https://www.instagram.com/smefrog?igsh=MWFhYnV1NTZvYXl6ag=='
 export const GITHUB_URL = 'https://github.com/tangison'
-export const GEMSWEB_URL = 'https://gemsweb.xyz'
 
 // ─── Site ──────────────────────────────────────────────────
 export const SITE_URL = 'https://smefrog.tangison.com'

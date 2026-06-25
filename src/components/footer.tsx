@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Facebook, Instagram, Github } from 'lucide-react'
-import { waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL, GEMSWEB_URL } from '@/lib/config'
+import { waLink, PHONE_MAIN, PHONE_MAIN_TEL, FACEBOOK_URL, INSTAGRAM_URL, GITHUB_URL } from '@/lib/config'
 const serviceLinks = [
   { label: 'CC Registration', href: '/services/business-registration' },
   { label: 'PTY LTD Filing', href: '/services/business-registration' },
@@ -150,19 +150,6 @@ export function Footer() {
                 <p className="text-white/20 text-[10px] font-bold">LinkedIn · Google Business <span className="text-frog-green/40">Coming Soon</span></p>
               </div>
 
-              {/* Gemsweb */}
-              <div className="p-4 rounded-xl bg-frog-green/[0.05] border border-frog-green/10">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-frog-green/40 mb-1">Digital Partner</p>
-                <a
-                  href={GEMSWEB_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Visit Gemsweb Digital (opens in new tab)"
-                  className="text-frog-green font-bold text-sm hover:text-frog-green/70 transition-colors"
-                >
-                  Gemsweb Digital ↗
-                </a>
-              </div>
             </div>
           </div>
         </div>

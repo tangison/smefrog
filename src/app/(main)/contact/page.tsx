@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { MessageCircle, ArrowRight, MapPin, Globe, Phone, ExternalLink } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
-import { PHONE_MAIN, GEMSWEB_URL } from '@/lib/config'
+import { PHONE_MAIN } from '@/lib/config'
 
 /* ─── Business type options ───────────────────────────── */
 const businessTypes = [
@@ -255,7 +255,7 @@ export default function ContactPage() {
               </div>
             </ScrollReveal>
 
-            {/* Gemsweb Partnership */}
+            {/* SMEfrog Academy */}
             <ScrollReveal delay={0.08}>
               <div className="bg-frog-shell ring-1 ring-frog-hairline p-1.5 rounded-[2rem] h-full">
                 <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-8 md:p-10 h-full relative overflow-hidden">
@@ -267,37 +267,35 @@ export default function ContactPage() {
                       <Globe className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
                     </div>
                     <h3 className="text-2xl font-black text-frog-light mb-3">
-                      Digital Partner
+                      SMEfrog Academy
                     </h3>
                     <p className="text-frog-muted text-sm leading-relaxed mb-6">
-                      Powered by <span className="text-frog-green font-bold">Gemsweb Digital</span>: web development, branding, and online strategy for African businesses.
+                      Free business education for Namibian founders. <span className="text-frog-green font-bold">64 modules</span> across 3 tracks: registration, compliance, and fundamentals. Gamified, PWA-installable, no login required.
                     </p>
 
-                    {/* Partnership card */}
+                    {/* Academy card */}
                     <div className="bg-frog-shell ring-1 ring-frog-green/15 rounded-2xl p-6 mb-6">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center">
                           <Globe className="w-4 h-4 text-frog-green" strokeWidth={1.5} />
                         </div>
                         <div>
-                          <p className="text-frog-light text-sm font-bold">Gemsweb Digital</p>
-                          <p className="text-frog-muted text-[10px] uppercase tracking-wider">Official Digital Partner</p>
+                          <p className="text-frog-light text-sm font-bold">SMEfrog Academy</p>
+                          <p className="text-frog-muted text-[10px] uppercase tracking-wider">Free · Gamified · PWA</p>
                         </div>
                       </div>
-                      <a
-                        href={GEMSWEB_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        href="/academy"
                         className="group/gem inline-flex items-center gap-2 text-frog-green text-sm font-bold hover:text-frog-green/70 transition-colors duration-300 min-h-[44px]"
-                        aria-label="Visit Gemsweb Digital website"
+                        aria-label="Open SMEfrog Academy"
                       >
-                        gemsweb.xyz
-                        <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
-                      </a>
+                        Open Academy
+                        <ArrowRight className="w-3.5 h-3.5 group-hover/gem:translate-x-0.5 transition-transform" strokeWidth={1.5} />
+                      </Link>
                     </div>
 
                     <p className="text-frog-muted/50 text-xs leading-relaxed">
-                      SMEfrog handles the compliance. Gemsweb handles the digital.
+                      Learn the theory in the Academy. Let SMEfrog handle the practice.
                     </p>
                   </div>
                 </div>

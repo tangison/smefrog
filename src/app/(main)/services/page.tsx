@@ -15,7 +15,7 @@ import {
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { DoubleBezel } from '@/components/double-bezel'
-import { waLink, GEMSWEB_URL } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const services = [
@@ -408,39 +408,6 @@ export default function ServicesPage() {
             </div>
           </ScrollReveal>
 
-          {/* ── Gemsweb Referral Card ── */}
-          <ScrollReveal delay={0.24}>
-            <div className="mt-6 rounded-2xl border border-dashed border-black/10 bg-white/60 p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-black/5 flex items-center justify-center">
-                  <ExternalLink className="w-4 h-4 text-black/30" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <p className="text-black/50 text-sm leading-snug">
-                    Need a website or digital presence?{' '}
-                    <a
-                      href={GEMSWEB_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-black/70 font-semibold hover:text-frog-green transition-colors duration-300"
-                    >
-                      Visit Gemsweb Digital ↗
-                    </a>
-                  </p>
-                </div>
-              </div>
-              <a
-                href={GEMSWEB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit Gemsweb Digital"
-                className="shrink-0 inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-xs font-bold bg-black/5 text-black/40 hover:bg-frog-green/10 hover:text-frog-green transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] min-h-[36px]"
-              >
-                gemsweb.xyz
-                <ExternalLink className="w-3 h-3" strokeWidth={1.5} />
-              </a>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 

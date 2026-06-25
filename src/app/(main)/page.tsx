@@ -204,24 +204,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Gemsweb referral card */}
-          <ScrollReveal delay={0.1}>
-            <div className="mt-8">
-              <a
-                href="https://gemsweb.xyz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white ring-1 ring-black/5 rounded-2xl px-6 py-4 flex items-center justify-between gap-4 hover:ring-frog-green/20 transition-all duration-500 group"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-black/40 text-sm font-bold">Need a website?</span>
-                  <span className="text-black/60 text-sm font-bold">Digital services via <span className="text-frog-green font-black">Gemsweb Digital</span></span>
-                </div>
-                <ExternalLink className="w-4 h-4 text-black/30 group-hover:text-frog-green transition-colors duration-300 shrink-0" />
-              </a>
-            </div>
-          </ScrollReveal>
-
           <ScrollReveal delay={0.1}>
             <div className="mt-10 text-center">
               <Link href="/services" className="inline-flex items-center gap-2 text-black/40 text-sm font-bold uppercase tracking-widest hover:text-frog-green transition-colors duration-500">

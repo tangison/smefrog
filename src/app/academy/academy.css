@@ -1,0 +1,534 @@
+/**
+ * SMEfrog Academy — Theme
+ *
+ * A distinct, Duolingo-inspired theme for the academy sub-app.
+ * Bright, friendly, playful — optimized for mobile + desktop, long sessions.
+ *
+ * Design principles:
+ *   - Big touch targets (min 48px)
+ *   - Generous whitespace
+ *   - Bright accent colors on a warm off-white base
+ *   - Rounded corners everywhere (radius >= 16px)
+ *   - Bouncy, satisfying animations
+ *   - Clear visual hierarchy with chunky typography
+ *
+ * The main smefrog theme uses dark frog-black (#0F1412) with frog-green (#7AC943).
+ * The academy theme uses warm off-white (#FAF7F0) with a coral-orange primary
+ * and a deep plum secondary. The frog-green is retained as a "success" accent
+ * so the brand connection is preserved without the academy looking like the
+ * main marketing site.
+ */
+
+@import "tailwindcss";
+
+@theme inline {
+  /* Academy palette */
+  --color-academy-bg: #FAF7F0;          /* warm off-white base */
+  --color-academy-surface: #FFFFFF;     /* card surface */
+  --color-academy-surface-2: #F4EFE2;   /* secondary surface */
+  --color-academy-ink: #1A1A2E;         /* primary text — deep plum-black */
+  --color-academy-ink-2: #4A4A5E;       /* secondary text */
+  --color-academy-muted: #8B8B9E;       /* muted text */
+  --color-academy-border: #E8E2D0;      /* subtle warm border */
+
+  --color-academy-primary: #FF6B47;     /* coral orange — primary CTA */
+  --color-academy-primary-hover: #F55836;
+  --color-academy-primary-soft: #FFE4DC;
+
+  --color-academy-secondary: #6C5CE7;   /* electric purple */
+  --color-academy-secondary-soft: #E8E4FB;
+
+  --color-academy-success: #7AC943;     /* brand frog-green, repurposed as success */
+  --color-academy-success-soft: #E8F5E4;
+
+  --color-academy-warning: #FFB83D;     /* warm amber */
+  --color-academy-warning-soft: #FFF1D6;
+
+  --color-academy-danger: #FF4757;      /* hearts/lost */
+  --color-academy-danger-soft: #FFE0E3;
+
+  --color-academy-info: #3498DB;        /* info / links */
+  --color-academy-info-soft: #DCEFFC;
+
+  /* Track colors */
+  --color-track-registration: #FF6B47;       /* coral */
+  --color-track-registration-soft: #FFE4DC;
+  --color-track-compliance: #6C5CE7;          /* purple */
+  --color-track-compliance-soft: #E8E4FB;
+  --color-track-fundamentals: #FFB83D;        /* amber */
+  --color-track-fundamentals-soft: #FFF1D6;
+
+  /* Typography */
+  --font-academy-heading: 'Nunito', 'Space Grotesk', system-ui, sans-serif;
+  --font-academy-body: 'Nunito', 'Space Grotesk', system-ui, sans-serif;
+
+  /* Spacing */
+  --radius-academy-sm: 12px;
+  --radius-academy-md: 16px;
+  --radius-academy-lg: 24px;
+  --radius-academy-xl: 32px;
+  --radius-academy-pill: 999px;
+}
+
+/* ─── Base ─── */
+.academy-theme {
+  background: var(--color-academy-bg);
+  color: var(--color-academy-ink);
+  font-family: var(--font-academy-body);
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.academy-theme h1,
+.academy-theme h2,
+.academy-theme h3,
+.academy-theme h4,
+.academy-theme h5,
+.academy-theme h6 {
+  font-family: var(--font-academy-heading);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-academy-ink);
+}
+
+.academy-theme p,
+.academy-theme li,
+.academy-theme span,
+.academy-theme button {
+  font-family: var(--font-academy-body);
+}
+
+/* ─── Academy scrollbars ─── */
+.academy-theme ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.academy-theme ::-webkit-scrollbar-track {
+  background: var(--color-academy-surface-2);
+}
+.academy-theme ::-webkit-scrollbar-thumb {
+  background: var(--color-academy-border);
+  border-radius: 8px;
+}
+.academy-theme ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-academy-muted);
+}
+
+/* ─── Animations ─── */
+@keyframes academy-bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.academy-animate-bounce-in {
+  animation: academy-bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes academy-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.academy-animate-pop {
+  animation: academy-pop 0.3s ease-out;
+}
+
+@keyframes academy-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.academy-animate-shake {
+  animation: academy-shake 0.4s ease-in-out;
+}
+
+@keyframes academy-slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.academy-animate-slide-up {
+  animation: academy-slide-up 0.4s ease-out;
+}
+
+@keyframes academy-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.academy-animate-float {
+  animation: academy-float 3s ease-in-out infinite;
+}
+
+@keyframes academy-pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.academy-animate-pulse-soft {
+  animation: academy-pulse-soft 2s ease-in-out infinite;
+}
+
+@keyframes academy-confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes academy-heart-break {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes academy-streak-flame {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
+}
+.academy-animate-flame {
+  animation: academy-streak-flame 1.5s ease-in-out infinite;
+}
+
+/* ─── Utility classes ─── */
+.academy-card {
+  background: var(--color-academy-surface);
+  border: 1px solid var(--color-academy-border);
+  border-radius: var(--radius-academy-lg);
+  box-shadow: 0 2px 8px rgba(26, 26, 46, 0.04);
+  transition: all 0.2s ease;
+}
+.academy-card:hover {
+  box-shadow: 0 8px 24px rgba(26, 26, 46, 0.08);
+  transform: translateY(-2px);
+}
+
+.academy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--radius-academy-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  min-height: 48px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.academy-btn:active {
+  transform: scale(0.97);
+}
+.academy-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.academy-btn-primary {
+  background: var(--color-academy-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 0 var(--color-academy-primary-hover);
+}
+.academy-btn-primary:hover:not(:disabled) {
+  background: var(--color-academy-primary-hover);
+}
+.academy-btn-primary:active:not(:disabled) {
+  box-shadow: 0 2px 0 var(--color-academy-primary-hover);
+  transform: translateY(2px);
+}
+
+.academy-btn-secondary {
+  background: var(--color-academy-surface);
+  color: var(--color-academy-ink);
+  border-color: var(--color-academy-border);
+  box-shadow: 0 4px 0 var(--color-academy-border);
+}
+.academy-btn-secondary:hover:not(:disabled) {
+  background: var(--color-academy-surface-2);
+}
+.academy-btn-secondary:active:not(:disabled) {
+  box-shadow: 0 2px 0 var(--color-academy-border);
+  transform: translateY(2px);
+}
+
+.academy-btn-success {
+  background: var(--color-academy-success);
+  color: var(--color-academy-ink);
+  box-shadow: 0 4px 0 #5da832;
+}
+.academy-btn-success:hover:not(:disabled) {
+  background: #6abd38;
+}
+.academy-btn-success:active:not(:disabled) {
+  box-shadow: 0 2px 0 #5da832;
+  transform: translateY(2px);
+}
+
+.academy-btn-ghost {
+  background: transparent;
+  color: var(--color-academy-ink-2);
+  box-shadow: none;
+}
+.academy-btn-ghost:hover:not(:disabled) {
+  background: var(--color-academy-surface-2);
+  color: var(--color-academy-ink);
+}
+
+.academy-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-academy-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.academy-progress-track {
+  background: var(--color-academy-surface-2);
+  border-radius: var(--radius-academy-pill);
+  overflow: hidden;
+  height: 12px;
+}
+.academy-progress-fill {
+  background: var(--color-academy-success);
+  height: 100%;
+  border-radius: var(--radius-academy-pill);
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Track-specific tints */
+.academy-track-registration {
+  --track-color: var(--color-track-registration);
+  --track-color-soft: var(--color-track-registration-soft);
+}
+.academy-track-compliance {
+  --track-color: var(--color-track-compliance);
+  --track-color-soft: var(--color-track-compliance-soft);
+}
+.academy-track-fundamentals {
+  --track-color: var(--color-track-fundamentals);
+  --track-color-soft: var(--color-track-fundamentals-soft);
+}
+
+/* Quiz option button — Duolingo-style */
+.academy-quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--color-academy-surface);
+  border: 2px solid var(--color-academy-border);
+  border-radius: var(--radius-academy-md);
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-academy-ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 56px;
+  box-shadow: 0 2px 0 var(--color-academy-border);
+  -webkit-tap-highlight-color: transparent;
+}
+.academy-quiz-option:hover:not(:disabled) {
+  border-color: var(--color-academy-primary);
+  background: var(--color-academy-primary-soft);
+}
+.academy-quiz-option:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 var(--color-academy-border);
+}
+.academy-quiz-option:disabled {
+  cursor: not-allowed;
+}
+
+.academy-quiz-option-selected {
+  border-color: var(--color-academy-primary);
+  background: var(--color-academy-primary-soft);
+  color: var(--color-academy-primary);
+}
+
+.academy-quiz-option-correct {
+  border-color: var(--color-academy-success);
+  background: var(--color-academy-success-soft);
+  color: var(--color-academy-success);
+}
+
+.academy-quiz-option-wrong {
+  border-color: var(--color-academy-danger);
+  background: var(--color-academy-danger-soft);
+  color: var(--color-academy-danger);
+}
+
+.academy-quiz-option-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-academy-surface-2);
+  color: var(--color-academy-ink-2);
+  font-weight: 800;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  border: 2px solid var(--color-academy-border);
+}
+
+.academy-quiz-option-selected .academy-quiz-option-letter {
+  background: var(--color-academy-primary);
+  color: #FFFFFF;
+  border-color: var(--color-academy-primary);
+}
+.academy-quiz-option-correct .academy-quiz-option-letter {
+  background: var(--color-academy-success);
+  color: #FFFFFF;
+  border-color: var(--color-academy-success);
+}
+.academy-quiz-option-wrong .academy-quiz-option-letter {
+  background: var(--color-academy-danger);
+  color: #FFFFFF;
+  border-color: var(--color-academy-danger);
+}
+
+/* Hearts */
+.academy-heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--color-academy-danger);
+}
+.academy-heart-empty {
+  color: var(--color-academy-border);
+}
+
+/* Streak flame */
+.academy-streak-icon {
+  color: var(--color-academy-warning);
+  filter: drop-shadow(0 0 8px rgba(255, 184, 61, 0.4));
+}
+
+/* Achievement badge */
+.academy-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  background: var(--color-academy-surface);
+  border: 2px solid var(--color-academy-border);
+  border-radius: var(--radius-academy-lg);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.academy-badge-locked {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+.academy-badge-unlocked {
+  border-color: var(--color-academy-warning);
+  background: var(--color-academy-warning-soft);
+}
+
+/* Confetti container */
+.academy-confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+.academy-confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: academy-confetti-fall 2.5s linear forwards;
+}
+
+/* Module card */
+.academy-module-card {
+  background: var(--color-academy-surface);
+  border: 2px solid var(--color-academy-border);
+  border-radius: var(--radius-academy-lg);
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--color-academy-border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.academy-module-card:hover {
+  border-color: var(--color-academy-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--color-academy-border);
+}
+.academy-module-card:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 0 var(--color-academy-border);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .academy-theme {
+    font-size: 15px;
+  }
+  .academy-btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  .academy-card {
+    border-radius: var(--radius-academy-md);
+  }
+  .academy-module-card {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+}
+
+/* Safe area insets for mobile PWA */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .academy-safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .academy-safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Focus rings */
+.academy-theme *:focus-visible {
+  outline: 3px solid var(--color-academy-info);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .academy-theme *,
+  .academy-theme *::before,
+  .academy-theme *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print-friendly */
+@media print {
+  .academy-theme {
+    background: white;
+    color: black;
+  }
+}

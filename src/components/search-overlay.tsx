@@ -6,6 +6,19 @@ import { Search, X, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import { MODULES, TRACKS } from '@/lib/academy/modules'
+
+// Build academy module search entries
+const academyEntries = MODULES.map(m => {
+  const track = TRACKS.find(t => t.id === m.trackId)
+  return {
+    title: m.title,
+    desc: `${m.level} · ${m.duration} min · ${m.xp} XP · ${track?.name || ''}`,
+    href: `/academy/${m.slug}`,
+    category: 'Academy',
+  }
+})
+
 const searchData = [
   { title: 'CC Registration', desc: 'From N$1,000 with BIPA filing included', href: '/services/business-registration', category: 'Services' },
   { title: 'PTY LTD Registration', desc: 'From N$1,500 with full compliance', href: '/services/business-registration', category: 'Services' },
@@ -19,9 +32,14 @@ const searchData = [
   { title: 'Can I register remotely?', desc: 'Yes, everything handled via WhatsApp and email', href: '/faq', category: 'FAQ' },
   { title: 'What documents do I need?', desc: 'ID copy, proof of address, and business name', href: '/faq', category: 'FAQ' },
   { title: 'Can foreigners register?', desc: 'Yes, with valid work permit or residency', href: '/faq', category: 'FAQ' },
+  { title: 'SMEfrog Academy', desc: '64 free modules · gamified · PWA-installable', href: '/academy', category: 'Academy' },
+  { title: 'Academy Practice', desc: 'Spaced repetition reviews of due modules', href: '/academy/practice', category: 'Academy' },
+  { title: 'Academy Awards', desc: 'Badges and achievements you can unlock', href: '/academy/achievements', category: 'Academy' },
+  { title: 'Academy League', desc: 'Weekly XP leaderboard', href: '/academy/leaderboard', category: 'Academy' },
   { title: 'Contact SMEfrog', desc: 'WhatsApp us at +264 85 341 1522', href: '/contact', category: 'Contact' },
   { title: 'About SMEfrog', desc: 'Our mission and story', href: '/about', category: 'Company' },
   { title: 'Why SMEfrog', desc: '2X cheaper, fully remote, built for Namibian businesses', href: '/about', category: 'Company' },
+  ...academyEntries,
 ]
 
 export function SearchOverlay() {
@@ -103,7 +121,7 @@ export function SearchOverlay() {
                 <div className="text-center py-12">
                   <p className="text-white/20 text-sm font-bold uppercase tracking-widest">Type to search</p>
                   <div className="mt-4 flex flex-wrap gap-2 justify-center">
-                    {['Pricing', 'CC Registration', 'Documents', 'FAQ'].map(q => (
+                    {['Pricing', 'Academy', 'CC Registration', 'Compliance', 'FAQ'].map(q => (
                       <button
                         key={q}
                         onClick={() => setQuery(q)}
