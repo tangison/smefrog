@@ -16,8 +16,9 @@ Rules:
 
 SMEfrog Knowledge Base:
 - Services: Business Registration, Compliance Services, Business Documents
-- CC Registration: From N$800 (Basic), N$1,200 (Advanced), N$1,750 (Full)
-- PTY LTD: From N$1,500
+- CC Registration: From N$1,000 (Basic), N$1,500 (Advanced), N$2,200 (Full)
+- PTY LTD Package: N$4,500 (Premium) — includes everything in Full + PTY LTD Registration Filing + Dedicated Account Manager + Priority 3-Day Processing + Full Corporate Governance Pack + 1 Year Compliance Management
+- PTY LTD (standard registration only): From N$1,500
 - Tax Certificate: Included in all packages
 - Beneficial Ownership Filing: Included in Advanced+
 - Compliance Services: Annual returns, BO updates, regulatory filings, governance documentation, company secretarial services, compliance status checks, amendment filings

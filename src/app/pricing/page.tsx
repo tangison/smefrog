@@ -21,6 +21,7 @@ const pkgDescriptions: Record<string, string> = {
   BASIC: 'Essential registration to get started legally.',
   ADVANCED: 'Registration + professional presence for a proper launch.',
   FULL: 'Everything you need to start and stay compliant.',
+  'PTY LTD PACKAGE': 'Premium PTY LTD registration with dedicated account management and 1 year of compliance handled for you.',
 }
 
 const complianceTiers = [
@@ -216,7 +217,7 @@ export default function PricingPage() {
                 aria-label="View CC Registration packages"
               >
                 CC Registration
-                <span className="text-frog-green font-bold">from N$800</span>
+                <span className="text-frog-green font-bold">from N$1,000</span>
               </a>
               <a
                 href="#compliance"
@@ -257,7 +258,7 @@ export default function PricingPage() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {pricingCards.map((card, i) => {
+            {pricingCards.filter(c => c.tier !== 'PTY LTD PACKAGE').map((card, i) => {
               const priceNum = card.price.replace('N$', '')
               const isFeatured = 'featured' in card && card.featured
               return (
@@ -343,6 +344,82 @@ export default function PricingPage() {
               )
             })}
           </div>
+
+          {/* ─── PTY LTD PREMIUM PACKAGE — Full-width banner card ─── */}
+          {(() => {
+            const ptyPkg = pricingCards.find(c => c.tier === 'PTY LTD PACKAGE')
+            if (!ptyPkg) return null
+            const priceNum = ptyPkg.price.replace('N$', '')
+            const cta = ('cta' in ptyPkg && ptyPkg.cta) ? ptyPkg.cta : waLink('pricing')
+            return (
+              <ScrollReveal delay={0.18}>
+                <div className="mt-6 md:mt-8 rounded-[2rem] overflow-hidden border border-frog-green/30 bg-gradient-to-br from-frog-green/[0.08] via-frog-card to-frog-card relative">
+                  {/* Premium glow */}
+                  <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-frog-green/15 rounded-full blur-[120px] pointer-events-none" />
+                  <div className="absolute -bottom-32 -left-32 w-[300px] h-[300px] bg-frog-green/10 rounded-full blur-[100px] pointer-events-none" />
+
+                  <div className="relative z-10 p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
+                    {/* Left: title block */}
+                    <div className="lg:col-span-5">
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-bold bg-frog-green text-black flex items-center gap-1">
+                          <Crown className="w-3 h-3" strokeWidth={1.5} />
+                          PREMIUM
+                        </span>
+                        <span className="rounded-full px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-bold bg-white/5 text-white/60 border border-white/10">
+                          PTY LTD
+                        </span>
+                      </div>
+                      <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-3">
+                        PTY LTD Package
+                      </h3>
+                      <p className="text-frog-muted text-sm md:text-base leading-relaxed mb-6">
+                        {pkgDescriptions['PTY LTD PACKAGE']}
+                      </p>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-base text-frog-muted font-bold">N$</span>
+                        <span className="text-5xl md:text-6xl font-bold text-frog-green leading-none">{priceNum}</span>
+                        <span className="text-white/30 text-xs font-bold uppercase tracking-wider ml-2">one-time</span>
+                      </div>
+                    </div>
+
+                    {/* Middle: features */}
+                    <div className="lg:col-span-5">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {ptyPkg.features.map(feature => (
+                          <li key={feature} className="flex items-start gap-3">
+                            <span className="w-5 h-5 rounded-full bg-frog-green/20 flex items-center justify-center shrink-0 mt-0.5">
+                              <Check className="w-3 h-3 text-frog-green" strokeWidth={2.5} />
+                            </span>
+                            <span className="text-white/80 text-sm font-medium leading-snug">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Right: CTA */}
+                    <div className="lg:col-span-2 flex lg:flex-col gap-3 lg:items-stretch">
+                      <a
+                        href={cta}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`group inline-flex items-center justify-center gap-2 min-h-[44px] bg-frog-green text-black font-bold rounded-full px-6 py-4 text-sm hover:bg-frog-green/90 active:scale-[0.98] shadow-[0_0_40px_rgba(122,201,67,0.25)] ${easing} w-full`}
+                        aria-label="Choose PTY LTD Package"
+                      >
+                        {ptyPkg.btn}
+                        <span className={`w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:translate-x-0.5 ${arrowEasing}`}>
+                          <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+                        </span>
+                      </a>
+                      <p className="text-white/30 text-[10px] font-bold uppercase tracking-wider text-center lg:text-center">
+                        Priority 3-Day Processing
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            )
+          })()}
         </div>
       </section>
 
@@ -504,7 +581,7 @@ export default function PricingPage() {
                     Basic
                   </span>
                   <div className="text-black font-bold mt-0.5">
-                    N$800
+                    N$1,000
                   </div>
                 </div>
                 <div className="p-4 md:p-5 text-center border-l border-black/[0.06] bg-frog-green/[0.03]">
@@ -515,7 +592,7 @@ export default function PricingPage() {
                     <Crown className="w-3 h-3 text-frog-green" strokeWidth={1.5} />
                   </div>
                   <div className="text-black font-bold mt-0.5">
-                    N$1,200
+                    N$1,500
                   </div>
                 </div>
                 <div className="p-4 md:p-5 text-center border-l border-black/[0.06]">
@@ -523,7 +600,7 @@ export default function PricingPage() {
                     Full
                   </span>
                   <div className="text-black font-bold mt-0.5">
-                    N$1,750
+                    N$2,200
                   </div>
                 </div>
               </div>
@@ -724,7 +801,7 @@ export default function PricingPage() {
               <p className="text-white text-sm font-bold">
                 Ready? Let&apos;s Talk
               </p>
-              <p className="text-white/30 text-xs font-medium">From N$800 · 7 to 10 day turnaround</p>
+              <p className="text-white/30 text-xs font-medium">From N$1,000 · 7 to 10 day turnaround</p>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
               <a

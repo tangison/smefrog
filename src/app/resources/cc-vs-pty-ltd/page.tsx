@@ -15,7 +15,7 @@ const ccFeatures = [
   { label: 'Governing Law', value: 'Close Corporations Act 26 of 1988' },
   { label: 'Audit', value: 'No audit requirement for most CCs' },
   { label: 'Registered Via', value: 'BIPA Namibia' },
-  { label: 'Cost', value: 'From N$800' },
+  { label: 'Cost', value: 'From N$1,000' },
 ]
 
 const ptyFeatures = [
@@ -25,7 +25,7 @@ const ptyFeatures = [
   { label: 'Governing Law', value: 'Companies Act 28 of 2004' },
   { label: 'Audit', value: 'Required based on public interest score' },
   { label: 'Registered Via', value: 'BIPA Namibia' },
-  { label: 'Cost', value: 'From N$1,200' },
+  { label: 'Cost', value: 'From N$1,500' },
 ]
 
 const decisionPoints = [
@@ -41,8 +41,8 @@ const decisionPoints = [
   },
   {
     question: 'Budget-conscious?',
-    cc: 'CC registration from N$800. Annual compliance costs are minimal: no audit, no company secretary.',
-    pty: 'PTY LTD registration from N$1,200. Annual compliance costs are higher: potential audit fees, company secretary retainer.',
+    cc: 'CC registration from N$1,000. Annual compliance costs are minimal: no audit, no company secretary.',
+    pty: 'PTY LTD registration from N$1,500. Annual compliance costs are higher: potential audit fees, company secretary retainer.',
   },
 ]
 
@@ -122,7 +122,7 @@ export default function CCvsPTYLTDPage() {
 
                   <div className="mt-8 pt-4 border-t border-frog-hairline">
                     <p className="text-frog-green text-sm font-bold">
-                      From N$800
+                      From N$1,000
                     </p>
                     <p className="text-frog-muted text-xs mt-1">
                       5–10 working days via BIPA
@@ -163,7 +163,7 @@ export default function CCvsPTYLTDPage() {
 
                   <div className="mt-8 pt-4 border-t border-frog-hairline">
                     <p className="text-frog-green text-sm font-bold">
-                      From N$1,200
+                      From N$1,500
                     </p>
                     <p className="text-frog-muted text-xs mt-1">
                       10–15 working days via BIPA

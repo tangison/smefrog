@@ -11,6 +11,7 @@ import {
   MessageCircle,
   ChevronRight,
   ExternalLink,
+  Briefcase,
 } from 'lucide-react'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { DoubleBezel } from '@/components/double-bezel'
@@ -26,7 +27,7 @@ const services = [
     icon: Building2,
     href: '/services/business-registration',
     image: '/images/signing-contract.jpeg',
-    price: 'From N$800',
+    price: 'From N$1,000',
     priceNote: 'CC Registration',
     items: [
       'CC Registration',
@@ -369,6 +370,43 @@ export default function ServicesPage() {
               </motion.div>
             </ScrollReveal>
           </div>
+
+          {/* ── Fractional Executives — Full Width promotional card ── */}
+          <ScrollReveal className="col-span-12" delay={0.24}>
+            <div className="relative min-h-[280px] md:min-h-[320px] rounded-[2rem] overflow-hidden border border-frog-green/30 bg-gradient-to-br from-frog-green/[0.06] via-frog-card to-frog-card group cursor-pointer">
+              <Link href="/services/fractional-executives" className="absolute inset-0 z-10" aria-label="Fractional Executives">
+                <span className="sr-only">Fractional Executives</span>
+              </Link>
+
+              {/* Premium glow */}
+              <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-frog-green/10 rounded-full blur-[120px] pointer-events-none" />
+
+              <div className="relative z-10 p-6 md:p-8 lg:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 h-full">
+                <div className="max-w-2xl">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-11 h-11 rounded-xl bg-frog-green/15 backdrop-blur-sm ring-1 ring-frog-green/30 flex items-center justify-center">
+                      <Briefcase className="w-5 h-5 text-frog-green" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-frog-green">
+                      Virtual or Physical · Namibia-based · Flexible
+                    </span>
+                  </div>
+
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
+                    Fractional Executives
+                  </h3>
+                  <p className="text-white/60 text-sm md:text-base leading-relaxed">
+                    Executive leadership at a fraction of the cost. Six roles available: COO, CFO, CMO, CTO, HR Director, Legal Advisor. Engage by retainer, project, or advisory.
+                  </p>
+                </div>
+
+                <span className="inline-flex items-center gap-2 text-frog-green text-sm font-bold group-hover:gap-3 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] shrink-0">
+                  Explore
+                  <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+                </span>
+              </div>
+            </div>
+          </ScrollReveal>
 
           {/* ── Gemsweb Referral Card ── */}
           <ScrollReveal delay={0.24}>

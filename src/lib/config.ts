@@ -19,14 +19,31 @@ export const GEMSWEB_URL = 'https://gemsweb.xyz'
 export const SITE_URL = 'https://smefrog.tangison.com'
 
 // ─── Academy ──────────────────────────────────────────────
-// TODO: update to https://academy.smefrog.com when DNS is live
-export const ACADEMY_URL = 'https://academy.smefrog.com'
+// Academy is now an internal route at /academy (PWA-enabled).
+export const ACADEMY_URL = '/academy'
 
 // ─── Pricing ───────────────────────────────────────────────
 export const PRICING = {
-  basic: { tier: 'BASIC', price: 'N$800', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], featured: false, btn: 'Get Basic' },
-  advanced: { tier: 'ADVANCED', price: 'N$1,200', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true, btn: 'Get Advanced' },
-  full: { tier: 'FULL', price: 'N$1,750', sub: 'CC Registration', features: ['Advanced + Annual Return Filing', 'Compliance Check', 'Governance Template'], featured: false, btn: 'Get Full' },
+  basic: { tier: 'BASIC', price: 'N$1,000', sub: 'CC Registration', features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate'], featured: false, btn: 'Get Basic' },
+  advanced: { tier: 'ADVANCED', price: 'N$1,500', sub: 'CC Registration', features: ['Basic + Company Profile', 'Domain Registration', 'BO Filing'], featured: true, btn: 'Get Advanced' },
+  full: { tier: 'FULL', price: 'N$2,200', sub: 'CC Registration', features: ['Advanced + Annual Return Filing', 'Compliance Check', 'Governance Template'], featured: false, btn: 'Get Full' },
+  ptyLtd: {
+    tier: 'PTY LTD PACKAGE',
+    price: 'N$4,500',
+    sub: 'Premium Registration',
+    features: [
+      'Everything in Full',
+      'PTY LTD Registration Filing',
+      'Dedicated Account Manager',
+      'Priority 3-Day Processing',
+      'Full Corporate Governance Pack',
+      '1 Year Compliance Management',
+    ],
+    featured: false,
+    btn: 'Get PTY LTD',
+    badge: 'PREMIUM',
+    cta: 'https://wa.me/264853411522',
+  },
 } as const
 
 export const pricingCards = Object.values(PRICING)
@@ -51,7 +68,7 @@ export const TESTIMONIALS = [
 
 // ─── FAQ ───────────────────────────────────────────────────
 export const FAQ_ITEMS = [
-  { q: 'How much does it cost to register a CC?', a: 'N$800 for Basic. N$1,200 for Advanced. N$1,750 for Full. Every package includes BIPA filing.' },
+  { q: 'How much does it cost to register a CC?', a: 'N$1,000 for Basic. N$1,500 for Advanced. N$2,200 for Full. The PTY LTD Package is N$4,500 (premium). Every package includes BIPA filing.' },
   { q: 'Do I need to visit an office to register?', a: 'No. Everything happens over WhatsApp and email. You never need to visit BIPA or our office.' },
   { q: 'How long until I get my registration certificate?', a: '7 to 10 working days once BIPA receives a complete submission. Delays only happen when documents are missing.' },
   { q: 'Can a foreigner register a business in Namibia?', a: 'Yes, if you have a valid work permit or proof of residency. The process is the same; you just add your permit to the documents.' },

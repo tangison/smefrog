@@ -29,6 +29,7 @@ const navLinks: NavLink[] = [
       { label: 'PTY LTD Filing', href: '/services/business-registration' },
       { label: 'Compliance Services', href: '/services/compliance-services' },
       { label: 'Business Documents', href: '/services/business-documents' },
+      { label: 'Fractional Executives', href: '/services/fractional-executives' },
     ],
   },
   { label: 'Pricing', href: '/pricing' },
@@ -45,8 +46,7 @@ const navLinks: NavLink[] = [
       { label: 'Name Checker', href: '/resources/name-checker' },
     ],
   },
-  // TODO: update to https://academy.smefrog.com when DNS is live
-  { label: 'Academy', href: 'https://academy.smefrog.com', external: true },
+  { label: 'Academy', href: '/academy' },
   { label: 'Contact', href: '/contact' },
 ]
 

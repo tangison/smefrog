@@ -363,7 +363,7 @@ export default function BrandPage() {
                     const name = &quot;SMEfrog&quot;
                   </p>
                   <p className="text-frog-light text-sm font-mono" style={{ fontFamily: "'DM Mono', monospace" }}>
-                    N$800.00
+                    N$1,000.00
                   </p>
                 </div>
               </DoubleBezel>

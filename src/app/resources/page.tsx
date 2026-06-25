@@ -17,10 +17,11 @@ import {
   ExternalLink,
   Zap,
 } from 'lucide-react'
+import Link from 'next/link'
 import { ScrollReveal } from '@/components/scroll-reveal'
 import { Eyebrow } from '@/components/eyebrow'
 import { DoubleBezel } from '@/components/double-bezel'
-import { waLink, ACADEMY_URL } from '@/lib/config'
+import { waLink } from '@/lib/config'
 
 /* ─── Data ─────────────────────────────────────────── */
 const registrationGuides = [
@@ -343,16 +344,14 @@ export default function ResourcesPage() {
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.12}>
-            <a
-              href={ACADEMY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/academy"
               className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[48px] touch-manipulation"
-              aria-label="Open SMEfrog Academy (opens in new tab)"
+              aria-label="Open SMEfrog Academy"
             >
               Open Academy
-              <ExternalLink className="w-4 h-4" />
-            </a>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
           </ScrollReveal>
         </div>
       </section>

@@ -17,7 +17,6 @@ import {
   FAQ_ITEMS,
   PHONE_MAIN,
   PHONE_MAIN_TEL,
-  ACADEMY_URL,
 } from '@/lib/config'
 
 /* ─── Services Data (3 core services only) ─────────── */
@@ -25,8 +24,8 @@ const services = [
   {
     title: 'Business Registration',
     tag: 'POPULAR',
-    desc: 'Remote BIPA filing. Bank-ready documents. From N$800.',
-    price: 'From N$800',
+    desc: 'Remote BIPA filing. Bank-ready documents. From N$1,000.',
+    price: 'From N$1,000',
     img: '/hero/hero-2.webp',
     theme: 'dark' as const,
     span: 'md:col-span-7',
@@ -87,7 +86,7 @@ export default function HomePage() {
                 </h1>
 
                 <p className="text-lg md:text-2xl text-white/50 max-w-2xl mb-14 font-bold leading-relaxed">
-                  Get your CC or PTY LTD registered without leaving home. BIPA filing included. From N$800.
+                  Get your CC or PTY LTD registered without leaving home. BIPA filing included. From N$1,000.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -271,7 +270,7 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-frog-light">
                 No Hidden Fees.
               </h2>
-              <p className="text-frog-muted mt-4">From N$800. No consultant markups.</p>
+              <p className="text-frog-muted mt-4">From N$1,000. No consultant markups.</p>
             </div>
           </ScrollReveal>
 
@@ -374,16 +373,14 @@ export default function HomePage() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
-            <a
-              href={ACADEMY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/academy"
               className="group inline-flex items-center gap-3 bg-frog-green text-black font-black rounded-full px-10 py-5 text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(122,201,67,0.3)] active:scale-95 transition-all duration-300 min-h-[48px] touch-manipulation"
-              aria-label="Go to SMEfrog Academy (opens in new tab)"
+              aria-label="Go to SMEfrog Academy"
             >
               Go to Academy
-              <ExternalLink className="w-4 h-4" />
-            </a>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
           </ScrollReveal>
         </div>
       </section>
@@ -468,7 +465,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
             <p className="text-white/40 text-lg md:text-xl font-bold max-w-xl mx-auto mb-10">
-              Register your business in 4 steps. 100% remote. From N$800.
+              Register your business in 4 steps. 100% remote. From N$1,000.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
@@ -501,7 +498,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal delay={0.06}>
             <p className="text-black/40 text-lg md:text-xl font-bold mb-10 max-w-xl mx-auto">
-              Your business registration handled over WhatsApp. From N$800.
+              Your business registration handled over WhatsApp. From N$1,000.
             </p>
           </ScrollReveal>
 

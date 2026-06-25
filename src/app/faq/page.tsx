@@ -12,7 +12,7 @@ const faqs = [
   {
     question: 'How much does it cost to register a CC?',
     answer:
-      'Three tiers: Basic N$800, Advanced N$1,200, Full N$1,750. All include BIPA filing. No hidden fees.',
+      'Three tiers: Basic N$1,000, Advanced N$1,500, Full N$2,200. The PTY LTD Package is N$4,500 (premium). All include BIPA filing. No hidden fees.',
   },
   {
     question: 'Do I have to visit an office to register?',

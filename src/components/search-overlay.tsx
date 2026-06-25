@@ -7,13 +7,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const searchData = [
-  { title: 'CC Registration', desc: 'From N$800 with BIPA filing included', href: '/services/business-registration', category: 'Services' },
+  { title: 'CC Registration', desc: 'From N$1,000 with BIPA filing included', href: '/services/business-registration', category: 'Services' },
   { title: 'PTY LTD Registration', desc: 'From N$1,500 with full compliance', href: '/services/business-registration', category: 'Services' },
   { title: 'Compliance Services', desc: 'Annual returns, BO updates, regulatory filings', href: '/services/compliance-services', category: 'Services' },
   { title: 'Business Documents', desc: 'Contracts, policies, internal docs', href: '/services/business-documents', category: 'Services' },
-  { title: 'Basic Package', desc: 'N$800: Name Reservation + BIPA + Tax', href: '/pricing', category: 'Pricing' },
-  { title: 'Advanced Package', desc: 'N$1,200: Basic + Profile + Domain + BO', href: '/pricing', category: 'Pricing' },
-  { title: 'Full Package', desc: 'N$1,750: Advanced + Annual Return Filing + Compliance Check', href: '/pricing', category: 'Pricing' },
+  { title: 'Basic Package', desc: 'N$1,000: Name Reservation + BIPA + Tax', href: '/pricing', category: 'Pricing' },
+  { title: 'Advanced Package', desc: 'N$1,500: Basic + Profile + Domain + BO', href: '/pricing', category: 'Pricing' },
+  { title: 'Full Package', desc: 'N$2,200: Advanced + Annual Return Filing + Compliance Check', href: '/pricing', category: 'Pricing' },
+  { title: 'PTY LTD Package', desc: 'N$4,500: Premium PTY LTD with dedicated account manager', href: '/pricing', category: 'Pricing' },
   { title: 'How long does registration take?', desc: '7 to 10 working days depending on BIPA', href: '/faq', category: 'FAQ' },
   { title: 'Can I register remotely?', desc: 'Yes, everything handled via WhatsApp and email', href: '/faq', category: 'FAQ' },
   { title: 'What documents do I need?', desc: 'ID copy, proof of address, and business name', href: '/faq', category: 'FAQ' },

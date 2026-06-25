@@ -28,7 +28,7 @@ const ccRegistration = {
   description:
     'The simplest way to formalise your business in Namibia. Affordable and fast.',
   turnaround: '7–10 Working Days',
-  price: 'From N$800',
+  price: 'From N$1,000',
   items: [
     'Name Reservation with BIPA',
     'Founding Statement (CC8)',
@@ -61,7 +61,7 @@ const ptyLtdRegistration = {
 const pricingCards = [
   {
     tier: 'BASIC',
-    price: 'N$800',
+    price: 'N$1,000',
     sub: 'CC Registration',
     features: ['Name Reservation', 'BIPA Filing', 'Tax Certificate', 'Digital Delivery'],
     btn: 'Choose Basic',
@@ -69,7 +69,7 @@ const pricingCards = [
   },
   {
     tier: 'ADVANCED',
-    price: 'N$1,200',
+    price: 'N$1,500',
     sub: 'CC Registration',
     features: [
       'Everything in Basic',
@@ -82,7 +82,7 @@ const pricingCards = [
   },
   {
     tier: 'FULL',
-    price: 'N$1,750',
+    price: 'N$2,200',
     sub: 'CC Registration',
     features: [
       'Everything in Advanced',
@@ -213,7 +213,7 @@ export default function BusinessRegistrationPage() {
                     <span className="text-frog-green text-sm font-bold">7–10 Day Turnaround</span>
                   </div>
                   <div className="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-frog-green/10 border border-frog-green/20">
-                    <span className="text-frog-green text-sm font-bold">From N$800</span>
+                    <span className="text-frog-green text-sm font-bold">From N$1,000</span>
                   </div>
                 </div>
               </ScrollReveal>
