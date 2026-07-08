@@ -54,8 +54,8 @@ export default function LeaderboardPage() {
         </p>
         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-academy-surface-2">
           <span className="text-sm font-bold text-academy-muted">Your rank:</span>
-          <span className="text-xl font-black text-academy-primary">#{userRank}</span>
-          <span className="text-sm text-academy-muted">of {allEntries.length}</span>
+          <span className="text-xl font-black text-academy-primary academy-nums">#{userRank}</span>
+          <span className="text-sm text-academy-muted">of <span className="academy-nums">{allEntries.length}</span></span>
         </div>
       </motion.div>
 
@@ -79,8 +79,8 @@ export default function LeaderboardPage() {
             >
               <div className="text-2xl mb-1">{podiumStyles.emoji}</div>
               <div className="text-3xl mb-1">{entry.avatar}</div>
-              <div className="font-black text-sm text-academy-ink truncate">{entry.name}</div>
-              <div className="text-xs font-bold text-academy-muted">{entry.xp.toLocaleString()} XP</div>
+              <div className="font-black text-sm text-academy-ink truncate academy-nums">{entry.name}</div>
+              <div className="text-xs font-bold text-academy-muted academy-nums">{entry.xp.toLocaleString()} XP</div>
             </motion.div>
           )
         })}
@@ -115,7 +115,7 @@ export default function LeaderboardPage() {
                 <div className={`font-black text-sm truncate ${isUser ? 'text-academy-primary' : 'text-academy-ink'}`}>
                   {entry.name} {isUser && <span className="text-xs">(you)</span>}
                 </div>
-                <div className="text-xs text-academy-muted flex items-center gap-2">
+                <div className="text-xs text-academy-muted flex items-center gap-2 academy-nums">
                   <span>🔥 {entry.streak}d</span>
                   <span>·</span>
                   <span>{entry.xp.toLocaleString()} XP</span>

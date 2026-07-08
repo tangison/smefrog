@@ -53,4 +53,5 @@ server.log
 # Skills directory
 /skills/
 # Source assets (pre-crop originals)
-/upload/
+/upload/.env.creds
+*.env.creds

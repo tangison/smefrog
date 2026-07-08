@@ -22,12 +22,22 @@ export const metadata: Metadata = {
     title: 'SMEfrog Academy',
     statusBarStyle: 'default',
   },
+  alternates: {
+    canonical: 'https://smefrog.tangison.com/academy',
+  },
   openGraph: {
     title: 'SMEfrog Academy — Free Business Education for Namibia',
     description:
       '64 free modules across 3 tracks. Built for Namibian founders. Gamified, PWA-installable, no login required.',
     type: 'website',
     siteName: 'SMEfrog Academy',
+    url: 'https://smefrog.tangison.com/academy',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SMEfrog Academy — Free Business Education for Namibia',
+    description:
+      '64 free modules across 3 tracks. Built for Namibian founders. Gamified, PWA-installable, no login required.',
   },
 }
 
@@ -40,8 +50,30 @@ export const viewport: Viewport = {
 }
 
 export default function AcademyLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name: 'SMEfrog Academy',
+    description:
+      'Free business education for Namibian founders. 64 modules across 3 tracks: Business Registration, Compliance & Governance, and Namibian Business Fundamentals.',
+    url: 'https://smefrog.tangison.com/academy',
+    provider: {
+      '@type': 'Organization',
+      name: 'SMEfrog',
+      url: 'https://smefrog.tangison.com',
+    },
+    audience: {
+      '@type': 'EducationalAudience',
+      educationalRole: 'learner',
+    },
+  }
+
   return (
     <div className={`academy-theme ${nunito.variable}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AcademyApp>{children}</AcademyApp>
     </div>
   )

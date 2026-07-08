@@ -12,9 +12,14 @@ export function AcademyApp({ children }: { children: React.ReactNode }) {
 
   return (
     <AcademyProgressProvider value={progress}>
-      <div className="min-h-screen flex flex-col">
+      <a href="#academy-main" className="academy-skip-link">
+        Skip to content
+      </a>
+      <div className="min-h-dvh flex flex-col">
         <AcademyHeader progress={progress} />
-        <main className="flex-1">{children}</main>
+        <main id="academy-main" className="flex-1">
+          {children}
+        </main>
         <AcademyFooter />
       </div>
       <AchievementToast

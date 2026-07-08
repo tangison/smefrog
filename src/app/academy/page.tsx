@@ -79,10 +79,10 @@ function DailyGoalRing({
           Daily Goal
         </div>
         <div className="text-2xl font-black text-academy-ink leading-tight">
-          {earned} <span className="text-academy-muted text-base font-bold">/ {goal} XP</span>
+          <span className="academy-nums">{earned}</span> <span className="text-academy-muted text-base font-bold">/ <span className="academy-nums">{goal}</span> XP</span>
         </div>
         <div className={`text-sm font-bold ${met ? 'text-academy-success' : 'text-academy-ink-2'}`}>
-          {met ? 'Goal achieved! 🎉' : `${goal - earned} XP to go`}
+          {met ? 'Goal achieved' : <><span className="academy-nums">{goal - earned}</span> XP to go</>}
         </div>
       </div>
     </div>
@@ -214,22 +214,22 @@ export default function AcademyPage() {
             <div className="flex items-center gap-2 mb-2">
               <span className="academy-chip" style={{ background: 'var(--color-academy-primary-soft)', color: 'var(--color-academy-primary)' }}>
                 <Sparkles className="w-3 h-3" />
-                Level {level}
+                Level <span className="academy-nums">{level}</span>
               </span>
               <span className="academy-chip" style={{ background: 'var(--color-academy-warning-soft)', color: 'var(--color-academy-warning)' }}>
                 <Flame className="w-3 h-3" fill="currentColor" />
-                {currentStreak} day streak
+                <span className="academy-nums">{currentStreak}</span> day streak
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl font-black text-academy-ink mb-2 leading-tight">
-              Welcome back, learner!
+              Welcome back, learner
             </h1>
             <p className="text-academy-ink-2 text-sm md:text-base">
               {completedCount === 0
                 ? "Let's start your journey through 64 modules of Namibian business mastery."
                 : completedCount < totalModules
-                ? `You've completed ${completedCount} of ${totalModules} modules. Keep going!`
-                : '🎉 You have completed all modules. Practice to keep your knowledge sharp.'}
+                ? `You've completed ${completedCount} of ${totalModules} modules. Keep going.`
+                : 'You have completed all modules. Practice to keep your knowledge sharp.'}
             </p>
           </div>
           <DailyGoalRing earned={todayXp} goal={state.dailyGoalXp} />
@@ -238,8 +238,8 @@ export default function AcademyPage() {
         {/* Level progress bar */}
         <div className="mt-6 relative z-10">
           <div className="flex items-center justify-between text-xs font-bold text-academy-muted mb-1.5">
-            <span>Level {level}</span>
-            <span>{xpToNextLevel} XP to Level {level + 1}</span>
+            <span>Level <span className="academy-nums">{level}</span></span>
+            <span><span className="academy-nums">{xpToNextLevel}</span> XP to Level <span className="academy-nums">{level + 1}</span></span>
           </div>
           <div className="academy-progress-track">
             <motion.div
@@ -282,10 +282,10 @@ export default function AcademyPage() {
                 <div className="flex items-center gap-3 mt-3 text-xs font-bold">
                   <span className="flex items-center gap-1">
                     <Zap className="w-3.5 h-3.5" fill="currentColor" />
-                    {nextModule.xp} XP
+                    <span className="academy-nums">{nextModule.xp}</span> XP
                   </span>
                   <span>·</span>
-                  <span>{nextModule.duration} min</span>
+                  <span><span className="academy-nums">{nextModule.duration}</span> min</span>
                   <span>·</span>
                   <span>{nextModule.level}</span>
                 </div>
@@ -318,7 +318,7 @@ export default function AcademyPage() {
                   Review due
                 </div>
                 <div className="font-black text-academy-ink">
-                  {dueModules.length} module{dueModules.length === 1 ? '' : 's'} ready for review
+                  <span className="academy-nums">{dueModules.length}</span> module{dueModules.length === 1 ? '' : 's'} ready for review
                 </div>
                 <div className="text-sm text-academy-ink-2">
                   Spaced repetition keeps knowledge sticky. Practice now.
@@ -360,7 +360,7 @@ export default function AcademyPage() {
                     className="academy-chip"
                     style={{ background: 'var(--track-color-soft)', color: 'var(--track-color)' }}
                   >
-                    {done}/{total}
+                    <span className="academy-nums">{done}</span>/<span className="academy-nums">{total}</span>
                   </span>
                 </div>
                 <h3 className="font-black text-academy-ink mb-1 leading-tight">{track.name}</h3>
@@ -372,7 +372,7 @@ export default function AcademyPage() {
                   />
                 </div>
                 <div className="text-[10px] font-bold text-academy-muted mt-1.5 text-right">
-                  {pct}%
+                  <span className="academy-nums">{pct}</span>%
                 </div>
               </Link>
             </motion.div>

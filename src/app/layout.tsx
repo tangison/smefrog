@@ -25,12 +25,21 @@ export const metadata: Metadata = {
   description:
     "Namibia's compliance partner. Business registration, compliance services, and business documents. 100% remote, 2X cheaper.",
   icons: { icon: "/upload/Icon.png" },
+  alternates: {
+    canonical: "https://smefrog.tangison.com",
+  },
   openGraph: {
     title: "SMEfrog: Jump Into Business",
     description: "Namibia's compliance partner. Business registration, compliance services, and business documents. 100% remote, 2X cheaper.",
     type: "website",
     siteName: "SMEfrog",
+    url: "https://smefrog.tangison.com",
     images: ["/upload/Brand ID SMEfrog.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SMEfrog: Jump Into Business",
+    description: "Namibia's compliance partner. Business registration, compliance services, and business documents. 100% remote, 2X cheaper.",
   },
   keywords: ["SMEfrog", "Namibia", "BIPA", "business registration", "CC registration", "PTY LTD", "compliance", "remote"],
 };

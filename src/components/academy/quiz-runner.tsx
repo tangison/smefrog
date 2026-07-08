@@ -111,7 +111,7 @@ export function QuizRunner({
     const xpEarned = moduleXp + (correctCount === totalQuestions ? 25 : 0)
     return (
       <CompletionScreen
-        title="Module Complete!"
+        title="Module complete"
         correct={correctCount}
         total={totalQuestions}
         xpEarned={xpEarned}
@@ -158,7 +158,7 @@ export function QuizRunner({
         </div>
         <div className="flex items-center gap-1 text-academy-danger">
           <Heart className="w-5 h-5 fill-current" />
-          <span className="font-black text-sm">{progress.state.hearts}</span>
+          <span className="font-black text-sm academy-nums">{progress.state.hearts}</span>
         </div>
       </div>
 
@@ -274,7 +274,7 @@ export function QuizRunner({
               <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-academy-danger-soft flex items-center justify-center">
                 <Heart className="w-10 h-10 text-academy-danger" />
               </div>
-              <h3 className="text-2xl font-black text-academy-ink mb-2">Out of hearts!</h3>
+              <h3 className="text-2xl font-black text-academy-ink mb-2">Out of hearts</h3>
               <p className="text-academy-ink-2 mb-6">
                 You need hearts to take quizzes. Hearts regenerate every 4 hours, or you can refill instantly with gems.
               </p>

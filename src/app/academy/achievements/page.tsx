@@ -78,9 +78,9 @@ export default function AchievementsPage() {
           Unlock awards as you progress. Each award earns bonus XP.
         </p>
         <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-academy-surface-2">
-          <span className="text-2xl font-black text-academy-ink">
+          <span className="text-2xl font-black text-academy-ink academy-nums">
             {unlockedCount}
-            <span className="text-academy-muted">/{total}</span>
+            <span className="text-academy-muted">/<span className="academy-nums">{total}</span></span>
           </span>
           <span className="text-sm font-bold text-academy-muted">unlocked</span>
         </div>
@@ -99,7 +99,7 @@ export default function AchievementsPage() {
                 className="academy-chip"
                 style={{ background: `color-mix(in srgb, ${meta.color} 15%, white)`, color: meta.color }}
               >
-                {catUnlocked}/{achievements.length}
+                <span className="academy-nums">{catUnlocked}</span>/<span className="academy-nums">{achievements.length}</span>
               </span>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

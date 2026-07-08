@@ -106,7 +106,7 @@ export default function PracticePage() {
             <div className="p-6 rounded-2xl bg-academy-surface-2 mb-6">
               <div className="text-4xl mb-2">📚</div>
               <p className="font-bold text-academy-ink mb-1">
-                {reviewQueue.length} module{reviewQueue.length === 1 ? '' : 's'} ready for review
+                <span className="academy-nums">{reviewQueue.length}</span> module{reviewQueue.length === 1 ? '' : 's'} ready for review
               </p>
               <p className="text-sm text-academy-ink-2 mb-3">
                 Each review takes ~1 minute and earns 10 XP + 1 gem.
@@ -163,9 +163,9 @@ export default function PracticePage() {
           <Check className="w-12 h-12 text-academy-success" strokeWidth={3} />
         </motion.div>
 
-        <h1 className="text-3xl font-black text-academy-ink mb-2">Practice complete!</h1>
+        <h1 className="text-3xl font-black text-academy-ink mb-2">Practice complete</h1>
         <p className="text-academy-ink-2 mb-6">
-          You reviewed {reviewedCount} module{reviewedCount === 1 ? '' : 's'}.
+          You reviewed <span className="academy-nums font-bold">{reviewedCount}</span> module{reviewedCount === 1 ? '' : 's'}.
         </p>
 
         <div className="academy-card p-6 mb-6">
@@ -173,13 +173,13 @@ export default function PracticePage() {
           <div className="flex items-center justify-center gap-4">
             <div className="flex items-center gap-2">
               <Zap className="w-6 h-6 text-academy-warning fill-current" />
-              <span className="text-2xl font-black text-academy-ink">+{xpEarned}</span>
+              <span className="text-2xl font-black text-academy-ink academy-nums">+{xpEarned}</span>
               <span className="text-sm text-academy-muted">XP</span>
             </div>
             <div className="w-px h-8 bg-academy-border" />
             <div className="flex items-center gap-2">
               <span className="text-xl">💎</span>
-              <span className="text-2xl font-black text-academy-ink">+{reviewedCount}</span>
+              <span className="text-2xl font-black text-academy-ink academy-nums">+{reviewedCount}</span>
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@ export default function PracticePage() {
           />
         </div>
         <div className="text-xs font-bold text-academy-muted">
-          {currentIdx + 1}/{reviewQueue.length}
+          <span className="academy-nums">{currentIdx + 1}</span>/<span className="academy-nums">{reviewQueue.length}</span>
         </div>
       </div>
 
@@ -319,7 +319,7 @@ export default function PracticePage() {
                 <p className="text-xs text-academy-ink-2">Next review scheduled.</p>
               </div>
               <div className="text-sm font-bold text-academy-ink">
-                {reviewedCount}/{reviewQueue.length}
+                <span className="academy-nums">{reviewedCount}</span>/<span className="academy-nums">{reviewQueue.length}</span>
               </div>
             </div>
           </motion.div>
