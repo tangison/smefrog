@@ -64,8 +64,6 @@ export default function ContactPage() {
       {/* ═══ HERO — DARK ═══ */}
       <section className="relative py-32 md:py-40 lg:py-52 px-4 md:px-6 bg-frog-black overflow-hidden">
         {/* Gradient accents */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-frog-green/[0.04] rounded-full blur-[180px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/30 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
@@ -96,7 +94,6 @@ export default function ContactPage() {
 
       {/* ═══ WHATSAPP PRE-FILL FORM — DARK ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black border-t border-frog-hairline relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.03] rounded-full blur-[180px] pointer-events-none" />
 
         <div className="max-w-2xl mx-auto relative z-10">
           <ScrollReveal>
@@ -223,7 +220,6 @@ export default function ContactPage() {
 
       {/* ═══ LOCATION + PARTNER — DARK ═══ */}
       <section className="py-24 md:py-32 px-4 md:px-6 bg-frog-black border-t border-frog-hairline relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-green/[0.02] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -260,7 +256,6 @@ export default function ContactPage() {
               <div className="bg-frog-shell ring-1 ring-frog-hairline p-1.5 rounded-[2rem] h-full">
                 <div className="bg-frog-card rounded-[calc(2rem-0.375rem)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] p-8 md:p-10 h-full relative overflow-hidden">
                   {/* Background glow */}
-                  <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-frog-green/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
                   <div className="relative z-10">
                     <div className="w-12 h-12 rounded-2xl bg-frog-green/10 ring-1 ring-frog-green/20 flex items-center justify-center mb-6">
@@ -307,7 +302,6 @@ export default function ContactPage() {
 
       {/* ═══ BOTTOM CTA — DARK ═══ */}
       <section className="py-24 md:py-32 px-4 md:px-6 bg-frog-black relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.04] rounded-full blur-[180px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>

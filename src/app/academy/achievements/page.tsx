@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Lock } from 'lucide-react'
+import { ArrowLeft, Lock, Trophy } from 'lucide-react'
 import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
 import { ACHIEVEMENTS } from '@/lib/academy/achievements'
 import type { AchievementCategory } from '@/lib/academy/types'
@@ -72,7 +72,7 @@ export default function AchievementsPage() {
         animate={{ opacity: 1, y: 0 }}
         className="academy-card p-6 md:p-8 mb-6 text-center"
       >
-        <div className="text-5xl mb-2">🏆</div>
+        <Trophy className="w-12 h-12 text-academy-warning mx-auto mb-2" strokeWidth={1.5} />
         <h1 className="text-3xl md:text-4xl font-black text-academy-ink mb-2">Awards</h1>
         <p className="text-academy-ink-2 mb-4">
           Unlock awards as you progress. Each award earns bonus XP.

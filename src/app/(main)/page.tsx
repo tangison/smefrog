@@ -56,7 +56,6 @@ const services = [
 /* ─── Home Page ────────────────────────────────────── */
 export default function HomePage() {
 
-
   return (
     <>
       {/* ═══ 1. HERO ═══ */}
@@ -64,7 +63,6 @@ export default function HomePage() {
         <HeroSlideshow />
 
         {/* Ambient green glow behind headline */}
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.07] rounded-full blur-[150px] pointer-events-none z-[1]" />
 
         <div className="relative z-20 py-24 md:py-32 px-4 md:px-6 w-full">
           <div className="max-w-7xl mx-auto">
@@ -243,7 +241,6 @@ export default function HomePage() {
       {/* ═══ 5. PRICING TEASER ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-black to-frog-dark pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
@@ -433,8 +430,6 @@ export default function HomePage() {
       {/* ═══ REGISTRATION CTA ═══ */}
       <section className="py-24 md:py-32 bg-frog-black relative overflow-hidden" id="registration-section">
         {/* Ambient green glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-frog-green/[0.10] blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/[0.03] blur-[180px] rounded-full pointer-events-none" />
 
         <div className="max-w-3xl mx-auto px-4 md:px-6 text-center relative z-10">
           <ScrollReveal>
@@ -469,8 +464,6 @@ export default function HomePage() {
       {/* ═══ FINAL CTA ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden bg-frog-light">
         {/* Ambient green glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-frog-green/[0.10] blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/5 blur-[120px] rounded-full translate-x-1/2 pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>

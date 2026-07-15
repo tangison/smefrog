@@ -103,7 +103,7 @@ export function ModuleView({ slug }: { slug: string }) {
           animate={{ opacity: 1, y: 0 }}
           className="academy-card p-6 md:p-10"
         >
-          <div className="prose prose-lg max-w-none">
+          <article className="max-w-[65ch]">
             <h1 className="text-3xl md:text-4xl font-black text-academy-ink mb-4 leading-tight">
               {moduleData.title}
             </h1>
@@ -121,12 +121,12 @@ export function ModuleView({ slug }: { slug: string }) {
               <span>{moduleData.level}</span>
             </div>
 
-            <p className="text-lg text-academy-ink-2 leading-relaxed mb-6 font-medium">
+            <p className="text-lg text-academy-ink-2 leading-relaxed mb-6 font-medium" style={{ fontFamily: 'var(--font-academy-serif)' }}>
               {moduleData.summary}
             </p>
 
-            <div className="text-base text-academy-ink-2 leading-relaxed whitespace-pre-line mb-8">
-              {moduleData.body}
+            <div className="academy-prose mb-8">
+              <p>{moduleData.body}</p>
             </div>
 
             {/* Key facts callout */}
@@ -147,7 +147,7 @@ export function ModuleView({ slug }: { slug: string }) {
                 ))}
               </ul>
             </div>
-          </div>
+          </article>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-academy-border">
             <button

@@ -11,6 +11,10 @@ import {
   Award,
   Menu,
   X,
+  Flame,
+  Gem,
+  Heart,
+  Star,
 } from 'lucide-react'
 import type { useAcademyProgress } from '@/hooks/use-academy-progress'
 
@@ -38,7 +42,7 @@ export function AcademyHeader({
   const gems = state.gems
 
   return (
-    <header className="academy-safe-top sticky top-0 z-50 bg-academy-surface/95 backdrop-blur-lg border-b border-academy-border">
+    <header className="academy-safe-top sticky top-0 z-50 bg-academy-surface border-b border-academy-border">
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         {/* Left: Back to SMEfrog + Logo */}
         <div className="flex items-center gap-2 md:gap-3 min-w-0">
@@ -85,26 +89,26 @@ export function AcademyHeader({
         <div className="flex items-center gap-1.5 md:gap-2 shrink-0">
           {/* Streak */}
           <div className="flex items-center gap-1 px-2 md:px-2.5 py-1.5 rounded-full bg-academy-warning-soft">
-            <span className="text-sm md:text-base academy-streak-icon academy-animate-flame">🔥</span>
-            <span className="font-black text-xs md:text-sm text-academy-ink">{currentStreak}</span>
+            <Flame className="w-3.5 h-3.5 md:w-4 md:h-4 text-academy-warning academy-animate-flame" strokeWidth={2} fill="currentColor" />
+            <span className="font-black text-xs md:text-sm text-academy-ink academy-nums">{currentStreak}</span>
           </div>
 
           {/* Gems */}
           <div className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-academy-info-soft">
-            <span className="text-base">💎</span>
-            <span className="font-black text-sm text-academy-ink">{gems}</span>
+            <Gem className="w-4 h-4 text-academy-info" strokeWidth={2} />
+            <span className="font-black text-sm text-academy-ink academy-nums">{gems}</span>
           </div>
 
           {/* Hearts */}
           <div className="flex items-center gap-1 px-2 md:px-2.5 py-1.5 rounded-full bg-academy-danger-soft">
-            <span className="text-sm md:text-base">❤️</span>
-            <span className="font-black text-xs md:text-sm text-academy-ink">{hearts}</span>
+            <Heart className="w-3.5 h-3.5 md:w-4 md:h-4 text-academy-danger" strokeWidth={2} fill="currentColor" />
+            <span className="font-black text-xs md:text-sm text-academy-ink academy-nums">{hearts}</span>
           </div>
 
           {/* Level */}
           <div className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-academy-secondary-soft">
-            <span className="text-base">⭐</span>
-            <span className="font-black text-sm text-academy-ink">L{level}</span>
+            <Star className="w-4 h-4 text-academy-secondary" strokeWidth={2} fill="currentColor" />
+            <span className="font-black text-sm text-academy-ink academy-nums">L{level}</span>
           </div>
 
           {/* Mobile menu button */}

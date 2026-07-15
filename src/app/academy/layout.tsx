@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Nunito } from 'next/font/google'
+import { Nunito, Newsreader } from 'next/font/google'
 import '@/app/globals.css'
 import './academy.css'
 import { AcademyApp } from '@/components/academy/academy-app'
@@ -9,6 +9,16 @@ const nunito = Nunito({
   display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-academy',
+})
+
+// Serif for module body text — gives the academy a printed-reference feel
+// (Collins DNA: serif for reading content, sans for UI chrome)
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-academy-serif',
 })
 
 export const metadata: Metadata = {
@@ -41,8 +51,12 @@ export const metadata: Metadata = {
   },
 }
 
+// themeColor must be a literal hex (meta tag doesn't support CSS vars)
+// Keep in sync with --color-academy-primary-bright in academy.css
+const ACADEMY_THEME_COLOR = '#FF6B47'
+
 export const viewport: Viewport = {
-  themeColor: '#FF6B47',
+  themeColor: ACADEMY_THEME_COLOR,
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
@@ -69,7 +83,7 @@ export default function AcademyLayout({ children }: { children: React.ReactNode 
   }
 
   return (
-    <div className={`academy-theme ${nunito.variable}`}>
+    <div className={`academy-theme ${nunito.variable} ${newsreader.variable}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

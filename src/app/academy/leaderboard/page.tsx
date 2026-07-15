@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Crown } from 'lucide-react'
+import { ArrowLeft, Crown, Trophy, Flame } from 'lucide-react'
 import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
 
 // Mock leaderboard — these are AI-generated competitors with stable names.
@@ -47,7 +47,7 @@ export default function LeaderboardPage() {
         animate={{ opacity: 1, y: 0 }}
         className="academy-card p-6 md:p-8 mb-6 text-center"
       >
-        <div className="text-5xl mb-2">🏆</div>
+        <Trophy className="w-12 h-12 text-academy-warning mx-auto mb-2" strokeWidth={1.5} />
         <h1 className="text-3xl md:text-4xl font-black text-academy-ink mb-2">Weekly League</h1>
         <p className="text-academy-ink-2 mb-4">
           Top 3 by XP earn the &ldquo;Scholar&rdquo; league promotion next week.
@@ -116,7 +116,7 @@ export default function LeaderboardPage() {
                   {entry.name} {isUser && <span className="text-xs">(you)</span>}
                 </div>
                 <div className="text-xs text-academy-muted flex items-center gap-2 academy-nums">
-                  <span>🔥 {entry.streak}d</span>
+                  <span className="flex items-center gap-1"><Flame className="w-3 h-3 text-academy-warning" strokeWidth={2} fill="currentColor" /> {entry.streak}d</span>
                   <span>·</span>
                   <span>{entry.xp.toLocaleString()} XP</span>
                 </div>

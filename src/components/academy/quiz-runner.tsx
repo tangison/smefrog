@@ -10,6 +10,7 @@ import {
   RotateCcw,
   Trophy,
   Zap,
+  Gem,
 } from 'lucide-react'
 import type { Quiz, QuizQuestion } from '@/lib/academy/types'
 import type { useAcademyProgress } from '@/hooks/use-academy-progress'
@@ -284,7 +285,7 @@ export function QuizRunner({
                     onClick={() => progress.refillHearts()}
                     className="academy-btn academy-btn-primary w-full"
                   >
-                    💎 Refill for 50 gems
+                  <Gem className="w-4 h-4" strokeWidth={2} /> Refill for 50 gems
                   </button>
                 )}
                 <button
@@ -326,12 +327,18 @@ function CompletionScreen({
 
   return (
     <div className="max-w-md mx-auto px-4 py-12 text-center relative">
-      {/* Confetti for non-failed completion */}
+      {/* Confetti for non-failed completion — uses CSS token references */}
       {!failed && (
         <div className="academy-confetti" aria-hidden="true">
           {Array.from({ length: 40 }).map((_, i) => {
-            const colors = ['#FF6B47', '#6C5CE7', '#7AC943', '#FFB83D', '#3498DB']
-            const color = colors[i % colors.length]
+            const tokenVars = [
+              'var(--color-academy-primary-bright)',
+              'var(--color-academy-secondary)',
+              'var(--color-academy-success-bright)',
+              'var(--color-academy-warning-bright)',
+              'var(--color-academy-info)',
+            ]
+            const color = tokenVars[i % tokenVars.length]
             const left = Math.random() * 100
             const delay = Math.random() * 0.5
             const duration = 2 + Math.random() * 1
@@ -409,7 +416,7 @@ function CompletionScreen({
               <>
                 <div className="w-px h-8 bg-academy-border" />
                 <div className="flex items-center gap-2">
-                  <span className="text-xl">💎</span>
+                  <Gem className="w-5 h-5 text-academy-info" strokeWidth={2} />
                   <span className="text-2xl font-black text-academy-ink">+7</span>
                 </div>
               </>

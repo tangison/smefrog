@@ -24,12 +24,9 @@ const legalLinks = [
   { label: 'Terms & Conditions', href: '/terms' },
 ]
 
-
-
 export function Footer() {
   return (
     <footer className="bg-black pt-24 md:pt-32 pb-8 px-4 md:px-6 relative overflow-hidden">
-      <div className="absolute bottom-0 left-1/4 w-[600px] h-[400px] bg-frog-green/[0.03] blur-[200px] rounded-full pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto relative z-10">
         {/* ─── TOP ─── */}

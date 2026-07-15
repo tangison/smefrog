@@ -10,23 +10,23 @@ import { DoubleBezel } from '@/components/double-bezel'
 /* ─── Brand Identity Copy Text ────────────────────────── */
 const BRAND_IDENTITY_TEXT = `SMEFROG BRAND IDENTITY
 ======================
-Logo: "SME" white/black + "frog" #4CAF50. Never single colour. Never stretched.
-Primary colour: #4CAF50 (green). Dark bg: #0a0a0a. Surface: #141414.
-Fonts: Syne (headings, 700/800) + DM Sans (body, 300-500).
+Logo: "SME" white/black + "frog" #7AC943. Never single colour. Never stretched.
+Primary colour: #7AC943 (frog-green). Dark bg: #0F1412 (frog-black). Surface: #0A0A0A (frog-card).
+Fonts: Space Grotesk (headings + body, 400-700).
 Voice: Direct. Plain English. Namibian-specific. No m-dashes. No exclamation points. No AI filler.
 Tone: Confident, warm, efficient.
 WhatsApp: +264853411522
-Academy: academy.smefrog.com (future) / document-library-one.vercel.app (current)`
+Academy: /academy (internal route, PWA-enabled)`
 
 /* ─── Colour Data ─────────────────────────────────────── */
 const colours = [
-  { name: 'Primary Green', hex: '#4CAF50', rgb: 'rgb(76, 175, 80)', use: 'CTAs, active states, accents, logo "frog"' },
-  { name: 'Deep Green', hex: '#2d6b30', rgb: 'rgb(45, 107, 48)', use: 'Hover states, secondary buttons' },
-  { name: 'Dark Background', hex: '#0a0a0a', rgb: 'rgb(10, 10, 10)', use: 'Primary page background' },
-  { name: 'Surface', hex: '#141414', rgb: 'rgb(20, 20, 20)', use: 'Card backgrounds' },
-  { name: 'Border', hex: '#1e1e1e', rgb: 'rgb(30, 30, 30)', use: 'Dividers and card borders' },
-  { name: 'Body Text', hex: '#c8c8c8', rgb: 'rgb(200, 200, 200)', use: 'Paragraph text' },
-  { name: 'Muted Text', hex: '#666666', rgb: 'rgb(102, 102, 102)', use: 'Secondary labels, captions' },
+  { name: 'Primary Green', hex: '#7AC943', rgb: 'rgb(122, 201, 67)', use: 'CTAs, active states, accents, logo "frog"' },
+  { name: 'Deep Green', hex: '#1E3A2F', rgb: 'rgb(30, 58, 47)', use: 'Hover states, secondary buttons, frog-dark' },
+  { name: 'Dark Background', hex: '#0F1412', rgb: 'rgb(15, 20, 18)', use: 'Primary page background, frog-black' },
+  { name: 'Surface', hex: '#0A0A0A', rgb: 'rgb(10, 10, 10)', use: 'Card backgrounds, frog-card' },
+  { name: 'Border', hex: 'rgba(122, 201, 67, 0.12)', rgb: 'rgba(122, 201, 67, 0.12)', use: 'Dividers and card borders, frog-hairline' },
+  { name: 'Body Text', hex: '#F8F9F4', rgb: 'rgb(248, 249, 244)', use: 'Paragraph text, frog-light' },
+  { name: 'Muted Text', hex: '#8BA89A', rgb: 'rgb(139, 168, 154)', use: 'Secondary labels, captions, frog-muted' },
   { name: 'White', hex: '#f5f5f5', rgb: 'rgb(245, 245, 245)', use: 'Headings on dark backgrounds' },
 ]
 
@@ -100,7 +100,6 @@ export default function BrandPage() {
       <section className="relative py-32 md:py-40 lg:py-52 px-4 md:px-6 bg-frog-black overflow-hidden">
         {/* Gradient accents */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#4CAF50]/[0.04] rounded-full blur-[180px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/30 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>

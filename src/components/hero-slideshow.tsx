@@ -133,8 +133,6 @@ export function HeroSlideshow() {
       <div className="absolute inset-0 bg-gradient-to-b from-frog-black/40 via-transparent to-transparent z-[2]" />
 
       {/* ─── Ambient glow effects ─── */}
-      <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] bg-frog-green/8 blur-[180px] rounded-full pointer-events-none z-[3]" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-frog-dark/40 blur-[140px] rounded-full pointer-events-none z-[3]" />
 
       {/* ─── Slide indicators ─── */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[5] flex items-center gap-1.5" role="tablist" aria-label="Slideshow controls">

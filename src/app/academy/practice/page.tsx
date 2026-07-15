@@ -10,6 +10,8 @@ import {
   X,
   Zap,
   Clock,
+  BookOpen,
+  Gem,
 } from 'lucide-react'
 import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
 import { MODULES } from '@/lib/academy/modules'
@@ -104,7 +106,7 @@ export default function PracticePage() {
             </div>
           ) : (
             <div className="p-6 rounded-2xl bg-academy-surface-2 mb-6">
-              <div className="text-4xl mb-2">📚</div>
+              <BookOpen className="w-10 h-10 text-academy-warning mx-auto mb-2" strokeWidth={1.5} />
               <p className="font-bold text-academy-ink mb-1">
                 <span className="academy-nums">{reviewQueue.length}</span> module{reviewQueue.length === 1 ? '' : 's'} ready for review
               </p>
@@ -178,7 +180,7 @@ export default function PracticePage() {
             </div>
             <div className="w-px h-8 bg-academy-border" />
             <div className="flex items-center gap-2">
-              <span className="text-xl">💎</span>
+              <Gem className="w-5 h-5 text-academy-info" strokeWidth={2} />
               <span className="text-2xl font-black text-academy-ink academy-nums">+{reviewedCount}</span>
             </div>
           </div>

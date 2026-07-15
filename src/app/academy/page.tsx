@@ -201,15 +201,9 @@ export default function AcademyPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="academy-card p-6 md:p-8 mb-6 relative overflow-hidden"
+        className="academy-card p-6 md:p-8 mb-6"
       >
-        {/* Decorative blobs */}
-        <div
-          className="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-30 academy-animate-float"
-          style={{ background: 'var(--color-academy-primary-soft)' }}
-        />
-
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <span className="academy-chip" style={{ background: 'var(--color-academy-primary-soft)', color: 'var(--color-academy-primary)' }}>
@@ -263,12 +257,11 @@ export default function AcademyPage() {
         >
           <Link
             href={`/academy/${nextModule.slug}`}
-            className="block academy-card p-6 md:p-8 relative overflow-hidden group"
-            style={{ background: 'var(--color-academy-primary)', color: '#FFFFFF' }}
+            className="block academy-card p-6 md:p-8 group"
+            style={{ background: 'var(--color-academy-primary)', color: 'var(--color-academy-surface)' }}
           >
-            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-20" style={{ background: '#FFFFFF' }} />
-            <div className="relative z-10 flex items-center gap-6">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(255,255,255,0.2)' }}>
                 <BookOpen className="w-8 h-8 md:w-10 md:h-10" />
               </div>
               <div className="flex-1 min-w-0">
@@ -333,13 +326,15 @@ export default function AcademyPage() {
       {/* ─── Tracks ─── */}
       <div id="tracks" className="mb-6">
         <h2 className="text-2xl font-black text-academy-ink mb-4">Learning Tracks</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {/* Asymmetric grid: first track is large (col-span-2), other two stack */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {trackProgress.map(({ track, done, total, pct }, i) => (
             <motion.div
               key={track.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.05 }}
+              className={i === 0 ? 'md:col-span-2' : ''}
             >
               <Link
                 href={`/academy#track-${track.id}`}
@@ -347,33 +342,43 @@ export default function AcademyPage() {
                   e.preventDefault()
                   document.getElementById(`track-${track.id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
-                className={`academy-card p-5 block academy-track-${track.id}`}
+                className={`academy-card p-5 md:p-6 block academy-track-${track.id} ${i === 0 ? 'md:flex md:items-center md:gap-6' : ''}`}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl"
-                    style={{ background: 'var(--track-color-soft)' }}
-                  >
-                    <TrackIcon trackId={track.id} />
+                <div className={i === 0 ? 'md:flex-1' : ''}>
+                  <div className="flex items-start justify-between mb-3">
+                    <div
+                      className={`rounded-2xl flex items-center justify-center text-2xl ${i === 0 ? 'w-14 h-14' : 'w-12 h-12'}`}
+                      style={{ background: 'var(--track-color-soft)' }}
+                    >
+                      <TrackIcon trackId={track.id} />
+                    </div>
+                    <span
+                      className="academy-chip"
+                      style={{ background: 'var(--track-color-soft)', color: 'var(--track-color)' }}
+                    >
+                      <span className="academy-nums">{done}</span>/<span className="academy-nums">{total}</span>
+                    </span>
                   </div>
-                  <span
-                    className="academy-chip"
-                    style={{ background: 'var(--track-color-soft)', color: 'var(--track-color)' }}
-                  >
-                    <span className="academy-nums">{done}</span>/<span className="academy-nums">{total}</span>
-                  </span>
+                  <h3 className={`font-black text-academy-ink mb-1 leading-tight ${i === 0 ? 'text-lg md:text-xl' : ''}`}>{track.name}</h3>
+                  <p className={`text-academy-ink-2 mb-3 ${i === 0 ? 'text-sm line-clamp-2' : 'text-xs line-clamp-2'}`}>{track.tagline}</p>
+                  <div className="academy-progress-track">
+                    <div
+                      className="academy-progress-fill"
+                      style={{ width: `${pct}%`, background: 'var(--track-color)' }}
+                    />
+                  </div>
+                  <div className="text-[10px] font-bold text-academy-muted mt-1.5 text-right">
+                    <span className="academy-nums">{pct}</span>%
+                  </div>
                 </div>
-                <h3 className="font-black text-academy-ink mb-1 leading-tight">{track.name}</h3>
-                <p className="text-xs text-academy-ink-2 mb-3 line-clamp-2">{track.tagline}</p>
-                <div className="academy-progress-track">
-                  <div
-                    className="academy-progress-fill"
-                    style={{ width: `${pct}%`, background: 'var(--track-color)' }}
-                  />
-                </div>
-                <div className="text-[10px] font-bold text-academy-muted mt-1.5 text-right">
-                  <span className="academy-nums">{pct}</span>%
-                </div>
+                {i === 0 && (
+                  <div className="hidden md:block md:w-48 shrink-0">
+                    <div className="text-xs font-bold uppercase tracking-widest text-academy-muted mb-2">Description</div>
+                    <p className="text-sm text-academy-ink-2 leading-snug" style={{ fontFamily: 'var(--font-academy-serif)' }}>
+                      {track.description}
+                    </p>
+                  </div>
+                )}
               </Link>
             </motion.div>
           ))}
@@ -463,11 +468,9 @@ function RecentAchievements({
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {recent.map(id => {
-        // Find achievement in the ACHIEVEMENTS array — but we don't import here to avoid circular deps
-        // Just show a generic badge with the id
         return (
           <div key={id} className="academy-badge academy-badge-unlocked">
-            <div className="text-3xl">🏅</div>
+            <Award className="w-7 h-7 text-academy-warning" strokeWidth={1.5} />
             <div className="text-xs font-bold text-academy-ink capitalize">
               {id.replace(/-/g, ' ')}
             </div>

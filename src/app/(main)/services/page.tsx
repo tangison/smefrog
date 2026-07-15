@@ -94,8 +94,6 @@ export default function ServicesPage() {
       ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
         {/* Ambient orbs */}
-        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-frog-green/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/[0.15] blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <ScrollReveal>
@@ -379,7 +377,6 @@ export default function ServicesPage() {
               </Link>
 
               {/* Premium glow */}
-              <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-frog-green/10 rounded-full blur-[120px] pointer-events-none" />
 
               <div className="relative z-10 p-6 md:p-8 lg:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 h-full">
                 <div className="max-w-2xl">
@@ -416,7 +413,6 @@ export default function ServicesPage() {
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
         {/* Ambient orb */}
-        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[180px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <ScrollReveal>
@@ -477,7 +473,6 @@ export default function ServicesPage() {
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.08] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>

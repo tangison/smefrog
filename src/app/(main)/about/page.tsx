@@ -70,8 +70,6 @@ export default function AboutPage() {
         </div>
 
         {/* Ambient glow */}
-        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-frog-green/[0.04] rounded-full blur-[180px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/30 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
@@ -80,7 +78,7 @@ export default function AboutPage() {
           <ScrollReveal delay={0.08}>
             <h1 className="text-5xl md:text-7xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-8">
               Why<br />
-              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-white via-frog-green to-white">SMEfrog</span>
+              <span className="text-frog-green">SMEfrog</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={0.14}>
@@ -240,7 +238,6 @@ export default function AboutPage() {
       {/* ═══ TEAM — DARK ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
         {/* Ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.03] rounded-full blur-[180px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>
@@ -303,7 +300,6 @@ export default function AboutPage() {
 
       {/* ═══ PROCESS — DARK ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black border-t border-frog-hairline relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-green/[0.02] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
@@ -342,7 +338,6 @@ export default function AboutPage() {
 
       {/* ═══ CTA — LIGHT ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/5 blur-[120px] rounded-full translate-x-1/2 pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>

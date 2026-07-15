@@ -66,6 +66,7 @@
   /* Typography */
   --font-academy-heading: 'Nunito', 'Space Grotesk', system-ui, sans-serif;
   --font-academy-body: 'Nunito', 'Space Grotesk', system-ui, sans-serif;
+  --font-academy-serif: 'Newsreader', Georgia, 'Times New Roman', serif;
 
   /* Spacing */
   --radius-academy-sm: 12px;
@@ -94,6 +95,7 @@
   letter-spacing: -0.02em;
   color: var(--color-academy-ink);
   text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .academy-theme p,
@@ -105,6 +107,21 @@
 .academy-nums {
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum';
+}
+
+/* Prose — serif body text for module reading content (Collins DNA) */
+.academy-prose {
+  font-family: var(--font-academy-serif);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-academy-ink-2);
+  max-width: 65ch;
+}
+.academy-prose p {
+  margin-bottom: 1.25rem;
+}
+.academy-prose p:last-child {
+  margin-bottom: 0;
 }
 
 /* ─── Academy scrollbars ─── */
