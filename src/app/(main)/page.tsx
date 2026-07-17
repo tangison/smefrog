@@ -60,6 +60,7 @@ export default function HomePage() {
     <>
       {/* ═══ 1. HERO ═══ */}
       <section className="relative min-h-[100dvh] flex items-end overflow-hidden">
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.07] rounded-full blur-[150px] pointer-events-none z-[1]" />
         <HeroSlideshow />
 
         {/* Ambient green glow behind headline */}
@@ -240,6 +241,7 @@ export default function HomePage() {
 
       {/* ═══ 5. PRICING TEASER ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-black to-frog-dark pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -321,6 +323,7 @@ export default function HomePage() {
 
       {/* ═══ 7. ACADEMY ═══ */}
       <section className="py-20 md:py-28 px-4 md:px-6 relative overflow-hidden" style={{ background: '#0a1a0a' }}>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-frog-green/[0.10] blur-[120px] rounded-full pointer-events-none" />
         {/* Subtle frog watermark */}
         <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: 'url(/upload/Icon.png)', backgroundSize: '300px', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }} />
 
@@ -429,6 +432,7 @@ export default function HomePage() {
 
       {/* ═══ REGISTRATION CTA ═══ */}
       <section className="py-24 md:py-32 bg-frog-black relative overflow-hidden" id="registration-section">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/[0.03] blur-[180px] rounded-full pointer-events-none" />
         {/* Ambient green glow */}
 
         <div className="max-w-3xl mx-auto px-4 md:px-6 text-center relative z-10">
@@ -463,6 +467,7 @@ export default function HomePage() {
 
       {/* ═══ FINAL CTA ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden bg-frog-light">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-frog-green/5 blur-[120px] rounded-full translate-x-1/2 pointer-events-none" />
         {/* Ambient green glow */}
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">

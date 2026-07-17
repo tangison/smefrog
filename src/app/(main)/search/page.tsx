@@ -23,6 +23,7 @@ export default function SearchPage() {
 
       {/* Search Hint */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-frog-green/[0.06] rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.div

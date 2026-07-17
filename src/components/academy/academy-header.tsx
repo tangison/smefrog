@@ -42,7 +42,7 @@ export function AcademyHeader({
   const gems = state.gems
 
   return (
-    <header className="academy-safe-top sticky top-0 z-50 bg-academy-surface border-b border-academy-border">
+    <header className="academy-safe-top sticky top-0 z-50 bg-academy-surface/90 backdrop-blur-lg border-b border-academy-border">
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
         {/* Left: Back to SMEfrog + Logo */}
         <div className="flex items-center gap-2 md:gap-3 min-w-0">

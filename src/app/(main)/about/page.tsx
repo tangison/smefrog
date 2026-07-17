@@ -57,6 +57,7 @@ export default function AboutPage() {
     <>
       {/* ═══ HERO — DARK CINEMATIC ═══ */}
       <section className="relative py-32 md:py-40 lg:py-52 px-4 md:px-6 bg-frog-black overflow-hidden">
+        <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-frog-green/[0.04] rounded-full blur-[180px] pointer-events-none" />
         {/* Background image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -237,6 +238,7 @@ export default function AboutPage() {
 
       {/* ═══ TEAM — DARK ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/30 rounded-full blur-[140px] pointer-events-none" />
         {/* Ambient glow */}
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
@@ -300,6 +302,7 @@ export default function AboutPage() {
 
       {/* ═══ PROCESS — DARK ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black border-t border-frog-hairline relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-frog-green/[0.03] rounded-full blur-[180px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <ScrollReveal>
@@ -338,6 +341,7 @@ export default function AboutPage() {
 
       {/* ═══ CTA — LIGHT ═══ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-white relative overflow-hidden">
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-green/[0.02] rounded-full blur-[150px] pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">
           <ScrollReveal>

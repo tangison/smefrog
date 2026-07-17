@@ -93,6 +93,7 @@ export default function ServicesPage() {
           HERO — DARK, cinematic
       ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-frog-green/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
         {/* Ambient orbs */}
 
         <div className="max-w-[1400px] mx-auto relative z-10">
@@ -372,6 +373,7 @@ export default function ServicesPage() {
           {/* ── Fractional Executives — Full Width promotional card ── */}
           <ScrollReveal className="col-span-12" delay={0.24}>
             <div className="relative min-h-[280px] md:min-h-[320px] rounded-[2rem] overflow-hidden border border-frog-green/30 bg-gradient-to-br from-frog-green/[0.06] via-frog-card to-frog-card group cursor-pointer">
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/[0.15] blur-[150px] rounded-full pointer-events-none" />
               <Link href="/services/fractional-executives" className="absolute inset-0 z-10" aria-label="Fractional Executives">
                 <span className="sr-only">Fractional Executives</span>
               </Link>
@@ -412,6 +414,7 @@ export default function ServicesPage() {
           WHY CHOOSE SMEFROG — DARK with cards
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
+        <div className="absolute -top-32 -right-32 w-[400px] h-[400px] bg-frog-green/10 rounded-full blur-[120px] pointer-events-none" />
         {/* Ambient orb */}
 
         <div className="max-w-[1400px] mx-auto relative z-10">
@@ -472,6 +475,7 @@ export default function ServicesPage() {
           CTA — DARK cinematic with gradient
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
+        <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[180px] rounded-full pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">

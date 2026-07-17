@@ -129,6 +129,7 @@ export default function BusinessDocumentsPage() {
           HERO — Dark cinematic with image
       ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[200px] rounded-full pointer-events-none orb-float" />
         {/* Ambient orbs */}
 
         <div className="max-w-[1400px] mx-auto relative z-10">
@@ -194,6 +195,7 @@ export default function BusinessDocumentsPage() {
             {/* Right — Hero image */}
             <ScrollReveal delay={0.12} className="hidden lg:block">
               <div className="relative h-[500px] rounded-[2.5rem] overflow-hidden">
+                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-frog-dark/[0.15] blur-[150px] rounded-full pointer-events-none" />
                 <Image
                   src="/hero/hero-7.webp"
                   alt="Business Documents"
@@ -292,6 +294,7 @@ export default function BusinessDocumentsPage() {
           PROCESS — Dark with DoubleBezel
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden">
+        <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[180px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="mb-12 md:mb-16">
@@ -367,6 +370,7 @@ export default function BusinessDocumentsPage() {
           CUSTOM PRICING NOTE — Dark editorial
       ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 lg:py-40 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-frog-green/[0.06] rounded-full blur-[150px] pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">

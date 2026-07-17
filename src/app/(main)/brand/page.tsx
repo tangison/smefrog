@@ -373,6 +373,7 @@ export default function BrandPage() {
           <ScrollReveal delay={0.18}>
             <h3 className="text-xl font-black text-frog-light mb-6">Type Scale</h3>
             <div className="bg-frog-shell ring-1 ring-frog-hairline rounded-[2rem] overflow-hidden">
+              <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/30 rounded-full blur-[140px] pointer-events-none" />
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-frog-hairline">

@@ -142,6 +142,7 @@ export default function FractionalExecutivesPage() {
       {/* ═══════════════════════════════════════════════════
           HERO ═══════════════════════════════════════════════════ */}
       <section className="relative py-32 md:py-44 lg:py-56 px-4 md:px-6 bg-frog-black overflow-hidden">
+        <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-frog-green/[0.05] blur-[200px] rounded-full pointer-events-none orb-float" />
         {/* Ambient orbs */}
 
         <div className="max-w-[1400px] mx-auto relative z-10">
@@ -238,6 +239,7 @@ export default function FractionalExecutivesPage() {
       {/* ═══════════════════════════════════════════════════
           ROLE CARDS ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 px-4 md:px-6 bg-frog-black relative overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-frog-dark/[0.18] blur-[150px] rounded-full pointer-events-none" />
 
         <div className="max-w-[1400px] mx-auto relative z-10">
           <ScrollReveal>
@@ -358,6 +360,7 @@ export default function FractionalExecutivesPage() {
       {/* ═══════════════════════════════════════════════════
           CTA ═══════════════════════════════════════════════════ */}
       <section className="py-24 md:py-32 px-4 md:px-6 bg-frog-black relative overflow-hidden border-t border-frog-hairline">
+        <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-frog-green/[0.04] blur-[180px] rounded-full pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-br from-frog-dark via-frog-green/[0.06] to-frog-dark pointer-events-none" />
 
         <div className="max-w-3xl mx-auto relative z-10 text-center">

@@ -201,9 +201,15 @@ export default function AcademyPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="academy-card p-6 md:p-8 mb-6"
+        className="academy-card p-6 md:p-8 mb-6 relative overflow-hidden"
       >
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        {/* Decorative ambient orb */}
+        <div
+          className="absolute -top-12 -right-12 w-48 h-48 rounded-full opacity-30 academy-animate-float"
+          style={{ background: 'var(--color-academy-primary-soft)' }}
+        />
+
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <span className="academy-chip" style={{ background: 'var(--color-academy-primary-soft)', color: 'var(--color-academy-primary)' }}>
@@ -257,10 +263,11 @@ export default function AcademyPage() {
         >
           <Link
             href={`/academy/${nextModule.slug}`}
-            className="block academy-card p-6 md:p-8 group"
+            className="block academy-card p-6 md:p-8 relative overflow-hidden group"
             style={{ background: 'var(--color-academy-primary)', color: 'var(--color-academy-surface)' }}
           >
-            <div className="flex items-center gap-6">
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-20" style={{ background: 'var(--color-academy-surface)' }} />
+            <div className="relative z-10 flex items-center gap-6">
               <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center shrink-0" style={{ background: 'rgba(255,255,255,0.2)' }}>
                 <BookOpen className="w-8 h-8 md:w-10 md:h-10" />
               </div>
