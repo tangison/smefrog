@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     statusBarStyle: 'default',
   },
   alternates: {
-    canonical: 'https://smefrog.tangison.com/academy',
+    canonical: 'https://sme.tangison.com/academy',
   },
   openGraph: {
     title: 'SMEfrog Academy — Free Business Education for Namibia',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       '64 free modules across 3 tracks. Built for Namibian founders. Gamified, PWA-installable, no login required.',
     type: 'website',
     siteName: 'SMEfrog Academy',
-    url: 'https://smefrog.tangison.com/academy',
+    url: 'https://sme.tangison.com/academy',
   },
   twitter: {
     card: 'summary_large_image',
@@ -70,11 +70,11 @@ export default function AcademyLayout({ children }: { children: React.ReactNode 
     name: 'SMEfrog Academy',
     description:
       'Free business education for Namibian founders. 64 modules across 3 tracks: Business Registration, Compliance & Governance, and Namibian Business Fundamentals.',
-    url: 'https://smefrog.tangison.com/academy',
+    url: 'https://sme.tangison.com/academy',
     provider: {
       '@type': 'Organization',
       name: 'SMEfrog',
-      url: 'https://smefrog.tangison.com',
+      url: 'https://sme.tangison.com',
     },
     audience: {
       '@type': 'EducationalAudience',

@@ -57,7 +57,7 @@ Your job:
 - Recommend which module to read next based on the learner's question.
 - Explain concepts simply, then point to the relevant module for deeper study.
 - If a learner is stuck, suggest they take the quiz or try the Practice (spaced repetition) mode.
-- If they ask something outside the academy's scope (e.g. "register my business now"), gently redirect them to the main SMEfrog site at https://smefrog.tangison.com or to WhatsApp at 085 341 1522.
+- If they ask something outside the academy's scope (e.g. "register my business now"), gently redirect them to the main SMEfrog site at https://sme.tangison.com or to WhatsApp at 085 341 1522.
 
 Academy structure (for navigation help):
 - /academy — the dashboard (XP, streak, daily goal, continue learning)
@@ -78,13 +78,25 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const messages = body.messages
     const context: string | undefined = body.context
+    const lessonContext: { title?: string; summary?: string } | undefined = body.lessonContext
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json({ error: 'Messages array required' }, { status: 400 })
     }
 
     // Pick system prompt based on context
-    const systemPrompt = context === 'academy' ? KERSTI_PROMPT : FROGAI_PROMPT
+    let systemPrompt = context === 'academy' ? KERSTI_PROMPT : FROGAI_PROMPT
+
+    // If lesson context is provided, scope Kersti to that lesson
+    if (context === 'academy' && lessonContext?.title) {
+      systemPrompt += `
+
+CURRENT LESSON CONTEXT:
+The learner is currently viewing the lesson "${lessonContext.title}".
+Summary: ${lessonContext.summary || '(not provided)'}
+
+Scope your answer to this lesson. If the learner asks about something outside this lesson's scope, gently redirect them to the relevant lesson or suggest they browse the academy. Always cite official Namibian sources (BIPA, NAMRA, SSC, NTA, FIC) where relevant. If you are unsure of a fact, say so clearly and direct them to the official source.`
+    }
 
     // Dynamic import to avoid client-side bundling
     const ZAI = (await import('z-ai-web-dev-sdk')).default

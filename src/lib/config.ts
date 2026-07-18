@@ -15,7 +15,7 @@ export const INSTAGRAM_URL = 'https://www.instagram.com/smefrog?igsh=MWFhYnV1NTZ
 export const GITHUB_URL = 'https://github.com/tangison'
 
 // ─── Site ──────────────────────────────────────────────────
-export const SITE_URL = 'https://smefrog.tangison.com'
+export const SITE_URL = 'https://sme.tangison.com'
 
 // ─── Academy ──────────────────────────────────────────────
 // Academy is now an internal route at /academy (PWA-enabled).

@@ -55,3 +55,4 @@ server.log
 # Source assets (pre-crop originals)
 /upload/.env.creds
 *.env.creds
+upload/

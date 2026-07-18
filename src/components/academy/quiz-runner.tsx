@@ -38,17 +38,15 @@ export function QuizRunner({
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null)
   const [stage, setStage] = useState<Stage>('question')
   const [correctCount, setCorrectCount] = useState(0)
-  const [heartsAtStart] = useState(progress.state.hearts)
   const feedbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const question: QuizQuestion | undefined = quiz.questions[questionIdx]
   const totalQuestions = quiz.questions.length
   const isLastQuestion = questionIdx === totalQuestions - 1
 
-  // Derive "no hearts" modal visibility from state (no effect needed)
-  const showNoHeartsModal = progress.state.hearts <= 0 && stage === 'question'
+  // Hearts mechanic removed — quizzes are always accessible
+  const showNoHeartsModal = false
   const dismissNoHeartsModal = () => {
-    // Can't actually dismiss without hearts — but the user can exit the quiz
     onExit()
   }
 
@@ -61,10 +59,6 @@ export function QuizRunner({
 
   const handleSelect = (idx: number) => {
     if (stage !== 'question' || !question) return
-    if (progress.state.hearts <= 0) {
-      // Modal is auto-shown via derived state; nothing to set here
-      return
-    }
     setSelectedIdx(idx)
     const isCorrect = idx === question.correctIndex
     const newCorrect = correctCount + (isCorrect ? 1 : 0)
@@ -157,10 +151,7 @@ export function QuizRunner({
             style={{ width: `${progressPct}%`, background: 'var(--color-academy-primary)' }}
           />
         </div>
-        <div className="flex items-center gap-1 text-academy-danger">
-          <Heart className="w-5 h-5 fill-current" />
-          <span className="font-black text-sm academy-nums">{progress.state.hearts}</span>
-        </div>
+        {/* Hearts display removed — quizzes are always accessible */}
       </div>
 
       {/* Question card */}

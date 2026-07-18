@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const track = getTrackById(moduleData.trackId)
   const title = `${moduleData.title} — SMEfrog Academy`
   const description = `${moduleData.summary} ${moduleData.level} · ${moduleData.duration} min · ${moduleData.xp} XP. Free Namibian business education.`
-  const url = `https://smefrog.tangison.com/academy/${moduleData.slug}`
+  const url = `https://sme.tangison.com/academy/${moduleData.slug}`
 
   return {
     title,
@@ -65,11 +65,11 @@ export default async function Page({ params }: PageProps) {
     '@type': 'LearningResource',
     name: moduleData.title,
     description: moduleData.summary,
-    url: `https://smefrog.tangison.com/academy/${moduleData.slug}`,
+    url: `https://sme.tangison.com/academy/${moduleData.slug}`,
     provider: {
       '@type': 'Organization',
       name: 'SMEfrog Academy',
-      url: 'https://smefrog.tangison.com/academy',
+      url: 'https://sme.tangison.com/academy',
     },
     educationalLevel: moduleData.level,
     timeRequired: `PT${moduleData.duration}M`,

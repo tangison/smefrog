@@ -6,23 +6,18 @@ import { useState } from 'react'
 import {
   ArrowLeft,
   Home,
-  Trophy,
   RefreshCw,
   Award,
   Menu,
   X,
   Flame,
-  Gem,
-  Heart,
-  Star,
 } from 'lucide-react'
 import type { useAcademyProgress } from '@/hooks/use-academy-progress'
 
 const navItems = [
   { href: '/academy', label: 'Home', icon: Home },
   { href: '/academy/practice', label: 'Practice', icon: RefreshCw },
-  { href: '/academy/achievements', label: 'Awards', icon: Award },
-  { href: '/academy/leaderboard', label: 'League', icon: Trophy },
+  { href: '/academy/achievements', label: 'Milestones', icon: Award },
 ]
 
 export function AcademyHeader({
@@ -32,14 +27,8 @@ export function AcademyHeader({
 }) {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
-  const {
-    state,
-    level,
-  } = progress
+  const { state } = progress
   const { currentStreak } = state
-
-  const hearts = state.hearts
-  const gems = state.gems
 
   return (
     <header className="academy-safe-top sticky top-0 z-50 bg-academy-surface/90 backdrop-blur-lg border-b border-academy-border">
@@ -85,31 +74,26 @@ export function AcademyHeader({
           })}
         </nav>
 
-        {/* Right: Stats */}
+        {/* Right: Stats (simplified — only streak, no hearts/gems) */}
         <div className="flex items-center gap-1.5 md:gap-2 shrink-0">
-          {/* Streak */}
-          <div className="flex items-center gap-1 px-2 md:px-2.5 py-1.5 rounded-full bg-academy-warning-soft">
-            <Flame className="w-3.5 h-3.5 md:w-4 md:h-4 text-academy-warning academy-animate-flame" strokeWidth={2} fill="currentColor" />
-            <span className="font-black text-xs md:text-sm text-academy-ink academy-nums">{currentStreak}</span>
-          </div>
-
-          {/* Gems */}
-          <div className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-academy-info-soft">
-            <Gem className="w-4 h-4 text-academy-info" strokeWidth={2} />
-            <span className="font-black text-sm text-academy-ink academy-nums">{gems}</span>
-          </div>
-
-          {/* Hearts */}
-          <div className="flex items-center gap-1 px-2 md:px-2.5 py-1.5 rounded-full bg-academy-danger-soft">
-            <Heart className="w-3.5 h-3.5 md:w-4 md:h-4 text-academy-danger" strokeWidth={2} fill="currentColor" />
-            <span className="font-black text-xs md:text-sm text-academy-ink academy-nums">{hearts}</span>
-          </div>
-
-          {/* Level */}
-          <div className="hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-academy-secondary-soft">
-            <Star className="w-4 h-4 text-academy-secondary" strokeWidth={2} fill="currentColor" />
-            <span className="font-black text-sm text-academy-ink academy-nums">L{level}</span>
-          </div>
+          {/* Streak (only show if > 0) */}
+          {currentStreak > 0 && (
+            <div
+              className="flex items-center gap-1 px-2 md:px-2.5 py-1.5 rounded-full"
+              style={{ background: 'var(--color-academy-warning-soft)' }}
+              title={`${currentStreak}-day streak`}
+            >
+              <Flame
+                className="w-3.5 h-3.5 md:w-4 md:h-4 academy-animate-flame"
+                style={{ color: 'var(--color-academy-warning)' }}
+                strokeWidth={2}
+                fill="currentColor"
+              />
+              <span className="font-black text-xs md:text-sm text-academy-ink academy-nums">
+                {currentStreak}
+              </span>
+            </div>
+          )}
 
           {/* Mobile menu button */}
           <button

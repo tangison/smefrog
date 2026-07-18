@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   ArrowLeft,
   Clock,
@@ -13,16 +13,204 @@ import {
   BookOpen,
   Lightbulb,
   Play,
+  X,
+  Send,
 } from 'lucide-react'
 import { MODULES, getTrackById } from '@/lib/academy/modules'
 import { getQuizByModuleId } from '@/lib/academy/quizzes'
 import { useAcademyProgressContext } from '@/components/academy/academy-progress-provider'
 import { QuizRunner } from '@/components/academy/quiz-runner'
 
+interface Message {
+  role: 'user' | 'assistant'
+  content: string
+}
+
+/* ─── Contextual Kersti (lesson-scoped, no floating button) ─── */
+function ContextualKersti({
+  open,
+  onClose,
+  moduleTitle,
+  moduleSummary,
+}: {
+  open: boolean
+  onClose: () => void
+  moduleTitle: string
+  moduleSummary: string
+}) {
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
+  }, [messages, loading])
+
+  const send = async (text: string) => {
+    if (!text.trim() || loading) return
+    const userMsg: Message = { role: 'user', content: text.trim() }
+    setMessages(prev => [...prev, userMsg])
+    setInput('')
+    setLoading(true)
+
+    try {
+      const res = await fetch('/api/frogai', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [...messages, userMsg],
+          context: 'academy',
+          lessonContext: { title: moduleTitle, summary: moduleSummary },
+        }),
+      })
+      if (!res.ok) throw new Error('failed')
+      const data = await res.json()
+      setMessages(prev => [...prev, { role: 'assistant', content: data.content }])
+    } catch {
+      setMessages(prev => [
+        ...prev,
+        {
+          role: 'assistant',
+          content:
+            'I could not reach the assistant right now. See the official sources below or contact SMEfrog on WhatsApp at 085 341 1522.',
+        },
+      ])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-4"
+          style={{ background: 'rgba(26, 26, 46, 0.4)', backdropFilter: 'blur(4px)' }}
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 50, opacity: 0 }}
+            onClick={e => e.stopPropagation()}
+            className="bg-academy-surface rounded-t-3xl sm:rounded-3xl w-full max-w-md h-[80vh] sm:h-[600px] flex flex-col overflow-hidden shadow-2xl"
+          >
+            {/* Header */}
+            <div
+              className="p-4 flex items-center gap-3 shrink-0"
+              style={{ background: 'var(--color-academy-secondary)', color: 'white' }}
+            >
+              <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
+                <span className="font-black text-sm">K</span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-black text-sm">Ask about this lesson</div>
+                <div className="text-xs opacity-80 truncate">{moduleTitle}</div>
+              </div>
+              <button onClick={onClose} aria-label="Close" className="p-1.5 rounded-full hover:bg-white/20">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Messages */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-3 bg-academy-bg">
+              {messages.length === 0 && (
+                <div className="text-center pt-8">
+                  <p className="text-sm text-academy-ink-2 mb-4">
+                    Ask a question about <span className="font-bold">{moduleTitle}</span>. Kersti will cite
+                    official Namibian sources and tell you when to seek professional advice.
+                  </p>
+                  <div className="space-y-2">
+                    {[
+                      'What\'s the most important thing to remember here?',
+                      'Where can I verify this on BIPA\'s site?',
+                      'What if my situation is different?',
+                    ].map(q => (
+                      <button
+                        key={q}
+                        onClick={() => send(q)}
+                        className="block w-full text-left p-3 rounded-xl bg-academy-surface border border-academy-border text-academy-ink-2 text-xs font-semibold hover:border-academy-secondary transition-colors"
+                      >
+                        {q}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {messages.map((msg, i) => (
+                <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div
+                    className={`max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${
+                      msg.role === 'user'
+                        ? 'bg-academy-secondary text-white font-semibold'
+                        : 'bg-academy-surface border border-academy-border text-academy-ink'
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
+                </div>
+              ))}
+
+              {loading && (
+                <div className="flex gap-1 justify-start">
+                  {[0, 1, 2].map(i => (
+                    <span
+                      key={i}
+                      className="w-2 h-2 rounded-full animate-bounce"
+                      style={{
+                        background: 'var(--color-academy-secondary)',
+                        animationDelay: `${i * 150}ms`,
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Input */}
+            <form
+              onSubmit={e => {
+                e.preventDefault()
+                send(input)
+              }}
+              className="p-3 border-t border-academy-border shrink-0 bg-academy-surface flex items-center gap-2"
+            >
+              <input
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                placeholder="Ask about this lesson…"
+                className="flex-1 bg-academy-bg border-2 border-academy-border rounded-full px-4 py-2.5 text-sm text-academy-ink outline-none focus:border-academy-secondary transition-colors"
+                disabled={loading}
+              />
+              <button
+                type="submit"
+                disabled={loading || !input.trim()}
+                className="w-10 h-10 rounded-full text-white flex items-center justify-center disabled:opacity-30 shrink-0"
+                style={{ background: 'var(--color-academy-secondary)' }}
+                aria-label="Send"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
 export function ModuleView({ slug }: { slug: string }) {
   const router = useRouter()
   const progress = useAcademyProgressContext()
   const [stage, setStage] = useState<'intro' | 'lesson' | 'quiz'>('intro')
+  const [showKersti, setShowKersti] = useState(false)
 
   const moduleData = MODULES.find(m => m.slug === slug)
 
@@ -152,19 +340,45 @@ export function ModuleView({ slug }: { slug: string }) {
           <div className="flex flex-col sm:flex-row gap-3 mt-8 pt-6 border-t border-academy-border">
             <button
               onClick={() => setStage('quiz')}
-              disabled={progress.state.hearts <= 0}
               className="academy-btn academy-btn-primary flex-1"
             >
               <Play className="w-4 h-4" fill="currentColor" />
               Take the quiz ({quiz?.questions.length || 0} questions)
             </button>
-            {progress.state.hearts <= 0 && (
-              <p className="text-sm text-academy-danger text-center sm:self-center">
-                Need hearts to take the quiz
-              </p>
-            )}
+          </div>
+
+          {/* Contextual Kersti trigger */}
+          <div className="mt-6 p-4 rounded-2xl bg-academy-surface-2 border border-academy-border">
+            <div className="flex items-start gap-3">
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                style={{ background: 'var(--color-academy-secondary)' }}
+              >
+                <span className="text-white font-black text-sm">K</span>
+              </div>
+              <div className="flex-1">
+                <div className="text-sm font-bold text-academy-ink mb-1">Have a question about this lesson?</div>
+                <p className="text-xs text-academy-ink-2 mb-3">
+                  Ask Kersti — scoped to this lesson, cites official Namibian sources.
+                </p>
+                <button
+                  onClick={() => setShowKersti(true)}
+                  className="academy-btn academy-btn-secondary text-sm py-2"
+                >
+                  Ask about this lesson
+                </button>
+              </div>
+            </div>
           </div>
         </motion.div>
+
+        {/* Contextual Kersti panel */}
+        <ContextualKersti
+          open={showKersti}
+          onClose={() => setShowKersti(false)}
+          moduleTitle={moduleData.title}
+          moduleSummary={moduleData.summary}
+        />
       </div>
     )
   }

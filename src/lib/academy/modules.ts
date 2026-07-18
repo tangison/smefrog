@@ -795,6 +795,10 @@ export function getModuleBySlug(slug: string): Module | undefined {
   return MODULES.find(m => m.slug === slug)
 }
 
+export function getModuleById(id: string): Module | undefined {
+  return MODULES.find(m => m.id === id)
+}
+
 export function getTrackById(id: TrackId): Track | undefined {
   return TRACKS.find(t => t.id === id)
 }
